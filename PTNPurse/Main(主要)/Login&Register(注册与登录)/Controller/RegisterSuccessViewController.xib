@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterSuccessViewController" customModule="PTNPurse" customModuleProvider="target">
+            <connections>
+                <outlet property="closeBtn" destination="eYo-1c-8mb" id="aI7-zg-2Gi"/>
+                <outlet property="descLabel" destination="V5i-nB-gkF" id="G21-hF-mJk"/>
+                <outlet property="successImageView" destination="jPv-8M-qOS" id="5hw-6c-YuV"/>
+                <outlet property="toLoginBtn" destination="iQZ-Ij-0g9" id="TK0-Se-FW0"/>
+                <outlet property="topView" destination="ewp-BP-UOr" id="8Lp-Zt-tbs"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewp-BP-UOr" customClass="CreatTopView" customModule="PTNPurse" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ewp-BP-UOr" secondAttribute="height" multiplier="375:115" id="mom-Mq-HgB"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_finish" translatesAutoresizingMaskIntoConstraints="NO" id="jPv-8M-qOS">
+                    <rect key="frame" x="149.5" y="160" width="75" height="75"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="jPv-8M-qOS" secondAttribute="height" id="a6I-mD-Ehx"/>
+                        <constraint firstAttribute="height" constant="75" id="e3P-Cz-FPP"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你已成功创建钱包点击登录按钮" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5i-nB-gkF">
+                    <rect key="frame" x="112" y="260" width="150" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="9E1-hQ-hYn"/>
+                        <constraint firstAttribute="width" constant="150" id="eof-qW-iIW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYo-1c-8mb">
+                    <rect key="frame" x="37" y="350" width="140" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="140" id="HSM-4h-kcK"/>
+                        <constraint firstAttribute="height" constant="40" id="PLN-eA-dS6"/>
+                    </constraints>
+                    <state key="normal" title="关闭"/>
+                    <connections>
+                        <action selector="closeBtnTouched:" destination="-1" eventType="touchUpInside" id="LNK-Lf-nui"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQZ-Ij-0g9">
+                    <rect key="frame" x="197" y="350" width="140" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="hoY-eN-tGZ"/>
+                    </constraints>
+                    <state key="normal" title="登录"/>
+                    <connections>
+                        <action selector="toLoginBtnTouched:" destination="-1" eventType="touchUpInside" id="5CO-wO-yLP"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="iQZ-Ij-0g9" firstAttribute="leading" secondItem="eYo-1c-8mb" secondAttribute="trailing" constant="20" id="0eU-PO-S4n"/>
+                <constraint firstItem="jPv-8M-qOS" firstAttribute="top" secondItem="ewp-BP-UOr" secondAttribute="bottom" constant="45" id="34b-C9-fjU"/>
+                <constraint firstItem="iQZ-Ij-0g9" firstAttribute="centerY" secondItem="eYo-1c-8mb" secondAttribute="centerY" id="Aj5-V1-TRr"/>
+                <constraint firstItem="iQZ-Ij-0g9" firstAttribute="width" secondItem="eYo-1c-8mb" secondAttribute="width" id="CAP-BK-l1n"/>
+                <constraint firstItem="eYo-1c-8mb" firstAttribute="trailing" secondItem="jPv-8M-qOS" secondAttribute="centerX" constant="-10" id="CJd-A5-xVZ"/>
+                <constraint firstItem="V5i-nB-gkF" firstAttribute="centerX" secondItem="jPv-8M-qOS" secondAttribute="centerX" id="Cq5-Eo-Rie"/>
+                <constraint firstItem="iQZ-Ij-0g9" firstAttribute="height" secondItem="eYo-1c-8mb" secondAttribute="height" id="DnZ-CA-n9I"/>
+                <constraint firstItem="eYo-1c-8mb" firstAttribute="top" secondItem="V5i-nB-gkF" secondAttribute="bottom" constant="40" id="L6J-T0-cYK"/>
+                <constraint firstItem="jPv-8M-qOS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hTX-rP-qt6"/>
+                <constraint firstItem="V5i-nB-gkF" firstAttribute="top" secondItem="jPv-8M-qOS" secondAttribute="bottom" constant="25" id="jyi-1s-OHZ"/>
+                <constraint firstAttribute="trailing" secondItem="ewp-BP-UOr" secondAttribute="trailing" id="kvy-h1-8Qt"/>
+                <constraint firstItem="ewp-BP-UOr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lGu-P5-N5N"/>
+                <constraint firstItem="ewp-BP-UOr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="z9w-f6-i1i"/>
+            </constraints>
+            <point key="canvasLocation" x="-4.5" y="25.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_home_finish" width="75" height="75"/>
+    </resources>
+</document>

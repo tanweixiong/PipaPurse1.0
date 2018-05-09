@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SecuritySetViewController" customModule="PTNPurse" customModuleProvider="target">
+            <connections>
+                <outlet property="talbeView" destination="iUi-nS-ztd" id="dDI-DR-ScI"/>
+                <outlet property="topView" destination="AEU-Mt-Bb3" id="zS2-KL-1pV"/>
+                <outlet property="view" destination="uac-m8-h86" id="Ty7-ac-bGA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="uac-m8-h86">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEU-Mt-Bb3" customClass="CreatTopView" customModule="PTNPurse" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="AEU-Mt-Bb3" secondAttribute="height" multiplier="357:115" id="V3J-8Y-jkW"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iUi-nS-ztd">
+                    <rect key="frame" x="0.0" y="136" width="375" height="531"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="u96-ss-zOp"/>
+                        <outlet property="delegate" destination="-1" id="X1i-22-K2U"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="AEU-Mt-Bb3" firstAttribute="leading" secondItem="uac-m8-h86" secondAttribute="leading" id="1Zv-Ns-0wS"/>
+                <constraint firstAttribute="bottom" secondItem="iUi-nS-ztd" secondAttribute="bottom" id="4FO-9z-cFh"/>
+                <constraint firstItem="iUi-nS-ztd" firstAttribute="top" secondItem="AEU-Mt-Bb3" secondAttribute="bottom" constant="15" id="Bc4-QQ-esh"/>
+                <constraint firstAttribute="trailing" secondItem="AEU-Mt-Bb3" secondAttribute="trailing" id="EDV-Wf-Sj5"/>
+                <constraint firstItem="AEU-Mt-Bb3" firstAttribute="top" secondItem="uac-m8-h86" secondAttribute="top" id="TE5-uR-y0W"/>
+                <constraint firstAttribute="trailing" secondItem="iUi-nS-ztd" secondAttribute="trailing" id="cvP-gO-t99"/>
+                <constraint firstItem="iUi-nS-ztd" firstAttribute="leading" secondItem="uac-m8-h86" secondAttribute="leading" id="t3O-7R-KFW"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

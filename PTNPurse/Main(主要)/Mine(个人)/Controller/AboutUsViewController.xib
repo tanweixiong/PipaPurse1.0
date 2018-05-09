@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutUsViewController" customModule="PTNPurse" customModuleProvider="target">
+            <connections>
+                <outlet property="logoImageView" destination="9Ek-c0-GS9" id="a74-p1-ZQz"/>
+                <outlet property="tableView" destination="E86-tj-eHH" id="6sh-78-PFz"/>
+                <outlet property="topView" destination="Edh-sk-Ihy" id="8hx-FC-b7V"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Edh-sk-Ihy" customClass="CreatTopView" customModule="PTNPurse" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Edh-sk-Ihy" secondAttribute="height" multiplier="375:115" id="9lR-Iy-6dw"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="9Ek-c0-GS9">
+                    <rect key="frame" x="142" y="145" width="90" height="90"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="90" id="V6U-Fy-Gyh"/>
+                        <constraint firstAttribute="width" secondItem="9Ek-c0-GS9" secondAttribute="height" multiplier="1:1" id="X9e-JY-CEt"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E86-tj-eHH">
+                    <rect key="frame" x="0.0" y="315" width="375" height="352"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="BDa-3M-hod"/>
+                        <outlet property="delegate" destination="-1" id="SCX-S0-ox8"/>
+                    </connections>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photon Chain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mi0-ku-uyl">
+                    <rect key="frame" x="100" y="240" width="174.5" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="dA4-R6-Clk"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" red="0.094117647060000004" green="0.32549019610000002" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Edh-sk-Ihy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Gco-gx-OSJ"/>
+                <constraint firstAttribute="bottom" secondItem="E86-tj-eHH" secondAttribute="bottom" id="J3M-Ce-MiM"/>
+                <constraint firstItem="9Ek-c0-GS9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OGy-Ry-MkV"/>
+                <constraint firstItem="E86-tj-eHH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SQ3-DR-Ba8"/>
+                <constraint firstItem="Mi0-ku-uyl" firstAttribute="top" secondItem="9Ek-c0-GS9" secondAttribute="bottom" constant="5" id="Upm-LN-HcD"/>
+                <constraint firstItem="9Ek-c0-GS9" firstAttribute="top" secondItem="Edh-sk-Ihy" secondAttribute="bottom" constant="30" id="Wta-sA-E36"/>
+                <constraint firstItem="Mi0-ku-uyl" firstAttribute="centerX" secondItem="9Ek-c0-GS9" secondAttribute="centerX" id="Zfc-kD-Y0f"/>
+                <constraint firstAttribute="trailing" secondItem="E86-tj-eHH" secondAttribute="trailing" id="a4b-Z0-4Rw"/>
+                <constraint firstAttribute="trailing" secondItem="Edh-sk-Ihy" secondAttribute="trailing" id="aPi-do-aba"/>
+                <constraint firstItem="E86-tj-eHH" firstAttribute="top" secondItem="Mi0-ku-uyl" secondAttribute="bottom" constant="33" id="o6g-3W-i0n"/>
+                <constraint firstItem="Edh-sk-Ihy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wJj-TZ-ebP"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="97.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_launcher" width="512" height="512"/>
+    </resources>
+</document>

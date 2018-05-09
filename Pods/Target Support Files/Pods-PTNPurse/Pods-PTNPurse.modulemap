@@ -1,0 +1,6 @@
+framework module Pods_PTNPurse {
+  umbrella header "Pods-PTNPurse-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HomeListDetsilsFootView" customModule="PTNPurse" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="31t-Zc-cBm">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5NC-JL-hxt">
+                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FyA-MZ-hUx">
+                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-15" maxY="0.0"/>
+                                    <state key="normal" title="接收" image="ic_home_downLoad_white">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.0" green="0.58039215686274503" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="FyA-MZ-hUx" secondAttribute="trailing" id="4mg-me-vvB"/>
+                                <constraint firstItem="FyA-MZ-hUx" firstAttribute="leading" secondItem="5NC-JL-hxt" secondAttribute="leading" id="8Fv-oz-QKb"/>
+                                <constraint firstAttribute="bottom" secondItem="FyA-MZ-hUx" secondAttribute="bottom" id="En2-2s-C5c"/>
+                                <constraint firstItem="FyA-MZ-hUx" firstAttribute="top" secondItem="5NC-JL-hxt" secondAttribute="top" id="sh7-Fg-d32"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfQ-6W-GdN">
+                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
+                            <color key="backgroundColor" red="0.93744426965713501" green="0.45090591907501221" blue="0.25679236650466919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ra0-nl-kjm">
+                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
+                            <color key="backgroundColor" red="1" green="0.84313725490196079" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-15" maxY="0.0"/>
+                            <state key="normal" title="转账" image="ic_home_trans_white">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="WfQ-6W-GdN" firstAttribute="top" secondItem="31t-Zc-cBm" secondAttribute="top" id="1Tl-aG-dpa"/>
+                        <constraint firstItem="WfQ-6W-GdN" firstAttribute="height" secondItem="5NC-JL-hxt" secondAttribute="height" id="5EO-gE-ywG"/>
+                        <constraint firstItem="ra0-nl-kjm" firstAttribute="leading" secondItem="5NC-JL-hxt" secondAttribute="trailing" id="GiW-jT-K0U"/>
+                        <constraint firstAttribute="centerX" secondItem="5NC-JL-hxt" secondAttribute="trailing" id="I7L-ob-2LH"/>
+                        <constraint firstItem="5NC-JL-hxt" firstAttribute="leading" secondItem="31t-Zc-cBm" secondAttribute="leading" id="IVi-XI-dHI"/>
+                        <constraint firstItem="5NC-JL-hxt" firstAttribute="top" secondItem="31t-Zc-cBm" secondAttribute="top" id="M8B-Wv-zM9"/>
+                        <constraint firstAttribute="trailing" secondItem="WfQ-6W-GdN" secondAttribute="trailing" id="N9a-LR-G5E"/>
+                        <constraint firstAttribute="trailing" secondItem="ra0-nl-kjm" secondAttribute="trailing" id="lX0-CX-lZg"/>
+                        <constraint firstAttribute="bottom" secondItem="5NC-JL-hxt" secondAttribute="bottom" id="onk-Uv-BTa"/>
+                        <constraint firstItem="ra0-nl-kjm" firstAttribute="top" secondItem="31t-Zc-cBm" secondAttribute="top" id="pbr-6C-KV4"/>
+                        <constraint firstAttribute="bottom" secondItem="ra0-nl-kjm" secondAttribute="bottom" id="x7t-iB-AYg"/>
+                        <constraint firstItem="WfQ-6W-GdN" firstAttribute="width" secondItem="5NC-JL-hxt" secondAttribute="width" id="ziT-xw-43k"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="31t-Zc-cBm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1b3-xG-ddl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="31t-Zc-cBm" secondAttribute="trailing" id="Dun-1u-6yg"/>
+                <constraint firstAttribute="bottom" secondItem="31t-Zc-cBm" secondAttribute="bottom" id="E3z-ir-J0u"/>
+                <constraint firstItem="31t-Zc-cBm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="QDH-sq-jfM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="footBtn1" destination="FyA-MZ-hUx" id="Ody-VM-LDh"/>
+                <outlet property="footBtn2" destination="ra0-nl-kjm" id="ax9-sF-gUe"/>
+            </connections>
+            <point key="canvasLocation" x="-147" y="44"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_home_downLoad_white" width="20" height="20"/>
+        <image name="ic_home_trans_white" width="20" height="20"/>
+    </resources>
+</document>

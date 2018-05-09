@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LanguageSetViewController" customModule="PTNPurse" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="n4K-Yt-ToR" id="kpC-Wr-QfY"/>
+                <outlet property="topView" destination="bXe-DJ-mmc" id="yD8-l1-tHS"/>
+                <outlet property="view" destination="S3e-SZ-f4N" id="ZR5-3x-RCL"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="S3e-SZ-f4N">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXe-DJ-mmc" customClass="CreatTopView" customModule="PTNPurse" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="bXe-DJ-mmc" secondAttribute="height" multiplier="357:115" id="g1Y-HL-rH3"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n4K-Yt-ToR">
+                    <rect key="frame" x="0.0" y="136" width="375" height="531"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="vaC-Bo-kke"/>
+                        <outlet property="delegate" destination="-1" id="wwc-7i-juv"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="n4K-Yt-ToR" firstAttribute="top" secondItem="bXe-DJ-mmc" secondAttribute="bottom" constant="15" id="LIn-Ae-Ti4"/>
+                <constraint firstAttribute="trailing" secondItem="n4K-Yt-ToR" secondAttribute="trailing" id="bTv-94-MHh"/>
+                <constraint firstAttribute="trailing" secondItem="bXe-DJ-mmc" secondAttribute="trailing" id="hAa-Ut-6xd"/>
+                <constraint firstAttribute="bottom" secondItem="n4K-Yt-ToR" secondAttribute="bottom" id="soA-Ru-pLk"/>
+                <constraint firstItem="bXe-DJ-mmc" firstAttribute="leading" secondItem="S3e-SZ-f4N" secondAttribute="leading" id="vjF-yE-rgR"/>
+                <constraint firstItem="n4K-Yt-ToR" firstAttribute="leading" secondItem="S3e-SZ-f4N" secondAttribute="leading" id="vlI-CR-9zy"/>
+                <constraint firstItem="bXe-DJ-mmc" firstAttribute="top" secondItem="S3e-SZ-f4N" secondAttribute="top" id="zFv-Xl-fD8"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

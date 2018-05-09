@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OpitionViewController" customModule="PTNPurse" customModuleProvider="target">
+            <connections>
+                <outlet property="adviceTextVeiew" destination="hjz-ol-pRd" id="cPI-H8-8nb"/>
+                <outlet property="commitBtn" destination="Uya-76-DjI" id="R8V-WF-dNU"/>
+                <outlet property="errorTypeTextView" destination="WPY-3f-RMj" id="OFi-Jw-idI"/>
+                <outlet property="phoneTextView" destination="tlE-SA-9Rl" id="ZSO-qV-x9Z"/>
+                <outlet property="topView" destination="VRh-xe-86U" id="9DO-BE-swl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VRh-xe-86U" customClass="CreatTopView" customModule="PTNPurse" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="VRh-xe-86U" secondAttribute="height" multiplier="375:115" id="WmR-bo-l6c"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WPY-3f-RMj" customClass="LoginTextFieldView" customModule="PTNPurse" customModuleProvider="target">
+                    <rect key="frame" x="15" y="130" width="345" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="bo3-nl-gyc"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjz-ol-pRd" customClass="LoginNoteTextView" customModule="PTNPurse" customModuleProvider="target">
+                    <rect key="frame" x="15" y="205" width="345" height="120"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="LJB-5f-VbQ"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlE-SA-9Rl" customClass="LoginTextFieldView" customModule="PTNPurse" customModuleProvider="target">
+                    <rect key="frame" x="15" y="340" width="345" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="N4y-cm-IYH"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uya-76-DjI">
+                    <rect key="frame" x="15" y="450" width="345" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="A0x-L7-v2x"/>
+                    </constraints>
+                    <state key="normal" title="提交反馈"/>
+                    <connections>
+                        <action selector="commitBtnTouched:" destination="-1" eventType="touchUpInside" id="hTX-8y-LyA"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="hjz-ol-pRd" firstAttribute="top" secondItem="WPY-3f-RMj" secondAttribute="bottom" constant="15" id="9bm-tC-Bc6"/>
+                <constraint firstItem="Uya-76-DjI" firstAttribute="top" secondItem="tlE-SA-9Rl" secondAttribute="bottom" constant="50" id="Dix-H8-Ee6"/>
+                <constraint firstItem="WPY-3f-RMj" firstAttribute="top" secondItem="VRh-xe-86U" secondAttribute="bottom" constant="15" id="FqQ-df-Bap"/>
+                <constraint firstAttribute="trailing" secondItem="WPY-3f-RMj" secondAttribute="trailing" constant="15" id="JUa-ss-DFN"/>
+                <constraint firstItem="tlE-SA-9Rl" firstAttribute="trailing" secondItem="hjz-ol-pRd" secondAttribute="trailing" id="W40-9d-yA7"/>
+                <constraint firstItem="Uya-76-DjI" firstAttribute="leading" secondItem="tlE-SA-9Rl" secondAttribute="leading" id="Xd8-Hz-IEH"/>
+                <constraint firstAttribute="trailing" secondItem="VRh-xe-86U" secondAttribute="trailing" id="dOP-hu-LoZ"/>
+                <constraint firstItem="hjz-ol-pRd" firstAttribute="leading" secondItem="WPY-3f-RMj" secondAttribute="leading" id="i1Z-e8-Rnw"/>
+                <constraint firstItem="VRh-xe-86U" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lEy-uV-rhZ"/>
+                <constraint firstItem="VRh-xe-86U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mDt-uB-mLt"/>
+                <constraint firstItem="WPY-3f-RMj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="mNx-BB-QgF"/>
+                <constraint firstItem="Uya-76-DjI" firstAttribute="trailing" secondItem="tlE-SA-9Rl" secondAttribute="trailing" id="sLr-wn-foK"/>
+                <constraint firstItem="tlE-SA-9Rl" firstAttribute="top" secondItem="hjz-ol-pRd" secondAttribute="bottom" constant="15" id="sdY-CF-RMw"/>
+                <constraint firstItem="hjz-ol-pRd" firstAttribute="trailing" secondItem="WPY-3f-RMj" secondAttribute="trailing" id="xDi-oW-As3"/>
+                <constraint firstItem="tlE-SA-9Rl" firstAttribute="leading" secondItem="hjz-ol-pRd" secondAttribute="leading" id="y9Q-68-y0J"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="67.5"/>
+        </view>
+    </objects>
+</document>

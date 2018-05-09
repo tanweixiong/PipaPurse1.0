@@ -1,0 +1,724 @@
+/* 
+  Localizable.strings
+  Wallet
+
+  Created by tam on 2017/9/18.
+  Copyright © 2017年 Wilkinson. All rights reserved.
+*/
+
+"app_name" = "EC";
+"coin_name" = "EC";
+"no_more_data" = "No more data";
+"manager_wallet" = "Manage";
+"get_money" = "Receipt";
+"market" = "Quotes";
+"suggest" = "Suggestions";
+"bug" = "Error";
+"edit_feedback" = "Please enter the feedback, we will continue to improve for you";
+"select_feedback_type" = "Select the type";
+"submit" = "Submit";
+"submit_feedback" = "Submit";
+"scan" = "Scan";
+"create_wallet" = "Create";
+"permission" = "permission";
+"permission_content" = "Please turn on camera access";
+"go" = "go";
+"cancel" = "back";
+"contacts" = "Contact Person";
+"write_name" = "Name";
+"phone" = "Phone";
+"email" = "Email";
+"information" = "Information";
+"add_contact" = "Add Contact Person";
+"add_assets" = "Add New Asset";
+"market_detail" = "Quotes Details";
+"add_market" = "Add the market";
+"edit_market" = "Edit the market";
+"enter_phone" = "Please enter the account number";
+"enter_password" = "Please enter your password";
+"login_wallet" = "Login";
+"forget_password" = "Forget password";
+"wallet_name" = "Wallet Nickname";
+"password_enter" = "Enter password";
+"phone_enter" = "Enter the phone number";
+"mall_enter" = "Enter the E-mail address";
+"code_enter" = "Enter the code";
+"get_money_code" = "Receipt code";
+"copy_address" = "Copy Address";
+"toast_code_failure" = "The code generation failed, please try again";
+"return_exit_app" = "Enter again to exit the application";
+"no_data" = "There is no data yet !";
+"save" = "Save";
+"walllet_address" = "Payee wallet address";
+"extras" = "Amount";
+"eth_transfer" = "ETH Transfer";
+"get_code" = "Get code";
+"right_phone" = "Please enter the correct phone number!";
+"no_empty" = "The input can not be empty!";
+"enter_password_rule" = "The password consists of 6 to 16 alphanumeric characters!";
+"some_error" = "There was an unknown error. Please try again";
+"register_success" = "Success";
+"language" = "Choose a language";
+"coin" = "Currency Unit";
+"cloud_coin" = "Cloud Coin";
+"market_remind" = "Quotes remind";
+"trade" = "Transactions";
+"address" = "Wallet address";
+"pay_money" = "Transfer amount";
+"remark" = "Remark";
+"fee" = "Miner cost";
+"trade_time" = "Time";
+"zhuanzhang" = "Transfer";
+"next" = "Next";
+"change_number" = "Amount";
+"enter_number" = "Enter the amount";
+"coin_change" = "Conversion";
+"my_card" = "My Card";
+"set_pay_password" = "Set up payment password";
+"edit_pay_password" = "Change the payment password";
+"find_password" = "Retrieve payment password";
+"enter_right_phone" = "Please enter the correct and effective mobile phone number!";
+"enter_no_empty" = "Input can not be empty!";
+"enter_twice_password" = "Two password input is inconsistent, please re-enter!";
+"modify_pwd_success" = "Change password successfully, please log in again!";
+"find_pwd_success" = "The password has been modified. Please log in again";
+"enter_right_pay_pwd" = "The payment password consists of 6 digits!!";
+"set_pay_pwd_success" = "Set password successfully!";
+"modify_pay_pwd_success" = "Change password successfully";
+"find_pay_pwd_success" = "Retrieve password successfully!";
+"login_phone" = "Enter the phone number";
+"login_password" = "Enter your password";
+"register_phone" = "Enter the code";
+"logut_out" = "sign out";
+"mine_add" = "Add";
+"card_finish" = "finish";
+"card" = "card";
+"register_password" = "Enter your registration password";
+"register_getcode" = "Get code";
+"register_sendMallCode" = "Sent to the mailbox";
+"register_code" = "Enter the code";
+"to_login" = "To log in";
+"enter_new_pwd" = "Enter a new password";
+"enter_confirm_password" = "Re-enter the password";
+"confirm" = "Confirm";
+"in_coin" = "Turn into currency";
+"out_coin" = "Transfer money";
+"modify_login_passsword" = "Change the login password";
+"manage_wallet" = "Wallet Manage";
+"trade_history" = "Transactions";
+"message_center" = "Message Center";
+"contacter" = "Contacts";
+"setting" = "Settings";
+"version_history" = "Version History";
+"help_center" = "Help Center";
+"feedback" = "FeedBack";
+"about_us" = "About Us";
+"home" = "Home";
+"markets" = "Market";
+"user_center" = "User";
+"assets" = "Assets(¥)";
+"asset_name" = "Asset Name";
+"lastest_price" = "Latest price";
+"up_low" = "Ups And Downs";
+"add_markets" = "Add               my market";
+"edit_markets" = "edit               my market";
+"recent_records" = "Recent transaction records";
+"no_record" = "No records";
+"transfer" = "Transfer";
+"receipt" = "Receipt";
+"reamrk_limit" = "Remarks (15 words or less)";
+"the_next" = "Next";
+"test_text1" = "Whether you admit it or not, digital money is changing our lives";
+"test_text2" = "With the continuous improvement of residents lifestyle and quality cognition, consumers ability to judge the value of goods and services is also improved simultaneously";
+"complete_information" = "Please complete the information";
+"add_sucess" = "Success!";
+"delete_sucess" = "Delete Sucess!";
+"payee_address" = "Payee wallet address";
+"after_get" = "afters";
+"finding_passwoed" = "Finding Password";
+"enter_older_password" = "Enter your old password";
+"zero_openning" = "Opening";
+"highest" = "Highest";
+"lowest" = "Lowest";
+"volume" = "Volume";
+"assets_name" = "Asset name";
+"remind" = "Remind";
+"drag" = "Drag";
+"copyed_address" = "The address has been copied!";
+"back" = "Back";
+"convert" = "Convert";
+"success" = "Success";
+"wallet_create_success" = "Created Successful";
+"login" = "Login";
+"transfer_confirm" = "Transfer Confirmation";
+"transferee" = "Transferee";
+"transferor" = "Transferor";
+"all_money" = "ALL";
+"transform" = "The Transfer";
+"loading" = "Loading...";
+"amount" = "Amount";
+"enter_a_rightnumber" = "Enter a right amount!";
+"lastest_version" = "Is the latest version";
+"version" = "Version";
+"Update" = "Update";
+"version_cancel" = "cancel";
+"cancel_update" = "Do you cancel the update?";
+"downloading" = "Download...";
+"cancel_download" = "Whether to cancel the download?";
+"canceled_download" = "Canceled download!";
+"download_fair" = "Download failed, please try again!";
+"suggestion" = "Suggestion";
+"a_bug" = "BUG";
+"enter_complete" = "Please complete the contents and contact details!";
+"thank_sug" = "Thank you for your suggestion!";
+"wallet_address" = "Address";
+"add_wallet" = "Add";
+"before_conversion" = "Before conversion";
+"after_conversion" = "After conversion";
+"transaction_time" = "Transaction time";
+"income" = "Income";
+"expenditure" = "Expenditure";
+"trans_out" = "trans out";
+"amounts" = "Amount";
+"date" = "Date";
+"type" = "Type";
+"out_success" = "transfer successful!";
+"error" = "Error";
+"to_set_paypwd" = "Go to set up payment password?";
+"to_find_paypwd" = "Go to get the payment password?";
+"number_remark" = "Note: Only supports the exact amount of the four digits after the decimal point";
+"my_qr_code" = "My QR Code";
+"please_input_feedback" = "Please input feedback";
+"please_fill" = "Please fill in your mobile or mailbox";
+"submit_successfully" = "Submit successfully";
+"network_poor" = "Network poor";
+"Loading" = "Loading";
+"wallet_name_enter" = "Please enter wallet name";
+"save_successfully" = "Save successfully";
+"two_password_different" = "The two password is different";
+"modifying_password" = "Modifying password";
+"password_changes_succeeded" = "Password changes succeeded";
+"payment_modified" = "Payment password modified successfully";
+"please_wait" = "Please wait";
+"upload_failed" = "Upload failed";
+"qrCode_error" = "QRCode error";
+"please_write_contacts" = "Please write contacts";
+"please_write_contacts_name" = "Please write name";
+"please_write_contacts_address" = "Please write address";
+"please_enter_phone" = "Please enter the correct cell account number";
+"please_login_again" = "Please lose your login again";
+"logging_in" = "Logging in";
+"failed_verification_code" = "Failed to get the verification code";
+"setup_failed" = "Setup failed";
+"set_payment" = "Please set the payment password and don't recommend the same password as the bank card";
+"service_charge" = "Service charge";
+"successful_payment" = "Successful payment";
+"change_success" = "Change success";
+"write_address" = "Please fill in the address of the payee";
+"write_amount" = "Please fill in the amount of the payee";
+"transaction" = "transaction";
+"input_can_not_be_empty" = "The input can not be empty";
+"enter_Mall" = "please enter your vaild email";
+"place_enter" = "place enter ";
+
+"card_modify" = "Modify";
+"card_name" = "name";
+"card_job" = "job";
+"card_mall" = "mall";
+"card_phone" = "phone";
+"card_IM" = "IM";
+"card_company" = "company";
+"card_address" = "address";
+"add_card" = "Add card";
+"modify_card" = "modify card";
+"friends_business_card" = "Friends Business Card";
+"card_avatar" = "avatar";
+"modify_card_finish" = "Modify finish";
+"please_fill_finish" = "Please enter the correct phone number or email";
+"transaction_amount" = "Amount";
+"transaction_data" = "Data";
+"transaction_type" = "Type";
+
+"transaction_Transaction_Details" = "Transaction Details";
+"transaction_Serial_Number" = "Serial Number";
+"transaction_Payee" = "Payee";
+"transaction_Transaction_Type" = "Transaction Type";
+"transaction_Transaction_Amount" = "Transaction Amount";
+"transaction_Remark" = "Remark";
+"retrieve_Login_Password" = "Retrieve Login Password";
+"login_Mall_Phone" = "Please enter the email address or password as the login account";
+"already_sent" = "Already sent";
+"phone_registration" = "Phone registration";
+"mall_registration" = "Mall registration";
+"home_Turn_In" = "trans in";
+"prompt" = "prompt";
+"Are_you_sure_you_want_to_quit" = "Are you sure you want to quit";
+"delete" = "delete";
+"You_sure_you_want_to_delete_it" = "You sure you want to delete it";
+"Copy_successful" = "Copy successful";
+"Information_details" = "Information details";
+"Seconds_later" = "s later";
+"Resend" = "Resend";
+"Please_enter_your_username" = "Please enter your username";
+"Please_input_the_correct_email_address" = "Please input the correct email address";
+"Please_input_the_correct_phone" = "Please input the correct phone";
+"Has_been_sent_to_the_mailbox" = "Has been sent to the mailbox";
+"Added_Successfully" = "Added successfully";
+"Payment_Confirmation" = "Payment Confirmation";
+"no_connect" = "No internet connection, please open your wifi or mobile network!";
+
+//个人中心界面
+"person_ad" = "Advertisements";
+"person_message" = "Messages";
+"person_friend" = "Friends";
+"perseon_safety" = "Safety";
+"person_opinion" = "Opinions";
+"person_about" = "About";
+"person_setup" = "Setup";
+"person_notready" = "Not ready yet!";
+"person_Feedback_record" = "Feedback record";
+
+
+"person_modifytradepwd" = "Modify Trade Password";
+"person_settradepwd" = "Set Trade Password";
+"person_forgetminepwd" = "Forget Password";
+
+"person_apperror" = "Appication Error";
+"person_proadvice" = "Product Advice";
+"person_currentversion" = "Current Version";
+"person_latestversion" = "Latest Version";
+"person_nonewversion" = "No New Version";
+"person_multilanguage" = "Language";
+"person_monetaryunit" = "Monetary Unit";
+"person_quitlogin" = "Logout";
+
+"news_news" = "News";
+"news_newsdetail" = "News Detail";
+
+"person_camera" = "Camera";
+"person_photo" = "Photo Library";
+"person_cameraenable" = "Please enbale camera in system setup";
+"person_photoenable" = "Please enbale photo library in system setup";
+
+"person_buyad" = "Buy ad";
+"person_sellad" = "Sell ad";
+"person_alert" = "Alert";
+"person_alertmessage" = "Are your sure logout?";
+"person_quit" = "Quit";
+
+"person_opiniontype" = "Opinion Type";
+"person_opinioncontent" = "Opinion Content";
+"person_opinionplaceholder" = "Input your advice";
+"person_contactmethod" = "Contact Method";
+
+"login_loginaccount" = "Login Account";
+"login_loginaccountplaceholder" = "Input your Phone Number";
+"login_loginpwd" = "Login Password";
+"login_loginpwdplaceholder" = "Input 6~10 Login password";
+"login_tradepwdplaceholder" = "Trade password must be 6 characters";
+
+"login_login" = "Login";
+"login_loginforgetpwd" = "Forget";
+"login_creataccount" = "Register";
+"login_importaccount" = "Import";
+"login_prompt" = "Prompt";
+"login_promptplaceholder" = "Prompt, divide by blankspace";
+"login_wallet" = "Wallet Address";
+"login_walletplaceholder" = "Input wallet address";
+"login_next" = "Next";
+
+"login_ok" = "Ok";
+"login_cancle" = "Cancel";
+
+"login_newpwd" = "New Password";
+"login_newpwdplaceholder" = "Input new password";
+"login_registeraccount" = "Phone Number";
+"login_registercode" = "Code";
+"login_codeplaceholder" = "Input your code";
+
+
+
+"login_infocantnil" = "infomation can't be nil";
+"login_refreshcode" = "Refresh";
+"login_codeerror" = "wrong code";
+"login_creatsuccess" = "Register Success";
+"login_successdesc" = "Wallet creat success, please login";
+"login_modifysuccessdesc" = "Set success, please login";
+"login_close" = "close";
+
+"login_selectfile" = "Select File";
+"login_selectfileplaceholder" = "Please Select Wallet Backup File";
+"login_selectfileerror" = "Backup File Content Error";
+
+
+"net_requestsuccess" = "success";
+"net_networkerror" = "can't connect to server";
+"net_success" = "success";
+"net_rightphone" = "Input correct phone number";
+"net_tokenout" = "login time out, please login";
+"net_wrongurl" = "App download url wrong";
+"net_nomoredata" = "No more data";
+
+//*******************************导航****************************//
+"tab_Home" = "Home";
+"tab_C2C" = "C2C";
+"tab_Information" = "Information";
+"tab_Individual" = "Individual";
+
+//*******************************首页****************************//
+"homePage_receive" = "Receive";
+"homePage_transfer" = "Transfer";
+"homePage_conversion" = "Convert";
+"homePage_details" = "Record";
+"homePage_Numbers" = "Num";
+"homePage_Scan" = "Scan";
+"homePage_Total_Assets" = "Total Assets";
+"homePage_Export" = "Export";
+"homePage_PTN_Area" = "PTN Area";
+"homePage_Conv_Area" = "Conv Area";
+"homePage_Other_Area" = "Other Area";
+"homePage_Copy" = "Copy";
+"homePage_Scan_Addres" = "Scan Addres";
+"homePage_Scan_Prompt" = "Prompt";
+"homePage_Wallet_Address" = "Wallet Address";
+"homePage_Receivables_Address" = "Receivables Address";
+"homePage_Number" = "Number";
+"homePage_Miner_Fee" = "Miner Fee";
+"homePage_Remark_Information" = "Remark Information";
+"homePage_Transfer" = "Transfer";
+"homePage_Transfer_Key" = "Key";
+"homePage_Transfer_Scan_Address" = "Scan Address";
+"homePage_Transfer_textField_Number" = "Currency number";
+"homePage_Leave_Message" = "Leave a message, please indicate the relevant terms of your transaction or note your payment method.";
+"homePage_Confirm_Transfer" = "Confirm transfer";
+"homePage_Number_Transactions" = "Number";
+"homePage_Enter_Transactions" = "Please enter the number of transactions";
+"homePage_Enter_Conversion_Prompt" = "Please enter the number of conversions";
+"homePage_Details_All" = "All";
+"homePage_Details_Turn_Into" = "Receive";
+"homePage_Details_Turn_Out" = "Transfer";
+"homePage_Details_Conversion" = "Conversion";
+"homePage_Details_Receive" = "Receive";
+"homePage_Details_Transfer" = "Transfer";
+"homePage_Details_Recording" = "Recd";
+"homePage_Details_Add_New_Asset" = "Add New Asset";
+"homePage_Details_Conversion_Finish" = "Conversion Finish";
+"homePage_Details_Transfer_Finish" = "Transfer Finish";
+"homePage_Details_Successfully_Transfer_Finish" = "You have successfully transferred";
+"homePage_Details_Successfully_Conversion_Finish" = "You have successfully conversion";
+"homePage_Details_Successfully_A_Finish" = "a";
+"homePage_Details_Successfully_Details" = "Details";
+"homePage_Details_Successfully_Close" = "Close";
+"homePage_Details_Choose_Data" = "Please select a date";
+
+"homePage_Finish_Details_Transaction_Number" = "Number";
+"homePage_Finish_Details_Transaction_Type" = "Type";
+"homePage_Finish_Details_Transaction_Quantity" = "Quantity";
+"homePage_Finish_Details_Transaction_Address" = "Address";
+"homePage_Finish_Details_Transaction_Time" = "Time";
+"homePage_Finish_Details_Transaction_Fee" = "Fee";
+"homePage_Finish_Details_Transaction_Remarks" = "Remarks";
+"homePage_Finish_Details_Transaction_Details" = "Details";
+"homePage_Finish_Confirm_Conversion" = "Confirm";
+
+"homePage_switch_languages" = "Whether to switch languages？";
+"homePage_Details_Conversion_List" = "Conversion Obtained";
+"homePage_Details_Conversion_List_Data" = "Conversion";
+"homePage_Details_Conversion_Obtained" = "Obtained";
+
+
+"homePage_Finish_Receiving_Address" = "Receiving Address";
+"homePage_Finish_Transfer_Address" = "Transfer Address";
+
+"homePage_List_Details_Conversion_Address" = "Conversion Address";
+
+"homePage_Backup_Successful" = "Backup Successful";
+//*******************************备份钱包****************************//
+"homePage_Backup_Wallet_Navi" = "Backup Wallet";
+"homePage_Import_Wallet_Navi" = "Import Wallet";
+
+
+"homePage_Backup_Wallet_NEXT" = "Next";
+"homePage_Backup_Wallet_Prompt1" = "Mnemonics used to recover wallet, copy it down or save screenshots and keep it in a safe place";
+"homePage_Backup_Wallet_Prompt2" = "Please click Mnemonic in order to confirm your backup mnemonic";
+
+"homePage_Backup_Wallet_Confirm_Backup" = "Confirm Backup";
+"homePage_Backup_Wallet_Confirm_Import" = "Confirm Import";
+
+"homePage_Backup_Wallet_Mnemonic" = "Mnemonic";
+"homePage_List_Details_Confirm_Backup_Prompt" = "Please select mnemonic";
+
+//*******************************首页提示****************************//
+"homePage_Prompt_Scan_Finish" = "Scanned successfully";
+"homePage_Prompt_Scan_Correct" = "Please scan the correct QR code";
+"homePage_Prompt_Scan_Open_Permissions" = "Please turn on your camera privileges!";
+"homePage_Prompt_Scan_Error" = "Please scan the correct QR code";
+"homePage_Prompt_Scan_Address" = "Please get the payment address";
+"homePage_Prompt_Scan_Enter_Number" = "Enter the number of transactions";
+"homePage_Prompt_Enter_PayPassword" = "Please enter payment password";
+
+"homePage_Finish_Conversion_Details" = "Details";
+"homePage_Finish_Transfer_Details" = "Details";
+
+"homePage_Transfer_Public_Key" = "Public Key";
+"homePage_Transfer_Enter_Public_Key" = "Please enter public key";
+
+"perseon_settled" = "Settled";
+"perseon_Submit_Review" = "Submit review";
+
+
+//*******************************个人****************************//
+
+//*******************************行情****************************//
+"quotes_tab" = "Quotes";
+"quotes_normal" = "Normal";
+"quotes_other" = "Other";
+"quotes_details" = "Details";
+"quotes_height" = "Height";
+"quotes_lowest" = "Lowest";
+"quotes_volume" = "Volume";
+"quotes_search" = "Search";
+
+//*******************************行情****************************//
+"C2C_home_Buy" = "Buy";
+"C2C_home_Sell" = "Sell";
+"C2C_home_Issue" = "Issue";
+"C2C_home_Deal" = "Dea";
+"C2C_home_Limit" = "Limit";
+"C2C_home_Remark" = "Remark";
+
+"C2C_payment_Bankcard" = "Bank Card";
+"C2C_payment_Alipay" = "Alipay";
+"C2C_payment_WeChat" = "WeChat";
+"C2C_payment_Other" = "Other";
+
+"C2C_home_I_want_to_buy" = "I want to buy";
+"C2C_home_I_want_to_sell" = "I want to sell";
+"C2C_home_Want_buy" = "Want buy？";
+"C2C_home_Want_sell" = "Want sell？";
+
+"C2C_home_Please_enter_the_purchase" = "Please enter the purchase";
+"C2C_home_Please_enter_the_number_of_sales" = "Please enter the number of sales";
+"C2C_home_Converted_amount" = "Converted amount";
+
+"C2C_home_finish_Back" = "Back";
+"C2C_home_finish_See_details" = "See details";
+"C2C_home_finish_Published_successfully" = "Published successfully";
+"C2C_home_finish_Published_successfully_Waiting_for_buyers_payment" = "Published successfully Waiting for buyers payment";
+"C2C_home_finish_Order_submitted_Waiting_for_buyer_to_pay" = "Order submitted，Waiting for buyer to pay";
+
+"C2C_mine_My_purchase_advertisement" = "My purchase ad";
+"C2C_mine_My_sale_advertisement" = "My sale ad";
+"C2C_mine_advertisement_processing" = "Processing";
+"C2C_mine_advertisement_finish" = "Finish";
+"C2C_mine_my_advertisement_coin_list" = "My ad";
+"C2C_mine_my_advertisement_Price" = "Price";
+"C2C_mine_my_advertisement_Limit" = "Limit";
+"C2C_mine_my_advertisement_Method" = "Method";
+"C2C_mine_my_advertisement_Min_limit" = "Min limit";
+"C2C_mine_my_advertisement_Details" = "Details";
+"C2C_mine_my_advertisement_Drop" = "Drop";
+"C2C_mine_my_advertisement_Drop_finish" = "Drop finish";
+
+"C2C_mine_My_advertisement" = "My ad";
+"C2C_mine_My_advertisement_Sell" = "Sell";
+"C2C_mine_My_advertisement_Buy" = "Buy";
+"C2C_mine_My_advertisement_Unit" = "Unit";
+"C2C_mine_My_advertisement_Quantity" = "Quantity";
+"C2C_mine_My_advertisement_Status" = "Status";
+"C2C_mine_My_advertisement_Num" = "Num";
+"C2C_mine_My_advertisement_Contact" = "Contact";
+"C2C_mine_My_advertisement_Cancel" = "Cancel";
+"C2C_mine_My_advertisement_details" = "Advertisement details";
+
+"C2C_mine_My_advertisement_Details_Numbering" = "Numbering";
+"C2C_mine_My_advertisement_Details_Types" = "Types";
+"C2C_mine_My_advertisement_Details_Amount" = "Amount";
+"C2C_mine_My_advertisement_Details_Quantity" = "Quantity";
+"C2C_mine_My_advertisement_Details_Miner" = "Miner";
+"C2C_mine_My_advertisement_Details_Fees" = "Fees";
+"C2C_mine_My_advertisement_Details_Time" = "Time";
+"C2C_mine_My_advertisement_Details_Remark" = "Remark";
+
+"C2C_advertisement_status_Delegate" = "Delegate";
+"C2C_advertisement_status_Finish" = "Finish";
+"C2C_advertisement_status_Drop" = "Drop";
+"C2C_advertisement_status_Match" = "Match";
+
+"C2C_transaction_Matching" = "Matching";
+"C2C_transaction_Completed" = "Completed";
+"C2C_transaction_Cancelled" = "Cancelled";
+"C2C_transaction_Waiting_Buy_confirm" = "Waiting buy confirm";
+"C2C_transaction_Waiting_Sell_confirm" = "Waiting sell confirm";
+"C2C_transaction_Waiting_Cancel_auto" = "Cancel auto";
+"C2C_transaction_Dispute" = "Dispute";
+"C2C_transaction_Dispute_Money" = "Dispute money";
+"C2C_transaction_Dispute_Mis_Money" = "Dispute mis money";
+
+"C2C_transaction_Successful_purchase" = "Successful purchase";
+"C2C_transaction_Please_enter_the_purchase_quantity" = "Please enter the purchase quantity";
+"C2C_transaction_Please_enter_the_converted_amount" = "Please enter the converted amount";
+"C2C_transaction_Input_cannot_be_greater_than_the_maximum_limit" = "Input cannot be greater than the maximum limit";
+"C2C_transaction_Input_cannot_be_greater_than_the_minimum_limit" = "Input cannot be greater than the minimum limit";
+
+"C2C_transaction_Remind_success" = "Remind success";
+"C2C_transaction_Remind_sell" = "Remind";
+"C2C_transaction_Confirm_payment_successful" = "Confirm payment successful";
+"C2C_transaction_Confirm_payments_successful" = "Confirm payment successful";
+"C2C_transaction_Confirm_payment" = "Confirm";
+"C2C_transaction_Confirm_payments" = "Confirm";
+"C2C_transaction_Remind_pay" = "Remind pay";
+
+"C2C_transaction_finish_Avatar" = "Avatar";
+"C2C_transaction_finish_OrderNum" = "OrderNum";
+"C2C_transaction_finish_Type" = "Type";
+"C2C_transaction_finish_Amount" = "Amount";
+"C2C_transaction_finish_Quantity" = "Quantity";
+
+"C2C_transaction_finish_Payment" = "Payment";
+"C2C_transaction_finish_Buy" = "Buy";
+"C2C_transaction_finish_Sell" = "Sell";
+
+"C2C_transaction_finish_Miner" = "Miner";
+"C2C_transaction_finish_Fees" = "Fees";
+"C2C_transaction_finish_Time" = "Time";
+"C2C_transaction_finish_Remark" = "Remark";
+
+"C2C_transaction_Cancel_order_successfully" = "Cancel order successfully";
+"C2C_transaction_Confirm_Order" = "Confirm";
+
+"C2C_transaction_finish_liberate" = "You have successfully published";
+"C2C_transaction_finish_liberate_currency" = "currency";
+
+"C2C_home_transaction_purchase" = "purchase";
+"C2C_home_transaction_sale" = "sale";
+
+"C2C_publish_order_Currency" = "Currency";
+"C2C_publish_order_Receiving" = "Receiving";
+"C2C_publish_order_Number" = "Number";
+"C2C_publish_order_Unit" = "Unit";
+"C2C_publish_order_Limit" = "Limit";
+"C2C_publish_order_Message" = "Message";
+"C2C_publish_order_Select_the_type_of_currency_you_trade" = "Select the type of currency you trade";
+"C2C_publish_order_Alipay_Wechat_bankCard" = "Alipay、Wechat、bankCard";
+"C2C_publish_order_Please_enter_the_number_of_transactions" = "Please enter the number of transactions";
+"C2C_publish_order_Please_enter_the_transaction_unit_price" = "Please enter the transaction unit price";
+"C2C_publish_order_Please_enter_the_minimum_transaction_limit_amount" = "Please enter the minimum transaction limit amount";
+"C2C_publish_order_Enter_information_to_inform_each_other" = "Enter information to inform each other";
+"C2C_publish_order_Successful_advertisement" = "Successful advertisement";
+"C2C_publish_order_Your_payment_method" = "Your payment method";
+"C2C_publish_order_Your_have_payment_method" = "Your have payment method";
+"C2C_publish_order_Please_select_your_trading_currency" = "Please select your trading currency";
+"C2C_publish_order_Please_select_your_receiving_method" = "Please select your receiving method";
+"C2C_publish_order_Submit_release" = "Submit release";
+"C2C_publish_order_Message" = "Message";
+"C2C_publish_order_Please_enter_the_remarks" = "Please enter the remarks";
+
+"C2C_publish_details_order_Status" = "Status";
+"C2C_publish_details_order_Unit" = "Unit";
+"C2C_publish_details_order_Limit" = "Limit";
+"C2C_publish_details_order_Method" = "Method";
+"C2C_publish_details_order_Minimum_limit" = "Minimum limit";
+"C2C_publish_details_order_Time" = "Time";
+
+"C2C_publish_dispute_prompt_Submit_a_complaint" = "Submit a complaint";
+"C2C_publish_dispute_prompt_Complaint_application" = "Complaint application";
+"C2C_publish_dispute_prompt_Uploaded_successfully" = "Uploaded successfully";
+"C2C_publish_dispute_prompt_Uploading" = "Uploading";
+"C2C_publish_dispute_prompt_Upload_failed" = "Upload failed";
+"C2C_publish_dispute_prompt_Please_fill_in_the_reason_for_the_complaint" = "Please fill in the reason for the complaint";
+"C2C_publish_dispute_prompt_Please_fill_in_the_complaint_description" = "Please fill in the complaint description";
+"C2C_publish_dispute_prompt_Buy_did_not_pay" = "Buy did not pay";
+"C2C_publish_dispute_prompt_Seller_did_not_transfer" = "Seller did not transfer";
+"C2C_publish_dispute_prompt_Can_add_more" = "Can't add more";
+"C2C_transaction_initiate_Dispute" = "Dispute";
+
+"C2C_transaction_Feedback_record" = "Feedback record";
+"C2C_transaction_Feedback" = "Feedback";
+"C2C_transaction_Reason" = "Reason";
+"C2C_transaction_Explain" = "Explain";
+"C2C_transaction_Officia_reply" = "Officia reply";
+"C2C_Please_upload_pictures" = "Please upload pictures";
+"homepage_Amount_Available" = "Amount";
+"homepage_Freeze_Amount" = "Freeze";
+
+"C2C_Upload_certificate" = "Upload certificate";
+"C2C_Upload_Instructions" = "Instructions";
+"C2C_Upload_reason" = "Reason";
+
+"C2C_Upload_Limit_input" = "Limit input 100";
+
+"homePage_Import" = "Import";
+"homePage_Please_select_a_file" = "Please select a file";
+
+"homePage_File_name" = "File name";
+"homePage_Please_enter_your_file_name" = "Please enter your file name";
+"homePage_File_name_already_exists" = "File name already exists";
+"homePage_File_name_cannot_be_empty" = "File name cannot be empty";
+
+"person_Invite_friends" = "Invite friends";
+
+"person_pwdTextView_Password" = "Password";
+"person_pwdTextView_Please_enter_your_password" = "Please enter your password";
+
+"person_Inviting_friends" = "Inviting friends";
+"person_People" = "People";
+"person_Integral" = "Integral";
+
+"person_Invitation_code" = "Invitation code";
+"person_Please_enter_your_invitation_code" = "Please enter your invitation code";
+
+"person_Welcome_to_PTN" = "Welcome to PTN";
+
+"person_Wallet_account" = "Wallet account";
+"person_Wallet_password" = "Wallet password";
+"person_Determine" = "Determine";
+"person_Import_finish" = "Import finish";
+
+"binding_Alipay_account" = "Alipay account";
+"binding_Wechat_account" = "Wechat account";
+"binding_Please_enter_alipay_account" = "Please enter alipay account";
+"binding_Please_enter_weChat_account" = "Please enter weChat account";
+"binding_Determine_binding" = "Determine binding";
+"binding_Add" = "Add";
+"binding_Bank_card_binding" = "Bank card binding";
+"binding_Date_added" = "Date added";
+"binding_Add_bank_card" = "Add bank card";
+
+"binding_Cardholder_name" = "Cardholder name";
+"binding_Bank_account" = "Bank account";
+"binding_Bank_branch_bank" = "Bank branch bank";
+"binding_Account_opening_address" = "Account opening address";
+"binding_Bank_card_number" = "Bank card number";
+
+"binding_Please_type_in_your_name" = "Please type in your name";
+"binding_Please_enter_bank" = "Please enter bank";
+"binding_Please_enter_account_branch_bank" = "Please enter account branch bank";
+"binding_Please_enter_your_account_address" = "Please enter your account address";
+"binding_Please_enter_your_bank_card_number" = "Please enter your bank card number";
+
+"binding_Alipay_account_settings" = "Alipay account settings";
+"binding_WeChat_account_settings" = "WeChat account settings";
+
+"binding_Please_choose_a_payment_method" = "Please choose a payment method";
+
+"binding_Lgoin_Language" = "English";
+"person_plase_settradepwd" = "plase set pay password";
+"edit_plase_pay_password" = "plase modify pay password";
+
+//*******************************个人****************************//
+"perseon_Enter_Company_Name" = "Enter company name";
+"perseon_Upload_File" = "Upload file";
+"perseon_Select_File" = "File";
+"perseon_Can_Not_Be_Empty" = "Can not be empty";
+"perseon_Upload_Finish" = "Upload finish";
+"perseon_Failed_Upload" = "Failed upload";
+"perseon_Company_Settled" = "Company settled";
+
+"perseon_File_List" = "File list";
+"perseon_Company_Name" = "Company name";
+"perseon_File_Upload" = "File upload";
+"perseon_Choose_Upload_File" = "Choose upload file";
+
+"homepage_Create_Address" = "Create address";
+"homepage_Create_Finish" = "Create finish";

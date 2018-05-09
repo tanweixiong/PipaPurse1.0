@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SystemSeUpViewController" customModule="PTNPurse" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="NTx-Ag-EIj" id="Gpb-q9-Cp5"/>
+                <outlet property="topView" destination="Erf-KC-sWF" id="PUG-9O-3xg"/>
+                <outlet property="view" destination="7cQ-ND-Aj6" id="2J6-sS-FJx"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="7cQ-ND-Aj6">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Erf-KC-sWF" customClass="CreatTopView" customModule="PTNPurse" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Erf-KC-sWF" secondAttribute="height" multiplier="357:115" id="sCW-Ur-9EN"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NTx-Ag-EIj">
+                    <rect key="frame" x="0.0" y="136" width="375" height="531"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="hvq-yM-IrN"/>
+                        <outlet property="delegate" destination="-1" id="Tu8-KO-ayE"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="NTx-Ag-EIj" secondAttribute="bottom" id="Atf-iZ-Nzl"/>
+                <constraint firstItem="NTx-Ag-EIj" firstAttribute="top" secondItem="Erf-KC-sWF" secondAttribute="bottom" constant="15" id="HTI-5F-jaa"/>
+                <constraint firstItem="NTx-Ag-EIj" firstAttribute="leading" secondItem="7cQ-ND-Aj6" secondAttribute="leading" id="Oh0-JI-3XG"/>
+                <constraint firstItem="Erf-KC-sWF" firstAttribute="leading" secondItem="7cQ-ND-Aj6" secondAttribute="leading" id="Uh0-WR-tk5"/>
+                <constraint firstAttribute="trailing" secondItem="Erf-KC-sWF" secondAttribute="trailing" id="bx0-RR-sbG"/>
+                <constraint firstItem="Erf-KC-sWF" firstAttribute="top" secondItem="7cQ-ND-Aj6" secondAttribute="top" id="y8v-ax-RTv"/>
+                <constraint firstAttribute="trailing" secondItem="NTx-Ag-EIj" secondAttribute="trailing" id="yZA-Sq-kNu"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

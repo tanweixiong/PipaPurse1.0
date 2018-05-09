@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImportWallletViewController" customModule="PTNPurse" customModuleProvider="target">
+            <connections>
+                <outlet property="importBtn" destination="Fba-U8-VqF" id="e90-S8-mpg"/>
+                <outlet property="keyNotView" destination="o2E-UW-GSS" id="O37-lt-3CK"/>
+                <outlet property="topView" destination="0OK-yS-MyD" id="Kdw-Dg-SKk"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0OK-yS-MyD" customClass="CreatTopView" customModule="PTNPurse" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="0OK-yS-MyD" secondAttribute="height" multiplier="375:115" id="v9K-hW-mLm"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o2E-UW-GSS" customClass="LoginNoteTextView" customModule="PTNPurse" customModuleProvider="target">
+                    <rect key="frame" x="15" y="135" width="345" height="150"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="mTx-pE-sRG"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fba-U8-VqF">
+                    <rect key="frame" x="15" y="335" width="345" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Fbk-WR-OMW"/>
+                    </constraints>
+                    <state key="normal" title="导入钱包"/>
+                    <connections>
+                        <action selector="importBtnTouched:" destination="-1" eventType="touchUpInside" id="KHG-Zs-qCd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="o2E-UW-GSS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="3Si-Qu-ftS"/>
+                <constraint firstAttribute="trailing" secondItem="o2E-UW-GSS" secondAttribute="trailing" constant="15" id="47p-VV-mLJ"/>
+                <constraint firstItem="Fba-U8-VqF" firstAttribute="leading" secondItem="o2E-UW-GSS" secondAttribute="leading" id="LS4-3s-lPk"/>
+                <constraint firstItem="0OK-yS-MyD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SFW-qI-0ce"/>
+                <constraint firstAttribute="trailing" secondItem="0OK-yS-MyD" secondAttribute="trailing" id="UAe-Cq-O14"/>
+                <constraint firstItem="Fba-U8-VqF" firstAttribute="top" secondItem="o2E-UW-GSS" secondAttribute="bottom" constant="50" id="fw9-4Z-LRS"/>
+                <constraint firstItem="0OK-yS-MyD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pRF-yc-GYz"/>
+                <constraint firstItem="o2E-UW-GSS" firstAttribute="top" secondItem="0OK-yS-MyD" secondAttribute="bottom" constant="20" id="uf7-ew-XKm"/>
+                <constraint firstItem="Fba-U8-VqF" firstAttribute="trailing" secondItem="o2E-UW-GSS" secondAttribute="trailing" id="v8W-R5-ebC"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="67.5"/>
+        </view>
+    </objects>
+</document>

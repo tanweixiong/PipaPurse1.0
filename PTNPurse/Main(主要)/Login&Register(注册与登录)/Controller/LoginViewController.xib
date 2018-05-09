@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="PTNPurse" customModuleProvider="target">
+            <connections>
+                <outlet property="forgetPwdBtn" destination="h5j-SM-1fh" id="Ho9-He-55s"/>
+                <outlet property="loginBtn" destination="teb-zR-bG5" id="f6H-tM-uAv"/>
+                <outlet property="loginBtnTopConstraint" destination="fzV-av-pO5" id="myk-n0-To4"/>
+                <outlet property="nameTextView" destination="8Is-oM-8zI" id="a3V-A3-nWs"/>
+                <outlet property="nameTextViewTopConstraint" destination="JiY-dH-4dX" id="OcW-PX-gbF"/>
+                <outlet property="pwdTextView" destination="brJ-zE-ety" id="5Oy-8N-kQB"/>
+                <outlet property="pwdTextViewTopConstraint" destination="fk1-tE-yVH" id="b2E-at-luq"/>
+                <outlet property="registerBtn" destination="NBw-PV-ZEo" id="RSw-7Q-vX3"/>
+                <outlet property="registerBtnTopConstraint" destination="VD0-6D-Uhk" id="KPX-XH-m9l"/>
+                <outlet property="topImageView" destination="1Ld-u8-mTu" id="uTB-3Z-jdb"/>
+                <outlet property="topImageViewConstraint" destination="GLR-s5-tXU" id="bqI-jf-P4u"/>
+                <outlet property="topImageWidth" destination="qNC-Gt-h6q" id="N7H-la-Ml3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="1Ld-u8-mTu">
+                    <rect key="frame" x="137.5" y="70" width="100" height="68"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="1Ld-u8-mTu" secondAttribute="height" multiplier="172:117" id="6Pz-mI-SEt"/>
+                        <constraint firstAttribute="width" constant="100" id="qNC-Gt-h6q"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Is-oM-8zI" customClass="LoginTextFieldView" customModule="PTNPurse" customModuleProvider="target">
+                    <rect key="frame" x="20" y="188" width="335" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="P2m-Ss-iZs"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brJ-zE-ety" customClass="LoginTextFieldView" customModule="PTNPurse" customModuleProvider="target">
+                    <rect key="frame" x="20" y="278" width="335" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Cxx-r4-2hF"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teb-zR-bG5">
+                    <rect key="frame" x="20" y="375" width="335" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="TYE-hW-IxC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="17"/>
+                    <state key="normal" title="登录" backgroundImage="loginbtn">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="loginBtnTouched:" destination="-1" eventType="touchUpInside" id="dP7-lp-4ZG"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBw-PV-ZEo">
+                    <rect key="frame" x="20" y="450" width="335" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="VEO-6J-G14"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                    <state key="normal" title="创建钱包"/>
+                    <connections>
+                        <action selector="registerBtnTouched:" destination="-1" eventType="touchUpInside" id="wnf-HR-Gv4"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5j-SM-1fh">
+                    <rect key="frame" x="355" y="450" width="0.0" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" id="OUS-E9-7wl"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="13"/>
+                    <state key="normal" title="导入钱包"/>
+                    <connections>
+                        <action selector="forgetPwdBtnTouched:" destination="-1" eventType="touchUpInside" id="OK6-z1-jh8"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="brJ-zE-ety" firstAttribute="trailing" secondItem="8Is-oM-8zI" secondAttribute="trailing" id="6B8-4Z-5rm"/>
+                <constraint firstItem="NBw-PV-ZEo" firstAttribute="trailing" secondItem="teb-zR-bG5" secondAttribute="trailing" id="6PI-x6-U0B"/>
+                <constraint firstItem="1Ld-u8-mTu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="GLR-s5-tXU"/>
+                <constraint firstItem="brJ-zE-ety" firstAttribute="width" secondItem="8Is-oM-8zI" secondAttribute="width" id="IY4-nX-pvq"/>
+                <constraint firstItem="8Is-oM-8zI" firstAttribute="top" secondItem="1Ld-u8-mTu" secondAttribute="bottom" constant="50" id="JiY-dH-4dX"/>
+                <constraint firstItem="h5j-SM-1fh" firstAttribute="height" secondItem="NBw-PV-ZEo" secondAttribute="height" id="KRp-4A-qEy"/>
+                <constraint firstItem="8Is-oM-8zI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="MF5-iz-iKo"/>
+                <constraint firstItem="NBw-PV-ZEo" firstAttribute="leading" secondItem="teb-zR-bG5" secondAttribute="leading" id="Mhw-UO-iA9"/>
+                <constraint firstItem="teb-zR-bG5" firstAttribute="leading" secondItem="8Is-oM-8zI" secondAttribute="leading" id="N0W-Hb-P5F"/>
+                <constraint firstItem="brJ-zE-ety" firstAttribute="leading" secondItem="8Is-oM-8zI" secondAttribute="leading" id="QyS-Ur-0fm"/>
+                <constraint firstAttribute="trailing" secondItem="8Is-oM-8zI" secondAttribute="trailing" constant="20" id="S9Y-Qk-0RX"/>
+                <constraint firstItem="teb-zR-bG5" firstAttribute="trailing" secondItem="8Is-oM-8zI" secondAttribute="trailing" id="U9j-3P-WSG"/>
+                <constraint firstItem="NBw-PV-ZEo" firstAttribute="top" secondItem="teb-zR-bG5" secondAttribute="bottom" constant="30" id="VD0-6D-Uhk"/>
+                <constraint firstItem="h5j-SM-1fh" firstAttribute="trailing" secondItem="teb-zR-bG5" secondAttribute="trailing" id="ccF-Po-VcU"/>
+                <constraint firstItem="h5j-SM-1fh" firstAttribute="top" secondItem="NBw-PV-ZEo" secondAttribute="top" id="dll-dW-YWr"/>
+                <constraint firstItem="brJ-zE-ety" firstAttribute="top" secondItem="8Is-oM-8zI" secondAttribute="bottom" constant="30" id="fk1-tE-yVH"/>
+                <constraint firstItem="teb-zR-bG5" firstAttribute="top" secondItem="brJ-zE-ety" secondAttribute="bottom" constant="37" id="fzV-av-pO5"/>
+                <constraint firstItem="1Ld-u8-mTu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lta-V0-Mql"/>
+            </constraints>
+            <point key="canvasLocation" x="52.5" y="72.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="loginbtn" width="167" height="49"/>
+        <image name="logo" width="172" height="117"/>
+    </resources>
+</document>

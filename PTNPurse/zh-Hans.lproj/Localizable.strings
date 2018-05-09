@@ -1,0 +1,737 @@
+/* 
+  Localizable.strings
+  Wallet
+
+  Created by tam on 2017/9/18.
+  Copyright © 2017年 Wilkinson. All rights reserved.
+*/
+
+"app_name" = "EC";
+"coin_name" = "EC";
+"no_more_data" = "没有更多数据了";
+"manager_wallet" = "管理钱包";
+"get_money" = "收款";
+"market" = "行情";
+"suggest" = "产品建议";
+"bug" = "程序错误";
+"edit_feedback" = "请输入反馈,我们将为你不断改进";
+"select_feedback_type" = "选择反馈类型";
+"submit" = "提交";
+"submit_feedback" = "提交反馈";
+"scan" = "扫一扫";
+"create_wallet" = "创建钱包";
+"permission" = "权限";
+"permission_content" = "请前往应用管理开启相机访问权限";
+"go" = "前往";
+"cancel" = "取消";
+"contacts" = "联系人";
+"write_name" = "姓名填写";
+"phone" = "手机号";
+"email" = "邮箱";
+"information" = "资讯";
+"add_contact" = "添加联系人";
+"add_assets" = "添加新资产";
+"market_detail" = "行情详情";
+"add_market" = "添加行情";
+"edit_market" = "编辑详情";
+"enter_phone" = "请输入账号";
+"enter_password" = "请输入6个字符以上字母或数字的密码";
+"login_wallet" = "登录钱包";
+"card" = "名片";
+"logut_out" = "退出登录";
+"forget_password" = "忘记密码";
+"wallet_name" = "钱包名称";
+"password_enter" = "密码输入";
+"phone_enter" = "手机号码输入";
+"mall_enter" = "邮箱地址输入";
+"code_enter" = "验证码输入";
+"card_finish" = "完成";
+"get_money_code" = "收款码";
+"copy_address" = "复制收款地址";
+"my_card" = "我的名片";
+"toast_code_failure" = "二维码生成失败，请重新再试";
+"return_exit_app" = "再次返回退出应用";
+"no_data" = "暂时无数据哦 !";
+"save" = "保存";
+"walllet_address" = "收款人钱包地址";
+"extras" = "转账金额";
+"eth_transfer" = "ETH转账";
+"get_code" = "获取验证码";
+"right_phone" = "请输入正确有效的手机号码!";
+"no_empty" = "输入不能为空!";
+"enter_password_rule" = "密码由6~16位的英文字母与数字组成!";
+"some_error" = "出现未知错误,请重试";
+"register_success" = "注册成功";
+"language" = "多语言";
+"coin" = "货币单位";
+"cloud_coin" = "云币";
+"market_remind" = "行情提醒";
+"trade" = "交易记录";
+"address" = "钱包地址";
+"pay_money" = "转账金额";
+"remark" = "备注";
+"fee" = "矿工费用";
+"trade_time" = "交易时间";
+"zhuanzhang" = "转账";
+"next" = "下一步";
+"change_number" = "转换数量";
+"enter_number" = "请输入您要转换的数量";
+"coin_change" = "币种转换";
+"set_pay_password" = "设置交易密码";
+"edit_pay_password" = "修改支付密码";
+"edit_plase_pay_password" = "请修改支付密码";
+
+"find_password" = "找回支付密码";
+"enter_right_phone" = "请输入正确有效的手机号码!";
+"enter_no_empty" = "输入不能为空!";
+"enter_twice_password" = "两次密码输入不一致，请重新输入!";
+"modify_pwd_success" = "修改密码成功,请重新登录!";
+"find_pwd_success" = "密码已修改,请重新登录";
+"enter_right_pay_pwd" = "支付密码由6位数字组成!";
+"set_pay_pwd_success" = "设置密码成功!";
+"modify_pay_pwd_success" = "修改密码成功!";
+"find_pay_pwd_success" = "找回密码成功!";
+"login_phone" = "请输入手机号码";
+"login_password" = "请输入登录密码";
+"register_phone" = "请输入注册号码";
+"register_password" = "请输入注册密码";
+"register_getcode" = "获取验证码";
+"register_sendMallCode" = "发送到邮箱";
+"register_code" = "验证码";
+"to_login" = "已有帐号?去登录";
+"enter_new_pwd" = "请输入新密码";
+"enter_confirm_password" = "再次输入密码";
+"confirm" = "确认";
+"in_coin" = "转入币";
+"out_coin" = "转出币";
+"modify_login_passsword" = "修改登录密码";
+"manage_wallet" = "管理钱包";
+"trade_history" = "交易记录";
+"message_center" = "消息中心";
+"contacter" = "联系人";
+"setting" = "系统设置";
+"version_history" = "版本历史";
+"help_center" = "帮助中心";
+"feedback" = "提交反馈";
+"about_us" = "关于我们";
+"home" = "首页";
+"markets" = "行情";
+"user_center" = "个人";
+"assets" = "总资产(¥)";
+"asset_name" = "资产名称";
+"lastest_price" = "最新价";
+"up_low" = "涨跌幅";
+"add_markets" = "添加行情";
+"edit_markets" = "编辑行情";
+"recent_records" = "最近交易记录";
+"no_record" = "暂无记录";
+"transfer" = "转账";
+"receipt" = "收款";
+"reamrk_limit" = "备注(仅限十五个字)";
+"the_next" = "下一步";
+"test_text1" = "无论你承认与否，数字货币正在改变我们的生活";
+"test_text2" = "随着居民生活方式和品质认知的不断提升，消费者对于商品及服务价值的判断能力也同步提高，";
+"complete_information" = "请将信息填写完整";
+"add_sucess" = "添加成功!";
+"delete_sucess" = "删除成功!";
+"mine_add" = "添加";
+"payee_address" = "收款人钱包地址";
+"after_get" = "秒后获取";
+"finding_passwoed" = "找回密码";
+"enter_older_password" = "请输入旧密码";
+"zero_openning" = "零点开盘";
+"highest" = "最高";
+"lowest" = "最低";
+"volume" = "成交量";
+"assets_name" = "资产名称";
+"remind" = "提醒";
+"drag" = "拖动排序";
+"copyed_address" = "地址已复制!";
+"back" = "返回";
+"convert" = "转换";
+"success" = "成功";
+"wallet_create_success" = "新钱包创建成功!";
+"login" = "登录";
+"transfer_confirm" = "确认转账";
+"transferee" = "转入方";
+"transferor" = "转出方";
+"amount"     = "币种数量";
+"all_money" = "总额";
+"transform" = "转账";
+"loading" = "加载中...";
+
+"enter_a_rightnumber" = "请输入有效数量!";
+"lastest_version" = "已经是最新版本了";
+"version" = "版本";
+"Update" = "更新";
+"version_cancel" = "取消";
+"cancel_update" = "是否取消更新?";
+"downloading" = "正在下载中...";
+"cancel_download" = "是否取消下载";
+"canceled_download" = "已取消下载";
+"download_fair" = "下载失败,请重试!";
+"suggestion" = "产品建议";
+"a_bug" = "程序错误";
+"enter_complete" = "请将内容及联系方式填写完整!";
+"thank_sug" = "感谢您的建议!";
+"wallet_address" = "钱包地址";
+"add_wallet" = "导入钱包";
+"before_conversion" = "转换前";
+"after_conversion" = "转换后";
+"transaction_time" = "时间";
+"income" = "收入";
+"expenditure" = "支出";
+"trans_out" = "转出";
+"amounts" = "数量";
+"date" = "时间";
+"type" = "类型";
+"out_success" = "转出成功!";
+"error" = "错误";
+"to_set_paypwd" = "去设置支付密码?";
+"to_find_paypwd" = "去找回支付密码?";
+"number_remark" = "注:仅支持精确到小数点后四位金额";
+"my_qr_code" = "我的二维码";
+"please_input_feedback" = "请输入反馈信息";
+"please_fill" = "请填写您的手机或邮箱";
+"submit_successfully" = "提交成功";
+"network_poor" = "网络不给力";
+"Loading" = "正在加载";
+"wallet_name_enter" = "请输入钱包名称";
+"save_successfully" = "保存成功";
+"two_password_different" = "两次输入的密码不相同";
+"modifying_password" = "正在修改密码";
+"password_changes_succeeded" = "密码修改成功";
+"payment_modified" = "支付密码修改成功";
+"please_wait" = "请稍等";
+"upload_failed" = "上传失败";
+"qrCode_error" = "二维码格式不正确";
+"please_write_contacts_name" = "请填写联系人姓名";
+"please_write_contacts_address" = "请填写联系人地址";
+"please_enter_phone" = "请输入正确的账号";
+"please_login_again" = "请重新登录";
+"logging_in" = "正在登录";
+"failed_verification_code" = "获取验证码失败";
+"setup_failed" = "设置失败";
+"set_payment" = "请设置支付密码，建议勿与银行卡取款密码相同";
+"service_charge" = "手续费";
+"successful_payment" = "支付成功";
+"change_success" = "转换成功";
+"write_address" = "请填写收款人的地址";
+"write_amount" = "请填写收款人的的金额";
+"transaction" = "交易";
+"input_can_not_be_empty" = "输入不能为空";
+"enter_Mall" = "请输入邮箱地址";
+"place_enter" = "请输入";
+"card_modify" = "修改";
+"card_name" = "姓名";
+"card_job" = "职业";
+"card_mall" = "邮箱";
+"card_phone" = "手机";
+"card_IM" = "IM";
+"card_company" = "公司";
+"card_address" = "地址";
+"add_card" = "添加名片";
+"card_avatar" = "头像";
+
+"modify_card" = "修改名片";
+"friends_business_card" = "好友名片";
+"modify_card_finish" = "修改成功";
+"please_fill_finish" = "请输入正确的手机号码或者邮箱";
+"transaction_amount" = "金额";
+"transaction_data" = "日期";
+"transaction_type" = "类型";
+
+"transaction_Transaction_Details" = "交易明细";
+"transaction_Serial_Number" = "交易号";
+"transaction_Payee" = "收款人";
+"transaction_Transaction_Type" = "交易类型";
+"transaction_Transaction_Amount" = "交易金额";
+"transaction_Remark" = "备注";
+"retrieve_Login_Password" = "找回登录密码";
+"login_Mall_Phone" = "请输入正确的邮箱或者手机号码";
+"already_sent" = "已发送";
+"phone_registration" = "手机注册";
+"mall_registration" = "邮箱注册";
+"home_Turn_In" = "转入";
+"prompt" = "提示";
+"Are_you_sure_you_want_to_quit" = "您确定要退出吗？";
+"delete" = "删除";
+"You_sure_you_want_to_delete_it" = "确定要删除吗？";
+"Copy_successful" = "复制成功";
+"Information_details" = "资讯详情";
+"Seconds_later" = " 秒后获取";
+"Resend" = "重新发送";
+"Please_enter_your_username" = "请填写用户名";
+"Please_input_the_correct_email_address" = "请输入正确的邮箱地址";
+"Please_input_the_correct_phone" = "请输入正确的手机号码";
+"Has_been_sent_to_the_mailbox" = "已发送到邮箱";
+"Added_Successfully" = "绑定成功";
+"Payment_Confirmation" = "付款确认";
+"no_connect" = "没有网络连接，请打开您的wifi或者移动网络！";
+
+//个人中心界面
+"person_ad" = "我的广告";
+"person_message" = "消息中心";
+"person_friend" = "交易好友";
+"perseon_safety" = "安全设置";
+"person_opinion" = "意见反馈";
+"person_about" = "关于我们";
+"person_setup" = "系统设置";
+"person_notready" = "暂未开通~";
+"person_Feedback_record" = "申诉记录";
+
+"person_modifytradepwd" = "修改交易密码";
+"person_settradepwd" = "设置交易密码";
+"person_forgetminepwd" = "修改交易密码";
+"person_plase_settradepwd" = "请设置您的交易密码";
+
+"person_apperror" = "程序错误";
+"person_proadvice" = "产品建议";
+
+"person_currentversion" = "当前版本";
+"person_latestversion" = "新版本更新";
+"person_nonewversion" = "无新版本";
+
+"person_multilanguage" = "多语言";
+"person_monetaryunit" = "货币单位";
+"person_quitlogin" = "退出登录";
+
+"person_camera" = "相机";
+"person_photo" = "相册";
+"person_cameraenable" = "请在设置中开启相机权限";
+"person_photoenable" = "请在设置中开启相机权限";
+
+"person_buyad" = "我的购买广告";
+"person_sellad" = "我的出售广告";
+
+"person_alert" = "提示";
+"person_alertmessage" = "是否退出登录";
+"person_quit" = "退出";
+
+"person_opiniontype" = "选择反馈类型";
+"person_opinioncontent" = "反馈内容";
+"person_opinionplaceholder" = "请输入反馈内容，我们将为您不断改进";
+"person_contactmethod" = "联系方式";
+
+"person_quit" = "退出";
+
+"news_news" = "资讯";
+"news_newsdetail" = "资讯详情";
+
+"login_loginaccount" = "登录账号";
+"login_loginaccountplaceholder" = "请输入您的手机号码";
+"login_loginpwd" = "登录密码";
+"login_loginpwdplaceholder" = "请输入6~16位的登录密码";
+"login_tradepwdplaceholder" = "交易密码必须为6位";
+
+"login_login" = "登录";
+"login_loginforgetpwd" = "忘记密码";
+"login_creataccount" = "创建钱包";
+"login_importaccount" = "导入钱包";
+"login_prompt" = "助记词";
+"login_promptplaceholder" = "  助记词 按空格分开";
+"login_wallet" = "钱包地址";
+"login_walletplaceholder" = "请输入钱包地址";
+"login_next" = "下一步";
+"login_codeerror" = "验证码错误";
+
+
+"login_ok" = "确定";
+"login_cancle" = "取消";
+
+"login_newpwd" = "新密码";
+"login_newpwdplaceholder" = "输入您的新密码";
+"login_registeraccount" = "手机号";
+"login_registercode" = "验证码";
+"login_codeplaceholder" = "请输入验证码";
+
+"login_refreshcode" = "重新发送";
+"login_infocantnil" = "信息不能为空";
+"login_creatsuccess" = "创建成功";
+"login_successdesc" = "您已成功创建钱包点击登录";
+"login_modifysuccessdesc" = "您已成功找回密码点击登录";
+"login_close" = "关闭";
+
+"login_selectfile" = "文件选择";
+"login_selectfileplaceholder" = "请选择钱包备份文件";
+"login_selectfileerror" = "钱包备份文件内容错误";
+
+
+"net_requestsuccess" = "发送成功";
+"net_networkerror" = "无法连接到服务器";
+"net_success" = "成功";
+"net_rightphone" = "请输入正确手机号码";
+"net_tokenout" = "登录已过期，请重新登录";
+"net_wrongurl" = "App下载网址不正确";
+"net_nomoredata" = "没有更多数据了";
+
+//*******************************导航****************************//
+"tab_Home" = "首页";
+"tab_C2C" = "C2C";
+"tab_Information" = "资讯";
+"tab_Individual" = "个人";
+
+//*******************************首页****************************//
+"homePage_receive" = "接收";
+"homePage_transfer" = "转账";
+"homePage_conversion" = "转换";
+"homePage_details" = "明细";
+"homePage_Numbers" = "个";
+"homePage_Scan" = "扫一扫";
+"homePage_Total_Assets" = "总资产";
+"homePage_Export" = "备份钱包";
+"homePage_PTN_Area" = "光子专区";
+"homePage_Conv_Area" = "常规专区";
+"homePage_Other_Area" = "其他专区";
+"homePage_Copy" = "复制地址";
+"homePage_Scan_Addres" = "扫码获取钱包地址";
+"homePage_Scan_Prompt" = "接收提示";
+"homePage_Wallet_Address" = "钱包地址";
+"homePage_Receivables_Address" = "收款地址";
+"homePage_Number" = "交易数量";
+"homePage_Miner_Fee" = "矿工费";
+"homePage_Remark_Information" = "备注信息";
+"homePage_Transfer" = "转账";
+"homePage_Transfer_Key" = "请输入您的密钥";
+"homePage_Transfer_Scan_Address" = "请输入收款人钱包地址或者扫对方二维码";
+"homePage_Transfer_textField_Number" = "请输入你要交易的币种数量";
+"homePage_Leave_Message" = "留言，请说明有关您交易的相关条款或备注您的支付方式。";
+"homePage_Confirm_Transfer" = "确定转账";
+"homePage_Number_Transactions" = "交易数量";
+"homePage_Enter_Transactions" = "请输入交易数量";
+"homePage_Enter_Conversion_Prompt" = "请输入转换数量";
+
+"homePage_Details_All" = "全部";
+"homePage_Details_Turn_Into" = "接收";
+"homePage_Details_Turn_Out" = "转账";
+
+"homePage_Details_Conversion" = "转换";
+"homePage_Details_Receive" = "接收";
+"homePage_Details_Transfer" = "转账";
+"homePage_Details_Recording" = "记录";
+"homePage_Details_Add_New_Asset" = "添加新资产";
+"homePage_Details_Conversion_Finish" = "转换成功";
+"homePage_Details_Transfer_Finish" = "转帐成功";
+"homePage_Details_Successfully_Transfer_Finish" = "你已成功转账";
+"homePage_Details_Successfully_Conversion_Finish" = "您已成功转换获得了";
+"homePage_Details_Successfully_A_Finish" = "个";
+"homePage_Details_Successfully_Details" = "转账详情";
+"homePage_Details_Successfully_Close" = "关闭";
+"homePage_Details_Choose_Data" = "请选择日期";
+
+"homePage_Finish_Details_Transaction_Number" = "交易号";
+"homePage_Finish_Details_Transaction_Type" = "交易类型";
+"homePage_Finish_Details_Transaction_Quantity" = "交易数量";
+"homePage_Finish_Details_Transaction_Address" = "发送方地址";
+"homePage_Finish_Details_Transaction_Time" = "交易时间";
+"homePage_Finish_Details_Transaction_Fee" = "手续费";
+"homePage_Finish_Details_Transaction_Remarks" = "备注信息";
+"homePage_Finish_Details_Transaction_Details" = "详情";
+"homePage_Finish_Confirm_Conversion" = "确定转换";
+
+"homePage_Finish_Receiving_Address" = "接收地址";
+"homePage_Finish_Transfer_Address" = "转账地址";
+"homePage_switch_languages" = "是否切换语言？";
+"homePage_Details_Conversion_List" = "转换获得";
+"homePage_Details_Conversion_List_Data" = "转";
+"homePage_Details_Conversion_Obtained" = "转换获得";
+
+"homePage_Backup_Successful" = "备份成功";
+//*******************************备份钱包****************************//
+"homePage_Backup_Wallet_Navi" = "备份钱包";
+"homePage_Import_Wallet_Navi" = "导入钱包";
+
+"homePage_Backup_Wallet_NEXT" = "下一步";
+
+"homePage_Backup_Wallet_Prompt1" = "助记词用于恢复钱包，将它抄写下来或截图保存下来，并放在安全的地方";
+"homePage_Backup_Wallet_Prompt2" = "请按顺序点击助记词，以确认你的备份助记词";
+
+"homePage_Backup_Wallet_Confirm_Backup" = "确定备份";
+"homePage_Backup_Wallet_Confirm_Import" = "确定导入";
+
+
+"homePage_Backup_Wallet_Mnemonic" = "助记词";
+"homePage_List_Details_Conversion_Address" = "转换地址";
+"homePage_List_Details_Confirm_Backup_Prompt" = "请选择助记词";
+
+//*******************************首页提示****************************//
+"homePage_Prompt_Scan_Finish" = "扫描成功";
+"homePage_Prompt_Scan_Correct" = "请扫描正确的二维码";
+"homePage_Prompt_Scan_Open_Permissions" = "请打开您的照相机权限！";
+"homePage_Prompt_Scan_Error" = "请扫描正确的二维码";
+"homePage_Prompt_Scan_Address" = "请获取收款地址";
+"homePage_Prompt_Scan_Enter_Number" = "请输入交易数量";
+"homePage_Prompt_Enter_PayPassword" = "请输入支付密码";
+
+"homePage_Finish_Conversion_Details" = "转换详情";
+"homePage_Finish_Transfer_Details" = "转帐详情";
+
+"homePage_Transfer_Public_Key" = "公钥";
+"homePage_Transfer_Enter_Public_Key" = "请输入您的公钥";
+
+"perseon_settled" = "公司入驻";
+"perseon_Submit_Review" = "提交审核";
+
+//*******************************个人****************************//
+"perseon_Enter_Company_Name" = "请输入公司名称";
+"perseon_Upload_File" = "上传你的白皮书";
+"perseon_Select_File" = "请选择文件";
+"perseon_Can_Not_Be_Empty" = "输入不能为空";
+"perseon_Upload_Finish" = "上传成功";
+"perseon_Failed_Upload" = "上传失败请稍后再试！";
+"perseon_Company_Settled" = "公司入驻";
+
+"perseon_File_List" = "文件列表";
+"perseon_Company_Name" = "公司名称";
+"perseon_File_Upload" = "文件上传";
+"perseon_Choose_Upload_File" = "请选择上传文件";
+"perseon_Upload_File" = "上传文件";
+
+"homepage_Amount_Available" = "可用资产";
+"homepage_Freeze_Amount" = "冻结资产";
+
+"homepage_Create_Address" = "新建钱包地址";
+"homepage_Create_Finish" = "新建成功";
+
+//*******************************行情****************************//
+"quotes_tab" = "行情";
+"quotes_normal" = "常规专区";
+"quotes_other" = "其他代币";
+"quotes_details" = "行情详情";
+"quotes_height" = "最高价";
+"quotes_lowest" = "最低价";
+"quotes_volume" = "成交量";
+"quotes_search" = "输入关键词搜索";
+
+//*******************************C2C****************************//
+"C2C_home_Buy" = "我要购买";
+"C2C_home_Sell" = "我要出售";
+"C2C_home_Issue" = "发布";
+"C2C_home_Deal" = "成交";
+"C2C_home_Limit" = "交易限额";
+"C2C_home_Remark" = "备注";
+
+"C2C_payment_Bankcard" = "银行卡";
+"C2C_payment_Alipay" = "支付宝";
+"C2C_payment_WeChat" = "微信";
+"C2C_payment_Other" = "其他";
+
+"C2C_home_I_want_to_buy" = "我要购买";
+"C2C_home_I_want_to_sell" = "我要出售";
+"C2C_home_Want_buy" = "你想购买多少？";
+"C2C_home_Want_sell" = "你想出售多少？";
+
+"C2C_home_Please_enter_the_purchase" = "请输入购买数量";
+"C2C_home_Please_enter_the_number_of_sales" = "请输入出售数量";
+"C2C_home_Converted_amount" = "折算金额";
+
+"C2C_home_finish_Back" = "返回";
+"C2C_home_finish_See_details" = "查看详情";
+"C2C_home_finish_Published_successfully" = "发布成功";
+"C2C_home_finish_Published_successfully_Waiting_for_buyers_payment" = "发布订单成功,等待买家付款";
+"C2C_home_finish_Order_submitted_Waiting_for_buyer_to_pay" = "订单已提交，等待买家付款";
+
+"C2C_mine_My_purchase_advertisement" = "我的购买广告";
+"C2C_mine_My_sale_advertisement" = "我的出售广告";
+
+"C2C_mine_advertisement_processing" = "进行中";
+"C2C_mine_advertisement_finish" = "已完成";
+"C2C_mine_my_advertisement_coin_list" = "我的广告";
+"C2C_mine_my_advertisement_Price" = "价格";
+"C2C_mine_my_advertisement_Limit" = "交易限额";
+"C2C_mine_my_advertisement_Method" = "交易方式";
+"C2C_mine_my_advertisement_Min_limit" = "最小限额";
+"C2C_mine_my_advertisement_Details" = "详情";
+"C2C_mine_my_advertisement_Drop" = "下架";
+"C2C_mine_my_advertisement_Drop_finish" = "下架成功";
+
+"C2C_mine_My_advertisement" = "我的广告";
+"C2C_mine_My_advertisement_Sell" = "出售";
+"C2C_mine_My_advertisement_Buy" = "购买";
+"C2C_mine_My_advertisement_Unit" = "交易单价";
+"C2C_mine_My_advertisement_Quantity" = "交易数量";
+"C2C_mine_My_advertisement_Status" = "交易状态";
+"C2C_mine_My_advertisement_Num" = "个";
+"C2C_mine_My_advertisement_Contact" = "联系对方";
+"C2C_mine_My_advertisement_Cancel" = "取消订单";
+"C2C_mine_My_advertisement_details" = "广告详情";
+
+"C2C_mine_My_advertisement_Details_Numbering" = "订单编号";
+"C2C_mine_My_advertisement_Details_Types" = "交易类型";
+"C2C_mine_My_advertisement_Details_Amount" = "交易金额";
+"C2C_mine_My_advertisement_Details_Quantity" = "交易数量";
+"C2C_mine_My_advertisement_Details_Miner" = "矿工费";
+"C2C_mine_My_advertisement_Details_Fees" = "手续费";
+"C2C_mine_My_advertisement_Details_Time" = "交易时间";
+"C2C_mine_My_advertisement_Details_Remark" = "备注信息";
+
+"C2C_advertisement_status_Delegate" = "委托中";
+"C2C_advertisement_status_Finish" = "已完成";
+"C2C_advertisement_status_Drop" = "已下架";
+"C2C_advertisement_status_Match" = "匹配中";
+
+"C2C_transaction_Matching" = "匹配中";
+"C2C_transaction_Completed" = "已完成";
+"C2C_transaction_Cancelled" = "已取消";
+"C2C_transaction_Waiting_Buy_confirm" = "等待买方确认";
+"C2C_transaction_Waiting_Sell_confirm" = "等待卖方确认";
+"C2C_transaction_Waiting_Cancel_auto" = "自动取消";
+"C2C_transaction_Dispute" = "纠纷中";
+"C2C_transaction_Dispute_Money" = "纠纷强制打款";
+"C2C_transaction_Dispute_Mis_Money" = "纠纷强制退款";
+
+"C2C_transaction_Successful_purchase" = "购买成功";
+"C2C_transaction_Please_enter_the_purchase_quantity" = "请输入购买数量";
+"C2C_transaction_Please_enter_the_converted_amount" = "请输入折算金额";
+"C2C_transaction_Input_cannot_be_greater_than_the_maximum_limit" = "输入不能大于最大限额";
+"C2C_transaction_Input_cannot_be_greater_than_the_minimum_limit" = "输入不能小于最小限额";
+
+"C2C_transaction_Remind_success" = "提醒成功";
+"C2C_transaction_Remind_sell" = "提醒卖家收款";
+"C2C_transaction_Confirm_payment_successful" = "确认付款成功";
+"C2C_transaction_Confirm_payments_successful" = "确认收款成功";
+"C2C_transaction_Confirm_payment" = "确认付款";
+"C2C_transaction_Confirm_payments" = "确认收款";
+"C2C_transaction_Remind_pay" = "提醒卖方已付款";
+
+"C2C_transaction_finish_Avatar" = "头像";
+"C2C_transaction_finish_OrderNum" = "订单编号";
+"C2C_transaction_finish_Type" = "交易类型";
+"C2C_transaction_finish_Amount" = "交易金额";
+"C2C_transaction_finish_Quantity" = "交易数量";
+
+"C2C_transaction_finish_Payment" = "交易方式";
+"C2C_transaction_finish_Buy" = "买方账号";
+"C2C_transaction_finish_Sell" = "卖方账号";
+
+"C2C_transaction_finish_Miner" = "矿工费";
+"C2C_transaction_finish_Fees" = "手续费";
+"C2C_transaction_finish_Time" = "交易时间";
+"C2C_transaction_finish_Remark" = "备注信息";
+
+"C2C_transaction_Cancel_order_successfully" = "取消订单成功";
+"C2C_transaction_Confirm_Order" = "确认订单";
+
+"C2C_transaction_finish_liberate" = "你已成功发布";
+"C2C_transaction_finish_liberate_currency" = "币种";
+
+"C2C_home_transaction_purchase" = "发布购买";
+"C2C_home_transaction_sale" = "发布出售";
+
+"C2C_publish_order_Currency" = "交易货币";
+"C2C_publish_order_Receiving" = "接收方式";
+"C2C_publish_order_Number" = "交易数目";
+"C2C_publish_order_Unit" = "交易单价";
+"C2C_publish_order_Limit" = "最小交易限额";
+"C2C_publish_order_Message" = "广告留言";
+"C2C_publish_order_Select_the_type_of_currency_you_trade" = "选择你交易的货币类型";
+"C2C_publish_order_Alipay_Wechat_bankCard" = "如：支付宝，微信，银行卡";
+"C2C_publish_order_Please_enter_the_number_of_transactions" = "请输入交易数目";
+"C2C_publish_order_Please_enter_the_transaction_unit_price" = "请输入交易单价";
+"C2C_publish_order_Please_enter_the_minimum_transaction_limit_amount" = "请输入最小交易限额数量";
+"C2C_publish_order_Enter_information_to_inform_each_other" = "输入告知对方的信息如：接收账号等....";
+
+"C2C_publish_order_Successful_advertisement" = "广告发布成功";
+"C2C_publish_order_Your_payment_method" = "您的付款方式";
+"C2C_publish_order_Your_have_payment_method" = "您的收款方式";
+"C2C_publish_order_Please_select_your_trading_currency" = "请选择你的交易货币";
+"C2C_publish_order_Please_select_your_receiving_method" = "请选择你的接收方式";
+"C2C_publish_order_Submit_release" = "提交发布";
+"C2C_publish_order_Message" = "广告留言";
+"C2C_publish_order_Please_enter_the_remarks" = "请输入备注信息";
+
+"C2C_publish_details_order_Status" = "订单状态";
+"C2C_publish_details_order_Unit" = "订单单价";
+"C2C_publish_details_order_Limit" = "交易限额";
+"C2C_publish_details_order_Method" = "交易方式";
+"C2C_publish_details_order_Minimum_limit" = "最小限额";
+"C2C_publish_details_order_Time" = "发布时间";
+
+"C2C_publish_dispute_prompt_Submit_a_complaint" = "提交投诉";
+"C2C_publish_dispute_prompt_Complaint_application" = "投诉申请";
+"C2C_publish_dispute_prompt_Uploaded_successfully" = "上传成功";
+"C2C_publish_dispute_prompt_Uploading" = "正在上传";
+"C2C_publish_dispute_prompt_Upload_failed" = "上传失败";
+"C2C_publish_dispute_prompt_Please_fill_in_the_reason_for_the_complaint" = "请填写投诉原因";
+"C2C_publish_dispute_prompt_Please_fill_in_the_complaint_description" = "请填写投诉说明";
+"C2C_publish_dispute_prompt_Buy_did_not_pay" = "买家未给卖家付款";
+"C2C_publish_dispute_prompt_Seller_did_not_transfer" = "卖家未给买家转账";
+"C2C_publish_dispute_prompt_Can_add_more" = "已经不能添加更多了";
+"C2C_transaction_initiate_Dispute" = "发起纠纷";
+
+"C2C_transaction_Feedback_record" = "反馈记录";
+"C2C_transaction_Feedback" = "反馈信息";
+"C2C_transaction_Reason" = "投诉原因";
+"C2C_transaction_Explain" = "投诉说明";
+"C2C_transaction_Officia_reply" = "官方回复";
+"C2C_Please_upload_pictures" = "请上传图片";
+
+"C2C_Upload_certificate" = "上传凭证（最多3张）";
+"C2C_Upload_Instructions" = "投诉说明";
+"C2C_Upload_reason" = "投诉原因";
+
+"C2C_Upload_Limit_input" = "输入的字数不能大于100位";
+
+"homePage_Import" = "导入钱包";
+"homePage_Please_select_a_file" = "请选择文件";
+
+"homePage_File_name" = "文件名";
+"homePage_Please_enter_your_file_name" = "请输入您的文件名";
+"homePage_File_name_already_exists" = "文件名已存在，请您输入其他文件名";
+"homePage_File_name_cannot_be_empty" = "文件名不能为空";
+
+"person_Invite_friends" = "邀请好友";
+
+"person_pwdTextView_Password" = "密码";
+"person_pwdTextView_Please_enter_your_password" = "请输入您的密码";
+
+"person_Inviting_friends" = "邀请好友";
+"person_People" = "人数";
+"person_Integral" = "积分";
+
+"person_Invitation_code" = "邀请码";
+"person_Please_enter_your_invitation_code" = "请输入您的邀请码";
+
+"person_Welcome_to_PTN" = "欢迎来到PTN";
+
+"person_Wallet_account" = "钱包账号";
+"person_Wallet_password" = "钱包密码";
+"person_Determine" = "确定导入";
+"person_Import_finish" = "导入成功";
+
+"binding_Alipay_account" = "支付宝账号";
+"binding_Wechat_account" = "微信账号";
+"binding_Please_enter_alipay_account" = "请输入支付宝账号";
+"binding_Please_enter_weChat_account" = "请输入微信账号";
+"binding_Determine_binding" = "确定绑定";
+"binding_Add" = "添加";
+"binding_Bank_card_binding" = "银行卡绑定";
+"binding_Date_added" = "添加日期";
+"binding_Add_bank_card" = "添加银行卡";
+
+"binding_Cardholder_name" = "持卡人姓名";
+"binding_Bank_account" = "开户银行";
+"binding_Bank_branch_bank" = "开户分行银行";
+"binding_Account_opening_address" = "开户地址";
+"binding_Bank_card_number" = "银行卡号";
+
+"binding_Please_type_in_your_name" = "请输入姓名";
+"binding_Please_enter_bank" = "请输入银行";
+"binding_Please_enter_account_branch_bank" = "请输入开户分行银行";
+"binding_Please_enter_your_account_address" = "请输入开户地址";
+"binding_Please_enter_your_bank_card_number" = "请输入您的银行卡号";
+
+"binding_Alipay_account_settings" = "支付宝账号设置";
+"binding_WeChat_account_settings" = "微信账号设置";
+
+"binding_Please_choose_a_payment_method" = "请选择付款方式";
+
+"binding_Lgoin_Language" = "中文";
+
+
+
+
+
+
+
+
