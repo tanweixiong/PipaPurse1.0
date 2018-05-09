@@ -34,7 +34,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         static let headHeight:CGFloat = 340
     }
     
-    //修改主食
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getPtnAddress()
