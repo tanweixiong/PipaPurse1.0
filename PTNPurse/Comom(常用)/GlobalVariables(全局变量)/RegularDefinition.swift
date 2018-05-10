@@ -107,10 +107,10 @@ public let R_NotificationC2COrderReload = "R_Notification_C2C_Order_Reload"
 public let R_ListPageSize = 10
 
 //主题颜色
-public let R_UIThemeColor = UIColor.R_UIRGBColor(red: 23, green: 59, blue: 157, alpha: 1)
+public let R_UIThemeColor = UIColor.R_UIColorFromRGB(color: 0x009BFD)
 
 //主题蓝色
-public let R_UIThemeSkyBlueColor = UIColor.R_UIRGBColor(red: 23, green: 59, blue: 157, alpha: 1)
+public let R_UIThemeSkyBlueColor = UIColor.R_UIColorFromRGB(color: 0x009BFD)
 
 //刷新资产信息
 public let R_AssetsReloadAssetsMassage = "R_AssetsReloadAssetsMassage"
@@ -147,7 +147,7 @@ public let R_UIFontMoreDarkColor = UIColor.R_UIColorFromRGB(color: 0x333333)
 public let R_UINavigationBarColor = UIColor.R_UIColorFromRGB(color: 0x191619)
 
 //section分割线颜色
-public let R_UISectionLineColor = UIColor.R_UIRGBColor(red: 251, green: 251, blue: 251, alpha: 1)
+public let R_UISectionLineColor = UIColor.R_UIColorFromRGB(color: 0xF1F1F1)
 
 //主题
 public let R_UIThemeGoldColor = UIColor.R_UIRGBColor(red: 211, green: 178, blue: 105, alpha: 1)

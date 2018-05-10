@@ -23,8 +23,10 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     // MARK: - life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(announcementBtn)
+        view.addSubview(newsBtn)
+        
         getNews(removeData: true)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,6 +86,51 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
     }
     
+    @objc func onClick(_ sender:UIButton){
+        //公告
+        if sender == announcementBtn {
+            announcementBtn.isSelected = true
+            newsBtn.isSelected = false
+            announcementBtn.backgroundColor = R_UIThemeSkyBlueColor
+            newsBtn.backgroundColor = UIColor.clear
+        //新闻
+        }else if sender == newsBtn {
+            announcementBtn.isSelected = false
+            newsBtn.isSelected = true
+            announcementBtn.backgroundColor = UIColor.clear
+            newsBtn.backgroundColor = R_UIThemeSkyBlueColor
+        }
+    }
+    
+    lazy var announcementBtn: UIButton = {
+        let btn = UIButton.init(type: .custom)
+        btn.setTitle("公告", for: .normal)
+        btn.isSelected = true
+        btn.frame = CGRect(x: 15, y: topView.frame.maxY + 10, width: 80, height: 35)
+        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD) , for: .normal)
+        btn.setTitleColor(UIColor.white, for: .selected)
+        btn.backgroundColor = R_UIThemeSkyBlueColor
+        btn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        btn.layer.cornerRadius = 5
+        btn.layer.masksToBounds = true
+        return btn
+    }()
+    
+    lazy var newsBtn: UIButton = {
+        let btn = UIButton.init(type: .custom)
+        btn.setTitle("新闻", for: .normal)
+        btn.frame = CGRect(x:announcementBtn.frame.maxX + 10, y: announcementBtn.frame.origin.y, width: 80, height:35)
+        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD) , for: .normal)
+        btn.setTitleColor(UIColor.white, for: .selected)
+        btn.backgroundColor = UIColor.clear
+        btn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        btn.layer.cornerRadius = 5
+        btn.layer.masksToBounds = true
+        return btn
+    }()
+    
     // MARK: - Delegate Method
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -101,7 +148,7 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 155
+        return 250
     }
     
     

@@ -39,7 +39,6 @@ class HomeListDetsilsVC: MainViewController,UIWebViewDelegate {
         let view = Bundle.main.loadNibNamed("HomeListDetsilsFootView", owner: nil, options: nil)?.last as! HomeListDetsilsFootView
         view.frame = CGRect(x: 0, y: SCREEN_HEIGHT - HomeListDetsilsUX.footHeight , width: SCREEN_WIDTH, height: HomeListDetsilsUX.footHeight)
         let type = (self.details.type?.stringValue)!
-        view.footBtn1.backgroundColor = R_UIThemeSkyBlueColor
         view.footBtn1.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
         view.footBtn2.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
         view.footBtn1.tag = 1
@@ -51,7 +50,8 @@ class HomeListDetsilsVC: MainViewController,UIWebViewDelegate {
     
     lazy var detsilsAssetsView: HomeDetsilsAssetsView = {
         let view = Bundle.main.loadNibNamed("HomeDetsilsAssetsView", owner: nil, options: nil)?.last as! HomeDetsilsAssetsView
-        view.frame = CGRect(x: 0, y: Int(MainViewControllerUX.naviHeight_y - 34) , width: Int(SCREEN_WIDTH), height: 34)
+        view.frame = CGRect(x: 0, y: Int(MainViewControllerUX.naviHeight) - 35 - 16 , width: Int(SCREEN_WIDTH), height: 35)
+        view.backgroundColor = R_UIThemeSkyBlueColor
         view.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available") + "：0"
         view.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：0"
         return view
@@ -59,7 +59,7 @@ class HomeListDetsilsVC: MainViewController,UIWebViewDelegate {
     
     lazy var conversionStatusView: HomeConversionStatusView = {
         let view = Bundle.main.loadNibNamed("HomeConversionStatusView", owner: nil, options: nil)?.last as! HomeConversionStatusView
-        view.frame = CGRect(x: 0, y: Int(MainViewControllerUX.naviHeight_y) , width: Int(SCREEN_WIDTH), height: 75)
+        view.frame = CGRect(x: 0, y: Int(MainViewControllerUX.naviHeight) - 16 - 35 - 64 , width: Int(SCREEN_WIDTH), height: 64)
         view.rankLabel1.text = LanguageHelper.getString(key: "homePage_Numbers")
         return view
     }()
@@ -68,12 +68,8 @@ class HomeListDetsilsVC: MainViewController,UIWebViewDelegate {
         let view = Bundle.main.loadNibNamed("HomeSelectDetailsView", owner: nil, options: nil)?.last as! HomeSelectDetailsView
         view.frame = CGRect(x: 0, y: naviBarView.frame.maxY, width: SCREEN_WIDTH, height: 60)
         view.backgroundColor = UIColor.R_UIRGBColor(red: 255, green: 255, blue: 255, alpha: 0.7)
-        view.dataBtn.addTarget(self, action: #selector(setData), for: .touchUpInside)
         view.transferBtn.tag = 2
         view.transferBtn.addTarget(self, action: #selector(selectDetailsOnClick(_:)), for: .touchUpInside)
-        view.allBtn.tag = 1
-        view.allBtn.addTarget(self, action: #selector(selectDetailsOnClick(_:)), for: .touchUpInside)
-        view.dataLabel.text = Tools.getCurrentFormatTime("yyy-MM")
         return view
     }()
     
@@ -138,23 +134,13 @@ extension HomeListDetsilsVC {
     }
     
     @objc func selectDetailsOnClick(_ sender:UIButton){
-        if sender.tag == 1 {
-            let menuView = PST_MenuView.init(frame: CGRect(x: 15, y: selectDetailsView.frame.maxY, width: 120, height: 135), titleArr: [LanguageHelper.getString(key: "homePage_Details_All"),LanguageHelper.getString(key: "homePage_Details_Turn_Into"),LanguageHelper.getString(key: "homePage_Details_Turn_Out")], imgArr: nil, arrowOffset: 30, rowHeight: 40, layoutType: PST_MenuViewLayoutType(rawValue: 1)!, directionType: PST_MenuViewDirectionType(rawValue: 0)!, delegate: self)
-            menuView?.arrowColor = UIColor.white
-            menuView?.titleColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
-        }else if sender.tag == 2{
+       if sender.tag == 2{
             let model = self.details
             let coinNo = (model.type?.stringValue)!
             let homeCoinTransferDetailsVC = HomeCoinTransferDetailsVC()
             homeCoinTransferDetailsVC.coinNum = coinNo
             self.navigationController?.pushViewController(homeCoinTransferDetailsVC, animated: true)
         }
-    }
-    
-    @objc func setData(){
-        let datePickerView = QFDatePickerView.init()
-        datePickerView.delegate = self
-        datePickerView.setDataPackerWithResponse()
     }
     
     //网络请求
@@ -197,15 +183,7 @@ extension HomeListDetsilsVC {
     
     //获取所有的转账明细
     func getTransferDetails(style:HomeCoinDetailsStatus,data:String){
-        //      0 转入 1 传出  3全部
-        var style = ""
-        if self.coinStyle == .allStyle {
-            style = "3"
-        }else if self.coinStyle == .inStyle {
-            style = "0"
-        }else if self.coinStyle == .outStyle {
-            style = "1"
-        }
+        let style = "3"
         let coinNo = self.details.type == nil ? Tools.getPTNcoinNo() : (self.details.type?.stringValue)!
         let token = UserDefaults.standard.getUserInfo().token
         let type = style
@@ -258,7 +236,6 @@ extension HomeListDetsilsVC:UITableViewDelegate,UITableViewDataSource{
         return 90
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: homeCoinDetailsCell, for: indexPath) as! HomeCoinDetailsCell
         cell.selectionStyle = .none
@@ -278,30 +255,3 @@ extension HomeListDetsilsVC:UITableViewDelegate,UITableViewDataSource{
     }
 }
 
-extension HomeListDetsilsVC:PST_MenuViewDelegate{
-    func didSelectRow(at index: Int, title: String!, img: String!) {
-        //全部
-        if index == 0 {
-            coinStyle = .allStyle
-            //转入
-        }else if index == 1 {
-            coinStyle = .inStyle
-            //转出
-        }else if index == 2 {
-            coinStyle = .outStyle
-        }
-        selectDetailsView.allLabel.text = title
-        clean()
-        self.getTransferDetails(style: coinStyle, data: dataString)
-    }
-}
-
-extension HomeListDetsilsVC:DatePickerDetegate{
-    func datePacker(withResponse data: String!) {
-        self.selectDetailsView.dataLabel.text = data
-        self.currentTimeString = (data)!
-        self.dataString = self.currentTimeString
-        self.clean()
-        self.getTransferDetails(style: self.coinStyle, data: self.dataString)
-    }
-}

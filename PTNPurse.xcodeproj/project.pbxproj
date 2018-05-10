@@ -254,6 +254,8 @@
 		23674ADB2020205400B4B96E /* LoginTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23674ABB2020205400B4B96E /* LoginTextFieldView.swift */; };
 		23674ADC2020205400B4B96E /* AutorizeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23674ABC2020205400B4B96E /* AutorizeButton.swift */; };
 		23674ADD2020205400B4B96E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23674ABD2020205400B4B96E /* InputView.swift */; };
+		236B624C20A420240025DCA1 /* HomeTransferDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B624A20A420240025DCA1 /* HomeTransferDetailsCell.swift */; };
+		236B624D20A420240025DCA1 /* HomeTransferDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236B624B20A420240025DCA1 /* HomeTransferDetailsCell.xib */; };
 		236B91522062570000F27C30 /* BusinessTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B91512062570000F27C30 /* BusinessTransactionVC.swift */; };
 		236FA07A2069E06E00FD5CB6 /* BusinessSubmissionMsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236FA0792069E06E00FD5CB6 /* BusinessSubmissionMsgModel.swift */; };
 		236FA081206A250100FD5CB6 /* MessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236FA080206A250100FD5CB6 /* MessageVC.swift */; };
@@ -695,6 +697,8 @@
 		23674ABB2020205400B4B96E /* LoginTextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextFieldView.swift; sourceTree = "<group>"; };
 		23674ABC2020205400B4B96E /* AutorizeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutorizeButton.swift; sourceTree = "<group>"; };
 		23674ABD2020205400B4B96E /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		236B624A20A420240025DCA1 /* HomeTransferDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTransferDetailsCell.swift; sourceTree = "<group>"; };
+		236B624B20A420240025DCA1 /* HomeTransferDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTransferDetailsCell.xib; sourceTree = "<group>"; };
 		236B91512062570000F27C30 /* BusinessTransactionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTransactionVC.swift; sourceTree = "<group>"; };
 		236FA0792069E06E00FD5CB6 /* BusinessSubmissionMsgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSubmissionMsgModel.swift; sourceTree = "<group>"; };
 		236FA080206A250100FD5CB6 /* MessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageVC.swift; sourceTree = "<group>"; };
@@ -1086,6 +1090,8 @@
 				232A1151200E2AFA002F60C7 /* HomeCointTransView.xib */,
 				237D0417200EF82A000C12B1 /* HomeTransferFinishView.swift */,
 				237D0419200EF835000C12B1 /* HomeTransferFinishView.xib */,
+				236B624A20A420240025DCA1 /* HomeTransferDetailsCell.swift */,
+				236B624B20A420240025DCA1 /* HomeTransferDetailsCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2818,6 +2824,7 @@
 				23674AC42020205400B4B96E /* FileListViewController.xib in Resources */,
 				23674AD12020205400B4B96E /* NoteTextView.xib in Resources */,
 				237D0427200F27CE000C12B1 /* HomeConversionStatusView.xib in Resources */,
+				236B624D20A420240025DCA1 /* HomeTransferDetailsCell.xib in Resources */,
 				236137CE208583E300E73F9E /* MineSetAccountVw.xib in Resources */,
 				23A538F3205F537400EDB714 /* BusinessOrderDetailsLiCell.xib in Resources */,
 				237858AF2018209D0014DACD /* BRCity.plist in Resources */,
@@ -3170,6 +3177,7 @@
 				232C53FE20637B490005F64C /* BusinessBuyHistoryDetailsVw.swift in Sources */,
 				23674A1D202019D800B4B96E /* LBXScanWrapper.swift in Sources */,
 				23A538E4205F537400EDB714 /* BusinessBuyHistoryVC.swift in Sources */,
+				236B624C20A420240025DCA1 /* HomeTransferDetailsCell.swift in Sources */,
 				2333DC10207A2139002911BC /* BusinessInviteFriendsVC.swift in Sources */,
 				23298B712088420B00702DD8 /* CQMarqueeView.m in Sources */,
 				233201B1202AFEDD001815DE /* MJRefreshAutoNormalFooter.m in Sources */,

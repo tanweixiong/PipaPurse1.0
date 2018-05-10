@@ -100,25 +100,8 @@ class HomeCoinDetailsVC: MainViewController,UITableViewDelegate,UITableViewDataS
     }
     
     func didSelectRow(at index: Int, title: String!, img: String!) {
-        //全部
-        if index == 0 {
-            coinStyle = .allStyle
-        //转入
-        }else if index == 1 {
-            coinStyle = .inStyle
-        //转出
-        }else if index == 2 {
-            coinStyle = .outStyle
-        }
-        selectDetailsView.allLabel.text = title
         clean()
         self.getTransferDetails(style: coinStyle, data: dataString)
-    }
-
-    @objc func setData(){
-        let datePickerView = QFDatePickerView.init()
-        datePickerView.delegate = self
-        datePickerView.setDataPackerWithResponse()
     }
     
     @objc func onClick(_ sender:UIButton){
@@ -193,10 +176,7 @@ class HomeCoinDetailsVC: MainViewController,UITableViewDelegate,UITableViewDataS
         let view = Bundle.main.loadNibNamed("HomeSelectDetailsView", owner: nil, options: nil)?.last as! HomeSelectDetailsView
         view.frame = CGRect(x: 0, y: naviBarView.frame.maxY, width: SCREEN_WIDTH, height: 60)
         view.backgroundColor = UIColor.R_UIRGBColor(red: 255, green: 255, blue: 255, alpha: 0.7)
-        view.dataBtn.addTarget(self, action: #selector(setData), for: .touchUpInside)
         view.transferBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
-        view.allBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
-        view.dataLabel.text = Tools.getCurrentFormatTime("yyy-MM")
         return view
     }()
     
@@ -261,12 +241,3 @@ class HomeCoinDetailsVC: MainViewController,UITableViewDelegate,UITableViewDataS
     }()
 }
 
-extension HomeCoinDetailsVC:DatePickerDetegate{
-    func datePacker(withResponse data: String!) {
-        self.selectDetailsView.dataLabel.text = data
-        self.currentTimeString = (data)!
-        self.dataString = self.currentTimeString
-        self.clean()
-        self.getTransferDetails(style: self.coinStyle, data: self.dataString)
-    }
-}

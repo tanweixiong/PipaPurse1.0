@@ -67,7 +67,7 @@ class HomeAddCoinVC: MainViewController,UITableViewDelegate,UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 62
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -103,16 +103,15 @@ class HomeAddCoinVC: MainViewController,UITableViewDelegate,UITableViewDataSourc
     }
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x: 0, y: MainViewControllerUX.naviHeight_y, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - MainViewControllerUX.naviHeight_y))
+        let tableView = UITableView.init(frame: CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - MainViewControllerUX.naviNormalHeight))
         tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "HomeAddCoinCell", bundle: nil),forCellReuseIdentifier: self.homeAddCoinCell)
-        tableView.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xEDEDED)
+        tableView.backgroundColor = UIColor.white
         tableView.separatorInset = UIEdgeInsetsMake(0,SCREEN_WIDTH, 0,SCREEN_WIDTH);
         tableView.tableFooterView = UIView()
         tableView.separatorColor = R_UISectionLineColor
-        tableView.separatorStyle = .none
         return tableView
     }()
 }

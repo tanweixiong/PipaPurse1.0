@@ -157,7 +157,7 @@ class HomeBackupDetailsVC: MainViewController,HomeBackupDetailsViewDelegate {
     }()
     
     lazy var channelView: HomeBackupDetailsView = {
-        let view = HomeBackupDetailsView.init(frame: CGRect(x: 0, y:titlesLabel.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - MainViewControllerUX.naviNormalHeight - titlesLabel.frame.size.height), dataArray: self.memoryArray)
+        let view = HomeBackupDetailsView.init(frame: CGRect(x: 0, y:titlesLabel.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - titlesLabel.frame.maxY), dataArray: self.memoryArray)
         view.delegate = self
         let titles = style == .backupStyle ? LanguageHelper.getString(key: "homePage_Backup_Wallet_Confirm_Backup") : LanguageHelper.getString(key: "homePage_Backup_Wallet_Confirm_Import")
         view.determineBtn.setTitle(titles, for: .normal)

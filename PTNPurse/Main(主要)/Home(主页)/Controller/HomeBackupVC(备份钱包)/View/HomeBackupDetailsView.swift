@@ -69,9 +69,9 @@ class HomeBackupDetailsView: UIView {
                 }
                 //最后一项则改变试图高度
                 if index == chooseMemoryWordsArr.count - 1 {
-                    determineBtn.frame = CGRect(x: 15, y: btn.frame.maxY + 86, width: SCREEN_WIDTH - 30, height: 50)
-                    chooseMemoryWordsVw.addSubview(determineBtn)
-                    chooseMemoryWordsVw.frame.size.height = determineBtn.frame.maxY
+                    determineBtn.frame = CGRect(x: 0, y: self.height - 50, width: SCREEN_WIDTH, height: 50)
+                    self.addSubview(determineBtn)
+                    chooseMemoryWordsVw.frame.size.height = self.height
                 }
             }
             scrollView.contentSize = CGSize(width: 0, height:  chooseMemoryWordsVw.frame.maxY)
@@ -205,7 +205,6 @@ class HomeBackupDetailsView: UIView {
         btn.setTitle(LanguageHelper.getString(key: "homePage_Backup_Wallet_Confirm_Backup"), for: .normal)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.clipsToBounds = true
-        btn.layer.cornerRadius = 5
         btn.backgroundColor = R_UIThemeColor
         btn.addTarget(self, action: #selector(backupOnClick), for: .touchUpInside)
         self.addSubview(btn)

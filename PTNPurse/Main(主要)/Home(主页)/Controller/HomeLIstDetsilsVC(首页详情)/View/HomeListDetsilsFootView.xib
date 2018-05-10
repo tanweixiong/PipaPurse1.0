@@ -24,49 +24,58 @@
                             <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FyA-MZ-hUx">
-                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                    <rect key="frame" x="15" y="5" width="167.5" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-15" maxY="0.0"/>
-                                    <state key="normal" title="接收" image="ic_home_downLoad_white">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-10" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                    <state key="normal" title="接收" image="ic_home_downLoad_blue">
+                                        <color key="titleColor" red="0.0" green="0.60784313725490191" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="0.0" green="0.58039215686274503" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="FyA-MZ-hUx" secondAttribute="trailing" id="4mg-me-vvB"/>
-                                <constraint firstItem="FyA-MZ-hUx" firstAttribute="leading" secondItem="5NC-JL-hxt" secondAttribute="leading" id="8Fv-oz-QKb"/>
-                                <constraint firstAttribute="bottom" secondItem="FyA-MZ-hUx" secondAttribute="bottom" id="En2-2s-C5c"/>
-                                <constraint firstItem="FyA-MZ-hUx" firstAttribute="top" secondItem="5NC-JL-hxt" secondAttribute="top" id="sh7-Fg-d32"/>
+                                <constraint firstAttribute="trailing" secondItem="FyA-MZ-hUx" secondAttribute="trailing" constant="5" id="4mg-me-vvB"/>
+                                <constraint firstItem="FyA-MZ-hUx" firstAttribute="leading" secondItem="5NC-JL-hxt" secondAttribute="leading" constant="15" id="8Fv-oz-QKb"/>
+                                <constraint firstAttribute="bottom" secondItem="FyA-MZ-hUx" secondAttribute="bottom" constant="5" id="En2-2s-C5c"/>
+                                <constraint firstItem="FyA-MZ-hUx" firstAttribute="top" secondItem="5NC-JL-hxt" secondAttribute="top" constant="5" id="sh7-Fg-d32"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfQ-6W-GdN">
                             <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
-                            <color key="backgroundColor" red="0.93744426965713501" green="0.45090591907501221" blue="0.25679236650466919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ra0-nl-kjm">
+                                    <rect key="frame" x="9.5" y="5" width="167.5" height="40"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-10" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                    <state key="normal" title="转账" image="ic_home_trans_white">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="ra0-nl-kjm" firstAttribute="centerY" secondItem="WfQ-6W-GdN" secondAttribute="centerY" id="KFB-40-1Xe"/>
+                                <constraint firstItem="ra0-nl-kjm" firstAttribute="centerX" secondItem="WfQ-6W-GdN" secondAttribute="centerX" id="uPG-7N-S3J"/>
+                            </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ra0-nl-kjm">
-                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
-                            <color key="backgroundColor" red="1" green="0.84313725490196079" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-15" maxY="0.0"/>
-                            <state key="normal" title="转账" image="ic_home_trans_white">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                        </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="WfQ-6W-GdN" firstAttribute="top" secondItem="31t-Zc-cBm" secondAttribute="top" id="1Tl-aG-dpa"/>
                         <constraint firstItem="WfQ-6W-GdN" firstAttribute="height" secondItem="5NC-JL-hxt" secondAttribute="height" id="5EO-gE-ywG"/>
-                        <constraint firstItem="ra0-nl-kjm" firstAttribute="leading" secondItem="5NC-JL-hxt" secondAttribute="trailing" id="GiW-jT-K0U"/>
+                        <constraint firstItem="ra0-nl-kjm" firstAttribute="height" secondItem="FyA-MZ-hUx" secondAttribute="height" id="Aqv-F4-sbf"/>
                         <constraint firstAttribute="centerX" secondItem="5NC-JL-hxt" secondAttribute="trailing" id="I7L-ob-2LH"/>
                         <constraint firstItem="5NC-JL-hxt" firstAttribute="leading" secondItem="31t-Zc-cBm" secondAttribute="leading" id="IVi-XI-dHI"/>
                         <constraint firstItem="5NC-JL-hxt" firstAttribute="top" secondItem="31t-Zc-cBm" secondAttribute="top" id="M8B-Wv-zM9"/>
                         <constraint firstAttribute="trailing" secondItem="WfQ-6W-GdN" secondAttribute="trailing" id="N9a-LR-G5E"/>
-                        <constraint firstAttribute="trailing" secondItem="ra0-nl-kjm" secondAttribute="trailing" id="lX0-CX-lZg"/>
+                        <constraint firstItem="ra0-nl-kjm" firstAttribute="width" secondItem="FyA-MZ-hUx" secondAttribute="width" id="fvf-Xh-3ec"/>
                         <constraint firstAttribute="bottom" secondItem="5NC-JL-hxt" secondAttribute="bottom" id="onk-Uv-BTa"/>
-                        <constraint firstItem="ra0-nl-kjm" firstAttribute="top" secondItem="31t-Zc-cBm" secondAttribute="top" id="pbr-6C-KV4"/>
-                        <constraint firstAttribute="bottom" secondItem="ra0-nl-kjm" secondAttribute="bottom" id="x7t-iB-AYg"/>
                         <constraint firstItem="WfQ-6W-GdN" firstAttribute="width" secondItem="5NC-JL-hxt" secondAttribute="width" id="ziT-xw-43k"/>
                     </constraints>
                 </view>
@@ -88,7 +97,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_home_downLoad_white" width="20" height="20"/>
+        <image name="ic_home_downLoad_blue" width="18" height="18"/>
         <image name="ic_home_trans_white" width="20" height="20"/>
     </resources>
 </document>

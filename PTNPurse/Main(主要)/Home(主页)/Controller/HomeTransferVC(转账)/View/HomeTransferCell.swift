@@ -12,12 +12,17 @@ class HomeTransferCell: UITableViewCell,RegisterCellFromNib {
     @IBOutlet weak var headingLabel: UILabel!
     @IBOutlet weak var scanCodeBtn: UIButton!
     @IBOutlet weak var textfield: UITextField!
-    @IBOutlet weak var headContentLabel: UILabel!
-    @IBOutlet weak var amountAvailableLabel: UILabel!
-    @IBOutlet weak var freezeAmountLabel: UILabel!
+
+    @IBOutlet weak var lineVw: UIView!
+    
     @IBOutlet weak var centersY: NSLayoutConstraint!
     @IBOutlet weak var unitLab: UILabel!
     @IBOutlet weak var triangularBtn: UIButton!
+    
+    @IBOutlet weak var sccondBlueBackgroundVw: UIButton!
+    @IBOutlet weak var firstBluebBackgroundVw: UIView!
+    @IBOutlet weak var tfBackGroundDistance: NSLayoutConstraint!
+    
     var sliderMin = NSNumber()
     var sliderMax = NSNumber()
     let progressArray = NSMutableArray()

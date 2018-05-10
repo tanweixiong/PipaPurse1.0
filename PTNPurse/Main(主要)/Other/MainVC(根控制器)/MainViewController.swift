@@ -15,8 +15,8 @@ class MainViewController: UIViewController {
     var backToBtn = UIButton()
     struct MainViewControllerUX {
         static let naviHeight_y:CGFloat = 111
-        static let naviHeight:CGFloat = 186
-        static let naviNormalHeight:CGFloat = 115.00
+        static let naviHeight:CGFloat = 175
+        static let naviNormalHeight:CGFloat = 64.00
     }
     
     override func viewDidLoad() {
@@ -69,7 +69,7 @@ extension MainViewController {
         let backBtn = UIButton.init(type: .custom)
         backBtn.setImage(UIImage.init(named: "ic_back_let"), for: .normal)
         backBtn.addTarget(self, action:#selector(backToPrevious), for: .touchUpInside)
-        backBtn.frame = CGRect(x: 15, y: 30, width: 50, height: 50)
+        backBtn.frame = CGRect(x: 15, y: 15, width: 50, height: 50)
         backBtn.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -25, bottom: 0, right: 0)
         self.naviBarView.addSubview(backBtn)
         self.titleLabel.frame = CGRect(x: 15, y: backBtn.frame.maxY + 10 - 10 - 5, width: SCREEN_WIDTH - 15, height: 36)
@@ -88,9 +88,11 @@ extension MainViewController {
         naviBarView.addSubview(image)
         
         //标题
-        titleLabel.frame = CGRect(x: 15, y: 70 , width: SCREEN_WIDTH - 15, height: 36)
+        titleLabel.frame = CGRect(x: 15, y: 32 , width: SCREEN_WIDTH - 15, height: 22)
         titleLabel.text = title
         titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 16)
+        titleLabel.textAlignment = .center
         naviBarView.addSubview(titleLabel)
         view.addSubview(naviBarView)
         
@@ -98,9 +100,8 @@ extension MainViewController {
         let backBtn = UIButton.init(type: .custom)
         backBtn.setImage(UIImage.init(named: "ic_back_let"), for: .normal)
         backBtn.addTarget(self, action:#selector(backToPrevious), for: .touchUpInside)
-        backBtn.frame = CGRect(x: 15, y: 30, width: 100, height: 100)
-        backBtn.imageEdgeInsets = UIEdgeInsets.init(top: -60, left: -80, bottom: 0, right: 0)
-        backBtn.backgroundColor = UIColor.clear
+        backBtn.frame = CGRect(x: 15, y: 16, width: 100, height: 40)
+        backBtn.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -77, bottom: 0, right: 0)
         naviBarView.addSubview(backBtn)
         
         self.backToBtn = backBtn

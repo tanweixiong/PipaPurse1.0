@@ -29,8 +29,6 @@ class HomeAddCoinCell: UITableViewCell {
         switchFunc.backgroundColor = UIColor.R_UIColorFromRGB(color: 0x828A9E)
         switchFunc.layer.cornerRadius = switchFunc.bounds.height/2.0
         switchFunc.layer.masksToBounds = true
-        
-        Tools.setViewShadow(backgroundVw)
     }
 
     @IBAction func switchClick(_ sender: UISwitch) {

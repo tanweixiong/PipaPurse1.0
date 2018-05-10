@@ -17,10 +17,8 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
     fileprivate let normalBtnBackground = UIColor.white
     fileprivate var isCreateWallet = true
     fileprivate var status = HomeAddCoinStatus.ptnState
-    fileprivate let PTNArray = NSMutableArray() //光子专区的数组
-    fileprivate let conventionalArray = NSMutableArray() //常规专区的数组
-    fileprivate let otherArray = NSMutableArray()
     fileprivate let dataArray = NSMutableArray() //数据
+    fileprivate let anyArray = NSMutableArray(array: [LanguageHelper.getString(key: "ic_Home_Code"),LanguageHelper.getString(key: "homePage_Export")])
     fileprivate var pageNum = 1
     fileprivate let pageSize = R_ListPageSize
     fileprivate var isFirst = true
@@ -31,15 +29,15 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         static let chooseWidth:CGFloat = 220
         static let chooseHeight:CGFloat = 30
         static let choose_y:CGFloat = stamp_y + stampHeight + 20
-        static let headHeight:CGFloat = 340
+        static let headHeight:CGFloat = 230
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getPtnAddress()
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.navigationBar.isTranslucent = true
+        self.view.addSubview(headView)
         self.view.addSubview(tableView)
         self.view.addSubview(backGroundVw)
         UIApplication.shared.keyWindow?.addSubview(codeView)
@@ -72,16 +70,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             if self.viewModel.model.count != 0 {
                 for index in 0...self.viewModel.model.count - 1{
                     let data = self.viewModel.model[index]
-                    //常规专区
-                    if data.coinType == 1 {
-                        self.PTNArray.add(data)
-                    //光子专区
-                    }else if data.coinType == 0 {
-                        self.conventionalArray.add(data)
-                    //其他专区
-                    }else {
-                        self.otherArray.add(data)
-                    }
+                    self.dataArray.add(data)
                     if (data.type?.stringValue) == Tools.getPTNcoinNo(){
                         self.coinImg = data.coinImg == nil ? "" : data.coinImg!
                         if data.address != "" && data.address != nil  {
@@ -102,13 +91,6 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
                         }
                     }
                 }
-                if self.status == .ptnState {
-                    self.dataArray.addObjects(from: self.PTNArray as! [Any])
-                }else if self.status == .conventionalState {
-                   self.dataArray.addObjects(from: self.conventionalArray as! [Any])
-                }else{
-                    self.dataArray.addObjects(from: self.otherArray as! [Any])
-                }
             }
             self.tableView.reloadData()
             self.getPtnAddress()
@@ -125,10 +107,10 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         if ptnaddress == "" || ptnaddress == nil {
             self.headView.createAddressBtn.isHidden = false
             self.headView.addressLabel.text = LanguageHelper.getString(key: "homepage_Create_Address") + "   "
-            self.headView.backPurseBtn.setTitle(LanguageHelper.getString(key: "homePage_Import"), for: .normal)
+            self.anyArray.replaceObject(at: 1, with: LanguageHelper.getString(key: "homePage_Import"))
         }else{
             self.headView.addressLabel.text = ptnaddress! + "   "
-            self.headView.backPurseBtn.setTitle(LanguageHelper.getString(key: "homePage_Export"), for: .normal)
+            self.anyArray.replaceObject(at: 1, with: LanguageHelper.getString(key: "homePage_Export"))
         }
     }
     
@@ -164,57 +146,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func homeAddCoinReloadData(status: HomeAddCoinStatus) {
         self.getData()
     }
-    
-     @objc func onClick(_ sender:UIButton){
-        if sender.tag == 1 {
-            status = .ptnState
-        }else if sender.tag == 2 {
-            status = .conventionalState
-        }else{
-            status = .otherState
-        }
-        setReloadData()
-        setBtnStyle()
-    }
-    
-    func setReloadData(){
-        //ptn专区
-        self.dataArray.removeAllObjects()
-        if status == .ptnState {
-            self.dataArray.addObjects(from: PTNArray as! [Any])
-        }else if status == .conventionalState {
-            self.dataArray.addObjects(from: conventionalArray as! [Any])
-        }else{
-            self.dataArray.addObjects(from: otherArray as! [Any])
-        }
-        tableView.reloadData()
-    }
-    
-    func setBtnStyle(){
-        if status == .ptnState {
-            ptnBtn.backgroundColor = selectedBtnBackground
-            ptnBtn.isSelected = true
-            normalBtn.backgroundColor = normalBtnBackground
-            normalBtn.isSelected = false
-            otherBtn.backgroundColor = normalBtnBackground
-            otherBtn.isSelected = false
-        }else if status == .conventionalState {
-            ptnBtn.backgroundColor = normalBtnBackground
-            normalBtn.backgroundColor = selectedBtnBackground
-            otherBtn.backgroundColor = normalBtnBackground
-            ptnBtn.isSelected = false
-            normalBtn.isSelected = true
-            otherBtn.isSelected = false
-        }else{
-            ptnBtn.backgroundColor = normalBtnBackground
-            normalBtn.backgroundColor = normalBtnBackground
-            otherBtn.backgroundColor = selectedBtnBackground
-            ptnBtn.isSelected = false
-            normalBtn.isSelected = false
-            otherBtn.isSelected = true
-        }
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
     }
@@ -244,16 +176,15 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+        let tableView = UITableView.init(frame: CGRect(x: 0, y: self.headView.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - self.headView.frame.maxY))
         tableView.showsVerticalScrollIndicator = false
-        tableView.tableHeaderView = self.headView
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "HomeListCell", bundle: nil),forCellReuseIdentifier: self.homeListCell)
         tableView.backgroundColor = UIColor.white
+        tableView.separatorColor = R_UISectionLineColor
+        tableView.separatorInset = UIEdgeInsetsMake(0,SCREEN_WIDTH, 0,SCREEN_WIDTH);
         tableView.tableFooterView = UIView()
-        tableView.separatorStyle = .none
-        tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
         tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: {
             self.setRefreshHeader()
         })
@@ -269,24 +200,9 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let view = Bundle.main.loadNibNamed("HomeHeadView", owner: nil, options: nil)?.last as! HomeHeadView
         view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height: HomeUX.headHeight)
         view.assetsTitleLabel.text = LanguageHelper.getString(key: "homePage_Total_Assets")
-        view.backPurseBtn.setTitle(LanguageHelper.getString(key: "homePage_Export"), for: .normal)
-        view.backPurseBtn.addTarget(self, action: #selector(handelOnClick(_:)), for: .touchUpInside)
-        view.codeBtn.addTarget(self, action: #selector(handelOnClick(_:)), for: .touchUpInside)
         view.createAddressBtn.addTarget(self, action: #selector(getAddress), for: .touchUpInside)
-        view.backPurseBtn.tag = 2
-        view.codeBtn.tag = 1
-        view.addSubview(stampView)
-        view.addSubview(chooseView)
+        view.anymoreBtn.addTarget(self, action: #selector(handelOnClick(_:)), for: .touchUpInside)
         view.addSubview(addBtn)
-        return view
-    }()
-    
-    lazy var stampView: HomeStampView = {
-        let view = Bundle.main.loadNibNamed("HomeStampView", owner: nil, options: nil)?.last as! HomeStampView
-        view.frame = CGRect(x: 0, y: HomeUX.stamp_y, width: SCREEN_WIDTH, height: HomeUX.stampHeight)
-        view.homeStampViewBlock = {(sender:UIButton) in
-            self.pushToTheController(type: sender.tag)
-        }
         return view
     }()
     
@@ -303,62 +219,10 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return view
     }()
     
-    lazy var chooseView: UIView = {
-        let view = UIView(frame: CGRect(x: 15, y: HomeUX.choose_y, width: HomeUX.chooseWidth, height: HomeUX.chooseHeight))
-        view.backgroundColor = UIColor.white
-        view.addSubview(ptnBtn)
-        view.addSubview(normalBtn)
-        view.addSubview(otherBtn)
-        return view
-    }()
-
-    lazy var ptnBtn: UIButton = {
-        let btn = UIButton.init(type: .custom)
-        Tools.setViewShadow(btn)
-        btn.setTitle(LanguageHelper.getString(key: "homePage_PTN_Area"), for: .normal)
-        btn.isSelected = true
-        btn.frame = CGRect(x: 0, y: 0, width: HomeUX.chooseWidth/3 - 3, height: HomeUX.chooseHeight)
-        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x545B71), for: .normal)
-        btn.setTitleColor(UIColor.white, for: .selected)
-        btn.backgroundColor = R_UIThemeSkyBlueColor
-        btn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-        btn.tag = 1
-        return btn
-    }()
-    
-    lazy var normalBtn: UIButton = {
-        let btn = UIButton.init(type: .custom)
-        Tools.setViewShadow(btn)
-        btn.setTitle(LanguageHelper.getString(key: "homePage_Conv_Area"), for: .normal)
-        btn.frame = CGRect(x: HomeUX.chooseWidth/3 +  5, y: 0, width: HomeUX.chooseWidth/3 - 3, height: HomeUX.chooseHeight)
-        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x545B71), for: .normal)
-        btn.setTitleColor(UIColor.white, for: .selected)
-        btn.backgroundColor = UIColor.white
-        btn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-        btn.tag = 2
-        return btn
-    }()
-    
-    lazy var otherBtn: UIButton = {
-        let btn = UIButton.init(type: .custom)
-        Tools.setViewShadow(btn)
-        btn.setTitle(LanguageHelper.getString(key: "homePage_Other_Area"), for: .normal)
-        btn.frame = CGRect(x: (HomeUX.chooseWidth/3) * 2 + 10, y: 0, width: HomeUX.chooseWidth/3 - 3, height: HomeUX.chooseHeight)
-        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x545B71), for: .normal)
-        btn.setTitleColor(UIColor.white, for: .selected)
-        btn.backgroundColor = UIColor.white
-        btn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-        btn.tag = 3
-        return btn
-    }()
-    
     lazy var addBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         Tools.setViewShadow(btn)
-        btn.frame = CGRect(x: SCREEN_WIDTH - 15 - 30, y: HomeUX.choose_y, width: 30,height:30)
+        btn.frame = CGRect(x: SCREEN_WIDTH - 12 - 30, y: 210 - 20, width: 30,height:30)
         btn.setImage(UIImage.init(named: "ic_home_add"), for: .normal)
         btn.addTarget(self, action: #selector(handelOnClick(_:)), for: .touchUpInside)
         btn.tag = 1
@@ -377,18 +241,13 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @objc func handelOnClick(_ sender:UIButton){
         if sender == addBtn {
            self.pushToTheController(type: 4)
-        }else if sender == self.headView.backPurseBtn {
-           self.pushToTheController(type: 5)
-        }else if sender == self.headView.codeBtn {
-           self.pushToTheController(type: 6)
+        }else if sender == self.headView.anymoreBtn{
+           self.pushToTheController(type: 7)
         }
      }
     
     func cleanArr(){
         self.dataArray.removeAllObjects()
-        self.PTNArray.removeAllObjects()
-        self.conventionalArray.removeAllObjects()
-        self.otherArray.removeAllObjects()
     }
     
     func pushToTheController(type:NSInteger){
@@ -426,29 +285,18 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             self.navigationController?.pushViewController(homeCoinDetailsVC, animated: true)
             return
         case 4 :
-            let homeAddCoinVC = HomeAddCoinVC()
-            homeAddCoinVC.delegate = self
-            self.navigationController?.pushViewController(homeAddCoinVC, animated: true)
+//            let homeAddCoinVC = HomeAddCoinVC()
+//            homeAddCoinVC.delegate = self
+//            self.navigationController?.pushViewController(homeAddCoinVC, animated: true)
+            let homeTransferFinishView = HomeTransferFinishVC()
+            self.navigationController?.pushViewController(homeTransferFinishView, animated: true)
             return
-        case 5 :
-            let ptnaddress = UserDefaults.standard.getUserInfo().ptnaddress
-            if ptnaddress == "" || ptnaddress == nil {
-                let fileSelectViewController = FileSelectViewController()
-                self.navigationController?.pushViewController(fileSelectViewController, animated: true)
-            }else{
-                let homeBackupDetailsVC = HomeBackupDetailsVC()
-                self.navigationController?.pushViewController(homeBackupDetailsVC, animated: true)
-            }
-            return
-        case 6 :
-            if UserDefaults.standard.getUserInfo().ptnaddress != nil  {
-                self.codeView.isHidden = false
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.codeView.codeBackgroundVw.alpha = 1
-                    self.codeView.codeBackgroundVw.frame = CGRect(x: 30, y: 200, width: self.codeView.codeBackgroundVw.frame.size.width, height: self.codeView.codeBackgroundVw.frame.size.height)
-                }, completion: { (isfinish:Bool) in
-                })
-            }
+        case 7 :
+            let maxY = headView.anymoreBtn.frame.maxY + 50
+            let menuView = PST_MenuView.init(frame: CGRect(x: SCREEN_WIDTH - 20 - 120, y: maxY, width: 120, height: 90), titleArr: ["二维码","备份钱包"], imgArr: ["ic_home_code","ic_home_backup"], arrowOffset: 100, rowHeight: 40, layoutType: PST_MenuViewLayoutType(rawValue: 0)!, directionType: PST_MenuViewDirectionType(rawValue: 0)!, delegate: self)
+            menuView?.arrowColor = UIColor.white
+            menuView?.titleColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
+            menuView?.lineColor = UIColor.R_UIColorFromRGB(color: 0xEDF3F8)
             return
         default:
             return
@@ -462,5 +310,30 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+extension HomeController:PST_MenuViewDelegate{
+    func didSelectRow(at index: Int, title: String!, img: String!) {
+        //展示二维码
+        if index == 0 {
+            if UserDefaults.standard.getUserInfo().ptnaddress != nil  {
+                self.codeView.isHidden = false
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.codeView.codeBackgroundVw.alpha = 1
+                    self.codeView.codeBackgroundVw.frame = CGRect(x: 30, y: 200, width: self.codeView.codeBackgroundVw.frame.size.width, height: self.codeView.codeBackgroundVw.frame.size.height)
+                }, completion: { (isfinish:Bool) in
+                })
+            }
+        }else if index == 1 {
+            let ptnaddress = UserDefaults.standard.getUserInfo().ptnaddress
+            if ptnaddress == "" || ptnaddress == nil {
+                let fileSelectViewController = FileSelectViewController()
+                self.navigationController?.pushViewController(fileSelectViewController, animated: true)
+            }else{
+                let homeBackupDetailsVC = HomeBackupDetailsVC()
+                self.navigationController?.pushViewController(homeBackupDetailsVC, animated: true)
+            }
+        }
     }
 }

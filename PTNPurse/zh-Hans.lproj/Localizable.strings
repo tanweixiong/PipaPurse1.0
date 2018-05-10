@@ -393,7 +393,7 @@
 "homePage_Remark_Information" = "备注信息";
 "homePage_Transfer" = "转账";
 "homePage_Transfer_Key" = "请输入您的密钥";
-"homePage_Transfer_Scan_Address" = "请输入收款人钱包地址或者扫对方二维码";
+"homePage_Transfer_Scan_Address" = "请输入或扫描二维码";
 "homePage_Transfer_textField_Number" = "请输入你要交易的币种数量";
 "homePage_Leave_Message" = "留言，请说明有关您交易的相关条款或备注您的支付方式。";
 "homePage_Confirm_Transfer" = "确定转账";
@@ -727,6 +727,8 @@
 "binding_Please_choose_a_payment_method" = "请选择付款方式";
 
 "binding_Lgoin_Language" = "中文";
+
+"ic_Home_Code" = "二维码";
 
 
 

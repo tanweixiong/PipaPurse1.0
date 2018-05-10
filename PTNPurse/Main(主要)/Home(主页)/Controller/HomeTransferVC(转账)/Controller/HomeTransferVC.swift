@@ -20,6 +20,7 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
     var coinNum = String()
     fileprivate var collectTextField = UITextField()
     fileprivate var collectNumTextField = UITextField()
+    fileprivate var outAddressTextField = UITextField()
     fileprivate var sliderValueLab = UILabel()
     fileprivate var yytextfield = YYTextView()
     fileprivate var collectAddress = ""
@@ -54,10 +55,11 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         self.isNeedPubKey()
-        let coinName = self.details.coinName == nil ? Tools.getAppCoinName() : self.details.coinName!
-        setCustomNaviBar(backgroundImage: "ic_naviBar_backgroundImg",title: coinName + " " + LanguageHelper.getString(key: "homePage_transfer"))
-        naviBarView.addSubview(self.cointTransView)
-        self.view.addSubview(tableView)
+        setCustomNaviBar(backgroundImage: "ic_naviBar_backgroundImg",title:"")
+        naviBarView.addSubview(conversionStatusView)
+        naviBarView.addSubview(detsilsAssetsView)
+        view.addSubview(tableView)
+        view.addSubview(determineBtn)
         self.getCoinData()
         self.getMaxFeeData()
         NotificationCenter.default.addObserver(self, selector: #selector(getCoinData), name: NSNotification.Name(rawValue: R_NotificationHomeReload), object: nil)
@@ -69,10 +71,23 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
         let token = UserDefaults.standard.getUserInfo().token
         let parameters = ["type":type,"language":language,"token":token!]
         coinDetailsVM.loadDetailsSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetCoinDetail, parameters: parameters, showIndicator: false) {
-            self.cointTransView.coinNumberLabel.text = self.coinDetailsVM.model.userWallet?.balance == nil ? "--" : Tools.getWalletAmount(amount: (self.coinDetailsVM.model.userWallet?.balance?.stringValue)!)
-            let method = "¥"
-            let price = self.coinDetailsVM.model.Money == nil ? "0" : Tools.getWalletAmount(amount: (self.coinDetailsVM.model.Money?.stringValue)!)
-            self.cointTransView.priceLabel.text = "≈" + method + price
+            
+            let model = self.coinDetailsVM.model.userWallet
+            let name = model?.coinName == nil ? "--" : model?.coinName
+            self.conversionStatusView.coinNameLabel.text = name
+            let url = model?.coinImg == nil ? "" : model?.coinImg
+            self.conversionStatusView.iconImageView.sd_setImage(with:NSURL(string: url!)! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
+            let balance = model?.balance == nil ? "0" : (model?.balance?.stringValue)!
+            self.conversionStatusView.USDPriceLabel.text = Tools.getWalletAmount(amount: balance)
+            
+            let money = self.coinDetailsVM.model.Money == nil ? "0" : (self.coinDetailsVM.model.Money?.stringValue)!
+            self.conversionStatusView.CNYPriceLabel.text = Tools.getWalletAmount(amount: money)
+            self.conversionStatusView.rankLabel1.text = LanguageHelper.getString(key: "homePage_Numbers")
+            let enableBalance = model?.enableBalance == nil ? "0" : model?.enableBalance
+            self.detsilsAssetsView.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available")  + "：" + enableBalance!
+            let unableBalance = model?.unableBalance == nil ? "0" : model?.unableBalance
+            self.detsilsAssetsView.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") +  "：" + unableBalance!
+            
             if type == Tools.getPTNcoinNo() {
                 self.walletAddress = UserDefaults.standard.getUserInfo().ptnaddress!
             }else{
@@ -113,7 +128,7 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
         }
     }
     
-    func transferOnClick(){
+    @objc func transferOnClick(){
         if Tools.noPaymentPasswordIsSetToExecute() == false{return}
         if checkEnter(){
             let input = InputPaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
@@ -239,6 +254,34 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
         return true
     }
     
+    func checkInpunt()->Bool{
+        let inAddress = collectTextField.text!
+        let tradeNum = collectNumTextField.text!
+        let outAddress = outAddressTextField.text!
+        if inAddress.count == 0 {
+            return false
+        }
+        
+        if outAddress.count == 0 {
+            return false
+        }
+        
+        if tradeNum.count == 0 {
+            return false
+        }
+        return true
+    }
+    
+    func setDetermineStyle(){
+        if determineBtn.isSelected {
+            determineBtn.backgroundColor = R_UIThemeColor
+            determineBtn.isUserInteractionEnabled = true
+        }else{
+            determineBtn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)
+            determineBtn.isUserInteractionEnabled = false
+        }
+    }
+    
     func inputPaymentPasswordChangeForgetPassword() {
         let forgetvc = ModifyTradePwdViewController()
         forgetvc.type = ModifyPwdType.tradepwd
@@ -259,9 +302,9 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //是ptn的币
         if indexPath.section == 1 {
-           return 430
+           return 300
         }
-        return indexPath.section == 0 && indexPath.row == 0 ? YMAKE(110) : YMAKE(70)
+        return YMAKE(70)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -272,27 +315,18 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
             cell.headingLabel.text = heading[indexPath.row]
             let placeholder = headingContentArray[indexPath.section]
             cell.textfield.placeholder = placeholder[indexPath.row]
+            cell.textfield.delegate = self
             if indexPath.row == 0{
                 if ((UserDefaults.standard.getUserInfo().ptnaddress?.isEqual(NSNull.init())) == false){
                    cell.textfield.text = self.walletAddress
+                   cell.firstBluebBackgroundVw.isHidden = false
+                   cell.tfBackGroundDistance.constant = 24
                 }
-                var  enableBalance = "0"
-                if  self.coinDetailsVM.model.userWallet?.enableBalance != nil {
-                    enableBalance = (self.coinDetailsVM.model.userWallet?.enableBalance)!
-                }
-                
-                var unableBalance = "0"
-                if  self.coinDetailsVM.model.userWallet?.unableBalance != nil {
-                    unableBalance = (self.coinDetailsVM.model.userWallet?.unableBalance)!
-                }
-                   cell.centersY.constant = 10
-                   cell.amountAvailableLabel.isHidden = false
-                   cell.amountAvailableLabel.text = LanguageHelper.getString(key: "homepage_Amount_Available") + "：" + enableBalance
-                   cell.freezeAmountLabel.isHidden = false
-                   cell.freezeAmountLabel.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：" + unableBalance
+                outAddressTextField = cell.textfield
             }else if indexPath.row == 1 {
                 cell.scanCodeBtn.isHidden = false
                 cell.scanCodeBtn.addTarget(self, action: #selector(scanCodeOnClick), for: .touchUpInside)
+                cell.firstBluebBackgroundVw.isHidden = false
                 if collectAddress != ""{
                     cell.textfield.text = collectAddress
                 }
@@ -303,6 +337,7 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
                         pubKeyTextField = cell.textfield
                     } else if indexPath.row == 3 {
                         cell.textfield.keyboardType = .decimalPad
+                        cell.lineVw.isHidden = false
                         collectNumTextField = cell.textfield
                         cell.textfield.delegate = self
                     } else {
@@ -320,6 +355,7 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
                 }else{
                     if indexPath.row == 2 {
                         cell.textfield.keyboardType = .decimalPad
+                        cell.lineVw.isHidden = false
                         collectNumTextField = cell.textfield
                         cell.textfield.delegate = self
                     } else{
@@ -341,29 +377,37 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
             let cell = tableView.dequeueReusableCell(withIdentifier: homeTransferRemarkCell, for: indexPath) as! HomeTransferRemarksCell
             cell.selectionStyle = .none
             cell.setData()
-//            cell.textView?.isUserInteractionEnabled = true
+            cell.submitBtn.isHidden = true
+            cell.lineView.isHidden = true
+            cell.textView?.layer.borderWidth = 1
+            cell.textView?.layer.borderColor = UIColor.R_UIColorFromRGB(color: 0xF1F1F1).cgColor
+            cell.textView?.layer.cornerRadius = 5
+            cell.textView?.layer.masksToBounds = true
+            cell.textView?.backgroundColor = UIColor.white
+            cell.textView?.placeholderText = "请输入您的备注信息....."
             self.yytextfield = cell.textView!
-            cell.HomeTransferRemarksBlock = {
-                self.transferOnClick()
-            }
             return cell
         }
     }
     
-    lazy var cointTransView: HomeCointTransView = {
-        let view = Bundle.main.loadNibNamed("HomeCointTransView", owner: nil, options: nil)?.last as! HomeCointTransView
-        view.frame = CGRect(x: 15, y: HomeCointTransView_y, width: Int(SCREEN_WIDTH - 30), height:HomeCointTransViewHeight)
-        view.backgroundColor = UIColor.R_UIRGBColor(red: 255, green: 255, blue: 255, alpha: 0.7)
-        view.layer.cornerRadius = 5
-        view.clipsToBounds = true
-        view.priceLabel.text = "≈¥--"
-        view.coinNumberLabel.text = "--"
-        view.numberLabel.text = LanguageHelper.getString(key: "homePage_Numbers")
+    lazy var detsilsAssetsView: HomeDetsilsAssetsView = {
+        let view = Bundle.main.loadNibNamed("HomeDetsilsAssetsView", owner: nil, options: nil)?.last as! HomeDetsilsAssetsView
+        view.frame = CGRect(x: 0, y: Int(MainViewControllerUX.naviHeight) - 35 - 16 , width: Int(SCREEN_WIDTH), height: 35)
+        view.backgroundColor = R_UIThemeSkyBlueColor
+        view.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available") + "：0"
+        view.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：0"
+        return view
+    }()
+    
+    lazy var conversionStatusView: HomeConversionStatusView = {
+        let view = Bundle.main.loadNibNamed("HomeConversionStatusView", owner: nil, options: nil)?.last as! HomeConversionStatusView
+        view.frame = CGRect(x: 0, y: Int(MainViewControllerUX.naviHeight) - 16 - 35 - 64 , width: Int(SCREEN_WIDTH), height: 64)
+        view.rankLabel1.text = LanguageHelper.getString(key: "homePage_Numbers")
         return view
     }()
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x: 0, y: self.naviBarView.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+        let tableView = UITableView.init(frame: CGRect(x: 0, y: self.naviBarView.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - self.naviBarView.frame.maxY - 50 ))
         tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
         tableView.delegate = self
@@ -371,10 +415,25 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
         tableView.register(UINib(nibName: "HomeTransferRemarksCell", bundle: nil),forCellReuseIdentifier: self.homeTransferRemarkCell)
         tableView.backgroundColor = UIColor.white
         tableView.separatorStyle = .none
-        let footView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height:150))
+        let footView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height:0))
         footView.backgroundColor = UIColor.white
         tableView.tableFooterView = footView
         return tableView
+    }()
+    
+    lazy var determineBtn: UIButton = {
+        let btn  = UIButton(type: .custom)
+        btn.setImage(UIImage.init(named: "ic_home_trans_white"), for: .normal)
+        btn.setTitle(LanguageHelper.getString(key: "homePage_Confirm_Transfer"), for: .normal)
+        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -15)
+        btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 15)
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.frame = CGRect(x: 0, y: SCREEN_HEIGHT - 50, width: SCREEN_WIDTH, height: 50)
+        btn.clipsToBounds = true
+        btn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)
+        btn.addTarget(self, action: #selector(HomeTransferVC.transferOnClick), for: .touchUpInside)
+        btn.isUserInteractionEnabled = false
+        return btn
     }()
     
     func cameraPermissions() -> Bool{
@@ -398,6 +457,8 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
         if textField == collectNumTextField {
             return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemeTransferLimit)
         }
+        determineBtn.isSelected = self.checkInpunt()
+        setDetermineStyle()
         return true
     }
     

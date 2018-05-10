@@ -20,7 +20,9 @@ class HomeTransferFinishVC: MainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(finishView)
-        var title = ""
+        setNormalNaviBar(title: "转账成功")
+        self.backToBtn.isHidden = true
+        
         coinName = coinName == "" ? Tools.getAppCoinName() : coinName
         if style == .transferStyle {
             headingString = LanguageHelper.getString(key: "homePage_Details_Successfully_Transfer_Finish") +     " " + "\(price)" + LanguageHelper.getString(key: "homePage_Details_Successfully_A_Finish")  + coinName + " " + LanguageHelper.getString(key: "homePage_Miner_Fee") + " " + fee + coinName
@@ -31,7 +33,6 @@ class HomeTransferFinishVC: MainViewController {
             title = LanguageHelper.getString(key: "homePage_Details_Successfully_Conversion_Finish")
             finishView.detailsBtn.setTitle(LanguageHelper.getString(key: "homePage_Finish_Conversion_Details"), for: .normal)
         }
-        setNormalNaviBar(title: title)
         self.finishView.titleLabel.text = headingString
     }
     
@@ -49,11 +50,11 @@ class HomeTransferFinishVC: MainViewController {
     
     lazy var finishView: HomeTransferFinishView = {
         let view = Bundle.main.loadNibNamed("HomeTransferFinishView", owner: nil, options: nil)?.last as! HomeTransferFinishView
-        view.frame = CGRect(x: 0, y: -20 , width: SCREEN_WIDTH, height: SCREEN_WIDTH + 20)
+        view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height:SCREEN_HEIGHT)
         view.closeBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
         view.detailsBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
         view.closeBtn.tag = 1
-        view.detailsBtn.backgroundColor = R_ZYThemeColor
+        view.detailsBtn.backgroundColor = R_UIThemeColor
         view.detailsBtn.tag = 2
         return view
     }()

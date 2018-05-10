@@ -17,7 +17,8 @@ class HomeTransferFinishView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        closeBtn.layer.borderColor = UIColor.R_UIColorFromRGB(color: 0xCED7E6).cgColor
+        closeBtn.layer.borderColor = R_UIThemeColor.cgColor
+        closeBtn.setTitleColor(R_UIThemeColor, for: .normal)
         closeBtn.layer.borderWidth = 1
         closeBtn.setTitle(LanguageHelper.getString(key: "homePage_Details_Successfully_Close"), for: .normal)
     }

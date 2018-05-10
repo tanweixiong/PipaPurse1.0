@@ -97,7 +97,7 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扫码获取钱包地址" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUG-MD-sPz">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扫描二维码获取钱包地址" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUG-MD-sPz">
                                     <rect key="frame" x="0.0" y="167" width="315" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="xmI-s6-HiH"/>
@@ -142,7 +142,7 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="0.70272367294520544" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.94805230034722221" alpha="0.70272367294520544" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="06T-d3-pQ6" firstAttribute="centerX" secondItem="2XN-WL-Aft" secondAttribute="centerX" id="0qX-xc-LMe"/>
                                 <constraint firstItem="nAd-ig-O0D" firstAttribute="leading" secondItem="mqv-83-ccB" secondAttribute="trailing" constant="-10" id="1ZM-Y0-Z32"/>
@@ -187,13 +187,13 @@
                                 </label>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="740-qg-6Q7">
                                     <rect key="frame" x="7" y="22" width="298" height="56.5"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="0.94805230029999998" alpha="0.70272367290000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="textColor" red="0.3294117647" green="0.35686274509999999" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.94805230029999998" alpha="0.70272367290000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="740-qg-6Q7" secondAttribute="bottom" constant="5" id="72k-Gp-L1x"/>
                                 <constraint firstItem="AoB-CV-mjb" firstAttribute="top" secondItem="1Qq-0I-hc8" secondAttribute="top" id="7yC-kC-hCJ"/>
@@ -258,10 +258,10 @@
         </view>
     </objects>
     <resources>
-        <image name="home_receive_head" width="375" height="257"/>
+        <image name="home_receive_head" width="496" height="274"/>
         <image name="ic_back_let" width="20" height="16"/>
         <image name="ic_home_re_code" width="147" height="149"/>
-        <image name="ic_tab_mine_n" width="26" height="26"/>
+        <image name="ic_tab_mine_n" width="15" height="17"/>
         <image name="path1" width="15" height="15"/>
         <image name="path2" width="15" height="15"/>
         <image name="path3" width="15" height="15"/>
