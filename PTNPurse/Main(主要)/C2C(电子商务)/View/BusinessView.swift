@@ -10,11 +10,7 @@ import UIKit
 
 class BusinessView: UIView {
     @IBOutlet weak var sellBtn: UIButton!
-    @IBOutlet weak var chooseCoinBtn: UIButton!
     @IBOutlet weak var buyBtn: UIButton!
-    @IBOutlet weak var chooseCoinView: UIView!
-    @IBOutlet weak var coinViewWidth: NSLayoutConstraint!
-    @IBOutlet weak var coinNameLab: UILabel!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -25,9 +21,6 @@ class BusinessView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        Tools.setViewShadow(sellBtn)
-        Tools.setViewShadow(chooseCoinView)
-        Tools.setViewShadow(buyBtn)
         
         buyBtn.setTitle(LanguageHelper.getString(key: "C2C_home_Buy"), for: .normal)
         sellBtn.setTitle(LanguageHelper.getString(key: "C2C_home_Sell"), for: .normal)

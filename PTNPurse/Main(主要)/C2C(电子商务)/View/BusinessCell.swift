@@ -17,7 +17,8 @@ class BusinessCell: UITableViewCell {
     @IBOutlet weak var nameLab: UILabel!
     @IBOutlet weak var dealNumLab: UILabel!
     @IBOutlet weak var receivablesTypeLab: UILabel!
-    
+    @IBOutlet weak var maxLab: UILabel!
+    var style = BusinessTransactionStyle.buyStyle
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,14 +34,20 @@ class BusinessCell: UITableViewCell {
             nameLab.text = name
             
             let entrustPrice = model?.entrustPrice == nil ? 0 : model?.entrustPrice
-            let newPrice = Tools.setPriceNumber(price: entrustPrice!)
+            let newPrice = String(format: "%.2f", (entrustPrice?.doubleValue)!)
             priceLab.text = Tools.getWalletAmount(amount: newPrice) + " " + "CNY"
             
             let dealNum = model?.dealNum == nil ? 0 : model?.dealNum
-            dealNumLab.text = LanguageHelper.getString(key: "C2C_home_Deal") + Tools.setPriceNumber(price: dealNum!) + "       "
+            dealNumLab.text = LanguageHelper.getString(key: "C2C_home_Deal") + "：" + Tools.setPriceNumber(price: dealNum!)
             
             let receivablesType = model?.receivablesType == nil ? 0 : model?.receivablesType
-            receivablesTypeLab.text = Tools.getPaymentDetailsMethod((receivablesType!.stringValue)) + "       "
+            receivablesTypeLab.text = LanguageHelper.getString(key: "C2C_payment_method") + "：" + Tools.getPaymentDetailsMethod((receivablesType!.stringValue))
+            
+            if let entrustMaxPrice = model?.entrustMaxPrice {
+                maxLab.text = LanguageHelper.getString(key: "C2C_mine_my_advertisement_Limit") + "：" + Tools.getWalletAmount(amount: (entrustMaxPrice.stringValue))
+            }
+            
+            backgroundVw.backgroundColor = style == .buyStyle ? UIColor.R_UIColorFromRGB(color: 0xFFF0EC) : UIColor.R_UIColorFromRGB(color: 0xEEFEF4)
         }
     }
 

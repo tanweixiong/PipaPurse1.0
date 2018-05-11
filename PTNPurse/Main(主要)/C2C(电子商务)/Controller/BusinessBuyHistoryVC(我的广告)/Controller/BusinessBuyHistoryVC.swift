@@ -56,10 +56,10 @@ class BusinessBuyHistoryVC: MainViewController {
         view.buyBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x545B71), for: .normal)
         view.buyBtn.setTitleColor(UIColor.white, for: .selected)
         view.buyBtn.isSelected = true
-        view.coinViewWidth.constant = 90
-        view.coinNameLab.text = "BTC"
-        view.chooseCoinBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
-        view.chooseCoinBtn.tag = 3
+//        view.coinViewWidth.constant = 90
+//        view.coinNameLab.text = "BTC"
+//        view.chooseCoinBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
+//        view.chooseCoinBtn.tag = 3
         return view
     }()
     
@@ -257,7 +257,7 @@ extension BusinessBuyHistoryVC:UITableViewDataSource,UITableViewDelegate {
     func didSelectRow(at index: Int, title: String!, img: String!) {
         let model = self.coinViewModel.coinModel[index]
         coinNum = (model.id?.stringValue)!
-        businessView.coinNameLab.text = model.coinName!
+//        businessView.coinNameLab.text = model.coinName!
         getData()
     }
  }

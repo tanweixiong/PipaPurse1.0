@@ -188,6 +188,12 @@
 		236441EE2019729900916432 /* HomeBackupDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236441ED2019729900916432 /* HomeBackupDetailsModel.swift */; };
 		236441F02019880900916432 /* HomeCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236441EF2019880900916432 /* HomeCodeView.swift */; };
 		236441F22019881900916432 /* HomeCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236441F12019881900916432 /* HomeCodeView.xib */; };
+		2364D88920A52E1B00EFE97C /* BusinessMeunVw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2364D88820A52E1B00EFE97C /* BusinessMeunVw.swift */; };
+		2364D88B20A52E2B00EFE97C /* BusinessMeunVw.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2364D88A20A52E2B00EFE97C /* BusinessMeunVw.xib */; };
+		2364D88E20A531B100EFE97C /* BusinessMeunCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2364D88C20A531B100EFE97C /* BusinessMeunCell.swift */; };
+		2364D88F20A531B100EFE97C /* BusinessMeunCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2364D88D20A531B100EFE97C /* BusinessMeunCell.xib */; };
+		2364D89120A53E4400EFE97C /* BusinessTransactionDeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2364D89020A53E4400EFE97C /* BusinessTransactionDeView.swift */; };
+		2364D89320A53E5300EFE97C /* BusinessTransactionDeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2364D89220A53E5300EFE97C /* BusinessTransactionDeView.xib */; };
 		23674A1C202019D800B4B96E /* LBXScanNetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23674A15202019D700B4B96E /* LBXScanNetAnimation.swift */; };
 		23674A1D202019D800B4B96E /* LBXScanWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23674A16202019D700B4B96E /* LBXScanWrapper.swift */; };
 		23674A1E202019D800B4B96E /* LBXScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23674A17202019D700B4B96E /* LBXScanViewController.swift */; };
@@ -631,6 +637,12 @@
 		236441ED2019729900916432 /* HomeBackupDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBackupDetailsModel.swift; sourceTree = "<group>"; };
 		236441EF2019880900916432 /* HomeCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCodeView.swift; sourceTree = "<group>"; };
 		236441F12019881900916432 /* HomeCodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCodeView.xib; sourceTree = "<group>"; };
+		2364D88820A52E1B00EFE97C /* BusinessMeunVw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessMeunVw.swift; sourceTree = "<group>"; };
+		2364D88A20A52E2B00EFE97C /* BusinessMeunVw.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessMeunVw.xib; sourceTree = "<group>"; };
+		2364D88C20A531B100EFE97C /* BusinessMeunCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessMeunCell.swift; sourceTree = "<group>"; };
+		2364D88D20A531B100EFE97C /* BusinessMeunCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessMeunCell.xib; sourceTree = "<group>"; };
+		2364D89020A53E4400EFE97C /* BusinessTransactionDeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessTransactionDeView.swift; sourceTree = "<group>"; };
+		2364D89220A53E5300EFE97C /* BusinessTransactionDeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessTransactionDeView.xib; sourceTree = "<group>"; };
 		23674A15202019D700B4B96E /* LBXScanNetAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanNetAnimation.swift; sourceTree = "<group>"; };
 		23674A16202019D700B4B96E /* LBXScanWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanWrapper.swift; sourceTree = "<group>"; };
 		23674A17202019D700B4B96E /* LBXScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanViewController.swift; sourceTree = "<group>"; };
@@ -2315,14 +2327,20 @@
 		23A53892205F537300EDB714 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				23A53888205F537300EDB714 /* BusinessRemarkView.xib */,
-				23A5388C205F537300EDB714 /* BusinessRemarkView.swift */,
-				23A5388A205F537300EDB714 /* BusinessWantFinishView.swift */,
-				23A53889205F537300EDB714 /* BusinessWantFinishView.xib */,
 				23A5388B205F537300EDB714 /* BusinessTransactionView.xib */,
 				23A5388D205F537300EDB714 /* BusinessTransactionView.swift */,
+				2364D89020A53E4400EFE97C /* BusinessTransactionDeView.swift */,
+				2364D89220A53E5300EFE97C /* BusinessTransactionDeView.xib */,
 				23A5388E205F537300EDB714 /* BusinessConvertView.xib */,
 				23A5388F205F537300EDB714 /* BusinessConvertView.swift */,
+				23A53888205F537300EDB714 /* BusinessRemarkView.xib */,
+				23A5388C205F537300EDB714 /* BusinessRemarkView.swift */,
+				23A53889205F537300EDB714 /* BusinessWantFinishView.xib */,
+				23A5388A205F537300EDB714 /* BusinessWantFinishView.swift */,
+				2364D88820A52E1B00EFE97C /* BusinessMeunVw.swift */,
+				2364D88A20A52E2B00EFE97C /* BusinessMeunVw.xib */,
+				2364D88C20A531B100EFE97C /* BusinessMeunCell.swift */,
+				2364D88D20A531B100EFE97C /* BusinessMeunCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2802,6 +2820,7 @@
 				23A537F6205F520E00EDB714 /* HNTitleView.xib in Resources */,
 				23674A922020202400B4B96E /* AboutUsViewController.xib in Resources */,
 				2388F493201AFF86005E8F1B /* HomeConversionHeadView.xib in Resources */,
+				2364D89320A53E5300EFE97C /* BusinessTransactionDeView.xib in Resources */,
 				23674AD02020205400B4B96E /* CreatTopView.xib in Resources */,
 				2332D4DA200DA1BC009B4D5E /* Info.plist in Resources */,
 				23536CBC2064D4C9007C4A52 /* BusinessSubmissionVw.xib in Resources */,
@@ -2828,6 +2847,7 @@
 				236137CE208583E300E73F9E /* MineSetAccountVw.xib in Resources */,
 				23A538F3205F537400EDB714 /* BusinessOrderDetailsLiCell.xib in Resources */,
 				237858AF2018209D0014DACD /* BRCity.plist in Resources */,
+				2364D88F20A531B100EFE97C /* BusinessMeunCell.xib in Resources */,
 				23674ACB2020205400B4B96E /* RegisterSuccessViewController.xib in Resources */,
 				23307E142016CB3C00C1110A /* HomeListDetsilsFootView.xib in Resources */,
 				233201A8202AFEDD001815DE /* MJRefresh.bundle in Resources */,
@@ -2884,6 +2904,7 @@
 				4E77F940204FD46C00D6807E /* HomeCertificationListCell.xib in Resources */,
 				237D0431200F2CED000C12B1 /* HomeConversionListCell.xib in Resources */,
 				23304405207B517600579A95 /* MineImportWalletVw.xib in Resources */,
+				2364D88B20A52E2B00EFE97C /* BusinessMeunVw.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3075,6 +3096,7 @@
 				2332D4C3200DA1BC009B4D5E /* ConstraintInsets.swift in Sources */,
 				237567682068E949006AED6F /* BusinessSubmissionMessageVW.swift in Sources */,
 				232DF522201F114C00842491 /* HomeReceiveModel.swift in Sources */,
+				2364D88920A52E1B00EFE97C /* BusinessMeunVw.swift in Sources */,
 				2332D4C0200DA1BC009B4D5E /* ConstraintAttributes.swift in Sources */,
 				2332D4D2200DA1BC009B4D5E /* ConstraintMaker.swift in Sources */,
 				233176F02022BBE90006E0E9 /* HomeConversionDetialsModel.swift in Sources */,
@@ -3171,6 +3193,7 @@
 				23A538CF205F537400EDB714 /* BusinessCoinModel.swift in Sources */,
 				23C7EA192019D42900486341 /* HomeBaseModel.swift in Sources */,
 				237D043F200F4459000C12B1 /* InputPaymentPasswordVw.m in Sources */,
+				2364D88E20A531B100EFE97C /* BusinessMeunCell.swift in Sources */,
 				2332D4C2200DA1BC009B4D5E /* ConstraintPriorityTarget.swift in Sources */,
 				236FA08B206A28C700FD5CB6 /* MessageInformationVw.swift in Sources */,
 				237D0416200EF812000C12B1 /* HomeTransferFinishVC.swift in Sources */,
@@ -3260,6 +3283,7 @@
 				23536CBA2064D4BB007C4A52 /* BusinessSubmissionVw.swift in Sources */,
 				23674AD62020205400B4B96E /* LoginNoteTextView.swift in Sources */,
 				233219AB201C3153007CF481 /* PST_MenuView.m in Sources */,
+				2364D89120A53E4400EFE97C /* BusinessTransactionDeView.swift in Sources */,
 				2332D4BC200DA1BC009B4D5E /* ConstraintMultiplierTarget.swift in Sources */,
 				23A538F6205F537400EDB714 /* BusinessLiberateView.swift in Sources */,
 				23298B722088420B00702DD8 /* UIColor+Util.m in Sources */,

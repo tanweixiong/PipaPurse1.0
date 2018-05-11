@@ -50,25 +50,20 @@ class BusinessWantBuyVC: MainViewController {
     
     lazy var businessView: BusinessTransactionView = {
         let view = Bundle.main.loadNibNamed("BusinessTransactionView", owner: nil, options: nil)?.last as! BusinessTransactionView
-        view.frame = CGRect(x: 15, y: 15 , width: SCREEN_WIDTH - 30, height: 177)
+        view.frame = CGRect(x: 15, y: 0 , width: SCREEN_WIDTH - 30, height: 191)
         view.model = self.businessWantBuyData
-        Tools.setViewShadow(view)
         return view
     }()
     
-    lazy var businessRemarkView: BusinessRemarkView = {
-        let view = Bundle.main.loadNibNamed("BusinessRemarkView", owner: nil, options: nil)?.last as! BusinessRemarkView
-        view.frame = CGRect(x: 0, y: businessView.frame.maxY + 15 , width: SCREEN_WIDTH, height: 84)
-        view.remarkTV.isUserInteractionEnabled = self.isDetails ? false : true
-        if self.businessWantBuyData.remark != nil {
-            view.remarkTV.text = self.businessWantBuyData.remark
-        }
+    lazy var businessTransactionDeView: BusinessTransactionDeView = {
+        let view = Bundle.main.loadNibNamed("BusinessTransactionDeView", owner: nil, options: nil)?.last as! BusinessTransactionDeView
+        view.frame = CGRect(x: 0, y: businessView.frame.maxY , width: SCREEN_WIDTH, height: 165)
         return view
     }()
     
     lazy var businessConvertView: BusinessConvertView = {
         let view = Bundle.main.loadNibNamed("BusinessConvertView", owner: nil, options: nil)?.last as! BusinessConvertView
-        view.frame = CGRect(x: 0, y: businessRemarkView.frame.maxY + 15 , width: SCREEN_WIDTH, height: 220)
+        view.frame = CGRect(x: 0, y: businessTransactionDeView.frame.maxY , width: SCREEN_WIDTH, height: 220)
         view.coinNameLab.text = businessWantBuyData.coinCore
         view.disNameLab.text = "CNY"
         view.disPriceTF.isEnabled = true
@@ -78,7 +73,6 @@ class BusinessWantBuyVC: MainViewController {
         view.coinNumTF.isUserInteractionEnabled = self.isDetails ? false : true
         view.isHidden = self.isDetails ? true : false
         view.coinNumTF.placeholder = self.style == .buyStyle ? LanguageHelper.getString(key: "C2C_home_Please_enter_the_purchase") : LanguageHelper.getString(key: "C2C_home_Please_enter_the_number_of_sales")
-        view.wantBuyLab.text = self.style == .buyStyle ? LanguageHelper.getString(key: "C2C_home_Want_buy") : LanguageHelper.getString(key: "C2C_home_Want_sell")
         view.disPriceTF.placeholder = LanguageHelper.getString(key: "C2C_home_Converted_amount")
         return view
     }()
@@ -89,7 +83,7 @@ class BusinessWantBuyVC: MainViewController {
         button.setTitle(style, for: .normal)
         button.addTarget(self, action: #selector(BusinessWantBuyVC.submitOnClick), for: .touchUpInside)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = UIColor.R_UIColorFromRGB(color: 0x828A9E)
+        button.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)
         button.isHidden = isDetails ? true : false
         return button
     }()
@@ -108,7 +102,7 @@ extension BusinessWantBuyVC {
          view.addSubview(scrollView)
          view.addSubview(submitBtn)
          scrollView.addSubview(businessView)
-         scrollView.addSubview(businessRemarkView)
+         scrollView.addSubview(businessTransactionDeView)
          scrollView.addSubview(businessConvertView)
         let contentSize_height = isDetails ? 20 : 250
          scrollView.contentSize = CGSize(width: SCREEN_WIDTH, height: businessConvertView.frame.maxY + CGFloat(contentSize_height))
@@ -119,7 +113,7 @@ extension BusinessWantBuyVC {
         let entrustNo = self.entrustNo
         let tradeNum = businessConvertView.coinNumTF.text!
         let md5Psd = tradePassword.md5()
-        let remark = businessRemarkView.remarkTV.text!
+        let remark = businessTransactionDeView.remarkLab.text!
         let language = Tools.getLocalLanguage()
         var parameters = ["token":token
             ,"entrustNo":entrustNo
@@ -165,7 +159,7 @@ extension BusinessWantBuyVC {
         if submitBtn.isSelected {
             submitBtn.backgroundColor = R_UIThemeColor
         }else{
-            submitBtn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0x828A9E)
+            submitBtn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)
         }
     }
     
@@ -298,7 +292,8 @@ extension BusinessWantBuyVC {
                     let model = self.detailsViewModel.liberateModel
                     let data = BusinessWantBuyData(avatarUrl: model.photo, entrustPrice: model.entrustPrice, entrustMaxPrice: model.entrustMaxPrice, entrustMinPrice: model.entrustMinPrice, remark: model.remark, name: model.username, coinCore: model.coinCore)
                     self.businessView.model = data
-                    self.businessRemarkView.remarkTV.text = data.remark
+                    self.businessTransactionDeView.model = model
+                    
                 }
             })
         }

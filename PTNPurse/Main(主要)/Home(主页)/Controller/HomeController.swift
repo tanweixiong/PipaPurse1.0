@@ -285,11 +285,9 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             self.navigationController?.pushViewController(homeCoinDetailsVC, animated: true)
             return
         case 4 :
-//            let homeAddCoinVC = HomeAddCoinVC()
-//            homeAddCoinVC.delegate = self
-//            self.navigationController?.pushViewController(homeAddCoinVC, animated: true)
-            let homeTransferFinishView = HomeTransferFinishVC()
-            self.navigationController?.pushViewController(homeTransferFinishView, animated: true)
+            let homeAddCoinVC = HomeAddCoinVC()
+            homeAddCoinVC.delegate = self
+            self.navigationController?.pushViewController(homeAddCoinVC, animated: true)
             return
         case 7 :
             let maxY = headView.anymoreBtn.frame.maxY + 50

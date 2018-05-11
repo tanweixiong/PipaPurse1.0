@@ -504,10 +504,10 @@
 "quotes_search" = "输入关键词搜索";
 
 //*******************************C2C****************************//
-"C2C_home_Buy" = "我要购买";
-"C2C_home_Sell" = "我要出售";
+"C2C_home_Buy" = "购买";
+"C2C_home_Sell" = "出售";
 "C2C_home_Issue" = "发布";
-"C2C_home_Deal" = "成交";
+"C2C_home_Deal" = "成交数量";
 "C2C_home_Limit" = "交易限额";
 "C2C_home_Remark" = "备注";
 
@@ -729,7 +729,7 @@
 "binding_Lgoin_Language" = "中文";
 
 "ic_Home_Code" = "二维码";
-
+"C2C_payment_method" = "收款方式";
 
 
 

@@ -57,10 +57,10 @@ class BusinessaDvertisementVC: MainViewController {
         view.buyBtn.addTarget(self, action: #selector(processingAndFinish(_:)), for: .touchUpInside)
         view.buyBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x545B71), for: .normal)
         view.buyBtn.setTitleColor(UIColor.white, for: .selected)
-        view.coinNameLab.text = "BTC"
+//        view.coinNameLab.text = "BTC"
         view.buyBtn.isSelected = true
-        view.coinViewWidth.constant = 100
-        view.chooseCoinBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
+//        view.coinViewWidth.constant = 100
+//        view.chooseCoinBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
         return view
     }()
     
@@ -360,7 +360,7 @@ extension BusinessaDvertisementVC :PST_MenuViewDelegate {
     func didSelectRow(at index: Int, title: String!, img: String!) {
         let model = businessViewModel.coinModel[index]
         self.coinNum = (model.id?.stringValue)!
-        businessView.coinNameLab.text = model.coinName
+//        businessView.coinNameLab.text = model.coinName
         getData()
     }
 }

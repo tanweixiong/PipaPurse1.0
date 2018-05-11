@@ -11,8 +11,8 @@ import UIKit
 class BusinessTransactionView: UIView {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var priceLab: UILabel!
-    @IBOutlet weak var limitLab: UILabel!
     @IBOutlet weak var nameLab: UILabel!
+    @IBOutlet weak var backGroundVw: UIView!
     
     var model = BusinessWantBuyData(){
         didSet{
@@ -21,20 +21,16 @@ class BusinessTransactionView: UIView {
             
             let price = model.entrustPrice == nil ? 0 : model.entrustPrice
             let newPrice = Tools.setPriceNumber(price: price!)
-            priceLab.text = Tools.getWalletAmount(amount: newPrice) + " CNY"
-            
-            let max = model.entrustMaxPrice == nil ? 0 : model.entrustMaxPrice
-            let min = model.entrustMinPrice == nil ? 0 : model.entrustMinPrice
-            limitLab.text = LanguageHelper.getString(key: "C2C_home_Limit") + "：" + Tools.getWalletAmount(amount: (min?.stringValue)!) + "~" + Tools.getWalletAmount(amount: (max?.stringValue)!)
+            priceLab.text = Tools.getWalletAmount(amount: newPrice) + " CNY" + model.coinCore!
             
             let username = model.name == nil ? "" : model.name
             self.nameLab.text = username
-            
         }
     }
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        Tools.setViewShadow(backGroundVw)
    }
 }
