@@ -269,9 +269,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Private Method
     func setViewStyle() {
         if type == .forgetpwd {
-            topImageView.setViewContent(title: LanguageHelper.getString(key: "login_loginforgetpwd"))
-            pwdTextView.titleLabel.text = LanguageHelper.getString(key: "login_newpwd")
-
+            topImageView.setViewContent(title: LanguageHelper.getString(key: "modify_login_passsword"))
+            pwdTextView.titleLabel.text = LanguageHelper.getString(key: "modify_login_passsword")
             pwdTextView.textField.placeholder = LanguageHelper.getString(key: "login_newpwdplaceholder")
         } else if type == .register {
             topImageView.setViewContent(title: LanguageHelper.getString(key: "login_creataccount"))

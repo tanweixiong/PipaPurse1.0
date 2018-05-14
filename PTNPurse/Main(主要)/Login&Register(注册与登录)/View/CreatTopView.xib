@@ -19,6 +19,7 @@
             <connections>
                 <outlet property="backBtn" destination="d8G-nn-hT4" id="Zl1-ir-X2e"/>
                 <outlet property="bgImageview" destination="vjg-rc-4v5" id="BaZ-01-CGl"/>
+                <outlet property="rightItemBtn" destination="CIh-py-Vaj" id="tth-sM-Ui9"/>
                 <outlet property="titleLabel" destination="Sil-fO-bnT" id="GQk-x5-qD4"/>
             </connections>
         </placeholder>
@@ -63,15 +64,28 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIh-py-Vaj">
+                    <rect key="frame" x="327" y="32" width="33" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="cVW-P6-HfX"/>
+                        <constraint firstAttribute="width" constant="33" id="sIG-Mr-jzK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="提交">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="d8G-nn-hT4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="1up-mB-RGC"/>
                 <constraint firstAttribute="trailing" secondItem="vjg-rc-4v5" secondAttribute="trailing" id="5a6-wb-Lh0"/>
+                <constraint firstItem="CIh-py-Vaj" firstAttribute="centerY" secondItem="Sil-fO-bnT" secondAttribute="centerY" id="KAg-gJ-mUc"/>
                 <constraint firstItem="b5V-qN-u9Q" firstAttribute="bottom" secondItem="d8G-nn-hT4" secondAttribute="bottom" constant="10" id="M37-PJ-QEI"/>
                 <constraint firstItem="b5V-qN-u9Q" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XZ8-Vu-YAn"/>
                 <constraint firstItem="vjg-rc-4v5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aIg-VA-xaD"/>
                 <constraint firstItem="Sil-fO-bnT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="fiU-vr-OxP"/>
+                <constraint firstAttribute="trailing" secondItem="CIh-py-Vaj" secondAttribute="trailing" constant="15" id="hlR-dc-Y5w"/>
                 <constraint firstItem="d8G-nn-hT4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="iby-3K-0IT"/>
                 <constraint firstItem="Sil-fO-bnT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lyZ-RN-jm0"/>
                 <constraint firstItem="vjg-rc-4v5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uzZ-HS-deR"/>

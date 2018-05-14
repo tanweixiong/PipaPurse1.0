@@ -18,7 +18,7 @@ class BusinessConvertView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         Tools.setViewShadow(backgroundVw)
-        coinNumTF.textColor = 
+        coinNumTF.textColor = UIColor.R_UIColorFromRGB(color: 0x4D4F51)
    }
     
 

@@ -69,7 +69,13 @@ class AutorizeButton: UIButton {
     */
     override init(frame: CGRect) {
         super.init(frame: frame)
-        Tools.setButtonType(isBoarder: true, sender: self, fontSize: 13, bgcolor: R_ZYThemeColor)
+//        Tools.setButtonType(isBoarder: true, sender: self, fontSize: 13, bgcolor: R_ZYThemeColor)
+        
+        self.setTitleColor(R_UIThemeColor, for: .normal)
+        self.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xEDF7FD)
+        self.layer.cornerRadius = 5
+        self.layer.masksToBounds = true
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         self.setTitle(LanguageHelper.getString(key: "register_getcode"), for: .normal)
 
     }

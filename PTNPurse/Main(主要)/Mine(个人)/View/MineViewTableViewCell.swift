@@ -13,10 +13,11 @@ enum MineViewTableViewCellType {
     case checkmark
     case arrow
     case label
-    
 }
-
 class MineViewTableViewCell: UITableViewCell {
+    
+    
+    @IBOutlet weak var distanceX: NSLayoutConstraint!
     
     @IBOutlet weak var bgview: UIView!
     @IBOutlet weak var leftImageView: UIImageView!
@@ -24,7 +25,7 @@ class MineViewTableViewCell: UITableViewCell {
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var rightImageView: UIImageView!
     @IBOutlet weak var checkmarkImageView: UIImageView!
-    
+    var isLanguage = false
     var shadowView: UIView?
     
     var viewType: MineViewTableViewCellType? {
@@ -40,15 +41,17 @@ class MineViewTableViewCell: UITableViewCell {
                 rightLabel.isHidden = true
                 checkmarkImageView.isHidden = true
             }
+            
+            if isLanguage {
+                checkmarkImageView.isHidden = true
+            }
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.selectionStyle = .none
         leftLabel.textColor = R_ZYMineViewGrayColor
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

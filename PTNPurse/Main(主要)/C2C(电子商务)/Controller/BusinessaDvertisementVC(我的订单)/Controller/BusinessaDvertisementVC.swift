@@ -47,20 +47,25 @@ class BusinessaDvertisementVC: MainViewController {
     lazy var businessView: BusinessView = {
         let view = Bundle.main.loadNibNamed("BusinessView", owner: nil, options: nil)?.last as! BusinessView
         view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight , width: SCREEN_WIDTH, height: 45)
-        view.sellBtn.setTitle(LanguageHelper.getString(key: "C2C_mine_advertisement_finish"), for: .normal)
+        view.sellBtn.setTitle("购买订单", for: .normal)
         view.sellBtn.addTarget(self, action: #selector(processingAndFinish(_:)), for: .touchUpInside)
-        view.sellBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x545B71), for: .normal)
+        view.sellBtn.setTitleColor(R_ZYSelectNormalColor, for: .normal)
         view.sellBtn.setTitleColor(UIColor.white, for: .selected)
         
         view.buyBtn.backgroundColor = R_UIThemeSkyBlueColor
-        view.buyBtn.setTitle(LanguageHelper.getString(key: "C2C_mine_advertisement_processing"), for: .normal)
+        view.buyBtn.setTitle("出售订单", for: .normal)
         view.buyBtn.addTarget(self, action: #selector(processingAndFinish(_:)), for: .touchUpInside)
-        view.buyBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x545B71), for: .normal)
+        view.buyBtn.setTitleColor(R_ZYSelectNormalColor, for: .normal)
         view.buyBtn.setTitleColor(UIColor.white, for: .selected)
-//        view.coinNameLab.text = "BTC"
         view.buyBtn.isSelected = true
-//        view.coinViewWidth.constant = 100
-//        view.chooseCoinBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
+        return view
+    }()
+    
+    lazy var selectVw: IntegralApplicationStatusVw = {
+        let view = Bundle.main.loadNibNamed("IntegralApplicationStatusVw", owner: nil, options: nil)?.last as! IntegralApplicationStatusVw
+        view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height:SCREEN_HEIGHT)
+        view.delegare = self
+        view.isHidden = true
         return view
     }()
     
@@ -82,6 +87,14 @@ class BusinessaDvertisementVC: MainViewController {
         return tableView
     }()
     
+    lazy var chooseVw: MineChooseBtn = {
+        let view = MineChooseBtn.createView()
+        view.frame = CGRect(x: SCREEN_WIDTH/2 - 145/2, y: 32, width: 145 , height: 22)
+        view.chooseBtn.tag = 4
+        view.chooseBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
+        return view
+    }()
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(R_NotificationC2COrderReload), object: nil)
     }
@@ -92,6 +105,7 @@ extension BusinessaDvertisementVC {
         setNormalNaviBar(title: LanguageHelper.getString(key: "C2C_mine_my_advertisement_coin_list"))
         view.addSubview(businessView)
         view.addSubview(tableView)
+        view.addSubview(chooseVw)
     }
     
     @objc func contactOnClick(_ sender:UIButton){
@@ -265,11 +279,8 @@ extension BusinessaDvertisementVC {
     }
     
     @objc func distributeOnClick(_ sender:UIButton){
-        let coinArray = self.coinArray
-        let list_height = coinArray.count * 40 + 15
-        let menuView = PST_MenuView.init(frame: CGRect(x: Int(SCREEN_WIDTH - 120 - 15), y: Int(businessView.frame.maxY), width: 120, height: list_height), titleArr:coinArray as! [Any], imgArr: nil, arrowOffset: 100, rowHeight: 40, layoutType: PST_MenuViewLayoutType(rawValue: 1)!, directionType: PST_MenuViewDirectionType(rawValue: 0)!, delegate: self)
-        menuView?.arrowColor = UIColor.white
-        menuView?.titleColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
+          self.selectVw.dataArray = self.coinArray
+          self.selectVw.isHidden = !self.selectVw.isHidden
     }
     
     func cleanData(){
@@ -384,5 +395,11 @@ extension BusinessaDvertisementVC: InputPaymentPasswordDelegate{
         forgetvc.status = .modify
         forgetvc.isNeedNavi = false
         self.navigationController?.pushViewController(forgetvc, animated: true)
+    }
+}
+
+extension BusinessaDvertisementVC :IntegralApplicationStatusDelegate {
+    func integralApplicationStatusSelectRow(index: NSInteger, name: String, selectList: NSInteger) {
+        chooseVw.titleLab.text = "广告纪录-" + name
     }
 }

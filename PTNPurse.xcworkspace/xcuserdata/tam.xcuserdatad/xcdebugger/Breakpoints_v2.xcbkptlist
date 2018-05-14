@@ -73,40 +73,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PTNPurse/Main(&#x4e3b;&#x8981;)/C2C(&#x7535;&#x5b50;&#x5546;&#x52a1;)/Controller/BusinessTransactionVC(&#x53d1;&#x5e03;&#x51fa;&#x552e;)/Controller/BusinessTransactionVC.swift"
-            timestampString = "546337932.843699"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "postData(tradePassword:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PTNPurse/Main(&#x4e3b;&#x8981;)/Mine(&#x4e2a;&#x4eba;)/Controller/LanguageSetViewController.swift"
-            timestampString = "546331964.393492"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "PTNPurse/Main(&#x4e3b;&#x8981;)/Home(&#x4e3b;&#x9875;)/Controller/HomeTransferVC(&#x8f6c;&#x8d26;)/Controller/HomeTransferVC.swift"
-            timestampString = "547639769.5220391"
+            timestampString = "547959982.890226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "278"

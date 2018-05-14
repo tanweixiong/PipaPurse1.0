@@ -18,22 +18,23 @@ class BusinessTransactionVC: MainViewController {
     var style = BusinessTransactionStyle.buyStyle
     fileprivate var paymentMethod = String()
     fileprivate var bankCardId = String()
+    fileprivate var alipayStr = String()
+    fileprivate var weChatStr = String()
     fileprivate var headingArray =
         [LanguageHelper.getString(key: "C2C_publish_order_Currency")
-        ,LanguageHelper.getString(key: "C2C_publish_order_Receiving")
         ,LanguageHelper.getString(key: "C2C_publish_order_Number")
         ,LanguageHelper.getString(key: "C2C_publish_order_Unit")
         ,LanguageHelper.getString(key: "C2C_publish_order_Limit")
         ,LanguageHelper.getString(key: "C2C_publish_order_Message")]
     fileprivate let headingContentArray =
         [LanguageHelper.getString(key: "C2C_publish_order_Select_the_type_of_currency_you_trade")
-        ,LanguageHelper.getString(key: "C2C_publish_order_Alipay_Wechat_bankCard")
         ,LanguageHelper.getString(key: "C2C_publish_order_Please_enter_the_number_of_transactions")
         ,LanguageHelper.getString(key: "C2C_publish_order_Please_enter_the_transaction_unit_price")
         ,LanguageHelper.getString(key: "C2C_publish_order_Please_enter_the_minimum_transaction_limit_amount")
         ,LanguageHelper.getString(key: "C2C_publish_order_Enter_information_to_inform_each_other")]
-    fileprivate let homeTransferCell = "HomeTransferCell"
+    fileprivate let businessRelaseCell = "BusinessRelaseCell"
     fileprivate let homeTransferRemarksCell = "HomeTransferRemarksCell"
+    fileprivate let businessReleaseMethodCell = "BusinessReleaseMethodCell"
     fileprivate let coinArray = NSMutableArray()
     fileprivate var coinNameTF = UITextField()
     fileprivate var methodTF = UITextField()
@@ -43,11 +44,9 @@ class BusinessTransactionVC: MainViewController {
     fileprivate var methodType = String()
     fileprivate var remarkTV = YYTextView()
     fileprivate var remarksCell = HomeTransferRemarksCell()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setReplace()
         setupUI()
         getCoin()
         BusinessVC.setPaymentData()
@@ -55,17 +54,35 @@ class BusinessTransactionVC: MainViewController {
     }
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - MainViewControllerUX.naviNormalHeight))
+        let tableView = UITableView.init(frame: CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - MainViewControllerUX.naviNormalHeight - 50))
         tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UINib(nibName: "HomeTransferCell", bundle: nil),forCellReuseIdentifier: self.homeTransferCell)
+        tableView.register(UINib(nibName: "BusinessRelaseCell", bundle: nil),forCellReuseIdentifier: self.businessRelaseCell)
+        tableView.register(UINib(nibName: "BusinessReleaseMethodCell", bundle: nil),forCellReuseIdentifier: self.businessReleaseMethodCell)
         tableView.register(UINib(nibName: "HomeTransferRemarksCell", bundle: nil),forCellReuseIdentifier: self.homeTransferRemarksCell)
         tableView.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xEDEDED)
-        tableView.separatorInset = UIEdgeInsetsMake(0,SCREEN_WIDTH, 0,SCREEN_WIDTH);
         tableView.tableFooterView = UIView()
-        tableView.separatorColor = R_UISectionLineColor
+        tableView.separatorStyle = .none
         return tableView
+    }()
+    
+    lazy var determineBtn: UIButton = {
+        let btn  = UIButton(type: .system)
+        btn.setTitle("确定发布", for: .normal)
+        btn.frame = CGRect(x: 0, y: tableView.frame.maxY, width: SCREEN_WIDTH, height: 50)
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)
+        btn.addTarget(self, action: #selector(BusinessTransactionVC.submitOnClick), for: .touchUpInside)
+        return btn
+    }()
+    
+    lazy var selectVw: IntegralApplicationStatusVw = {
+        let view = Bundle.main.loadNibNamed("IntegralApplicationStatusVw", owner: nil, options: nil)?.last as! IntegralApplicationStatusVw
+        view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height:SCREEN_HEIGHT)
+        view.delegare = self
+        view.isHidden = true
+        return view
     }()
     
     deinit {
@@ -92,9 +109,11 @@ extension BusinessTransactionVC {
         let title = self.style == .buyStyle ? LanguageHelper.getString(key: "C2C_home_transaction_purchase") : LanguageHelper.getString(key: "C2C_home_transaction_sale")
         setCustomNaviBar(backgroundImage: "ic_naviBar_backgroundImg",title: title)
         view.addSubview(tableView)
+        view.addSubview(determineBtn)
+        UIApplication.shared.keyWindow?.addSubview(selectVw)
     }
     
-    func submitOnClick(){
+   @objc func submitOnClick(){
          if Tools.noPaymentPasswordIsSetToExecute() == false{return}
         if checkInput() {
             let input = InputPaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
@@ -221,12 +240,37 @@ extension BusinessTransactionVC {
         }
     }
     
-    func setReplace(){
-        let dataArray = NSMutableArray()
-        dataArray.addObjects(from: headingArray)
-        let text = style == .buyStyle ? LanguageHelper.getString(key: "C2C_publish_order_Your_payment_method") : LanguageHelper.getString(key: "C2C_publish_order_Your_have_payment_method")
-        dataArray.replaceObject(at: 1, with: text)
-        self.headingArray = dataArray as! [String]
+    @objc func onClick(_ sender:UIButton){
+        //选择币种
+        if sender.tag == 1 {
+            if self.coinArray.count == 0 {return}
+            //刷新数组
+            self.selectVw.dataArray = self.coinArray
+            //赋予选项
+            self.selectVw.selectList = 0
+        //选择支付方式
+            self.selectVw.isHidden = false
+        }else if sender.tag == 2 {
+            let listArray = NSMutableArray()
+            weChatStr = UserDefaults.standard.getUserInfo().weChat!
+            if  weChatStr != "" {
+                listArray.add(LanguageHelper.getString(key: "C2C_payment_WeChat") + weChatStr)
+            }else{
+                listArray.add(LanguageHelper.getString(key: "C2C_payment_WeChat"))
+            }
+            
+            let alipayStr = UserDefaults.standard.getUserInfo().apay!
+            if  alipayStr != "" {
+                listArray.add(LanguageHelper.getString(key: "C2C_payment_Alipay") + alipayStr)
+            }else{
+                listArray.add(LanguageHelper.getString(key: "C2C_payment_Alipay"))
+            }
+            listArray.add(LanguageHelper.getString(key: "C2C_payment_Bankcard"))
+            
+            self.selectVw.dataArray = listArray
+            self.selectVw.selectList = 1
+            self.selectVw.isHidden = false
+        }
     }
 }
 
@@ -273,7 +317,7 @@ extension BusinessTransactionVC: InputPaymentPasswordDelegate{
         }else{
             remarksCell.submitBtn.backgroundColor = UIColor.clear
             remarksCell.submitBtn.layer.borderWidth = 1
-            remarksCell.submitBtn.layer.borderColor = UIColor.R_UIColorFromRGB(color: 0xCED7E6).cgColor
+            remarksCell.submitBtn.layer.borderColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD).cgColor
         }
     }
 }
@@ -288,148 +332,74 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row != 5 {
-            return YMAKE(70)
+        if indexPath.row != 4 {
+            return 94
         }else{
-            return 400
+            return 184 + 15
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row < 2 {
-            if indexPath.row == 0 {
-                let coin = self.coinArray
-                BRStringPickerView.showStringPicker(withTitle: LanguageHelper.getString(key: "C2C_publish_order_Please_select_your_trading_currency"), dataSource: coin as! [Any], defaultSelValue: "BTC", isAutoSelect: false, resultBlock: { (coinName:Any) in
-                    let coinName = coinName as! String
-                    self.coinNameTF.text = coinName
-                    self.getCoinObject(coinName: coinName)
-                    self.changeSubmitStyle()
-                })
-            }else if indexPath.row == 1 {
-                view.endEditing(true)
-                let listArray = NSMutableArray()
-                let weChat = UserDefaults.standard.getUserInfo().weChat
-                
-                if  weChat != "" && weChat != nil {
-                    listArray.add(LanguageHelper.getString(key: "C2C_payment_WeChat") + weChat!)
-                }else{
-                    listArray.add(LanguageHelper.getString(key: "C2C_payment_WeChat"))
+
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row != 4 {
+            if indexPath.row == 0{
+               let cell = tableView.dequeueReusableCell(withIdentifier: businessReleaseMethodCell, for: indexPath) as! BusinessReleaseMethodCell
+               cell.selectionStyle = .none
+               cell.selectCoinBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
+               cell.selectMethodBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
+               coinNameTF = cell.cointf
+               methodTF = cell.paymentMethodtf
+               return cell
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: businessRelaseCell, for: indexPath) as! BusinessRelaseCell
+                cell.selectionStyle = .none
+                cell.headContentLab.text = headingArray[indexPath.row]
+                cell.textfield.placeholder = headingContentArray[indexPath.row]
+                cell.textfield.textColor = UIColor.R_UIColorFromRGB(color: 0xBDBDBD)
+                cell.textfield.font = UIFont.systemFont(ofSize: 12)
+                cell.textfield.setValue(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), forKeyPath: "_placeholderLabel.textColor")
+                if indexPath.row == 1 {
+                    cell.textfield.keyboardType = .decimalPad
+                    cell.textfield.delegate = self
+                    cell.thinLinesVw.isHidden = false
+                    self.transactionsNumTF = cell.textfield
+                }else if indexPath.row == 2 {
+                    cell.textfield.keyboardType = .decimalPad
+                    cell.textfield.delegate = self
+                    cell.thickLinesVw.isHidden = false
+                    self.transactionsPriceTF = cell.textfield
+                }else if indexPath.row == 3 {
+                    cell.textfield.keyboardType = .decimalPad
+                    cell.thinLinesVw.isHidden = false
+                    self.transactionsMinTF = cell.textfield
                 }
-                
-                let alipay = UserDefaults.standard.getUserInfo().apay
-                if  alipay != "" && alipay != nil {
-                    listArray.add(LanguageHelper.getString(key: "C2C_payment_Alipay") + alipay!)
-                }else{
-                    listArray.add(LanguageHelper.getString(key: "C2C_payment_Alipay"))
-                }
-                listArray.add(LanguageHelper.getString(key: "C2C_payment_Bankcard"))
-                
-                BRStringPickerView.showStringPicker(withTitle: LanguageHelper.getString(key: "C2C_publish_order_Please_select_your_receiving_method"), dataSource: listArray as! [Any]
-                  , defaultSelValue: nil, isAutoSelect: false, resultBlock: { (method:Any) in
-                    self.paymentMethod = method as! String //用于支付方式
-                    let method = method as! String
-                    var account = String()
-                    if method.contains(LanguageHelper.getString(key: "C2C_payment_Bankcard")) {
-                        let mineBankCardBindingVC = MineBankCardBindingVC()
-                        mineBankCardBindingVC.delegate = self
-                        mineBankCardBindingVC.style = .selectStyle
-                        self.navigationController?.pushViewController(mineBankCardBindingVC, animated: true)
-                        return
-                    }else if method.contains(LanguageHelper.getString(key: "C2C_payment_Alipay")) {
-                        account = method 
-                        //前往设置支付宝
-                        if alipay == nil {
-                            let mineSetAccountVC = MineSetAccountVC()
-                            mineSetAccountVC.style = .alipayStyle
-                            self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
-                            return
-                        }
-                        
-                        if alipay == "" {
-                            let mineSetAccountVC = MineSetAccountVC()
-                            mineSetAccountVC.style = .alipayStyle
-                            self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
-                            return
-                        }
-                        
-                    }else if method.contains(LanguageHelper.getString(key: "C2C_payment_WeChat")){
-                        account = method
-                        //前往设置微信
-                        if weChat == nil {
-                            let mineSetAccountVC = MineSetAccountVC()
-                            mineSetAccountVC.style = .weChatStyle
-                            self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
-                            return
-                        }
-                        
-                        if weChat == "" {
-                            let mineSetAccountVC = MineSetAccountVC()
-                            mineSetAccountVC.style = .weChatStyle
-                            self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
-                            return
-                        }
-                        
-                    }
-                    self.methodTF.text = account
-                    self.methodType = Tools.getPaymentMethod(method)
-                    self.changeSubmitStyle()
-                })
+                return cell
             }
+        }else{
+            remarksCell = tableView.dequeueReusableCell(withIdentifier: homeTransferRemarksCell, for: indexPath) as! HomeTransferRemarksCell
+            remarksCell.selectionStyle = .none
+            remarksCell.remarkLabel.text = "广告留言"
+            remarksCell.remarkLabel.textColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
+            remarksCell.remarkLabel.font = UIFont.systemFont(ofSize: 14)
+            remarksCell.textView?.placeholderText = " 请说明有关您交易的相关条款或备注您的支付方式，如微信号，支付宝号等，以便对方可以快速和您交易。（下单前后都可见）"
+            remarksCell.textView?.placeholderFont = UIFont.systemFont(ofSize: 12)
+            remarksCell.textView?.textColor = UIColor.R_UIColorFromRGB(color: 0xBDBDBD)
+            remarksCell.textView?.placeholderTextColor = UIColor.R_UIColorFromRGB(color: 0xBDBDBD)
+            self.remarkTV = remarksCell.textView!
+            remarksCell.setReleaseMethodLayer()
+            remarksCell.footView.isHidden = true
+            return remarksCell
         }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-         closeKeyboard()
+        view.endEditing(true)
+        tableView.contentSize = CGSize(width: 0, height: headingArray.count * 94 + 200 + 100)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row != 5 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: homeTransferCell, for: indexPath) as! HomeTransferCell
-            cell.selectionStyle = .none
-            cell.headingLabel.text = headingArray[indexPath.row]
-            cell.textfield.placeholder = headingContentArray[indexPath.row]
-            cell.textfield.textColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
-            if indexPath.row < 2{
-                cell.triangularBtn.isHidden = false
-                cell.textfield.isUserInteractionEnabled = false
-            }else{
-                cell.unitLab.isHidden = false
-                cell.unitLab.text = indexPath.row == 3 ? "CNY" : LanguageHelper.getString(key: "C2C_mine_My_advertisement_Num")
-            }
-            if indexPath.row == 0 {
-                self.coinNameTF = cell.textfield
-            }else if indexPath.row == 1 {
-                self.methodTF = cell.textfield
-            }else if indexPath.row == 2 {
-                cell.textfield.keyboardType = .decimalPad
-                cell.textfield.delegate = self
-                self.transactionsNumTF = cell.textfield
-            }else if indexPath.row == 3 {
-                cell.textfield.keyboardType = .decimalPad
-                cell.textfield.delegate = self
-                self.transactionsPriceTF = cell.textfield
-            }else if indexPath.row == 4 {
-                cell.textfield.keyboardType = .decimalPad
-                self.transactionsMinTF = cell.textfield
-            }
-            return cell
-        }else{
-            remarksCell = tableView.dequeueReusableCell(withIdentifier: homeTransferRemarksCell, for: indexPath) as! HomeTransferRemarksCell
-            remarksCell.selectionStyle = .none
-            remarksCell.submitBtn.setTitle(LanguageHelper.getString(key: "C2C_publish_order_Submit_release"), for: .normal)
-            remarksCell.submitBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xCED7E6), for: .normal)
-            remarksCell.submitBtn.setTitleColor(UIColor.white, for: .selected)
-            setSubmitBtnStyle()
-            remarksCell.remarkLabel.text = LanguageHelper.getString(key: "C2C_publish_order_Message")
-            remarksCell.textView?.placeholderText = LanguageHelper.getString(key: "C2C_publish_order_Please_enter_the_remarks")
-            remarksCell.textView?.placeholderFont = UIFont.systemFont(ofSize: 14)
-            remarksCell.textView?.textColor = UIColor.R_UIColorFromRGB(color: 0xCED7E6)
-            remarksCell.HomeTransferRemarksBlock = {self.submitOnClick()}
-            self.remarkTV = remarksCell.textView!
-            remarksCell.setData()
-            return remarksCell
-        }
-    }
 }
 
 extension BusinessTransactionVC:MineBankCardBindingDelegate{
@@ -437,6 +407,48 @@ extension BusinessTransactionVC:MineBankCardBindingDelegate{
         self.methodTF.text = bankCardName + bankCardNum
         self.methodType = Tools.getPaymentMethod(LanguageHelper.getString(key: "C2C_payment_Bankcard"))
         self.bankCardId = id
+        self.changeSubmitStyle()
+    }
+}
+
+extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
+    func integralApplicationStatusSelectRow(index: NSInteger, name: String, selectList: NSInteger) {
+        if selectList == 0 {
+            coinNameTF.text = name
+        }else if selectList == 1 {
+            self.paymentMethod = name //用于支付方式
+            let method = name
+            var account = String()
+            if method.contains(LanguageHelper.getString(key: "C2C_payment_Bankcard")) {
+                let mineBankCardBindingVC = MineBankCardBindingVC()
+                mineBankCardBindingVC.delegate = self
+                mineBankCardBindingVC.style = .selectStyle
+                self.navigationController?.pushViewController(mineBankCardBindingVC, animated: true)
+                return
+            }else if method.contains(LanguageHelper.getString(key: "C2C_payment_Alipay")) {
+                account = method
+                //前往设置支付宝
+                if alipayStr == "" {
+                    let mineSetAccountVC = MineSetAccountVC()
+                    mineSetAccountVC.style = .alipayStyle
+                    self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
+                    return
+                }
+                
+            }else if method.contains(LanguageHelper.getString(key: "C2C_payment_WeChat")){
+                account = method
+                //前往设置微信
+                if weChatStr == "" {
+                    let mineSetAccountVC = MineSetAccountVC()
+                    mineSetAccountVC.style = .weChatStyle
+                    self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
+                    return
+                }
+                
+            }
+            self.methodTF.text = account
+            self.methodType = Tools.getPaymentMethod(method)
+        }
         self.changeSubmitStyle()
     }
 }

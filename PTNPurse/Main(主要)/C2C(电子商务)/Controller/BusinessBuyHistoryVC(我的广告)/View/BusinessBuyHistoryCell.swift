@@ -9,38 +9,38 @@
 import UIKit
 
 class BusinessBuyHistoryCell: UITableViewCell {
-
+    var style = BusinessTransactionStyle.buyStyle
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var dateLab: UILabel!
     @IBOutlet weak var entrustPriceLab: UILabel!
-    @IBOutlet weak var entrustMaxPriceLab: UILabel!
     @IBOutlet weak var payMethodLab: UILabel!
     @IBOutlet weak var entrustMinPriceLab: UILabel!
-    @IBOutlet weak var receivablesTypeLab: UILabel!
+    @IBOutlet weak var entrustMaxPriceLab: UILabel!
+    @IBOutlet weak var proportionLab: UILabel!
     @IBOutlet weak var detailsBtn: UIButton!
     @IBOutlet weak var operatingBtn: UIButton!
     @IBOutlet weak var backgroundVw: UIView!
-    
-    
     @IBOutlet weak var entrustPriceTitleLab: UILabel!
-    @IBOutlet weak var entrustMaxTitleLab: UILabel!
+    @IBOutlet weak var proportionTitleLab: UILabel!
     @IBOutlet weak var payMethodTitleLab: UILabel!
     @IBOutlet weak var entrustMinPriceTitleLab: UILabel!
-    
+    @IBOutlet weak var maxTitleLab: UILabel!
     var model = BusinessBuyHistoryModel(){
         didSet{
             stateLabel.text = Tools.getMineAdvertisingMethod((model?.state?.stringValue)!)
-            dateLab.text = model?.date
             entrustPriceLab.text = Tools.setPriceNumber(price: (model?.entrustPrice!)!) + " CNY"
+            dateLab.text = model?.date
+            proportionLab.text = "10%"
             entrustMaxPriceLab.text = (model?.entrustMaxPrice?.stringValue)! + "个"
             payMethodLab.text = Tools.getPaymentDetailsMethod((model!.receivablesType!.stringValue))
             entrustMinPriceLab.text = Tools.setPriceNumber(price: (model?.entrustMinPrice!)!) + " CNY"
             
             entrustPriceTitleLab.text = LanguageHelper.getString(key: "C2C_mine_my_advertisement_Price") + "："
-            entrustMaxTitleLab.text = LanguageHelper.getString(key: "C2C_mine_my_advertisement_Limit")
             payMethodTitleLab.text = LanguageHelper.getString(key: "C2C_mine_my_advertisement_Method")
             entrustMinPriceTitleLab.text = LanguageHelper.getString(key: "C2C_mine_my_advertisement_Min_limit")
             operatingBtn.setTitle(LanguageHelper.getString(key: "C2C_mine_my_advertisement_Drop"), for: .normal)
+            maxTitleLab.text = LanguageHelper.getString(key: "C2C_Max") + "："
+            proportionTitleLab.text = LanguageHelper.getString(key: "C2C_Proportion") + "："
             
             if model?.state == 0 {
                 detailsBtn.isHidden = true
@@ -48,6 +48,14 @@ class BusinessBuyHistoryCell: UITableViewCell {
             }else{
                 detailsBtn.isHidden = true
                 operatingBtn.isHidden = true
+            }
+            
+            if style == .buyStyle {
+                stateLabel.text = "购买广告"
+                stateLabel.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xFF7052)
+            }else{
+                stateLabel.text = "出售广告"
+                stateLabel.backgroundColor = UIColor.R_UIColorFromRGB(color: 0x00D85A)
             }
         }
     }

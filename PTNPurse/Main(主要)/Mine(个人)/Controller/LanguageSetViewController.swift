@@ -29,7 +29,7 @@ class LanguageSetViewController: UIViewController, UITableViewDelegate, UITableV
     let currencytitleArray = ["CNY", "USD"]
     let currencyimageArray = ["person_currency", "person_currency"]
     
-    var type: LanguageSetViewControllerType?
+    var type = LanguageSetViewControllerType.language
     var style = LanguageSetViewControllerStyle.normal
     
     // MARK: - life Cycle
@@ -53,7 +53,7 @@ class LanguageSetViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if type! == .language {
+        if type == .language {
             return languagetitleArray.count
         } else {
             return currencytitleArray.count
@@ -62,22 +62,32 @@ class LanguageSetViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("MineViewTableViewCell", owner: nil, options: nil)?[0] as! MineViewTableViewCell
-        if type! == .language {
+        cell.isLanguage = true
+        cell.distanceX.constant = -20
+        cell.leftImageView.isHidden = true
+        if type == .language {
             cell.leftImageView.image = UIImage.init(named: languageimageArray[indexPath.row])
             cell.leftLabel.text = LanguageHelper.getString(key: languagetitleArray[indexPath.row])
-            
             let language = UserDefaults.standard.object(forKey: UserLanguage) as! String
             if language == "zh-Hans" {
                 if indexPath.row == 0 {
                     cell.viewType = .checkmark
+                    cell.bgview.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)
+                    cell.leftLabel.textColor = UIColor.R_UIColorFromRGB(color: 0x009BFD)
                 } else {
                     cell.viewType = .noright
+                    cell.bgview.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xF1F1F1)
+                    cell.leftLabel.textColor = UIColor.R_UIColorFromRGB(color: 0xCED7E6)
                 }
             } else if language == "en" {
                 if indexPath.row == 1 {
                     cell.viewType = .checkmark
+                    cell.bgview.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)
+                    cell.leftLabel.textColor = UIColor.R_UIColorFromRGB(color: 0x009BFD)
                 } else {
                     cell.viewType = .noright
+                    cell.bgview.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xF1F1F1)
+                    cell.leftLabel.textColor = UIColor.R_UIColorFromRGB(color: 0xCED7E6)
                 }
             }
             
@@ -115,10 +125,9 @@ class LanguageSetViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = self.tableView(tableView, cellForRowAt: indexPath) as! MineViewTableViewCell
         cell.viewType = .checkmark
-        
         var langeuage = ""
         var currency = ""
-        if type! == .language {
+        if type == .language {
             if indexPath.row == 0 {
                 langeuage = "zh-Hans"
                 LanguageHelper.shareInstance.setLanguage(langeuage: langeuage)
@@ -130,7 +139,7 @@ class LanguageSetViewController: UIViewController, UITableViewDelegate, UITableV
             LanguageHelper.shareInstance.setLanguage(langeuage: langeuage)
             self.tableView.reloadData()
             self.setViewStyle()
-        } else if type! == .currency {
+        } else if type == .currency {
             currency = currencytitleArray[indexPath.row]
             UserDefaults.standard.set(currency, forKey: UserCurrency)
             self.tableView.reloadData()
@@ -165,7 +174,7 @@ class LanguageSetViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - Private Method
     func setViewStyle() {
         
-        if type! == .language {
+        if type == .language {
             topView.setViewContent(title: LanguageHelper.getString(key: "person_multilanguage"))
            
         } else {

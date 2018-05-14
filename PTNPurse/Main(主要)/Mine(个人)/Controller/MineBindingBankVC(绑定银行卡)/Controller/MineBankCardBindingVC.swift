@@ -41,22 +41,21 @@ class MineBankCardBindingVC: MainViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "MineBankCardBindingCell", bundle: nil),forCellReuseIdentifier: self.mineBankCardBindingCell)
-        tableView.backgroundColor = UIColor.R_UIRGBColor(red: 249, green: 249, blue: 251, alpha: 1)
+        tableView.backgroundColor = UIColor.white
         tableView.separatorStyle = .none
         return tableView
     }()
     
+    //33 32
     lazy var addBankCardBtn: UIButton = {
-        let btn = UIButton.init(type: .custom)
+        let btn = UIButton(type: .custom)
+        btn.frame = CGRect(x: SCREEN_WIDTH - 15 - 34, y: 32, width: 34, height: 22)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+//        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), for: .normal)
+        btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitle(LanguageHelper.getString(key: "binding_Add"), for: .normal)
-        btn.frame = CGRect(x: SCREEN_WIDTH - 56 - 15, y: 70, width: 56, height: 30)
-        btn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xFFD700)
-        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xFFFFFF), for: .normal)
+        btn.isEnabled = false
         btn.addTarget(self, action: #selector(addBankCardOnClick(_:)), for: .touchUpInside)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        btn.tag = 1
-        btn.layer.cornerRadius = 5
-        btn.clipsToBounds = true
         return btn
     }()
     

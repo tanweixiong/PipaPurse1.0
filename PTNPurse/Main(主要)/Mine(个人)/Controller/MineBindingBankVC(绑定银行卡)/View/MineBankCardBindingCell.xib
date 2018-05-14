@@ -90,9 +90,15 @@
                                     <constraint firstItem="Y8c-SC-z6V" firstAttribute="top" secondItem="Gt5-up-1bi" secondAttribute="top" constant="8" id="vHc-vp-9xM"/>
                                     <constraint firstItem="lGy-7W-JhN" firstAttribute="leading" secondItem="oUV-0W-nAm" secondAttribute="leading" id="wg8-ln-kd9"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Gt5-up-1bi" secondAttribute="trailing" constant="15" id="2KF-yQ-6Al"/>
                             <constraint firstItem="Gt5-up-1bi" firstAttribute="top" secondItem="ohY-zd-p4e" secondAttribute="top" constant="7.5" id="2xq-5e-Eu8"/>

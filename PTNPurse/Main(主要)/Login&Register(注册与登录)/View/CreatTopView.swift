@@ -12,7 +12,7 @@ typealias BtnClickCallBack = (_ sender: UIButton) -> Void
 
 class CreatTopView: ILXibView {
     
-    
+    @IBOutlet weak var rightItemBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
     
     @IBOutlet weak var bgImageview: UIImageView!

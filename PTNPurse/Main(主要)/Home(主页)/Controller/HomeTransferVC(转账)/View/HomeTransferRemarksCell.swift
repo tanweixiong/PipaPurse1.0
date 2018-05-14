@@ -53,6 +53,17 @@ class HomeTransferRemarksCell: UITableViewCell,YYTextViewDelegate {
         remarkLabel.text = LanguageHelper.getString(key: "homePage_Finish_Details_Transaction_Remarks")
     }
     
+    
+    func setReleaseMethodLayer(){
+        contentView.addSubview(textView!)
+        textView?.snp.makeConstraints({ (make) in
+            make.left.equalTo(contentView.snp.left).offset(10)
+            make.top.equalTo(remarkLabel.snp.bottom).offset(10)
+            make.width.equalTo(SCREEN_WIDTH - 30)
+            make.height.equalTo(129)
+        })
+    }
+    
     lazy var textView:YYTextView? = {
         let view = YYTextView.init(frame: CGRect.init(x: 0, y: 0, width:0, height: 0))
         view.placeholderText = LanguageHelper.getString(key: "homePage_Leave_Message")

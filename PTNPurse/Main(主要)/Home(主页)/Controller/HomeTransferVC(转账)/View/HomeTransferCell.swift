@@ -15,6 +15,8 @@ class HomeTransferCell: UITableViewCell,RegisterCellFromNib {
 
     @IBOutlet weak var lineVw: UIView!
     
+    
+    @IBOutlet weak var crudeLineVw: UIView!
     @IBOutlet weak var centersY: NSLayoutConstraint!
     @IBOutlet weak var unitLab: UILabel!
     @IBOutlet weak var triangularBtn: UIButton!

@@ -27,7 +27,8 @@ class MineBankCardBindingCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         addDataLab.text = LanguageHelper.getString(key: "binding_Date_added") + " " + "2016/07／16"
-        Tools.setViewShadow(backGroundVw)
+        backGroundVw.layer.borderWidth = 1
+        backGroundVw.layer.borderColor = UIColor.R_UIColorFromRGB(color: 0xE8E8E8).cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

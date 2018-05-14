@@ -15,15 +15,10 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var topView: CreatTopView!
     @IBOutlet weak var talbeView: UITableView!
     let titleArray = [
-        "person_modifytradepwd"
-        ,"binding_Alipay_account_settings"
-        ,"binding_WeChat_account_settings"
-        ,"binding_Bank_card_binding"]
-    let imageArray = [
-        "person_friend"
-        ,"ic_binding_alipay"
-        ,"ic_binding_weChat"
-        ,"ic_binding_bankCard"]
+        "修改登录密码"
+        ,"修改交易密码"
+        ,"支付方式"
+        ,"语言设置"]
     
     // MARK: - life Cycle
     override func viewDidLoad() {
@@ -51,58 +46,42 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("MineViewTableViewCell", owner: nil, options: nil)?[0] as! MineViewTableViewCell
-        cell.viewType = .arrow
-        cell.leftImageView.image = UIImage.init(named: imageArray[indexPath.row])
-        cell.rightImageView.image = UIImage.init(named: "person_rightarrow")
-        cell.leftLabel.text = LanguageHelper.getString(key: titleArray[indexPath.row])
-        if indexPath.row == 0 {
+        let cell = Bundle.main.loadNibNamed("SecuritySetViewCell", owner: nil, options: nil)?[0] as! SecuritySetViewCell
+        cell.selectionStyle = .none
+        cell.headingContentLab.text = LanguageHelper.getString(key: titleArray[indexPath.row])
+        if indexPath.row == 1 {
             if let flag = SingleTon.shared.pwdstate {
                 if flag == 1 {
-                    cell.leftLabel.text = LanguageHelper.getString(key: "person_modifytradepwd")
+                    cell.headingContentLab.text = LanguageHelper.getString(key: "person_modifytradepwd")
                 } else if flag == 0 {
-                    cell.leftLabel.text = LanguageHelper.getString(key: "person_settradepwd")
+                    cell.headingContentLab.text = LanguageHelper.getString(key: "person_settradepwd")
                 }
-            } else {
-                cell.leftLabel.text = LanguageHelper.getString(key: "person_settradepwd")
             }
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
+        return 70
     }
-    
-   
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch indexPath.row {
         case 0:
-            let modifyTradePwdVC = ModifyTradePwdViewController()
-            if let flag = SingleTon.shared.pwdstate {
-                if flag == 1 {
-                    modifyTradePwdVC.status = .modify
-                } else if flag == 0 {
-                    modifyTradePwdVC.status = .normal
-                }
-            } else {
-                modifyTradePwdVC.status = .normal
-            }
-            modifyTradePwdVC.type = .tradepwd
-            self.navigationController?.pushViewController(modifyTradePwdVC, animated: true)
+            let vc = RegisterViewController()
+            vc.type = .forgetpwd
+            self.navigationController?.pushViewController(vc, animated: true)
         case 1:
-            let mineSetAccountVC = MineSetAccountVC()
-            mineSetAccountVC.style = .alipayStyle
-            self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
+            let vc = RegisterViewController()
+            vc.type = .setPaymentPsd
+            self.navigationController?.pushViewController(vc, animated: true)
         case 2:
-            let mineSetAccountVC = MineSetAccountVC()
-            mineSetAccountVC.style = .weChatStyle
-            self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
+            let mineSetPaymentVC = MineSetPaymentVC()
+            self.navigationController?.pushViewController(mineSetPaymentVC, animated: true)
         case 3:
-            let mineBankCardBindingVC = MineBankCardBindingVC()
-            self.navigationController?.pushViewController(mineBankCardBindingVC, animated: true)
+            let languageSetViewController = LanguageSetViewController()
+            self.navigationController?.pushViewController(languageSetViewController, animated: true)
         default:
             break
         }
@@ -120,8 +99,8 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
     
     func getUserTradeState() {
         let token = UserDefaults.standard.value(forKey: "token")
-        let userno = SingleTon.shared.userInfo?.id
-        let params = ["token" : token,"userNo":userno!]
+        let userno = (UserDefaults.standard.getUserInfo().id?.stringValue)!
+        let params = ["token" : token,"userNo":userno]
         ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIHasSetTradePwd, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
             let result = Mapper<HadSetTradePwdResponse>().map(JSONObject: jsonObjc)
             if let code = result?.code {
@@ -143,20 +122,7 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
     }
-    
-    /*
-    func setTradePwdState() {
-        
-        if let state = SingleTon.shared.pwdstate?.flag  {
-            let cell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 0))
-            if state == 0 {
-                cell?.detailTextLabel?.attributedText = NSAttributedString.init(string: "未设置!", attributes: [NSForegroundColorAttributeName : R_UIThemeColor])
-            } else if state == 1 {
-                cell?.detailTextLabel?.attributedText = NSAttributedString.init(string: "已设置!", attributes: [NSForegroundColorAttributeName : R_UIThemeColor])
-            }
-        }
-        
-    }*/
+
 
 
 }

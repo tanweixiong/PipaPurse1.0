@@ -17,4 +17,6 @@
 #import "OCTools.h"
 #import "QFDatePickerView.h"
 #import "CQMarqueeView.h"
+#import "YLGIFImage.h"
+#import "YLImageView.h"
 #endif

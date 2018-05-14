@@ -169,6 +169,7 @@ public let R_ZYTitlFontSize = CGFloat(12)
 public let R_ZYBtnFontSize = CGFloat(12)
 public let R_ZYMineViewGrayColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
 public let R_ZYCellShadowColor = UIColor.R_UIColorFromRGB(color: 0xCFD3D5)
+public let R_ZYSelectNormalColor = UIColor.R_UIColorFromRGB(color: 0xBDBDBD)
 
 let        VERTICAL_SCALE = SCREEN_HEIGHT / 667
 let        HORIZION_SCALE = SCREEN_WIDTH / 375

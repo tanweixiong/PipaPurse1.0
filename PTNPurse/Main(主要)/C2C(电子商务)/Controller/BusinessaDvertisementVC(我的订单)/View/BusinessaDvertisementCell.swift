@@ -15,57 +15,60 @@ enum BusinessaDvertisementCellStyle {
 class BusinessaDvertisementCell: UITableViewCell {
     var businessaStyle = BusinessaDvertisementStyle.processingStyle
     fileprivate var style = BusinessaDvertisementCellStyle.detriment
+    @IBOutlet weak var photoImageVw: UIImageView!
+    @IBOutlet weak var usernameLab: UILabel!
+    @IBOutlet weak var stateLab: UILabel!
+    
+    @IBOutlet weak var orderNumLab: UILabel!
+    @IBOutlet weak var transactionTypeLab: UILabel!
+    @IBOutlet weak var transactionPriceLab: UILabel!
+    @IBOutlet weak var transactionCoinPriceLab: UILabel!
+    @IBOutlet weak var transactionDataLab: UILabel!
     @IBOutlet weak var backgroundVw: UIView!
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var nameLab: UILabel!
-    @IBOutlet weak var priceLab: UILabel!
-    @IBOutlet weak var transactionUnitPriceLab: UILabel!
-    @IBOutlet weak var transactionNumLab: UILabel!
-    @IBOutlet weak var transactionStatusLab: UILabel!
-    @IBOutlet weak var statusLab: UILabel!
-    @IBOutlet weak var transactionUnitTitleLab: UILabel!
-    @IBOutlet weak var transactionNumTitleLab: UILabel!
-    @IBOutlet weak var transactionStatusTitleLab: UILabel!
     
     var model = BusinessaDvertisementModel(){
         didSet{
             let photo = model?.photo == nil ? "" :  model?.photo
-            avatarImageView.sd_setImage(with:NSURL(string: photo!)! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
+            photoImageVw.sd_setImage(with:NSURL(string: photo!)! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
             
             let name = model?.username == nil ? "" : model?.username
-            nameLab.text = name!
-            
-            //价格
-            let sumPrice = model?.sumPrice == nil ? 0 : model?.sumPrice
-            let dealNum = model?.dealNum == nil ? 0 : model?.dealNum
-            priceLab.text = Tools.setPriceNumber(price: sumPrice!) + " CNY"
-
-            //单价
-            let unitPrice = model?.dealPrice == nil ? 0 : model?.dealPrice
-            transactionUnitPriceLab.text = Tools.setPriceNumber(price: unitPrice!) + " CNY"
-            
-            //交易数量
-            transactionNumLab.text = Tools.setPriceNumber(price: dealNum!) + " " + LanguageHelper.getString(key: "homePage_Numbers")
+            usernameLab.text = name!
             
             //状态，0：匹配中，1：已完成，2：撤销，3：等待买方付款，4：等待卖方确认，5：未付款回滚订单，6：纠纷强制打款，7：纠纷强制回滚
             //交易状态
-            transactionStatusLab.text = Tools.getBusinessaTransactionStyle(Style: (model?.state?.stringValue)!)
+            stateLab.text = Tools.getBusinessaTransactionStyle(Style: (model?.state?.stringValue)!)
+            
+            //价格
+            let sumPrice = model?.sumPrice == nil ? 0 : model?.sumPrice
+            transactionPriceLab.text = Tools.setPriceNumber(price: sumPrice!) + " CNY"
+
+            //单价
+            let unitPrice = model?.dealPrice == nil ? 0 : model?.dealPrice
+            transactionPriceLab.text = Tools.setPriceNumber(price: unitPrice!) + " CNY"
+            
+            orderNumLab.text = "12312"
+            
+            transactionTypeLab.text = "出售BTC"
+            
+            transactionPriceLab.text = "5000 CNY"
+            
+            transactionCoinPriceLab.text = "0.29 BTC"
+            
+            transactionDataLab.text = model?.dateFormatDate
+    
 
             //交易状态
-            var dealType = String()
             switch (model?.dealType?.intValue)! {
+            //0购买
             case 0:
-                dealType = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Buy")
-                statusLab.backgroundColor = UIColor.R_UIRGBColor(red: 65, green: 71, blue: 237, alpha: 1)
                 self.style = .detriment
+                transactionTypeLab.textColor = UIColor.R_UIColorFromRGB(color: 0xFF7052)
             case 1:
-                dealType = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Sell")
-                statusLab.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xFE7644)
                 self.style = .sell
+                transactionTypeLab.textColor = UIColor.R_UIColorFromRGB(color: 0x00D85A)
             default: break
             }
-            statusLab.text = dealType
-            
+   
             //进行中需要
             if businessaStyle == .processingStyle {
                addSubview(self.contactBtn)
@@ -76,10 +79,6 @@ class BusinessaDvertisementCell: UITableViewCell {
                cancelOrderBtn.isHidden = false
                remindBtn.isHidden = false
             }
-            
-            transactionUnitTitleLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Unit") + "："
-            transactionNumTitleLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Quantity") + "："
-            transactionStatusTitleLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Status") + "："
         }
     }
     
@@ -122,7 +121,7 @@ class BusinessaDvertisementCell: UITableViewCell {
         //发起纠纷
         if style == .sell && status == 4{
             backgroundVw.addSubview(initiateDisputeBtn)
-            initiateDisputeBtn.frame = CGRect(x: 23, y: self.transactionStatusTitleLab.frame.maxY + 20, width: 95, height: 30)
+            initiateDisputeBtn.frame = CGRect(x: 23, y: self.transactionDataLab.frame.maxY + 20, width: 95, height: 30)
         }else{
              initiateDisputeBtn.isHidden = true
         }
@@ -141,21 +140,21 @@ class BusinessaDvertisementCell: UITableViewCell {
         
         remindBtn.snp.updateConstraints { (make) in
             make.right.equalTo(self.backgroundVw.snp.right).offset(-15)
-            make.top.equalTo(self.transactionStatusTitleLab.snp.bottom).offset(20)
+            make.top.equalTo(self.transactionDataLab.snp.bottom).offset(20)
             make.width.equalTo(width)
             make.height.equalTo(30)
         }
         
         cancelOrderBtn.snp.updateConstraints { (make) in
             make.right.equalTo(self.remindBtn.snp.left).offset(right_x)
-            make.top.equalTo(self.transactionStatusTitleLab.snp.bottom).offset(20)
+            make.top.equalTo(self.transactionDataLab.snp.bottom).offset(20)
             make.width.equalTo(cancelOrderWidth)
             make.height.equalTo(30)
         }
         
         contactBtn.snp.updateConstraints { (make) in
             make.right.equalTo(self.cancelOrderBtn.snp.left).offset(contact_x)
-            make.top.equalTo(self.transactionStatusTitleLab.snp.bottom).offset(20)
+            make.top.equalTo(self.transactionDataLab.snp.bottom).offset(20)
             make.width.equalTo(contactWidth)
             make.height.equalTo(contactHeight)
         }
@@ -164,7 +163,7 @@ class BusinessaDvertisementCell: UITableViewCell {
     lazy var contactBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle(LanguageHelper.getString(key: "C2C_mine_My_advertisement_Contact"), for: .normal)
-        btn.frame = CGRect(x: 0, y: transactionStatusTitleLab.frame.maxY, width: 95, height:30)
+        btn.frame = CGRect(x: 0, y: transactionDataLab.frame.maxY, width: 95, height:30)
         btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xCFD3D5), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         btn.layer.cornerRadius = 5
@@ -178,7 +177,7 @@ class BusinessaDvertisementCell: UITableViewCell {
     lazy var cancelOrderBtn : UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle(LanguageHelper.getString(key: "C2C_mine_My_advertisement_Cancel"), for: .normal)
-        btn.frame = CGRect(x: 0, y: transactionStatusTitleLab.frame.maxY, width: 95, height:30)
+        btn.frame = CGRect(x: 0, y: transactionDataLab.frame.maxY, width: 95, height:30)
         btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xCFD3D5), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         btn.layer.cornerRadius = 5
@@ -192,7 +191,7 @@ class BusinessaDvertisementCell: UITableViewCell {
     lazy var remindBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle(LanguageHelper.getString(key: "C2C_transaction_Confirm_Order"), for: .normal)
-        btn.frame = CGRect(x: 0, y: transactionStatusTitleLab.frame.maxY, width: 95, height:30)
+        btn.frame = CGRect(x: 0, y: transactionDataLab.frame.maxY, width: 95, height:30)
         btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xCFD3D5), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         btn.layer.cornerRadius = 5

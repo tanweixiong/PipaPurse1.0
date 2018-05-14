@@ -54,6 +54,14 @@
 		232DF51F201F0BE000842491 /* HomeCoinTransferDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232DF51E201F0BE000842491 /* HomeCoinTransferDetailsModel.swift */; };
 		232DF522201F114C00842491 /* HomeReceiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232DF521201F114C00842491 /* HomeReceiveModel.swift */; };
 		232DF525201F11E800842491 /* HomeReceiveVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232DF524201F11E800842491 /* HomeReceiveVM.swift */; };
+		232F3D3320A919BD0002C3C6 /* BusinessReleaseMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F3D3120A919BD0002C3C6 /* BusinessReleaseMethodCell.swift */; };
+		232F3D3420A919BD0002C3C6 /* BusinessReleaseMethodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232F3D3220A919BD0002C3C6 /* BusinessReleaseMethodCell.xib */; };
+		232F3D3920A926AD0002C3C6 /* IntegralApplicationStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232F3D3520A926AC0002C3C6 /* IntegralApplicationStatusCell.xib */; };
+		232F3D3A20A926AD0002C3C6 /* IntegralApplicationStatusVw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F3D3620A926AC0002C3C6 /* IntegralApplicationStatusVw.swift */; };
+		232F3D3B20A926AD0002C3C6 /* IntegralApplicationStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F3D3720A926AC0002C3C6 /* IntegralApplicationStatusCell.swift */; };
+		232F3D3C20A926AD0002C3C6 /* IntegralApplicationStatusVw.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232F3D3820A926AD0002C3C6 /* IntegralApplicationStatusVw.xib */; };
+		232F3D3F20A92FF50002C3C6 /* BusinessRelaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F3D3D20A92FF50002C3C6 /* BusinessRelaseCell.swift */; };
+		232F3D4020A92FF50002C3C6 /* BusinessRelaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232F3D3E20A92FF50002C3C6 /* BusinessRelaseCell.xib */; };
 		233043FB207B501400579A95 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233043FA207B501400579A95 /* LoginController.swift */; };
 		233043FD207B503500579A95 /* MineImportWalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233043FC207B503500579A95 /* MineImportWalletVC.swift */; };
 		23304400207B510600579A95 /* LoginVw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233043FE207B510500579A95 /* LoginVw.swift */; };
@@ -62,6 +70,20 @@
 		23304405207B517600579A95 /* MineImportWalletVw.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23304403207B517600579A95 /* MineImportWalletVw.xib */; };
 		23307E122016CB3100C1110A /* HomeListDetsilsFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23307E112016CB3100C1110A /* HomeListDetsilsFootView.swift */; };
 		23307E142016CB3C00C1110A /* HomeListDetsilsFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23307E132016CB3C00C1110A /* HomeListDetsilsFootView.xib */; };
+		2331658C20A9678800597302 /* MineChooseBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331658A20A9678700597302 /* MineChooseBtn.swift */; };
+		2331658D20A9678800597302 /* MineChooseBtn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2331658B20A9678700597302 /* MineChooseBtn.xib */; };
+		2331659020A9756C00597302 /* SecuritySetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331658E20A9756C00597302 /* SecuritySetViewCell.swift */; };
+		2331659120A9756C00597302 /* SecuritySetViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2331658F20A9756C00597302 /* SecuritySetViewCell.xib */; };
+		2331659320A9843900597302 /* MineSetPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331659220A9843900597302 /* MineSetPaymentVC.swift */; };
+		2331659C20A9942500597302 /* MineMiningVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331659A20A9942500597302 /* MineMiningVC.swift */; };
+		2331659D20A9942500597302 /* MineMiningVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2331659B20A9942500597302 /* MineMiningVC.xib */; };
+		233165A020A9966200597302 /* MineMiningCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331659E20A9966200597302 /* MineMiningCell.swift */; };
+		233165A120A9966200597302 /* MineMiningCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2331659F20A9966200597302 /* MineMiningCell.xib */; };
+		233165A320A9979D00597302 /* ic_mining_person.gif in Resources */ = {isa = PBXBuildFile; fileRef = 233165A220A9979D00597302 /* ic_mining_person.gif */; };
+		233165AA20A99C2D00597302 /* YLGIFImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 233165A520A99C2D00597302 /* YLGIFImage.m */; };
+		233165AB20A99C2D00597302 /* YLImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 233165A720A99C2D00597302 /* YLImageView.m */; };
+		233165AE20A9A33500597302 /* MineMiningRankingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233165AC20A9A33500597302 /* MineMiningRankingVC.swift */; };
+		233165AF20A9A33500597302 /* MineMiningRankingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 233165AD20A9A33500597302 /* MineMiningRankingVC.xib */; };
 		233176E82021A36C0006E0E9 /* SettingPaypsdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233176E72021A36B0006E0E9 /* SettingPaypsdVC.swift */; };
 		233176EC2021B96C0006E0E9 /* HomeTransferDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233176EB2021B96C0006E0E9 /* HomeTransferDetailsModel.swift */; };
 		233176EE2021BF360006E0E9 /* HomeTransferDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233176ED2021BF360006E0E9 /* HomeTransferDetailsVM.swift */; };
@@ -222,12 +244,10 @@
 		23674A922020202400B4B96E /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23674A7A2020202400B4B96E /* AboutUsViewController.xib */; };
 		23674A932020202400B4B96E /* SystemSeUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23674A7B2020202400B4B96E /* SystemSeUpViewController.xib */; };
 		23674A942020202400B4B96E /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23674A7C2020202400B4B96E /* AboutUsViewController.swift */; };
-		23674A952020202400B4B96E /* MineTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23674A7E2020202400B4B96E /* MineTopView.xib */; };
 		23674A962020202400B4B96E /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23674A7F2020202400B4B96E /* FriendTableViewCell.swift */; };
 		23674A972020202400B4B96E /* MineViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23674A802020202400B4B96E /* MineViewTableViewCell.xib */; };
 		23674A982020202400B4B96E /* MineViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23674A812020202400B4B96E /* MineViewTableViewCell.swift */; };
 		23674A992020202400B4B96E /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23674A822020202400B4B96E /* FriendTableViewCell.xib */; };
-		23674A9A2020202400B4B96E /* MineTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23674A832020202400B4B96E /* MineTopView.swift */; };
 		23674ABE2020205400B4B96E /* WalletAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23674A9C2020205400B4B96E /* WalletAddressModel.swift */; };
 		23674ABF2020205400B4B96E /* AccountManageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23674A9D2020205400B4B96E /* AccountManageMapper.swift */; };
 		23674AC02020205400B4B96E /* MineBackupFileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23674A9F2020205400B4B96E /* MineBackupFileVC.swift */; };
@@ -469,6 +489,14 @@
 		232DF51E201F0BE000842491 /* HomeCoinTransferDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoinTransferDetailsModel.swift; sourceTree = "<group>"; };
 		232DF521201F114C00842491 /* HomeReceiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReceiveModel.swift; sourceTree = "<group>"; };
 		232DF524201F11E800842491 /* HomeReceiveVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReceiveVM.swift; sourceTree = "<group>"; };
+		232F3D3120A919BD0002C3C6 /* BusinessReleaseMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessReleaseMethodCell.swift; sourceTree = "<group>"; };
+		232F3D3220A919BD0002C3C6 /* BusinessReleaseMethodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessReleaseMethodCell.xib; sourceTree = "<group>"; };
+		232F3D3520A926AC0002C3C6 /* IntegralApplicationStatusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntegralApplicationStatusCell.xib; sourceTree = "<group>"; };
+		232F3D3620A926AC0002C3C6 /* IntegralApplicationStatusVw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegralApplicationStatusVw.swift; sourceTree = "<group>"; };
+		232F3D3720A926AC0002C3C6 /* IntegralApplicationStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegralApplicationStatusCell.swift; sourceTree = "<group>"; };
+		232F3D3820A926AD0002C3C6 /* IntegralApplicationStatusVw.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntegralApplicationStatusVw.xib; sourceTree = "<group>"; };
+		232F3D3D20A92FF50002C3C6 /* BusinessRelaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessRelaseCell.swift; sourceTree = "<group>"; };
+		232F3D3E20A92FF50002C3C6 /* BusinessRelaseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessRelaseCell.xib; sourceTree = "<group>"; };
 		233043FA207B501400579A95 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		233043FC207B503500579A95 /* MineImportWalletVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineImportWalletVC.swift; sourceTree = "<group>"; };
 		233043FE207B510500579A95 /* LoginVw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVw.swift; sourceTree = "<group>"; };
@@ -477,6 +505,23 @@
 		23304403207B517600579A95 /* MineImportWalletVw.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineImportWalletVw.xib; sourceTree = "<group>"; };
 		23307E112016CB3100C1110A /* HomeListDetsilsFootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListDetsilsFootView.swift; sourceTree = "<group>"; };
 		23307E132016CB3C00C1110A /* HomeListDetsilsFootView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListDetsilsFootView.xib; sourceTree = "<group>"; };
+		2331658A20A9678700597302 /* MineChooseBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineChooseBtn.swift; sourceTree = "<group>"; };
+		2331658B20A9678700597302 /* MineChooseBtn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineChooseBtn.xib; sourceTree = "<group>"; };
+		2331658E20A9756C00597302 /* SecuritySetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuritySetViewCell.swift; sourceTree = "<group>"; };
+		2331658F20A9756C00597302 /* SecuritySetViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecuritySetViewCell.xib; sourceTree = "<group>"; };
+		2331659220A9843900597302 /* MineSetPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineSetPaymentVC.swift; sourceTree = "<group>"; };
+		2331659A20A9942500597302 /* MineMiningVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineMiningVC.swift; sourceTree = "<group>"; };
+		2331659B20A9942500597302 /* MineMiningVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineMiningVC.xib; sourceTree = "<group>"; };
+		2331659E20A9966200597302 /* MineMiningCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineMiningCell.swift; sourceTree = "<group>"; };
+		2331659F20A9966200597302 /* MineMiningCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineMiningCell.xib; sourceTree = "<group>"; };
+		233165A220A9979D00597302 /* ic_mining_person.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ic_mining_person.gif; sourceTree = "<group>"; };
+		233165A520A99C2D00597302 /* YLGIFImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLGIFImage.m; sourceTree = "<group>"; };
+		233165A620A99C2D00597302 /* YLGIFImageInSwiftProjectDemo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YLGIFImageInSwiftProjectDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		233165A720A99C2D00597302 /* YLImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLImageView.m; sourceTree = "<group>"; };
+		233165A820A99C2D00597302 /* YLGIFImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLGIFImage.h; sourceTree = "<group>"; };
+		233165A920A99C2D00597302 /* YLImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLImageView.h; sourceTree = "<group>"; };
+		233165AC20A9A33500597302 /* MineMiningRankingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineMiningRankingVC.swift; sourceTree = "<group>"; };
+		233165AD20A9A33500597302 /* MineMiningRankingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineMiningRankingVC.xib; sourceTree = "<group>"; };
 		233176E72021A36B0006E0E9 /* SettingPaypsdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingPaypsdVC.swift; sourceTree = "<group>"; };
 		233176EB2021B96C0006E0E9 /* HomeTransferDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTransferDetailsModel.swift; sourceTree = "<group>"; };
 		233176ED2021BF360006E0E9 /* HomeTransferDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTransferDetailsVM.swift; sourceTree = "<group>"; };
@@ -671,12 +716,10 @@
 		23674A7A2020202400B4B96E /* AboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
 		23674A7B2020202400B4B96E /* SystemSeUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SystemSeUpViewController.xib; sourceTree = "<group>"; };
 		23674A7C2020202400B4B96E /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
-		23674A7E2020202400B4B96E /* MineTopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineTopView.xib; sourceTree = "<group>"; };
 		23674A7F2020202400B4B96E /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		23674A802020202400B4B96E /* MineViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineViewTableViewCell.xib; sourceTree = "<group>"; };
 		23674A812020202400B4B96E /* MineViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewTableViewCell.swift; sourceTree = "<group>"; };
 		23674A822020202400B4B96E /* FriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
-		23674A832020202400B4B96E /* MineTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineTopView.swift; sourceTree = "<group>"; };
 		23674A9C2020205400B4B96E /* WalletAddressModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletAddressModel.swift; sourceTree = "<group>"; };
 		23674A9D2020205400B4B96E /* AccountManageMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountManageMapper.swift; sourceTree = "<group>"; };
 		23674A9F2020205400B4B96E /* MineBackupFileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineBackupFileVC.swift; sourceTree = "<group>"; };
@@ -1226,6 +1269,57 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		2331659420A993B200597302 /* MineMiningVC(挖矿) */ = {
+			isa = PBXGroup;
+			children = (
+				2331659520A993B200597302 /* Controller */,
+				2331659620A993B200597302 /* Model */,
+				2331659720A993B200597302 /* View */,
+			);
+			path = "MineMiningVC(挖矿)";
+			sourceTree = "<group>";
+		};
+		2331659520A993B200597302 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2331659A20A9942500597302 /* MineMiningVC.swift */,
+				2331659B20A9942500597302 /* MineMiningVC.xib */,
+				2331659E20A9966200597302 /* MineMiningCell.swift */,
+				2331659F20A9966200597302 /* MineMiningCell.xib */,
+				233165AC20A9A33500597302 /* MineMiningRankingVC.swift */,
+				233165AD20A9A33500597302 /* MineMiningRankingVC.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2331659620A993B200597302 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2331659720A993B200597302 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				233165A220A9979D00597302 /* ic_mining_person.gif */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		233165A420A99C2D00597302 /* YLGIFImage */ = {
+			isa = PBXGroup;
+			children = (
+				233165A520A99C2D00597302 /* YLGIFImage.m */,
+				233165A620A99C2D00597302 /* YLGIFImageInSwiftProjectDemo-Bridging-Header.h */,
+				233165A720A99C2D00597302 /* YLImageView.m */,
+				233165A820A99C2D00597302 /* YLGIFImage.h */,
+				233165A920A99C2D00597302 /* YLImageView.h */,
+			);
+			name = YLGIFImage;
+			path = "PTNPurse/Vender(第三方)/YLGIFImage";
+			sourceTree = SOURCE_ROOT;
+		};
 		233176E92021B9410006E0E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1504,6 +1598,7 @@
 				2332D494200DA1BB009B4D5E /* SnapKit */,
 				236749E32020111200B4B96E /* scan */,
 				23298B692088420B00702DD8 /* CQMarqueeView */,
+				233165A420A99C2D00597302 /* YLGIFImage */,
 			);
 			path = "Vender(第三方)";
 			sourceTree = "<group>";
@@ -1766,6 +1861,7 @@
 			children = (
 				236137BC208583E300E73F9E /* MineBankCardBindingVC.swift */,
 				236137BD208583E300E73F9E /* MineBindingDetailsVC.swift */,
+				2331659220A9843900597302 /* MineSetPaymentVC.swift */,
 				236137BE208583E300E73F9E /* MineSetAccountVC.swift */,
 			);
 			path = Controller;
@@ -1848,11 +1944,11 @@
 			isa = PBXGroup;
 			children = (
 				236137BA208583E300E73F9E /* MineBindingBankVC(绑定银行卡) */,
+				2331659420A993B200597302 /* MineMiningVC(挖矿) */,
 				23674A762020202400B4B96E /* OpitionViewController.xib */,
 				23674A6C2020202400B4B96E /* OpitionViewController.swift */,
 				23674A6D2020202400B4B96E /* FriendsViewController.swift */,
 				23674A6E2020202400B4B96E /* FriendsViewController.xib */,
-				23674A6F2020202400B4B96E /* MineViewController.xib */,
 				23674A702020202400B4B96E /* LanguageSetViewController.xib */,
 				23674A742020202400B4B96E /* LanguageSetViewController.swift */,
 				23674A712020202400B4B96E /* ModifyTradePwdViewController.swift */,
@@ -1861,9 +1957,10 @@
 				23674A752020202400B4B96E /* SecuritySetViewController.swift */,
 				23674A7B2020202400B4B96E /* SystemSeUpViewController.xib */,
 				23674A772020202400B4B96E /* SystemSeUpViewController.swift */,
-				23674A782020202400B4B96E /* MineViewController.swift */,
 				23674A7A2020202400B4B96E /* AboutUsViewController.xib */,
 				23674A7C2020202400B4B96E /* AboutUsViewController.swift */,
+				23674A6F2020202400B4B96E /* MineViewController.xib */,
+				23674A782020202400B4B96E /* MineViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1871,12 +1968,12 @@
 		23674A7D2020202400B4B96E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				23674A7E2020202400B4B96E /* MineTopView.xib */,
 				23674A7F2020202400B4B96E /* FriendTableViewCell.swift */,
 				23674A802020202400B4B96E /* MineViewTableViewCell.xib */,
 				23674A812020202400B4B96E /* MineViewTableViewCell.swift */,
 				23674A822020202400B4B96E /* FriendTableViewCell.xib */,
-				23674A832020202400B4B96E /* MineTopView.swift */,
+				2331658E20A9756C00597302 /* SecuritySetViewCell.swift */,
+				2331658F20A9756C00597302 /* SecuritySetViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2381,6 +2478,14 @@
 		23A538A1205F537300EDB714 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				232F3D3120A919BD0002C3C6 /* BusinessReleaseMethodCell.swift */,
+				232F3D3220A919BD0002C3C6 /* BusinessReleaseMethodCell.xib */,
+				232F3D3720A926AC0002C3C6 /* IntegralApplicationStatusCell.swift */,
+				232F3D3520A926AC0002C3C6 /* IntegralApplicationStatusCell.xib */,
+				232F3D3620A926AC0002C3C6 /* IntegralApplicationStatusVw.swift */,
+				232F3D3820A926AD0002C3C6 /* IntegralApplicationStatusVw.xib */,
+				232F3D3D20A92FF50002C3C6 /* BusinessRelaseCell.swift */,
+				232F3D3E20A92FF50002C3C6 /* BusinessRelaseCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2470,6 +2575,8 @@
 		23A538B4205F537300EDB714 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2331658A20A9678700597302 /* MineChooseBtn.swift */,
+				2331658B20A9678700597302 /* MineChooseBtn.xib */,
 				23A538B6205F537300EDB714 /* BusinessaDvertisementCell.swift */,
 				23A538B5205F537300EDB714 /* BusinessaDvertisementCell.xib */,
 				2375675A2068D91A006AED6F /* BusinessOrderFinishCell.swift */,
@@ -2827,9 +2934,11 @@
 				23674A8A2020202400B4B96E /* ModifyTradePwdViewController.xib in Resources */,
 				23674A8E2020202400B4B96E /* OpitionViewController.xib in Resources */,
 				23674ADA2020205400B4B96E /* MineBackupCell.xib in Resources */,
+				232F3D3C20A926AD0002C3C6 /* IntegralApplicationStatusVw.xib in Resources */,
 				23519EE920579CAF00AA9A9C /* HomeDetsilsAssetsView.xib in Resources */,
 				2375676A2068E958006AED6F /* BusinessSubmissionMessageVW.xib in Resources */,
 				23674A862020202400B4B96E /* FriendsViewController.xib in Resources */,
+				2331659120A9756C00597302 /* SecuritySetViewCell.xib in Resources */,
 				236FA085206A263000FD5CB6 /* MessageCell.xib in Resources */,
 				237D044A200F46A8000C12B1 /* PaymentPasswordAlertVw.xib in Resources */,
 				23674A992020202400B4B96E /* FriendTableViewCell.xib in Resources */,
@@ -2838,6 +2947,7 @@
 				236FA08D206A28EC00FD5CB6 /* MessageInformationVw.xib in Resources */,
 				4E77F93A204FB91B00D6807E /* HomeCertificationView.xib in Resources */,
 				23328196200DE35300094849 /* HomeStampView.xib in Resources */,
+				232F3D3420A919BD0002C3C6 /* BusinessReleaseMethodCell.xib in Resources */,
 				232C540020637B560005F64C /* BusinessBuyHistoryDetailsVw.xib in Resources */,
 				237805DE200F73BB00C1429D /* HomeAddCoinCell.xib in Resources */,
 				23674AC42020205400B4B96E /* FileListViewController.xib in Resources */,
@@ -2851,6 +2961,7 @@
 				23674ACB2020205400B4B96E /* RegisterSuccessViewController.xib in Resources */,
 				23307E142016CB3C00C1110A /* HomeListDetsilsFootView.xib in Resources */,
 				233201A8202AFEDD001815DE /* MJRefresh.bundle in Resources */,
+				233165A320A9979D00597302 /* ic_mining_person.gif in Resources */,
 				2333DBF42079EAC4002911BC /* ShareSDKUI.bundle in Resources */,
 				23674A932020202400B4B96E /* SystemSeUpViewController.xib in Resources */,
 				23674A6A20201DDE00B4B96E /* InfoTableViewCell.xib in Resources */,
@@ -2879,7 +2990,9 @@
 				2333DBED2079EAC4002911BC /* WeiboSDK.bundle in Resources */,
 				23F52A51205A0639008D8B75 /* QuotesDetailsView.xib in Resources */,
 				23674A972020202400B4B96E /* MineViewTableViewCell.xib in Resources */,
+				2331659D20A9942500597302 /* MineMiningVC.xib in Resources */,
 				237D042D200F2BFC000C12B1 /* HomeConversionSubmitCell.xib in Resources */,
+				232F3D3920A926AD0002C3C6 /* IntegralApplicationStatusCell.xib in Resources */,
 				23674AC92020205400B4B96E /* LoginViewController.xib in Resources */,
 				232A1152200E2AFA002F60C7 /* HomeCointTransView.xib in Resources */,
 				23A538EC205F537400EDB714 /* BusinessaDvertisementCell.xib in Resources */,
@@ -2887,9 +3000,9 @@
 				2332D458200DA1A7009B4D5E /* Assets.xcassets in Resources */,
 				23A538FA205F537400EDB714 /* BusinessCell.xib in Resources */,
 				236137CD208583E300E73F9E /* MineBankCardBindingCell.xib in Resources */,
-				23674A952020202400B4B96E /* MineTopView.xib in Resources */,
 				23304401207B510600579A95 /* LoginVw.xib in Resources */,
 				232A114A200E23FE002F60C7 /* HomeTransferCell.xib in Resources */,
+				233165A120A9966200597302 /* MineMiningCell.xib in Resources */,
 				2375675D2068D91A006AED6F /* BusinessOrderFinishCell.xib in Resources */,
 				2333DBEF2079EAC4002911BC /* README.txt in Resources */,
 				230CFE202015F38100D4B9C4 /* HomeSelectDetailsView.xib in Resources */,
@@ -2897,6 +3010,8 @@
 				2334D0AC202C373F00DF2F43 /* Images.xcassets in Resources */,
 				23A538F4205F537400EDB714 /* BusinessOrderDetailsAVCell.xib in Resources */,
 				23A538E6205F537400EDB714 /* BusinessBuyHistoryCell.xib in Resources */,
+				232F3D4020A92FF50002C3C6 /* BusinessRelaseCell.xib in Resources */,
+				233165AF20A9A33500597302 /* MineMiningRankingVC.xib in Resources */,
 				23A538F9205F537400EDB714 /* BusinessView.xib in Resources */,
 				3D7F6C93200F4498004D60E2 /* Localizable.strings in Resources */,
 				2332D456200DA1A7009B4D5E /* Main.storyboard in Resources */,
@@ -2904,6 +3019,7 @@
 				4E77F940204FD46C00D6807E /* HomeCertificationListCell.xib in Resources */,
 				237D0431200F2CED000C12B1 /* HomeConversionListCell.xib in Resources */,
 				23304405207B517600579A95 /* MineImportWalletVw.xib in Resources */,
+				2331658D20A9678800597302 /* MineChooseBtn.xib in Resources */,
 				2364D88B20A52E2B00EFE97C /* BusinessMeunVw.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3091,6 +3207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2331659020A9756C00597302 /* SecuritySetViewCell.swift in Sources */,
 				23A538F2205F537400EDB714 /* BusinessOrderDetailsAVCell.swift in Sources */,
 				23519EE720579C9B00AA9A9C /* HomeDetsilsAssetsView.swift in Sources */,
 				2332D4C3200DA1BC009B4D5E /* ConstraintInsets.swift in Sources */,
@@ -3108,6 +3225,7 @@
 				23674ADD2020205400B4B96E /* InputView.swift in Sources */,
 				23674AC02020205400B4B96E /* MineBackupFileVC.swift in Sources */,
 				232D7E6F207D987C00BBBB4D /* BusinessInviteFriendsVM.swift in Sources */,
+				233165A020A9966200597302 /* MineMiningCell.swift in Sources */,
 				23674AC62020205400B4B96E /* ImportWallletViewController.swift in Sources */,
 				2332D4C1200DA1BC009B4D5E /* ConstraintViewDSL.swift in Sources */,
 				23A53801205F520E00EDB714 /* TPTextField.swift in Sources */,
@@ -3143,7 +3261,6 @@
 				236137D22085843800E73F9E /* MineBindingBankVM.swift in Sources */,
 				236137C8208583E300E73F9E /* MineSetAccountVC.swift in Sources */,
 				23674A982020202400B4B96E /* MineViewTableViewCell.swift in Sources */,
-				23674A9A2020202400B4B96E /* MineTopView.swift in Sources */,
 				2332D4D6200DA1BC009B4D5E /* ConstraintItem.swift in Sources */,
 				236137CB208583E300E73F9E /* MineBankCardBindingCell.swift in Sources */,
 				236FA084206A263000FD5CB6 /* MessageCell.swift in Sources */,
@@ -3159,6 +3276,7 @@
 				23674AD92020205400B4B96E /* MineBackupCell.swift in Sources */,
 				23A538E3205F537400EDB714 /* BusinessBuyHistoryVM.swift in Sources */,
 				2332D4D4200DA1BC009B4D5E /* ConstraintLayoutGuideDSL.swift in Sources */,
+				232F3D3B20A926AD0002C3C6 /* IntegralApplicationStatusCell.swift in Sources */,
 				2332D4FB200DA290009B4D5E /* MainTabBarController.swift in Sources */,
 				233201AC202AFEDD001815DE /* MJRefreshBackGifFooter.m in Sources */,
 				23F52A57205A203D008D8B75 /* QuotesModel.swift in Sources */,
@@ -3184,6 +3302,7 @@
 				23A538CE205F537400EDB714 /* BusinessModel.swift in Sources */,
 				237858AD2018209D0014DACD /* BaseView.m in Sources */,
 				2375675C2068D91A006AED6F /* BusinessOrderFinishCell.swift in Sources */,
+				232F3D3A20A926AD0002C3C6 /* IntegralApplicationStatusVw.swift in Sources */,
 				237D0449200F46A8000C12B1 /* PaymentPasswordAlertVw.m in Sources */,
 				2332D4D3200DA1BC009B4D5E /* ConstraintRelation.swift in Sources */,
 				23674AC12020205400B4B96E /* FileListViewController.swift in Sources */,
@@ -3200,6 +3319,7 @@
 				232C53FE20637B490005F64C /* BusinessBuyHistoryDetailsVw.swift in Sources */,
 				23674A1D202019D800B4B96E /* LBXScanWrapper.swift in Sources */,
 				23A538E4205F537400EDB714 /* BusinessBuyHistoryVC.swift in Sources */,
+				232F3D3320A919BD0002C3C6 /* BusinessReleaseMethodCell.swift in Sources */,
 				236B624C20A420240025DCA1 /* HomeTransferDetailsCell.swift in Sources */,
 				2333DC10207A2139002911BC /* BusinessInviteFriendsVC.swift in Sources */,
 				23298B712088420B00702DD8 /* CQMarqueeView.m in Sources */,
@@ -3214,6 +3334,7 @@
 				23A538D4205F537400EDB714 /* BusinessRemarkView.swift in Sources */,
 				23A537FC205F520E00EDB714 /* Tools.swift in Sources */,
 				232D7E6D207D976D00BBBB4D /* BusinessInviteFriendsModel.swift in Sources */,
+				233165AB20A99C2D00597302 /* YLImageView.m in Sources */,
 				237D042C200F2BFC000C12B1 /* HomeConversionSubmitCell.swift in Sources */,
 				2332D4D7200DA1BC009B4D5E /* Constraint.swift in Sources */,
 				233201AB202AFEDD001815DE /* UIView+MJExtension.m in Sources */,
@@ -3227,6 +3348,7 @@
 				23A538E7205F537400EDB714 /* BusinessBuyHistoryCell.swift in Sources */,
 				230CFE1D2015F38100D4B9C4 /* HomeSelectDetailsView.swift in Sources */,
 				237D041E200F2332000C12B1 /* PTNSlider.swift in Sources */,
+				232F3D3F20A92FF50002C3C6 /* BusinessRelaseCell.swift in Sources */,
 				2332D4D9200DA1BC009B4D5E /* ConstraintRelatableTarget.swift in Sources */,
 				2332D451200DA1A7009B4D5E /* AppDelegate.swift in Sources */,
 				237D0430200F2CED000C12B1 /* HomeConversionListCell.swift in Sources */,
@@ -3252,6 +3374,7 @@
 				230CFE1C2015F38100D4B9C4 /* HomeCoinDetailsVC.swift in Sources */,
 				237858AE2018209D0014DACD /* BRAddressModel.m in Sources */,
 				23A538F8205F537400EDB714 /* BusinessCell.swift in Sources */,
+				233165AE20A9A33500597302 /* MineMiningRankingVC.swift in Sources */,
 				23A538EB205F537400EDB714 /* BusinessaDvertisementModel.swift in Sources */,
 				23674A6820201DDE00B4B96E /* InformationVC.swift in Sources */,
 				2332D4C7200DA1BC009B4D5E /* ConstraintPriority.swift in Sources */,
@@ -3265,8 +3388,10 @@
 				237805DA200F739700C1429D /* HomeAddCoinVC.swift in Sources */,
 				233043FB207B501400579A95 /* LoginController.swift in Sources */,
 				2332D4DE200DA1BC009B4D5E /* ConstraintMakerRelatable.swift in Sources */,
+				2331659C20A9942500597302 /* MineMiningVC.swift in Sources */,
 				237D0423200F279A000C12B1 /* HomeConversionVC.swift in Sources */,
 				237D0445200F468C000C12B1 /* GLTextField.m in Sources */,
+				2331658C20A9678800597302 /* MineChooseBtn.swift in Sources */,
 				23674ACA2020205400B4B96E /* LoginViewController.swift in Sources */,
 				233043FD207B503500579A95 /* MineImportWalletVC.swift in Sources */,
 				23A53800205F520E00EDB714 /* UIViewController+Cloudox.m in Sources */,
@@ -3275,8 +3400,10 @@
 				2332D4DC200DA1BC009B4D5E /* ConstraintLayoutGuide+Extensions.swift in Sources */,
 				23674A8D2020202400B4B96E /* SecuritySetViewController.swift in Sources */,
 				23674A20202019D800B4B96E /* LBXScanView.swift in Sources */,
+				2331659320A9843900597302 /* MineSetPaymentVC.swift in Sources */,
 				236FA07A2069E06E00FD5CB6 /* BusinessSubmissionMsgModel.swift in Sources */,
 				23674A962020202400B4B96E /* FriendTableViewCell.swift in Sources */,
+				233165AA20A99C2D00597302 /* YLGIFImage.m in Sources */,
 				23A537F8205F520E00EDB714 /* LanguageHelper.swift in Sources */,
 				233201AA202AFEDD001815DE /* NSBundle+MJRefresh.m in Sources */,
 				2388F496201B01AD005E8F1B /* HomeConversionDataModel.swift in Sources */,

@@ -238,18 +238,18 @@ extension BusinessBuyHistoryVC:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: businessBuyHistoryCell, for: indexPath) as! BusinessBuyHistoryCell
         cell.selectionStyle = .none
-        cell.model = viewModel.model[indexPath.row]
+//        cell.model = viewModel.model[indexPath.row]
         cell.operatingBtn.tag = indexPath.row
         cell.operatingBtn.addTarget(self, action: #selector(advertisingOnClick(_:)), for: .touchUpInside)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = viewModel.model[indexPath.row]
-        let businessBuyHistoryDetailsVC = BusinessBuyHistoryDetailsVC()
-        businessBuyHistoryDetailsVC.entrustNo = (model.id?.stringValue)!
-        businessBuyHistoryDetailsVC.style = self.style
-        self.navigationController?.pushViewController(businessBuyHistoryDetailsVC, animated: true)
+//        let model = viewModel.model[indexPath.row]
+//        let businessBuyHistoryDetailsVC = BusinessBuyHistoryDetailsVC()
+//        businessBuyHistoryDetailsVC.entrustNo = (model.id?.stringValue)!
+//        businessBuyHistoryDetailsVC.style = self.style
+//        self.navigationController?.pushViewController(businessBuyHistoryDetailsVC, animated: true)
     }
 }
  

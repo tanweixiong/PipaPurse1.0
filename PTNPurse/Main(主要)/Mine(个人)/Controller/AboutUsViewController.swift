@@ -16,8 +16,8 @@ class AboutUsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
-    let titleArray = ["person_currentversion", "person_latestversion"]
-    let imageArray = ["person_about","person_about"]
+    let titleArray = ["person_currentversion", "person_latestversion","反馈与意见"]
+    let imageArray = ["ic_aboutus_details","ic_aboutus_details","ic_aboutus_details"]
     
     var newVersion: Version?
     
@@ -48,11 +48,10 @@ class AboutUsViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.leftImageView.image = UIImage.init(named: imageArray[indexPath.row])
         cell.leftLabel.text = LanguageHelper.getString(key: titleArray[indexPath.row])
         let currentVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-
         //todo: set right label content
         if indexPath.row == 0 {
             cell.rightLabel.text = currentVersion
-        } else {
+        } else  if indexPath.row == 1 {
             if newVersion != nil {
                 if (newVersion?.version!)! > currentVersion {
                     cell.rightLabel.text = newVersion?.version
@@ -62,8 +61,9 @@ class AboutUsViewController: UIViewController, UITableViewDelegate, UITableViewD
             } else {
                 cell.rightLabel.text = LanguageHelper.getString(key: "person_nonewversion")
             }
+        }else{
+            cell.rightLabel.text = ""
         }
-        
         return cell
     }
     
@@ -80,6 +80,9 @@ class AboutUsViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch indexPath.row {
         case 1:
             self.checkVersion()
+        case 2:
+            let opitionViewController = OpitionViewController()
+            self.navigationController?.pushViewController(opitionViewController, animated: true)
         default:
             break
         }

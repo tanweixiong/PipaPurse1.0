@@ -55,19 +55,19 @@ class MineBindingDetailsVC: MainViewController {
     lazy var footView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 90))
         view.backgroundColor = UIColor.R_UIRGBColor(red: 249, green: 249, blue: 251, alpha: 1)
-        view.addSubview(determinebBtn)
         return view
     }()
     
-    lazy var determinebBtn: UIButton = {
+    //33 32
+    lazy var submitBtn: UIButton = {
         let btn = UIButton(type: .custom)
-        btn.frame = CGRect(x: 15, y: 45, width: SCREEN_WIDTH - 30, height: 45)
-        btn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCED7E6)
-        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x828A9E), for: .normal)
+        btn.frame = CGRect(x: SCREEN_WIDTH - 15 - 34, y: 32, width: 34, height: 22)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), for: .normal)
+        btn.setTitleColor(UIColor.white, for: .selected)
+        btn.setTitle("新增", for: .normal)
+        btn.isEnabled = false
         btn.addTarget(self, action: #selector(determinebOnClick(_:)), for: .touchUpInside)
-        btn.setTitle(LanguageHelper.getString(key: "binding_Determine_binding"), for: .normal)
-        btn.layer.cornerRadius = 5
-        btn.layer.masksToBounds = true
         return btn
     }()
 }
@@ -76,6 +76,7 @@ extension MineBindingDetailsVC {
     func setupUI(){
         setNormalNaviBar(title: LanguageHelper.getString(key: "binding_Add_bank_card"))
         view.addSubview(tableView)
+        view.addSubview(submitBtn)
         NotificationCenter.default.addObserver(self, selector: #selector(MineBindingDetailsVC.textFieldTextDidChangeOneCI), name:NSNotification.Name.UITextFieldTextDidChange, object: nil)
     }
     
@@ -102,13 +103,11 @@ extension MineBindingDetailsVC {
     
     func setSubmitBtnStyle(){
         if cheackInpunt() {
-            determinebBtn.setTitleColor(UIColor.white, for: .normal)
-            determinebBtn.backgroundColor = R_UIThemeColor
-            determinebBtn.isEnabled = true
+            submitBtn.setTitleColor(UIColor.white, for: .normal)
+            submitBtn.isEnabled = true
         }else{
-            determinebBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x828A9E), for: .normal)
-            determinebBtn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCED7E6)
-            determinebBtn.isEnabled = false
+            submitBtn.setTitleColor(R_ZYSelectNormalColor, for: .normal)
+            submitBtn.isEnabled = false
         }
     }
     

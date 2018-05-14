@@ -23,7 +23,7 @@ class OpitionViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var adviceTextVeiew: LoginNoteTextView!
     
     @IBOutlet weak var phoneTextView: LoginTextFieldView!
-    @IBOutlet weak var commitBtn: UIButton!
+//    @IBOutlet weak var commitBtn: UIButton!
     
     var opinionType: OpinionType? = .apperror
     
@@ -68,8 +68,7 @@ class OpitionViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
-    @IBAction func commitBtnTouched(_ sender: UIButton) {
+    @objc func commitBtnTouched(_ sender: UIButton) {
         let content = adviceTextVeiew.noteTextView.textView.text
         let phone = phoneTextView.textField.text
         
@@ -77,11 +76,6 @@ class OpitionViewController: UIViewController, UITextFieldDelegate {
             SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "login_infocantnil"))
             return
         }
-        
-//        if (phone?.lengthOfBytes(using: .utf8))! != 11 {
-//            SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "net_rightphone"))
-//            return
-//        }
         
         advice(content: content!, phone: phone!)
     }
@@ -127,22 +121,24 @@ class OpitionViewController: UIViewController, UITextFieldDelegate {
         let phone = phoneTextView.textField.text
         
         if (content?.lengthOfBytes(using: .utf8))! != 0 && (phone?.lengthOfBytes(using: .utf8))! != 0 {
-           Tools.setButtonType(isBoarder: false, sender: commitBtn, fontSize: 14, bgcolor: R_ZYThemeColor)
-            commitBtn.isUserInteractionEnabled = true
+            topView.rightItemBtn.setTitleColor(UIColor.white, for: .normal)
+            topView.rightItemBtn.isUserInteractionEnabled = true
         } else {
-            Tools.setButtonType(isBoarder: true, sender: commitBtn, fontSize: 14, bgcolor: R_ZYThemeColor)
-            commitBtn.isUserInteractionEnabled = false
+            topView.rightItemBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), for: .normal)
+            topView.rightItemBtn.isUserInteractionEnabled = false
         }
-        
     }
     
     // MARK: - Private Method
     func setViewStyle() {
         
         topView.setViewContent(title: LanguageHelper.getString(key: "person_opinion"))
+        topView.rightItemBtn.isHidden = false
         topView.setButtonCallBack { (sender) in
             self.navigationController?.popViewController(animated: true)
         }
+        topView.rightItemBtn.addTarget(self, action: #selector(commitBtnTouched(_:)), for: .touchUpInside)
+        
         
         errorTypeTextView.addTextFieldAndRightBtn(viewType: .DoubleBtnType)
         errorTypeTextView.backgroundColor = UIColor.clear
@@ -164,8 +160,10 @@ class OpitionViewController: UIViewController, UITextFieldDelegate {
         adviceTextVeiew.setNoteViewContent(title: LanguageHelper.getString(key: "person_opinioncontent"), placeHolder: LanguageHelper.getString(key: "person_opinionplaceholder"))
         adviceTextVeiew.noteTextView.textView.textColor = R_ZYThemeColor
         
-        Tools.setButtonType(isBoarder: true, sender: commitBtn, fontSize: 14, bgcolor: R_ZYThemeColor)
-        commitBtn.setTitle(LanguageHelper.getString(key: "submit_feedback"), for: .normal)
+//        Tools.setButtonType(isBoarder: true, sender: topView.rightItemBtn, fontSize: 14, bgcolor: R_ZYThemeColor)
+        topView.rightItemBtn.setTitle("提交", for: .normal)
+        topView.rightItemBtn.isUserInteractionEnabled = false
+        topView.rightItemBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), for: .normal)
         
         phoneTextView.textField.delegate = self
                 
