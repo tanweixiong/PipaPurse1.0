@@ -81,20 +81,18 @@ extension MineBindingDetailsVC {
     }
     
     @objc func determinebOnClick(_ sender:UIButton){
-        let token = (UserDefaults.standard.getUserInfo().token)!
-        let name = cardholderNameTF.text!
-        let bank = accountTF.text!
-        let branch = branchBankTF.text!
-        let code = bankCardNumberTF.text!
-        let address = ""
-        let parameters = ["token":token,"bank":bank,"branch":branch,"name":name,"code":code,"address":address]
-        viewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIBindAddBankCard, parameters: parameters, showIndicator: false) { (model:HomeBaseModel) in
-            SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "add_sucess"))
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: R_NotificationBankListReload), object: nil)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-                self.navigationController?.popViewController(animated: true)
-            })
+        if Tools.noPaymentPasswordIsSetToExecute() == false{ view.endEditing(true)
+        return}
+        
+        let bankCardNumber = bankCardNumberTF.text!
+        if bankCardNumber.count > 21 || bankCardNumber.count < 13 {
+            SVProgressHUD.showInfo(withStatus: "请输入正确的银行卡号")
+            return
         }
+
+        let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+        input?.delegate = self
+        input?.show()
     }
     
     @objc func textFieldTextDidChangeOneCI(notification:NSNotification){
@@ -127,11 +125,7 @@ extension MineBindingDetailsVC {
             return false
         }
         
-        if bankCardNumber.count > 21 {
-            return false
-        }
-        
-        if bankCardNumber.count < 13 {
+        if bankCardNumber.count == 0 {
             return false
         }
         
@@ -179,5 +173,34 @@ extension MineBindingDetailsVC:UITableViewDataSource,UITableViewDelegate{
         view.endEditing(true)
         tableView.contentSize = CGSize(width: 0, height: SCREEN_HEIGHT + 50)
     }
-    
 }
+
+extension MineBindingDetailsVC:PaymentPasswordDelegate{
+    func inputPaymentPassword(_ pwd: String!) -> String! {
+        let token = (UserDefaults.standard.getUserInfo().token)!
+        let name = cardholderNameTF.text!
+        let bank = accountTF.text!
+        let branch = branchBankTF.text!
+        let code = bankCardNumberTF.text!
+        let address = ""
+        let dealPwd = pwd.md5()
+        let parameters = ["token":token,"bank":bank,"branch":branch,"name":name,"code":code,"address":address,"dealPwd":dealPwd]
+        viewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIBindAddBankCard, parameters: parameters, showIndicator: false) { (model:HomeBaseModel) in
+            SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "add_sucess"))
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: R_NotificationBankListReload), object: nil)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                self.navigationController?.popViewController(animated: true)
+            })
+        }
+        return pwd
+    }
+
+    func inputPaymentPasswordChangeForgetPassword() {
+        let forgetvc = ModifyTradePwdViewController()
+        forgetvc.type = ModifyPwdType.tradepwd
+        forgetvc.status = .modify
+        forgetvc.isNeedNavi = false
+        self.navigationController?.pushViewController(forgetvc, animated: true)
+    }
+}
+

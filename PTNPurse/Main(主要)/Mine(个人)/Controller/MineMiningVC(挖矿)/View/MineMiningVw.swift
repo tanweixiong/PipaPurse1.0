@@ -19,7 +19,12 @@ class MineMiningVw: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    
+        //gif
+        let path = Bundle.main.url(forResource: "ic_mining_person", withExtension: "gif")
+        let data = NSData(contentsOf: path!)
+        personImgeVw.image = YLGIFImage(data: data! as Data)
+        
+        widthRatio.constant = -XMAKE(20)
     }
 
 }

@@ -66,15 +66,21 @@ extension MineSetAccountVC {
     }
     
     @objc func onClick(_ sender:UIButton){
-          postData()
+        if Tools.noPaymentPasswordIsSetToExecute() == false{view.endEditing(true)
+            return
+        }
+        let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+        input?.delegate = self
+        input?.show()
     }
     
-    func postData(){
+    func postData(dealPwd:String){
         let account = mineSetAccountVw.paymentMethodTF.text!
         let token = (UserDefaults.standard.getUserInfo().token)!
         let url = style == .alipayStyle ? ZYConstAPI.kAPIBindApay : ZYConstAPI.kAPIBindWeChat
         let type =  style == .alipayStyle ? "alipay" : "weChat"
-        let parameters = ["token":token,type:account]
+        let dealPwd = dealPwd.md5()
+        let parameters = ["token":token,type:account,"dealPwd":dealPwd]
         viewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: url, parameters: parameters, showIndicator: false) { (model:HomeBaseModel) in
             SVProgressHUD.showSuccess(withStatus:LanguageHelper.getString(key: "Added_Successfully"))
             let userInfo = UserDefaults.standard.getUserInfo()
@@ -92,6 +98,10 @@ extension MineSetAccountVC {
     }
     
     @objc func textFieldTextDidChangeOneCI(notification:NSNotification){
+         setTextfieldStyle()
+    }
+    
+    func setTextfieldStyle(){
         if checkInput() {
             submitBtn.isEnabled = true
             submitBtn.isSelected = true
@@ -121,6 +131,22 @@ extension MineSetAccountVC {
                 mineSetAccountVw.paymentMethodTF.text = weChat
             }
         }
+        setTextfieldStyle()
+    }
+}
+
+extension MineSetAccountVC:PaymentPasswordDelegate{
+    func inputPaymentPassword(_ pwd: String!) -> String! {
+        postData(dealPwd: pwd)
+        return pwd
     }
     
+    func inputPaymentPasswordChangeForgetPassword() {
+        let forgetvc = ModifyTradePwdViewController()
+        forgetvc.type = ModifyPwdType.tradepwd
+        forgetvc.status = .modify
+        forgetvc.isNeedNavi = false
+        self.navigationController?.pushViewController(forgetvc, animated: true)
+    }
 }
+

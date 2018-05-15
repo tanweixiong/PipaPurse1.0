@@ -128,7 +128,6 @@ struct ZYConstAPI {
     static let kAPIAddMine = kAPIBaseURL + "addMine.do" //添加挖矿收益接口
     static let kAPIGetMineList = kAPIBaseURL + "getMineList.do" //获取挖矿小球信息
 
-
      //**************************************行情*************************************************//
     static let kAPIOpenCoinList = kAPIBaseURL + "openCoinList.do" //获取行情列表
     static let kAPIMarket = kAPIBaseURL + "market" //获取行情详情

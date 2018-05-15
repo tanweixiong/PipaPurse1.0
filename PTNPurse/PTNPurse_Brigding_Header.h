@@ -19,4 +19,5 @@
 #import "CQMarqueeView.h"
 #import "YLGIFImage.h"
 #import "YLImageView.h"
+#import "PaymentPasswordVw.h"
 #endif

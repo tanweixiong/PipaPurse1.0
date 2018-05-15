@@ -52,6 +52,14 @@
 		232C542C20AA8852002C8780 /* MineMiningVw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232C542B20AA8852002C8780 /* MineMiningVw.swift */; };
 		232C542E20AA886D002C8780 /* MineMiningVw.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232C542D20AA886D002C8780 /* MineMiningVw.xib */; };
 		232C543020AA8BFF002C8780 /* ic_mining_person.gif in Resources */ = {isa = PBXBuildFile; fileRef = 232C542F20AA8BFE002C8780 /* ic_mining_person.gif */; };
+		232C60DE20AADB1800525BCC /* PaymentPasswordAlertVw.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232C60D520AADB1600525BCC /* PaymentPasswordAlertVw.xib */; };
+		232C60DF20AADB1800525BCC /* PaymentPasswordAlertVw.m in Sources */ = {isa = PBXBuildFile; fileRef = 232C60D620AADB1700525BCC /* PaymentPasswordAlertVw.m */; };
+		232C60E020AADB1800525BCC /* UIView+category.m in Sources */ = {isa = PBXBuildFile; fileRef = 232C60D720AADB1700525BCC /* UIView+category.m */; };
+		232C60E120AADB1800525BCC /* InputPaymentPasswordVw.m in Sources */ = {isa = PBXBuildFile; fileRef = 232C60D820AADB1700525BCC /* InputPaymentPasswordVw.m */; };
+		232C60E220AADB1800525BCC /* GLTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 232C60DA20AADB1700525BCC /* GLTextField.m */; };
+		232C60F720AAE75700525BCC /* PaymentPasswordVw..m in Sources */ = {isa = PBXBuildFile; fileRef = 232C60F220AAE75500525BCC /* PaymentPasswordVw..m */; };
+		232C60F820AAE75700525BCC /* PaymentAlertVw.m in Sources */ = {isa = PBXBuildFile; fileRef = 232C60F320AAE75500525BCC /* PaymentAlertVw.m */; };
+		232C60F920AAE75700525BCC /* PaymentAlertVw.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232C60F620AAE75600525BCC /* PaymentAlertVw.xib */; };
 		232D7E6D207D976D00BBBB4D /* BusinessInviteFriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232D7E6C207D976D00BBBB4D /* BusinessInviteFriendsModel.swift */; };
 		232D7E6F207D987C00BBBB4D /* BusinessInviteFriendsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232D7E6E207D987C00BBBB4D /* BusinessInviteFriendsVM.swift */; };
 		232DF518201EF10700842491 /* HomeCoinDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232DF517201EF10700842491 /* HomeCoinDetailsVM.swift */; };
@@ -330,11 +338,6 @@
 		237D042D200F2BFC000C12B1 /* HomeConversionSubmitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237D042B200F2BFC000C12B1 /* HomeConversionSubmitCell.xib */; };
 		237D0430200F2CED000C12B1 /* HomeConversionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237D042E200F2CED000C12B1 /* HomeConversionListCell.swift */; };
 		237D0431200F2CED000C12B1 /* HomeConversionListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237D042F200F2CED000C12B1 /* HomeConversionListCell.xib */; };
-		237D043F200F4459000C12B1 /* InputPaymentPasswordVw.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D043E200F4459000C12B1 /* InputPaymentPasswordVw.m */; };
-		237D0444200F468C000C12B1 /* UIView+category.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D0440200F468C000C12B1 /* UIView+category.m */; };
-		237D0445200F468C000C12B1 /* GLTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D0441200F468C000C12B1 /* GLTextField.m */; };
-		237D0449200F46A8000C12B1 /* PaymentPasswordAlertVw.m in Sources */ = {isa = PBXBuildFile; fileRef = 237D0446200F46A8000C12B1 /* PaymentPasswordAlertVw.m */; };
-		237D044A200F46A8000C12B1 /* PaymentPasswordAlertVw.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237D0447200F46A8000C12B1 /* PaymentPasswordAlertVw.xib */; };
 		2388F476201ACFFD005E8F1B /* HomeAddCoinVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2388F475201ACFFD005E8F1B /* HomeAddCoinVM.swift */; };
 		2388F479201AD48F005E8F1B /* HomeAddCoinListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2388F478201AD48F005E8F1B /* HomeAddCoinListModel.swift */; };
 		2388F48F201AFD1C005E8F1B /* HomeConversionListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2388F48E201AFD1C005E8F1B /* HomeConversionListVC.swift */; };
@@ -492,6 +495,20 @@
 		232C542B20AA8852002C8780 /* MineMiningVw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineMiningVw.swift; sourceTree = "<group>"; };
 		232C542D20AA886D002C8780 /* MineMiningVw.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineMiningVw.xib; sourceTree = "<group>"; };
 		232C542F20AA8BFE002C8780 /* ic_mining_person.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ic_mining_person.gif; sourceTree = "<group>"; };
+		232C60D520AADB1600525BCC /* PaymentPasswordAlertVw.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentPasswordAlertVw.xib; sourceTree = "<group>"; };
+		232C60D620AADB1700525BCC /* PaymentPasswordAlertVw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentPasswordAlertVw.m; sourceTree = "<group>"; };
+		232C60D720AADB1700525BCC /* UIView+category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+category.m"; sourceTree = "<group>"; };
+		232C60D820AADB1700525BCC /* InputPaymentPasswordVw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputPaymentPasswordVw.m; sourceTree = "<group>"; };
+		232C60D920AADB1700525BCC /* GLTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTextField.h; sourceTree = "<group>"; };
+		232C60DA20AADB1700525BCC /* GLTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTextField.m; sourceTree = "<group>"; };
+		232C60DB20AADB1800525BCC /* UIView+category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+category.h"; sourceTree = "<group>"; };
+		232C60DC20AADB1800525BCC /* PaymentPasswordAlertVw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentPasswordAlertVw.h; sourceTree = "<group>"; };
+		232C60DD20AADB1800525BCC /* InputPaymentPasswordVw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputPaymentPasswordVw.h; sourceTree = "<group>"; };
+		232C60F220AAE75500525BCC /* PaymentPasswordVw..m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentPasswordVw..m; sourceTree = "<group>"; };
+		232C60F320AAE75500525BCC /* PaymentAlertVw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentAlertVw.m; sourceTree = "<group>"; };
+		232C60F420AAE75600525BCC /* PaymentAlertVw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentAlertVw.h; sourceTree = "<group>"; };
+		232C60F520AAE75600525BCC /* PaymentPasswordVw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentPasswordVw.h; sourceTree = "<group>"; };
+		232C60F620AAE75600525BCC /* PaymentAlertVw.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentAlertVw.xib; sourceTree = "<group>"; };
 		232D7E6C207D976D00BBBB4D /* BusinessInviteFriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInviteFriendsModel.swift; sourceTree = "<group>"; };
 		232D7E6E207D987C00BBBB4D /* BusinessInviteFriendsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInviteFriendsVM.swift; sourceTree = "<group>"; };
 		232DF517201EF10700842491 /* HomeCoinDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoinDetailsVM.swift; sourceTree = "<group>"; };
@@ -816,15 +833,6 @@
 		237D042B200F2BFC000C12B1 /* HomeConversionSubmitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeConversionSubmitCell.xib; sourceTree = "<group>"; };
 		237D042E200F2CED000C12B1 /* HomeConversionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConversionListCell.swift; sourceTree = "<group>"; };
 		237D042F200F2CED000C12B1 /* HomeConversionListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeConversionListCell.xib; sourceTree = "<group>"; };
-		237D043D200F4459000C12B1 /* InputPaymentPasswordVw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputPaymentPasswordVw.h; sourceTree = "<group>"; };
-		237D043E200F4459000C12B1 /* InputPaymentPasswordVw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputPaymentPasswordVw.m; sourceTree = "<group>"; };
-		237D0440200F468C000C12B1 /* UIView+category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+category.m"; sourceTree = "<group>"; };
-		237D0441200F468C000C12B1 /* GLTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTextField.m; sourceTree = "<group>"; };
-		237D0442200F468C000C12B1 /* UIView+category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+category.h"; sourceTree = "<group>"; };
-		237D0443200F468C000C12B1 /* GLTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTextField.h; sourceTree = "<group>"; };
-		237D0446200F46A8000C12B1 /* PaymentPasswordAlertVw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentPasswordAlertVw.m; sourceTree = "<group>"; };
-		237D0447200F46A8000C12B1 /* PaymentPasswordAlertVw.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentPasswordAlertVw.xib; sourceTree = "<group>"; };
-		237D0448200F46A8000C12B1 /* PaymentPasswordAlertVw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentPasswordAlertVw.h; sourceTree = "<group>"; };
 		2388F475201ACFFD005E8F1B /* HomeAddCoinVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddCoinVM.swift; sourceTree = "<group>"; };
 		2388F478201AD48F005E8F1B /* HomeAddCoinListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddCoinListModel.swift; sourceTree = "<group>"; };
 		2388F48E201AFD1C005E8F1B /* HomeConversionListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConversionListVC.swift; sourceTree = "<group>"; };
@@ -1252,6 +1260,18 @@
 				232C542720AA7F58002C8780 /* MineViewModel.swift */,
 			);
 			path = MineViewModel;
+			sourceTree = "<group>";
+		};
+		232C60E320AADD2B00525BCC /* PaymentPSDVw */ = {
+			isa = PBXGroup;
+			children = (
+				232C60F420AAE75600525BCC /* PaymentAlertVw.h */,
+				232C60F320AAE75500525BCC /* PaymentAlertVw.m */,
+				232C60F620AAE75600525BCC /* PaymentAlertVw.xib */,
+				232C60F220AAE75500525BCC /* PaymentPasswordVw..m */,
+				232C60F520AAE75600525BCC /* PaymentPasswordVw.h */,
+			);
+			path = PaymentPSDVw;
 			sourceTree = "<group>";
 		};
 		232DF516201EF0F800842491 /* ViewModel */ = {
@@ -1899,6 +1919,7 @@
 				236137C2208583E300E73F9E /* MineBankCardBindingCell.swift */,
 				236137C5208583E300E73F9E /* MineSetAccountVw.xib */,
 				236137C3208583E300E73F9E /* MineSetAccountVw.swift */,
+				232C60E320AADD2B00525BCC /* PaymentPSDVw */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2259,15 +2280,15 @@
 		237D043C200F4459000C12B1 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				237D043D200F4459000C12B1 /* InputPaymentPasswordVw.h */,
-				237D043E200F4459000C12B1 /* InputPaymentPasswordVw.m */,
-				237D0448200F46A8000C12B1 /* PaymentPasswordAlertVw.h */,
-				237D0446200F46A8000C12B1 /* PaymentPasswordAlertVw.m */,
-				237D0447200F46A8000C12B1 /* PaymentPasswordAlertVw.xib */,
-				237D0443200F468C000C12B1 /* GLTextField.h */,
-				237D0441200F468C000C12B1 /* GLTextField.m */,
-				237D0442200F468C000C12B1 /* UIView+category.h */,
-				237D0440200F468C000C12B1 /* UIView+category.m */,
+				232C60D920AADB1700525BCC /* GLTextField.h */,
+				232C60DA20AADB1700525BCC /* GLTextField.m */,
+				232C60DD20AADB1800525BCC /* InputPaymentPasswordVw.h */,
+				232C60D820AADB1700525BCC /* InputPaymentPasswordVw.m */,
+				232C60DC20AADB1800525BCC /* PaymentPasswordAlertVw.h */,
+				232C60D620AADB1700525BCC /* PaymentPasswordAlertVw.m */,
+				232C60D520AADB1600525BCC /* PaymentPasswordAlertVw.xib */,
+				232C60DB20AADB1800525BCC /* UIView+category.h */,
+				232C60D720AADB1700525BCC /* UIView+category.m */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -2963,7 +2984,6 @@
 				23674A862020202400B4B96E /* FriendsViewController.xib in Resources */,
 				2331659120A9756C00597302 /* SecuritySetViewCell.xib in Resources */,
 				236FA085206A263000FD5CB6 /* MessageCell.xib in Resources */,
-				237D044A200F46A8000C12B1 /* PaymentPasswordAlertVw.xib in Resources */,
 				23674A992020202400B4B96E /* FriendTableViewCell.xib in Resources */,
 				23A538D6205F537400EDB714 /* BusinessConvertView.xib in Resources */,
 				236137C9208583E300E73F9E /* MineBindingDetailsCell.xib in Resources */,
@@ -2993,6 +3013,7 @@
 				23674ACE2020205400B4B96E /* LoginNoteTextView.xib in Resources */,
 				23674A6620201DDE00B4B96E /* InformationVC.xib in Resources */,
 				23A538D3205F537400EDB714 /* BusinessTransactionView.xib in Resources */,
+				232C60F920AAE75700525BCC /* PaymentAlertVw.xib in Resources */,
 				232C542E20AA886D002C8780 /* MineMiningVw.xib in Resources */,
 				2332D45B200DA1A7009B4D5E /* LaunchScreen.storyboard in Resources */,
 				236441F22019881900916432 /* HomeCodeView.xib in Resources */,
@@ -3005,6 +3026,7 @@
 				232A113F200E1975002F60C7 /* HomeReceiveView.xib in Resources */,
 				23674AC22020205400B4B96E /* ImportWallletViewController.xib in Resources */,
 				23328192200DE0C300094849 /* HomeListCell.xib in Resources */,
+				232C60DE20AADB1800525BCC /* PaymentPasswordAlertVw.xib in Resources */,
 				237D041A200EF835000C12B1 /* HomeTransferFinishView.xib in Resources */,
 				2332819A200DE79800094849 /* HomeHeadView.xib in Resources */,
 				2333DC18207A2CBD002911BC /* BusinessInviteFriendsCell.xib in Resources */,
@@ -3272,6 +3294,7 @@
 				23A53806205F520E00EDB714 /* RegularDefinition.swift in Sources */,
 				23674ADC2020205400B4B96E /* AutorizeButton.swift in Sources */,
 				23298B702088420B00702DD8 /* UIView+frameAdjust.m in Sources */,
+				232C60F720AAE75700525BCC /* PaymentPasswordVw..m in Sources */,
 				23A538F1205F537400EDB714 /* BusinessOrderDetailsLiCell.swift in Sources */,
 				23674A942020202400B4B96E /* AboutUsViewController.swift in Sources */,
 				2332D4D5200DA1BC009B4D5E /* ConstraintView+Extensions.swift in Sources */,
@@ -3289,6 +3312,7 @@
 				236137CB208583E300E73F9E /* MineBankCardBindingCell.swift in Sources */,
 				236FA084206A263000FD5CB6 /* MessageCell.swift in Sources */,
 				23A538E9205F537400EDB714 /* BusinessaDvertisementVM.swift in Sources */,
+				232C60E020AADB1800525BCC /* UIView+category.m in Sources */,
 				236137D4208584B300E73F9E /* MineBindingBankModel.swift in Sources */,
 				23A538D7205F537400EDB714 /* BusinessConvertView.swift in Sources */,
 				2332D4D0200DA1BC009B4D5E /* ConstraintOffsetTarget.swift in Sources */,
@@ -3321,14 +3345,12 @@
 				233201B3202AFEDD001815DE /* MJRefreshStateHeader.m in Sources */,
 				232A1150200E2AEE002F60C7 /* HomeCointTransView.swift in Sources */,
 				233176EC2021B96C0006E0E9 /* HomeTransferDetailsModel.swift in Sources */,
-				237D0444200F468C000C12B1 /* UIView+category.m in Sources */,
 				2333DC12207A216D002911BC /* BusinessInviteFriendsVw.swift in Sources */,
 				237D0413200EF35E000C12B1 /* HomeTransferRemarksCell.swift in Sources */,
 				23A538CE205F537400EDB714 /* BusinessModel.swift in Sources */,
 				237858AD2018209D0014DACD /* BaseView.m in Sources */,
 				2375675C2068D91A006AED6F /* BusinessOrderFinishCell.swift in Sources */,
 				232F3D3A20A926AD0002C3C6 /* IntegralApplicationStatusVw.swift in Sources */,
-				237D0449200F46A8000C12B1 /* PaymentPasswordAlertVw.m in Sources */,
 				2332D4D3200DA1BC009B4D5E /* ConstraintRelation.swift in Sources */,
 				23674AC12020205400B4B96E /* FileListViewController.swift in Sources */,
 				232DF518201EF10700842491 /* HomeCoinDetailsVM.swift in Sources */,
@@ -3336,7 +3358,6 @@
 				237858B22018209D0014DACD /* YYClassInfo.m in Sources */,
 				23A538CF205F537400EDB714 /* BusinessCoinModel.swift in Sources */,
 				23C7EA192019D42900486341 /* HomeBaseModel.swift in Sources */,
-				237D043F200F4459000C12B1 /* InputPaymentPasswordVw.m in Sources */,
 				2364D88E20A531B100EFE97C /* BusinessMeunCell.swift in Sources */,
 				2332D4C2200DA1BC009B4D5E /* ConstraintPriorityTarget.swift in Sources */,
 				236FA08B206A28C700FD5CB6 /* MessageInformationVw.swift in Sources */,
@@ -3370,6 +3391,7 @@
 				23A538FB205F537400EDB714 /* BusinessVM.swift in Sources */,
 				236441F02019880900916432 /* HomeCodeView.swift in Sources */,
 				236137CA208583E300E73F9E /* MineBindingDetailsCell.swift in Sources */,
+				232C60E120AADB1800525BCC /* InputPaymentPasswordVw.m in Sources */,
 				2332D4FA200DA290009B4D5E /* FMNavigationController.swift in Sources */,
 				23A538E7205F537400EDB714 /* BusinessBuyHistoryCell.swift in Sources */,
 				230CFE1D2015F38100D4B9C4 /* HomeSelectDetailsView.swift in Sources */,
@@ -3416,7 +3438,6 @@
 				2332D4DE200DA1BC009B4D5E /* ConstraintMakerRelatable.swift in Sources */,
 				2331659C20A9942500597302 /* MineMiningVC.swift in Sources */,
 				237D0423200F279A000C12B1 /* HomeConversionVC.swift in Sources */,
-				237D0445200F468C000C12B1 /* GLTextField.m in Sources */,
 				2331658C20A9678800597302 /* MineChooseBtn.swift in Sources */,
 				23674ACA2020205400B4B96E /* LoginViewController.swift in Sources */,
 				233043FD207B503500579A95 /* MineImportWalletVC.swift in Sources */,
@@ -3425,6 +3446,7 @@
 				23674AD82020205400B4B96E /* DHSTextField.swift in Sources */,
 				2375675F2068DE97006AED6F /* BusinessSubmissionMessageVC.swift in Sources */,
 				2332D4DC200DA1BC009B4D5E /* ConstraintLayoutGuide+Extensions.swift in Sources */,
+				232C60F820AAE75700525BCC /* PaymentAlertVw.m in Sources */,
 				23674A8D2020202400B4B96E /* SecuritySetViewController.swift in Sources */,
 				23674A20202019D800B4B96E /* LBXScanView.swift in Sources */,
 				2331659320A9843900597302 /* MineSetPaymentVC.swift in Sources */,
@@ -3440,6 +3462,7 @@
 				233219AB201C3153007CF481 /* PST_MenuView.m in Sources */,
 				2364D89120A53E4400EFE97C /* BusinessTransactionDeView.swift in Sources */,
 				2332D4BC200DA1BC009B4D5E /* ConstraintMultiplierTarget.swift in Sources */,
+				232C60E220AADB1800525BCC /* GLTextField.m in Sources */,
 				23A538F6205F537400EDB714 /* BusinessLiberateView.swift in Sources */,
 				23298B722088420B00702DD8 /* UIColor+Util.m in Sources */,
 				23328198200DE78800094849 /* HomeHeadView.swift in Sources */,
@@ -3474,6 +3497,7 @@
 				237D0418200EF82A000C12B1 /* HomeTransferFinishView.swift in Sources */,
 				23674ACD2020205400B4B96E /* RegisterViewController.swift in Sources */,
 				23A538E8205F537400EDB714 /* BusinessVC.swift in Sources */,
+				232C60DF20AADB1800525BCC /* PaymentPasswordAlertVw.m in Sources */,
 				2332D4F9200DA290009B4D5E /* GuideViewController.swift in Sources */,
 				232B2C19201C2248004FB6DD /* HomeBackupModel.swift in Sources */,
 				233176E82021A36C0006E0E9 /* SettingPaypsdVC.swift in Sources */,

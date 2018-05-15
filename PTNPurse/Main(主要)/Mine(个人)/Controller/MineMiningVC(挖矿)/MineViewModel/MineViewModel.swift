@@ -35,10 +35,8 @@ class MineViewModel: NSObject {
                 self.rankModel = responseData.mineRank!
                 //分页效果
                 let arr = NSMutableArray()
-                if responseData.mineList?.count != 0 {
-                    arr.addObjects(from: self.mineListModel)
-                    arr.addObjects(from: responseData.mineList!)
-                }
+                arr.addObjects(from: self.mineListModel)
+                arr.addObjects(from: responseData.mineList!)
                 self.mineListModel = arr as! [HomeMiningListModel]
                 finishedCallback(responseData.mineList?.count != 0 ? true : false)
             //获取收益排行

@@ -46,15 +46,12 @@ class MineBankCardBindingVC: MainViewController {
         return tableView
     }()
     
-    //33 32
     lazy var addBankCardBtn: UIButton = {
         let btn = UIButton(type: .custom)
         btn.frame = CGRect(x: SCREEN_WIDTH - 15 - 34, y: 32, width: 34, height: 22)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-//        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), for: .normal)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitle(LanguageHelper.getString(key: "binding_Add"), for: .normal)
-        btn.isEnabled = false
         btn.addTarget(self, action: #selector(addBankCardOnClick(_:)), for: .touchUpInside)
         return btn
     }()

@@ -65,7 +65,10 @@ class HomeMiningListModel: Mappable {
         coinNo    <- map["coinNo"]
         dateFormat1    <- map["dateFormat1"]
         dateFormat2    <- map["dateFormat2"]
-         grade    <- map["grade"]
+        grade    <- map["grade"]
+        id    <- map["id"]
+        state    <- map["state"]
+        username    <- map["username"]
         
     }
 }

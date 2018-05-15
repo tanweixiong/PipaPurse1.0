@@ -66,12 +66,14 @@ class MineMiningVC: MainViewController {
                 mineMiningVw.rankingBtn.backgroundColor = UIColor.clear
                 mineMiningVw.rankingBtn.setTitleColor(R_ZYSelectNormalColor, for: .normal)
                 style = .incomeStyle
+                tableView.mj_footer.resetNoMoreData()
             }else{
                 mineMiningVw.rankingBtn.backgroundColor = R_UIThemeColor
                 mineMiningVw.rankingBtn.setTitleColor(UIColor.white, for: .normal)
                 mineMiningVw.incomeBtn.backgroundColor = UIColor.clear
                 mineMiningVw.incomeBtn.setTitleColor(R_ZYSelectNormalColor, for: .normal)
                 style = .rankingStyle
+                tableView.mj_footer.endRefreshingWithNoMoreData()
             }
             tableView.reloadData()
         }else if sender == mineMiningVw.ruleDescriptionBtn{
@@ -82,7 +84,7 @@ class MineMiningVC: MainViewController {
     
     override func viewDidLayoutSubviews() {
         //计算中点位置
-        let cumulativeX = mineMiningVw.cumulativeIncomeLab.frame.maxX - mineMiningVw.cumulativeIncomeLab.size.width / 2
+        let cumulativeX = mineMiningVw.cumulativeIncomeLab.frame.maxX - mineMiningVw.cumulativeIncomeLab.size.width
         let centerX = cumulativeX + CGFloat(imgaeSize) / 2
         self.cumulativeIncomeCenter =  CGPoint(x: centerX, y: mineMiningVw.cumulativeIncomeLab.frame.maxY)
     }
@@ -90,21 +92,14 @@ class MineMiningVC: MainViewController {
 
 extension MineMiningVC{
     func setupUI(){
-        mineMiningVw.widthRatio.constant = -XMAKE(20)
         view.addSubview(tableView) 
         //创建头部
         setNormalNaviBar(title: "", BackgroundImage: UIImage.creatImageWithColor(color: UIColor.clear, size: CGSize(width:SCREEN_WIDTH,height:SCREEN_HEIGHT), alpha: 1))
-        
-        //gif
-        let path = Bundle.main.url(forResource: "ic_mining_person", withExtension: "gif")
-        let data = NSData(contentsOf: path!)
-        self.mineMiningVw.personImgeVw.image = YLGIFImage(data: data! as Data)
     }
     
     func getData(){
-        //获取气泡
         let parameters = ["token":self.token]
-        viewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetMineList, parameters: parameters, showIndicator: false) {_ in
+        viewModel.loadSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetMineList, parameters: parameters, showIndicator: false) {_ in
             let mineSumNum = (self.viewModel.balloonModel.mineSumNum?.stringValue)!
             self.mineMiningVw.cumulativeIncomeLab.text = mineSumNum
             self.createBalloon()
@@ -113,8 +108,8 @@ extension MineMiningVC{
     
     func addData(_ index:NSInteger){
         let model = viewModel.balloonModel.mineDetails![index]
-        let parameters = ["id":(model.id?.stringValue)!]
-        baseVM.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIAddMine, showIndicator: false) { (model:HomeBaseModel) in
+        let parameters = ["id":(model.id?.stringValue)!,"token":self.token]
+        baseVM.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIAddMine, parameters: parameters ,showIndicator: false) { (model:HomeBaseModel) in
             if model.code == 200 {
                 SVProgressHUD.showInfo(withStatus: "成功")
             }else{
@@ -124,11 +119,10 @@ extension MineMiningVC{
     }
     
     func getListData(){
-        let parameters = ["token":self.token,"size":"10","pageSize":"\(self.pageSize)","lineSize":"\(self.lineSize)"]
-        viewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetMine, parameters: parameters, showIndicator: false) {(newData:Bool) in
+        let parameters = ["token":self.token,"pageSize":"\(self.pageSize)","lineSize":"\(self.lineSize)"]
+        viewModel.loadSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetMine, parameters: parameters, showIndicator: false) {(newData:Bool) in
             if newData{
                 self.pageSize = self.pageSize + 1
-                self.tableView.mj_footer.resetNoMoreData()
             }else{
                 self.tableView.mj_footer.endRefreshingWithNoMoreData()
             }
@@ -151,8 +145,10 @@ extension MineMiningVC{
                 lab.textColor = UIColor.white
                 lab.textAlignment = .center
                 let size = lab.getStringSize(text: lab.text!, size: CGSize(width:SCREEN_WIDTH,height:14), font: 14)
-                imgaeSize = Int(size.width)
+                imgaeSize = Int(size.width) + 40
                 lab.frame = CGRect(x: 0, y: 0, width: CGFloat(imgaeSize), height: CGFloat(imgaeSize))
+                print(imgaeSize)
+                
                 
                 //生成一个X轴的随机数
                 let newX = createRandomManFor(start:imgaeSize,end: Int(SCREEN_WIDTH) - imgaeSize)
@@ -181,13 +177,13 @@ extension MineMiningVC{
     
     @objc func touchTheBubble(_ sender:UIButton){
         let views = self.view.viewWithTag(self.viewTag + sender.tag)
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             views?.frame = CGRect(x: self.cumulativeIncomeCenter.x, y: self.cumulativeIncomeCenter.y, width: CGFloat(self.imgaeSize), height:CGFloat(self.imgaeSize))
         }) { (finish) in
             views?.isHidden = true
             views?.removeFromSuperview()
-            self.addData(sender.tag)
         }
+        addData(sender.tag)
     }
     
     //生成随机数
@@ -212,7 +208,6 @@ extension MineMiningVC{
 }
 
 extension MineMiningVC:UITableViewDelegate,UITableViewDataSource{
-    // MARK: - Delegate Method
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -239,6 +234,10 @@ extension MineMiningVC:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
     }
 }
