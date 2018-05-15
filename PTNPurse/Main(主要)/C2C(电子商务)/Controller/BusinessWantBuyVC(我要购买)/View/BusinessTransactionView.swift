@@ -21,7 +21,7 @@ class BusinessTransactionView: UIView {
             
             let price = model.entrustPrice == nil ? 0 : model.entrustPrice
             let newPrice = Tools.setPriceNumber(price: price!)
-            priceLab.text = Tools.getWalletAmount(amount: newPrice) + " CNY" + model.coinCore!
+            priceLab.text = Tools.getWalletAmount(amount: newPrice) + " CNY" + "/" + model.coinCore!
             
             let username = model.name == nil ? "" : model.name
             self.nameLab.text = username

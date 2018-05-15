@@ -46,6 +46,12 @@
 		232C53FE20637B490005F64C /* BusinessBuyHistoryDetailsVw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232C53FD20637B490005F64C /* BusinessBuyHistoryDetailsVw.swift */; };
 		232C540020637B560005F64C /* BusinessBuyHistoryDetailsVw.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232C53FF20637B560005F64C /* BusinessBuyHistoryDetailsVw.xib */; };
 		232C54032063B5460005F64C /* BusinessSubmissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232C54022063B5460005F64C /* BusinessSubmissionVC.swift */; };
+		232C542120AA7766002C8780 /* MineRuleDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232C542020AA7766002C8780 /* MineRuleDescriptionVC.swift */; };
+		232C542820AA7F58002C8780 /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232C542720AA7F58002C8780 /* MineViewModel.swift */; };
+		232C542A20AA868F002C8780 /* MineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232C542920AA868F002C8780 /* MineModel.swift */; };
+		232C542C20AA8852002C8780 /* MineMiningVw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232C542B20AA8852002C8780 /* MineMiningVw.swift */; };
+		232C542E20AA886D002C8780 /* MineMiningVw.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232C542D20AA886D002C8780 /* MineMiningVw.xib */; };
+		232C543020AA8BFF002C8780 /* ic_mining_person.gif in Resources */ = {isa = PBXBuildFile; fileRef = 232C542F20AA8BFE002C8780 /* ic_mining_person.gif */; };
 		232D7E6D207D976D00BBBB4D /* BusinessInviteFriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232D7E6C207D976D00BBBB4D /* BusinessInviteFriendsModel.swift */; };
 		232D7E6F207D987C00BBBB4D /* BusinessInviteFriendsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232D7E6E207D987C00BBBB4D /* BusinessInviteFriendsVM.swift */; };
 		232DF518201EF10700842491 /* HomeCoinDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232DF517201EF10700842491 /* HomeCoinDetailsVM.swift */; };
@@ -79,7 +85,6 @@
 		2331659D20A9942500597302 /* MineMiningVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2331659B20A9942500597302 /* MineMiningVC.xib */; };
 		233165A020A9966200597302 /* MineMiningCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331659E20A9966200597302 /* MineMiningCell.swift */; };
 		233165A120A9966200597302 /* MineMiningCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2331659F20A9966200597302 /* MineMiningCell.xib */; };
-		233165A320A9979D00597302 /* ic_mining_person.gif in Resources */ = {isa = PBXBuildFile; fileRef = 233165A220A9979D00597302 /* ic_mining_person.gif */; };
 		233165AA20A99C2D00597302 /* YLGIFImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 233165A520A99C2D00597302 /* YLGIFImage.m */; };
 		233165AB20A99C2D00597302 /* YLImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 233165A720A99C2D00597302 /* YLImageView.m */; };
 		233165AE20A9A33500597302 /* MineMiningRankingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233165AC20A9A33500597302 /* MineMiningRankingVC.swift */; };
@@ -481,6 +486,12 @@
 		232C53FD20637B490005F64C /* BusinessBuyHistoryDetailsVw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessBuyHistoryDetailsVw.swift; sourceTree = "<group>"; };
 		232C53FF20637B560005F64C /* BusinessBuyHistoryDetailsVw.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessBuyHistoryDetailsVw.xib; sourceTree = "<group>"; };
 		232C54022063B5460005F64C /* BusinessSubmissionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSubmissionVC.swift; sourceTree = "<group>"; };
+		232C542020AA7766002C8780 /* MineRuleDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineRuleDescriptionVC.swift; sourceTree = "<group>"; };
+		232C542720AA7F58002C8780 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
+		232C542920AA868F002C8780 /* MineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineModel.swift; sourceTree = "<group>"; };
+		232C542B20AA8852002C8780 /* MineMiningVw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineMiningVw.swift; sourceTree = "<group>"; };
+		232C542D20AA886D002C8780 /* MineMiningVw.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineMiningVw.xib; sourceTree = "<group>"; };
+		232C542F20AA8BFE002C8780 /* ic_mining_person.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ic_mining_person.gif; sourceTree = "<group>"; };
 		232D7E6C207D976D00BBBB4D /* BusinessInviteFriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInviteFriendsModel.swift; sourceTree = "<group>"; };
 		232D7E6E207D987C00BBBB4D /* BusinessInviteFriendsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInviteFriendsVM.swift; sourceTree = "<group>"; };
 		232DF517201EF10700842491 /* HomeCoinDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoinDetailsVM.swift; sourceTree = "<group>"; };
@@ -514,7 +525,6 @@
 		2331659B20A9942500597302 /* MineMiningVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineMiningVC.xib; sourceTree = "<group>"; };
 		2331659E20A9966200597302 /* MineMiningCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineMiningCell.swift; sourceTree = "<group>"; };
 		2331659F20A9966200597302 /* MineMiningCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineMiningCell.xib; sourceTree = "<group>"; };
-		233165A220A9979D00597302 /* ic_mining_person.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ic_mining_person.gif; sourceTree = "<group>"; };
 		233165A520A99C2D00597302 /* YLGIFImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLGIFImage.m; sourceTree = "<group>"; };
 		233165A620A99C2D00597302 /* YLGIFImageInSwiftProjectDemo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YLGIFImageInSwiftProjectDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		233165A720A99C2D00597302 /* YLImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLImageView.m; sourceTree = "<group>"; };
@@ -856,7 +866,7 @@
 		23A537EB205F520D00EDB714 /* UINavigationController+Cloudox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Cloudox.m"; sourceTree = "<group>"; };
 		23A537EC205F520D00EDB714 /* UIViewController+Cloudox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Cloudox.h"; sourceTree = "<group>"; };
 		23A537EE205F520D00EDB714 /* RegularDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularDefinition.swift; sourceTree = "<group>"; };
-		23A537EF205F520D00EDB714 /* ZYConstAPIURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYConstAPIURL.swift; sourceTree = "<group>"; };
+		23A537EF205F520D00EDB714 /* ZYConstAPIURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYConstAPIURL.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		23A53883205F537300EDB714 /* BusinessModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		23A53884205F537300EDB714 /* BusinessCoinModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCoinModel.swift; sourceTree = "<group>"; };
 		23A53888205F537300EDB714 /* BusinessRemarkView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessRemarkView.xib; sourceTree = "<group>"; };
@@ -1236,6 +1246,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		232C542620AA7F3D002C8780 /* MineViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				232C542720AA7F58002C8780 /* MineViewModel.swift */,
+			);
+			path = MineViewModel;
+			sourceTree = "<group>";
+		};
 		232DF516201EF0F800842491 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1274,6 +1292,7 @@
 			children = (
 				2331659520A993B200597302 /* Controller */,
 				2331659620A993B200597302 /* Model */,
+				232C542620AA7F3D002C8780 /* MineViewModel */,
 				2331659720A993B200597302 /* View */,
 			);
 			path = "MineMiningVC(挖矿)";
@@ -1284,8 +1303,7 @@
 			children = (
 				2331659A20A9942500597302 /* MineMiningVC.swift */,
 				2331659B20A9942500597302 /* MineMiningVC.xib */,
-				2331659E20A9966200597302 /* MineMiningCell.swift */,
-				2331659F20A9966200597302 /* MineMiningCell.xib */,
+				232C542020AA7766002C8780 /* MineRuleDescriptionVC.swift */,
 				233165AC20A9A33500597302 /* MineMiningRankingVC.swift */,
 				233165AD20A9A33500597302 /* MineMiningRankingVC.xib */,
 			);
@@ -1295,6 +1313,7 @@
 		2331659620A993B200597302 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				232C542920AA868F002C8780 /* MineModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1302,7 +1321,11 @@
 		2331659720A993B200597302 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				233165A220A9979D00597302 /* ic_mining_person.gif */,
+				2331659E20A9966200597302 /* MineMiningCell.swift */,
+				2331659F20A9966200597302 /* MineMiningCell.xib */,
+				232C542B20AA8852002C8780 /* MineMiningVw.swift */,
+				232C542D20AA886D002C8780 /* MineMiningVw.xib */,
+				232C542F20AA8BFE002C8780 /* ic_mining_person.gif */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2961,7 +2984,6 @@
 				23674ACB2020205400B4B96E /* RegisterSuccessViewController.xib in Resources */,
 				23307E142016CB3C00C1110A /* HomeListDetsilsFootView.xib in Resources */,
 				233201A8202AFEDD001815DE /* MJRefresh.bundle in Resources */,
-				233165A320A9979D00597302 /* ic_mining_person.gif in Resources */,
 				2333DBF42079EAC4002911BC /* ShareSDKUI.bundle in Resources */,
 				23674A932020202400B4B96E /* SystemSeUpViewController.xib in Resources */,
 				23674A6A20201DDE00B4B96E /* InfoTableViewCell.xib in Resources */,
@@ -2971,6 +2993,7 @@
 				23674ACE2020205400B4B96E /* LoginNoteTextView.xib in Resources */,
 				23674A6620201DDE00B4B96E /* InformationVC.xib in Resources */,
 				23A538D3205F537400EDB714 /* BusinessTransactionView.xib in Resources */,
+				232C542E20AA886D002C8780 /* MineMiningVw.xib in Resources */,
 				2332D45B200DA1A7009B4D5E /* LaunchScreen.storyboard in Resources */,
 				236441F22019881900916432 /* HomeCodeView.xib in Resources */,
 				2333DBF32079EAC4002911BC /* ShareSDK.bundle in Resources */,
@@ -3016,6 +3039,7 @@
 				3D7F6C93200F4498004D60E2 /* Localizable.strings in Resources */,
 				2332D456200DA1A7009B4D5E /* Main.storyboard in Resources */,
 				23674A882020202400B4B96E /* LanguageSetViewController.xib in Resources */,
+				232C543020AA8BFF002C8780 /* ic_mining_person.gif in Resources */,
 				4E77F940204FD46C00D6807E /* HomeCertificationListCell.xib in Resources */,
 				237D0431200F2CED000C12B1 /* HomeConversionListCell.xib in Resources */,
 				23304405207B517600579A95 /* MineImportWalletVw.xib in Resources */,
@@ -3291,6 +3315,7 @@
 				23F52A55205A202E008D8B75 /* QuotesVM.swift in Sources */,
 				23328191200DE0C300094849 /* HomeListCell.swift in Sources */,
 				237858CE20183CAD0014DACD /* HomeBackupDetailsVC.swift in Sources */,
+				232C542A20AA868F002C8780 /* MineModel.swift in Sources */,
 				23A537F9205F520E00EDB714 /* OCTools.m in Sources */,
 				23A537F5205F520E00EDB714 /* HNHeader.m in Sources */,
 				233201B3202AFEDD001815DE /* MJRefreshStateHeader.m in Sources */,
@@ -3324,6 +3349,7 @@
 				2333DC10207A2139002911BC /* BusinessInviteFriendsVC.swift in Sources */,
 				23298B712088420B00702DD8 /* CQMarqueeView.m in Sources */,
 				233201B1202AFEDD001815DE /* MJRefreshAutoNormalFooter.m in Sources */,
+				232C542C20AA8852002C8780 /* MineMiningVw.swift in Sources */,
 				23A537F0205F520E00EDB714 /* UIView+Frame.m in Sources */,
 				237D041C200EFB80000C12B1 /* HomeTransferDetailsVC.swift in Sources */,
 				237858B12018209D0014DACD /* NSObject+YYModel.m in Sources */,
@@ -3395,12 +3421,14 @@
 				23674ACA2020205400B4B96E /* LoginViewController.swift in Sources */,
 				233043FD207B503500579A95 /* MineImportWalletVC.swift in Sources */,
 				23A53800205F520E00EDB714 /* UIViewController+Cloudox.m in Sources */,
+				232C542120AA7766002C8780 /* MineRuleDescriptionVC.swift in Sources */,
 				23674AD82020205400B4B96E /* DHSTextField.swift in Sources */,
 				2375675F2068DE97006AED6F /* BusinessSubmissionMessageVC.swift in Sources */,
 				2332D4DC200DA1BC009B4D5E /* ConstraintLayoutGuide+Extensions.swift in Sources */,
 				23674A8D2020202400B4B96E /* SecuritySetViewController.swift in Sources */,
 				23674A20202019D800B4B96E /* LBXScanView.swift in Sources */,
 				2331659320A9843900597302 /* MineSetPaymentVC.swift in Sources */,
+				232C542820AA7F58002C8780 /* MineViewModel.swift in Sources */,
 				236FA07A2069E06E00FD5CB6 /* BusinessSubmissionMsgModel.swift in Sources */,
 				23674A962020202400B4B96E /* FriendTableViewCell.swift in Sources */,
 				233165AA20A99C2D00597302 /* YLGIFImage.m in Sources */,

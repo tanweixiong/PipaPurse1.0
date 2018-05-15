@@ -40,3 +40,5 @@ class MineBindingBankModel: Mappable {
         
     }
 }
+
+

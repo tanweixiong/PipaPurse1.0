@@ -6,124 +6,20 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineMiningVC" customModule="PTNPurse" customModuleProvider="target">
             <connections>
-                <outlet property="backBtn" destination="DzC-sf-1YI" id="EVR-ug-VhE"/>
-                <outlet property="incomeBtn" destination="UCa-LW-q6P" id="Un7-RQ-35p"/>
-                <outlet property="miningBag" destination="iUM-fa-QwB" id="ecP-ZE-sGu"/>
-                <outlet property="personImgeVw" destination="2hg-Zx-eCC" id="syN-DN-2KS"/>
-                <outlet property="rankingBtn" destination="kRm-Zh-1pU" id="rx5-eP-CRa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mining" translatesAutoresizingMaskIntoConstraints="NO" id="iUM-fa-QwB">
-                    <rect key="frame" x="0.0" y="20" width="375" height="384"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="384" id="qK0-4e-qtP"/>
-                    </constraints>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzC-sf-1YI">
-                    <rect key="frame" x="0.0" y="36" width="100" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="PR1-lL-s7m"/>
-                        <constraint firstAttribute="width" constant="100" id="Qe2-Mi-p73"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="ZG4-FX-BPF"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="pTg-FP-704"/>
-                    </constraints>
-                    <connections>
-                        <action selector="onClick:" destination="-1" eventType="touchUpInside" id="dCi-yZ-wJa"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCa-LW-q6P">
-                    <rect key="frame" x="25" y="429" width="80" height="35"/>
-                    <color key="backgroundColor" red="0.0" green="0.60784313725490191" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="35" id="BZI-D8-dtk"/>
-                        <constraint firstAttribute="width" constant="80" id="d8K-ut-TEr"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="个人收益">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="onClick:" destination="-1" eventType="touchUpInside" id="djc-UF-xmb"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRm-Zh-1pU">
-                    <rect key="frame" x="115" y="429" width="80" height="35"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="35" id="EBY-wu-qe8"/>
-                        <constraint firstAttribute="width" constant="80" id="dN5-Ng-uGR"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="收益排行">
-                        <color key="titleColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="onClick:" destination="-1" eventType="touchUpInside" id="a0S-Lk-Yfk"/>
-                    </connections>
-                </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2hg-Zx-eCC">
-                    <rect key="frame" x="39" y="266" width="100" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="M55-WQ-80f"/>
-                        <constraint firstAttribute="height" constant="100" id="jCh-Pq-ulf"/>
-                    </constraints>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bO-qJ-920">
-                    <rect key="frame" x="14" y="50" width="20" height="16"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="6bO-qJ-920" secondAttribute="height" multiplier="40:32" id="kCV-cU-9hA"/>
-                        <constraint firstAttribute="width" constant="20" id="rHU-BL-h35"/>
-                    </constraints>
-                    <state key="normal" backgroundImage="public_back_white"/>
-                </button>
-            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="DzC-sf-1YI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1f7-Pe-Gw4"/>
-                <constraint firstItem="iUM-fa-QwB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2BE-mK-Aqh"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iUM-fa-QwB" secondAttribute="trailing" id="Fr3-2I-vMr"/>
-                <constraint firstItem="6bO-qJ-920" firstAttribute="width" secondItem="6bO-qJ-920" secondAttribute="height" multiplier="40:32" id="aAT-cb-3UG"/>
-                <constraint firstItem="UCa-LW-q6P" firstAttribute="top" secondItem="2hg-Zx-eCC" secondAttribute="bottom" constant="63" id="bWK-od-Pow"/>
-                <constraint firstItem="kRm-Zh-1pU" firstAttribute="centerY" secondItem="UCa-LW-q6P" secondAttribute="centerY" id="fKv-0N-VLh"/>
-                <constraint firstItem="DzC-sf-1YI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="haD-88-qbh"/>
-                <constraint firstItem="2hg-Zx-eCC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="39" id="jPE-62-RjF"/>
-                <constraint firstItem="UCa-LW-q6P" firstAttribute="top" secondItem="iUM-fa-QwB" secondAttribute="bottom" constant="25" id="jYX-SK-kRN"/>
-                <constraint firstItem="kRm-Zh-1pU" firstAttribute="leading" secondItem="UCa-LW-q6P" secondAttribute="trailing" constant="10" id="nPN-Ss-RJU"/>
-                <constraint firstItem="6bO-qJ-920" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="14" id="njm-0o-Oak"/>
-                <constraint firstItem="6bO-qJ-920" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="q0I-DU-uMd"/>
-                <constraint firstItem="UCa-LW-q6P" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="scK-of-t5F"/>
-                <constraint firstItem="iUM-fa-QwB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="v4y-OF-Hvn"/>
-            </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="ic_mining" width="673" height="671"/>
-        <image name="public_back_white" width="20" height="16"/>
-    </resources>
 </document>

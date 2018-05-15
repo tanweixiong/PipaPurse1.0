@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VsD-AE-6lb" customClass="MineMiningVw" customModule="PTNPurse" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="460"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mining" translatesAutoresizingMaskIntoConstraints="NO" id="ffP-s3-bza">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="384" id="P6t-yv-jKj"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMZ-0R-eVA">
+                    <rect key="frame" x="25" y="409" width="80" height="35"/>
+                    <color key="backgroundColor" red="0.0" green="0.60784313729999995" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="DGp-Mm-o5Y"/>
+                        <constraint firstAttribute="width" constant="80" id="mQt-RW-fiZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="个人收益">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJb-da-g5R">
+                    <rect key="frame" x="115" y="409" width="80" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="P5A-Oi-dr3"/>
+                        <constraint firstAttribute="width" constant="80" id="usY-k1-p6j"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="收益排行">
+                        <color key="titleColor" red="0.74117647060000003" green="0.74117647060000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mining_person.gif" translatesAutoresizingMaskIntoConstraints="NO" id="NF5-Db-oGV">
+                    <rect key="frame" x="39" y="246" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="Mnc-67-Qfc"/>
+                        <constraint firstAttribute="width" constant="100" id="wnC-sB-h6H"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_minings" translatesAutoresizingMaskIntoConstraints="NO" id="GZL-z1-dwb">
+                    <rect key="frame" x="205" y="30" width="155" height="29"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="累积收益 12923" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqe-ty-b34">
+                    <rect key="frame" x="215" y="36" width="135" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="1" green="0.89019607840000003" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEN-Gc-HKt">
+                    <rect key="frame" x="305" y="354" width="50" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="MGD-0x-O6r"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="规则说明">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="hqe-ty-b34" firstAttribute="centerX" secondItem="GZL-z1-dwb" secondAttribute="centerX" id="23K-c5-5eO"/>
+                <constraint firstItem="CJb-da-g5R" firstAttribute="leading" secondItem="RMZ-0R-eVA" secondAttribute="trailing" constant="10" id="4cu-n6-HbX"/>
+                <constraint firstItem="GZL-z1-dwb" firstAttribute="top" secondItem="VsD-AE-6lb" secondAttribute="top" constant="30" id="5jN-tT-Uxt"/>
+                <constraint firstItem="ffP-s3-bza" firstAttribute="top" secondItem="VsD-AE-6lb" secondAttribute="top" id="6Md-TP-0ar"/>
+                <constraint firstItem="lEN-Gc-HKt" firstAttribute="bottom" secondItem="ffP-s3-bza" secondAttribute="bottom" constant="-13" id="90V-FJ-ROc"/>
+                <constraint firstItem="RMZ-0R-eVA" firstAttribute="top" secondItem="NF5-Db-oGV" secondAttribute="bottom" constant="63" id="DaI-cF-hdN"/>
+                <constraint firstItem="ffP-s3-bza" firstAttribute="leading" secondItem="VsD-AE-6lb" secondAttribute="leading" id="FlN-O1-MNZ"/>
+                <constraint firstItem="hqe-ty-b34" firstAttribute="centerY" secondItem="GZL-z1-dwb" secondAttribute="centerY" id="KOo-V8-EU8"/>
+                <constraint firstAttribute="trailing" secondItem="lEN-Gc-HKt" secondAttribute="trailing" constant="20" id="KRa-vq-Tb1"/>
+                <constraint firstAttribute="trailing" secondItem="GZL-z1-dwb" secondAttribute="trailing" constant="15" id="PPy-iH-049"/>
+                <constraint firstItem="CJb-da-g5R" firstAttribute="centerY" secondItem="RMZ-0R-eVA" secondAttribute="centerY" id="Z2W-Fo-mYj"/>
+                <constraint firstItem="RMZ-0R-eVA" firstAttribute="leading" secondItem="VsD-AE-6lb" secondAttribute="leading" constant="25" id="Zze-FG-1yV"/>
+                <constraint firstItem="hqe-ty-b34" firstAttribute="width" secondItem="GZL-z1-dwb" secondAttribute="width" constant="-20" id="kTR-Bv-0bp"/>
+                <constraint firstItem="RMZ-0R-eVA" firstAttribute="top" secondItem="ffP-s3-bza" secondAttribute="bottom" constant="25" id="lDT-pM-CTV"/>
+                <constraint firstItem="NF5-Db-oGV" firstAttribute="leading" secondItem="VsD-AE-6lb" secondAttribute="leading" constant="39" id="tyq-TF-0uN"/>
+                <constraint firstAttribute="trailing" secondItem="ffP-s3-bza" secondAttribute="trailing" id="vti-WP-Tqx"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cumulativeIncomeLab" destination="hqe-ty-b34" id="mLS-Tz-8yV"/>
+                <outlet property="incomeBtn" destination="RMZ-0R-eVA" id="bi0-fK-iyg"/>
+                <outlet property="miningBag" destination="ffP-s3-bza" id="7P8-HG-vUu"/>
+                <outlet property="personImgeVw" destination="NF5-Db-oGV" id="UiJ-lD-paX"/>
+                <outlet property="rankingBtn" destination="CJb-da-g5R" id="eOw-ne-1oy"/>
+                <outlet property="ruleDescriptionBtn" destination="lEN-Gc-HKt" id="VFl-np-0kY"/>
+                <outlet property="widthRatio" destination="kTR-Bv-0bp" id="IJV-yG-q1t"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_mining" width="375" height="384"/>
+        <image name="ic_mining_person.gif" width="377" height="232"/>
+        <image name="ic_minings" width="155" height="29"/>
+    </resources>
+</document>

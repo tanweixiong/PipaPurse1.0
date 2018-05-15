@@ -16,6 +16,24 @@ class MineMiningRankingVC: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    var model = HomeMiningListModel(){
+        didSet{
+            if let photo = model?.photo {
+                iconImageVw.sd_setImage(with: NSURL(string: photo as String)! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
+            }
+            
+            if let username = model?.username {
+                usernameLab.text = username as String
+            }
+            
+            if let price = model?.bonus {
+                priceLab.text = Tools.setNSDecimalNumber(price)
+            }
+
+        }
+    }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

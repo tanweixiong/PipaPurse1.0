@@ -11,8 +11,8 @@ import UIKit
 struct ZYConstAPI {
 
 //    static let kAPIH5BaseURL: String = "http://api.ptn.one:8080"
-    static let kAPIBaseURL: String = "http://api.ptn.one:8080/"  //正式服务
-//    static let kAPIBaseURL: String = "http://47.92.135.12:8080/"  //测试服务
+//    static let kAPIBaseURL: String = "http://api.ptn.one:8080/"  //正式服务
+    static let kAPIBaseURL: String = "http://192.168.20.27:8080/"  //测试服务
 //    static let kAPIBaseURL: String = "http://192.168.10.191/"  //美凯服务
 //    static let kAPIBaseURL: String = "http://192.168.10.139:8080/"   //仁政服务
 //    static let kAPIBaseURL: String = "http://192.168.20.48:8080/"  //科领服务
@@ -122,10 +122,13 @@ struct ZYConstAPI {
     static let kAPIBindGetBankCard = kAPIBaseURL + "getBankCard" //获取银行卡
     static let kAPIBindDeleteBankCard = kAPIBaseURL + "deleteBankCard" //删除银行卡
     static let kAPIBindEditBankCard = kAPIBaseURL + "editBankCard" //修改用户银行卡
-//  static let kAPISpotDisputeSubmission = kAPIBaseURL + "spotDispute/submission" //提交申诉
     
-    //**************************************C2C*************************************************//
-    
+     //**************************************挖矿*************************************************//
+    static let kAPIGetMine = kAPIBaseURL + "getMine.do" //获取挖矿主页信息
+    static let kAPIAddMine = kAPIBaseURL + "addMine.do" //添加挖矿收益接口
+    static let kAPIGetMineList = kAPIBaseURL + "getMineList.do" //获取挖矿小球信息
+
+
      //**************************************行情*************************************************//
     static let kAPIOpenCoinList = kAPIBaseURL + "openCoinList.do" //获取行情列表
     static let kAPIMarket = kAPIBaseURL + "market" //获取行情详情

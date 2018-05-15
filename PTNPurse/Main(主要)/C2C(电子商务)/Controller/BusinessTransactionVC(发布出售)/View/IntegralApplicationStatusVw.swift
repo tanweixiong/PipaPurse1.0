@@ -11,8 +11,11 @@ import UIKit
 protocol IntegralApplicationStatusDelegate{
     func integralApplicationStatusSelectRow(index:NSInteger,name:String,selectList:NSInteger)
 }
+
 class IntegralApplicationStatusVw: UIView {
     fileprivate let integralApplicationStatusCell = "IntegralApplicationStatusCell"
+    var selectFirstIndex = IndexPath()
+    var selectSecondIndex = IndexPath()
     var selectList = NSInteger()
     var dataArray = NSMutableArray(){
         didSet{
@@ -29,7 +32,7 @@ class IntegralApplicationStatusVw: UIView {
         super.awakeFromNib()
         statusVw.addSubview(statusTw)
     }
-
+    
     lazy var statusTw: UITableView = {
         let tableView = UITableView.init(frame: CGRect(x: 0, y: titleVw.frame.maxY, width: SCREEN_WIDTH, height: 144))
         tableView.register(UINib(nibName: "IntegralApplicationStatusCell", bundle: nil),forCellReuseIdentifier: self.integralApplicationStatusCell)
@@ -46,6 +49,7 @@ class IntegralApplicationStatusVw: UIView {
     @IBAction func onClick(_ sender: UIButton) {
         self.isHidden = true
     }
+    
 }
 
 extension IntegralApplicationStatusVw:UITableViewDelegate,UITableViewDataSource{
@@ -66,6 +70,13 @@ extension IntegralApplicationStatusVw:UITableViewDelegate,UITableViewDataSource{
         cell.selectionStyle = .none
         cell.headingLab.text = dataArray[indexPath.row] as? String
         cell.iconImgeVw.sd_setImage(with: NSURL(string: "")! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
+         cell.statusBtn.isSelected = false
+        if selectFirstIndex.count != 0 && selectList == 0 {
+            cell.statusBtn.isSelected = indexPath == selectFirstIndex ? true : false
+        }
+        if selectSecondIndex.count != 0 && selectList == 1 {
+            cell.statusBtn.isSelected = indexPath == selectSecondIndex ? true : false
+        }
         return cell
     }
     

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -30,7 +29,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcE-4k-9I7">
-                    <rect key="frame" x="10" y="335" width="355" height="50"/>
+                    <rect key="frame" x="10" y="284" width="355" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="lDm-ED-HAc"/>
                     </constraints>
@@ -43,21 +42,21 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBA-d9-EyM" customClass="CreatTopView" customModule="PTNPurse" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="yBA-d9-EyM" secondAttribute="height" multiplier="375:115" id="W4q-Ow-WqN"/>
+                        <constraint firstAttribute="height" constant="64" id="foA-AP-zpG"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfD-Np-4Dc" customClass="LoginTextFieldView" customModule="PTNPurse" customModuleProvider="target">
-                    <rect key="frame" x="10" y="125" width="355" height="60"/>
+                    <rect key="frame" x="10" y="74" width="355" height="60"/>
                     <color key="backgroundColor" red="0.96470588239999999" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="qzF-dO-y3u"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8O0-VN-Iv7" customClass="LoginTextFieldView" customModule="PTNPurse" customModuleProvider="target">
-                    <rect key="frame" x="10" y="195" width="355" height="60"/>
+                    <rect key="frame" x="10" y="144" width="355" height="60"/>
                     <color key="backgroundColor" red="0.96470588239999999" green="0.96078431369999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="8bX-E6-cLw"/>

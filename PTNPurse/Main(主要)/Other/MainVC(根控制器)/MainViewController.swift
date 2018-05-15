@@ -86,7 +86,20 @@ extension MainViewController {
         let image = UIImageView(frame:naviBarView.bounds)
         image.image = UIImage.init(named: "ic_pubilc_normalBackground")
         naviBarView.addSubview(image)
-        
+        setTitleAndBackBtn()
+    }
+    
+    func setNormalNaviBar(title:String,BackgroundImage:UIImage){
+        navigationController?.navigationBar.isHidden = true
+        naviBarView.frame = CGRect(x: 0, y: 0, width: Int(SCREEN_WIDTH), height: Int(MainViewController.MainViewControllerUX.naviNormalHeight))
+        //背景图片
+        let image = UIImageView(frame:naviBarView.bounds)
+        image.image = BackgroundImage
+        naviBarView.addSubview(image)
+        setTitleAndBackBtn()
+    }
+    
+    func setTitleAndBackBtn(){
         //标题
         titleLabel.frame = CGRect(x: 15, y: 32 , width: SCREEN_WIDTH - 15, height: 22)
         titleLabel.text = title
@@ -95,7 +108,6 @@ extension MainViewController {
         titleLabel.textAlignment = .center
         naviBarView.addSubview(titleLabel)
         view.addSubview(naviBarView)
-        
         //返回按钮
         let backBtn = UIButton.init(type: .custom)
         backBtn.setImage(UIImage.init(named: "ic_back_let"), for: .normal)

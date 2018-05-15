@@ -28,13 +28,13 @@ class BusinessWantBuyVC: MainViewController {
     fileprivate var bankCardId = String()
     fileprivate var bank = String()
     var businessWantBuyData = BusinessWantBuyData()
+    var detailsModel = BusinessModel()
     var isDetails = false
     var entrustNo = String()
     var receivablesType = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        getDetailsData()
         BusinessVC.setPaymentData()
     }
     
@@ -58,6 +58,7 @@ class BusinessWantBuyVC: MainViewController {
     lazy var businessTransactionDeView: BusinessTransactionDeView = {
         let view = Bundle.main.loadNibNamed("BusinessTransactionDeView", owner: nil, options: nil)?.last as! BusinessTransactionDeView
         view.frame = CGRect(x: 0, y: businessView.frame.maxY , width: SCREEN_WIDTH, height: 165)
+        view.model = self.detailsModel
         return view
     }()
     
@@ -74,6 +75,11 @@ class BusinessWantBuyVC: MainViewController {
         view.isHidden = self.isDetails ? true : false
         view.coinNumTF.placeholder = self.style == .buyStyle ? LanguageHelper.getString(key: "C2C_home_Please_enter_the_purchase") : LanguageHelper.getString(key: "C2C_home_Please_enter_the_number_of_sales")
         view.disPriceTF.placeholder = LanguageHelper.getString(key: "C2C_home_Converted_amount")
+        
+        view.coinNumTF.textColor = UIColor.R_UIColorFromRGB(color: 0x4D4F51)
+        view.disPriceTF.textColor = UIColor.R_UIColorFromRGB(color: 0x4D4F51)
+        view.coinNameLab.textColor = UIColor.R_UIColorFromRGB(color: 0x4D4F51)
+        view.disNameLab.textColor = UIColor.R_UIColorFromRGB(color: 0x4D4F51)
         return view
     }()
     
@@ -104,7 +110,7 @@ extension BusinessWantBuyVC {
          scrollView.addSubview(businessView)
          scrollView.addSubview(businessTransactionDeView)
          scrollView.addSubview(businessConvertView)
-        let contentSize_height = isDetails ? 20 : 250
+        let contentSize_height = isDetails ? 20 : 180
          scrollView.contentSize = CGSize(width: SCREEN_WIDTH, height: businessConvertView.frame.maxY + CGFloat(contentSize_height))
     }
     
@@ -227,13 +233,20 @@ extension BusinessWantBuyVC {
         let textField = notification.object as! UITextField
         if textField == businessConvertView.coinNumTF {
               let num = businessConvertView.coinNumTF.text!
-              if num == "" {return}
+              if num == "" || textField.text! == "" {
+                businessConvertView.disPriceTF.text = ""
+                return
+            }
               let price = self.businessWantBuyData.entrustPrice
               let cny = (price?.floatValue)! * Float(num)!
               businessConvertView.disPriceTF.text = "\(cny)"
         }else{
             let cny = businessConvertView.disPriceTF.text!
-            if cny == "" {return}
+            if cny == "" || textField.text! == ""
+            {
+                businessConvertView.coinNumTF.text = ""
+                return
+            }
             let price = self.businessWantBuyData.entrustPrice
             let newprice =  Float(cny)! / (price?.floatValue)!
             businessConvertView.coinNumTF.text = "\(newprice)"
@@ -285,18 +298,15 @@ extension BusinessWantBuyVC {
     
     //查看订单详情
     func getDetailsData(){
-        if isDetails {
-            let parameters = ["id":self.entrustNo]
-            detailsViewModel.loadLiberateSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetSpotEntrustById, parameters: parameters, showIndicator: false, finishedCallback: {
-                if self.detailsViewModel.liberateModel.username != nil {
-                    let model = self.detailsViewModel.liberateModel
-                    let data = BusinessWantBuyData(avatarUrl: model.photo, entrustPrice: model.entrustPrice, entrustMaxPrice: model.entrustMaxPrice, entrustMinPrice: model.entrustMinPrice, remark: model.remark, name: model.username, coinCore: model.coinCore)
-                    self.businessView.model = data
-                    self.businessTransactionDeView.model = model
-                    
-                }
-            })
-        }
+        let parameters = ["id":self.entrustNo]
+        detailsViewModel.loadLiberateSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetSpotEntrustById, parameters: parameters, showIndicator: false, finishedCallback: {
+            if self.detailsViewModel.liberateModel.username != nil {
+                let model = self.detailsViewModel.liberateModel
+                let data = BusinessWantBuyData(avatarUrl: model.photo, entrustPrice: model.entrustPrice, entrustMaxPrice: model.entrustMaxPrice, entrustMinPrice: model.entrustMinPrice, remark: model.remark, name: model.username, coinCore: model.coinCore)
+                self.businessView.model = data
+                self.businessTransactionDeView.model = model
+            }
+        })
     }
 }
 

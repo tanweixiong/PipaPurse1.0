@@ -44,6 +44,8 @@ class BusinessTransactionVC: MainViewController {
     fileprivate var methodType = String()
     fileprivate var remarkTV = YYTextView()
     fileprivate var remarksCell = HomeTransferRemarksCell()
+    fileprivate var selectFirstIndex = IndexPath()
+    fileprivate var selectSecondIndex = IndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +63,7 @@ class BusinessTransactionVC: MainViewController {
         tableView.register(UINib(nibName: "BusinessRelaseCell", bundle: nil),forCellReuseIdentifier: self.businessRelaseCell)
         tableView.register(UINib(nibName: "BusinessReleaseMethodCell", bundle: nil),forCellReuseIdentifier: self.businessReleaseMethodCell)
         tableView.register(UINib(nibName: "HomeTransferRemarksCell", bundle: nil),forCellReuseIdentifier: self.homeTransferRemarksCell)
-        tableView.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xEDEDED)
+        tableView.backgroundColor = UIColor.white
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         return tableView
@@ -74,6 +76,7 @@ class BusinessTransactionVC: MainViewController {
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)
         btn.addTarget(self, action: #selector(BusinessTransactionVC.submitOnClick), for: .touchUpInside)
+        btn.isEnabled = false
         return btn
     }()
     
@@ -241,15 +244,14 @@ extension BusinessTransactionVC {
     }
     
     @objc func onClick(_ sender:UIButton){
+        view.endEditing(true)
         //选择币种
         if sender.tag == 1 {
             if self.coinArray.count == 0 {return}
-            //刷新数组
-            self.selectVw.dataArray = self.coinArray
-            //赋予选项
+            self.selectVw.selectFirstIndex = self.selectFirstIndex
             self.selectVw.selectList = 0
+            self.selectVw.dataArray = self.coinArray
         //选择支付方式
-            self.selectVw.isHidden = false
         }else if sender.tag == 2 {
             let listArray = NSMutableArray()
             weChatStr = UserDefaults.standard.getUserInfo().weChat!
@@ -267,10 +269,11 @@ extension BusinessTransactionVC {
             }
             listArray.add(LanguageHelper.getString(key: "C2C_payment_Bankcard"))
             
-            self.selectVw.dataArray = listArray
+            self.selectVw.selectSecondIndex = self.selectSecondIndex
             self.selectVw.selectList = 1
-            self.selectVw.isHidden = false
+            self.selectVw.dataArray = listArray
         }
+        self.selectVw.isHidden = false
     }
 }
 
@@ -289,35 +292,16 @@ extension BusinessTransactionVC: InputPaymentPasswordDelegate{
     }
     
     @objc func textFieldTextDidChangeOneCI(notification:NSNotification){
-        if checkInput() {
-            remarksCell.submitBtn.isSelected = true
-            remarksCell.submitBtn.isEnabled = true
-        }else{
-            remarksCell.submitBtn.isSelected = false
-            remarksCell.submitBtn.isEnabled = false
-        }
-        setSubmitBtnStyle()
+        changeSubmitStyle()
     }
     
     func changeSubmitStyle(){
         if checkInput() {
-            remarksCell.submitBtn.isSelected = true
-            remarksCell.submitBtn.isEnabled = true
+            determineBtn.backgroundColor = R_UIThemeColor
+            determineBtn.isEnabled = true
         }else{
-            remarksCell.submitBtn.isSelected = false
-            remarksCell.submitBtn.isEnabled = false
-        }
-        setSubmitBtnStyle()
-    }
-    
-    func setSubmitBtnStyle(){
-        if remarksCell.submitBtn.isSelected {
-            remarksCell.submitBtn.backgroundColor = R_UIThemeColor
-            remarksCell.submitBtn.layer.borderWidth = 0
-        }else{
-            remarksCell.submitBtn.backgroundColor = UIColor.clear
-            remarksCell.submitBtn.layer.borderWidth = 1
-            remarksCell.submitBtn.layer.borderColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD).cgColor
+            determineBtn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)
+            determineBtn.isEnabled = false
         }
     }
 }
@@ -384,7 +368,7 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
             remarksCell.remarkLabel.text = "广告留言"
             remarksCell.remarkLabel.textColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
             remarksCell.remarkLabel.font = UIFont.systemFont(ofSize: 14)
-            remarksCell.textView?.placeholderText = " 请说明有关您交易的相关条款或备注您的支付方式，如微信号，支付宝号等，以便对方可以快速和您交易。（下单前后都可见）"
+            remarksCell.textView?.placeholderText = "请说明有关您交易的相关条款或备注您的支付方式，如微信号，支付宝号等，以便对方可以快速和您交易。（下单前后都可见）"
             remarksCell.textView?.placeholderFont = UIFont.systemFont(ofSize: 12)
             remarksCell.textView?.textColor = UIColor.R_UIColorFromRGB(color: 0xBDBDBD)
             remarksCell.textView?.placeholderTextColor = UIColor.R_UIColorFromRGB(color: 0xBDBDBD)
@@ -397,7 +381,7 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         view.endEditing(true)
-        tableView.contentSize = CGSize(width: 0, height: headingArray.count * 94 + 200 + 100)
+        tableView.contentSize = CGSize(width: 0, height: headingArray.count * 94 + 200)
     }
     
 }
@@ -414,8 +398,10 @@ extension BusinessTransactionVC:MineBankCardBindingDelegate{
 extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
     func integralApplicationStatusSelectRow(index: NSInteger, name: String, selectList: NSInteger) {
         if selectList == 0 {
+            selectFirstIndex = IndexPath(row: index, section: 0)
             coinNameTF.text = name
         }else if selectList == 1 {
+            selectSecondIndex = IndexPath(row: index, section: 0)
             self.paymentMethod = name //用于支付方式
             let method = name
             var account = String()

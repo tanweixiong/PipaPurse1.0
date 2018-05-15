@@ -12,6 +12,20 @@ class MineMiningCell: UITableViewCell {
     @IBOutlet weak var icomLab: UILabel!
     @IBOutlet weak var dataLab: UILabel!
     
+    
+    var model = HomeMiningListModel(){
+        didSet{
+            
+            if let bonus = model?.bonus {
+                icomLab.text = Tools.setNSDecimalNumber(bonus)
+            }
+            
+            if let data = model?.date {
+                dataLab.text = data as String
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
