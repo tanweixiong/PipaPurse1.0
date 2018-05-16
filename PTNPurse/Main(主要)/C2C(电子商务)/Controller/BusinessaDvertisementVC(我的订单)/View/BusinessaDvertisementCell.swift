@@ -26,6 +26,12 @@ class BusinessaDvertisementCell: UITableViewCell {
     @IBOutlet weak var transactionDataLab: UILabel!
     @IBOutlet weak var backgroundVw: UIView!
     
+    
+    @IBOutlet weak var orderNumTLab: UILabel!
+    @IBOutlet weak var orderTypeTLab: UILabel!
+    @IBOutlet weak var orderUnitLab: UILabel!
+    @IBOutlet weak var orderNumberLab: UILabel!
+    @IBOutlet weak var orderTimeLab: UILabel!
     var model = BusinessaDvertisementModel(){
         didSet{
             let photo = model?.photo == nil ? "" :  model?.photo
@@ -35,50 +41,29 @@ class BusinessaDvertisementCell: UITableViewCell {
             usernameLab.text = name!
             
             //状态，0：匹配中，1：已完成，2：撤销，3：等待买方付款，4：等待卖方确认，5：未付款回滚订单，6：纠纷强制打款，7：纠纷强制回滚
-            //交易状态
             stateLab.text = Tools.getBusinessaTransactionStyle(Style: (model?.state?.stringValue)!)
             
-            //价格
-            let sumPrice = model?.sumPrice == nil ? 0 : model?.sumPrice
-            transactionPriceLab.text = Tools.setPriceNumber(price: sumPrice!) + " CNY"
-
-            //单价
-            let unitPrice = model?.dealPrice == nil ? 0 : model?.dealPrice
-            transactionPriceLab.text = Tools.setPriceNumber(price: unitPrice!) + " CNY"
+            orderNumLab.text = (model?.entrustNo)!
             
-            orderNumLab.text = "12312"
+            transactionTypeLab.text = model?.dealType == 0 ? "购买" : "出售"  + (model?.coinCore)!
+            transactionTypeLab.textColor = model?.dealType == 0 ? UIColor.R_UIColorFromRGB(color: 0x00D85A) : UIColor.R_UIColorFromRGB(color: 0xFF7052)
             
-            transactionTypeLab.text = "出售BTC"
+            transactionPriceLab.text = Tools.setNSDecimalNumber((model?.dealPrice)!) + " CNY"
             
-            transactionPriceLab.text = "5000 CNY"
-            
-            transactionCoinPriceLab.text = "0.29 BTC"
+            transactionCoinPriceLab.text = Tools.setNSDecimalNumber((model?.dealNum)!) + " 个"
             
             transactionDataLab.text = model?.dateFormatDate
-    
-
-            //交易状态
-            switch (model?.dealType?.intValue)! {
-            //0购买
-            case 0:
-                self.style = .detriment
-                transactionTypeLab.textColor = UIColor.R_UIColorFromRGB(color: 0xFF7052)
-            case 1:
-                self.style = .sell
-                transactionTypeLab.textColor = UIColor.R_UIColorFromRGB(color: 0x00D85A)
-            default: break
-            }
+            
+            style = model?.dealType == 0 ? .detriment : .sell
    
             //进行中需要
-            if businessaStyle == .processingStyle {
-               addSubview(self.contactBtn)
-               addSubview(self.cancelOrderBtn)
-               addSubview(self.remindBtn)
-               setDetrimentStyle()
-               contactBtn.isHidden = false
-               cancelOrderBtn.isHidden = false
-               remindBtn.isHidden = false
-            }
+            addSubview(self.contactBtn)
+            addSubview(self.cancelOrderBtn)
+            addSubview(self.remindBtn)
+            setDetrimentStyle()
+            contactBtn.isHidden = false
+            cancelOrderBtn.isHidden = false
+            remindBtn.isHidden = false
         }
     }
     
@@ -218,6 +203,12 @@ class BusinessaDvertisementCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         Tools.setViewShadow(backgroundVw)
+        
+        orderNumLab.text = LanguageHelper.getString(key: "C2C_transaction_finish_OrderNum")
+        orderTypeTLab.text = LanguageHelper.getString(key: "homePage_Finish_Details_Transaction_Type")
+        orderUnitLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Unit")
+        orderNumberLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Quantity")
+        orderTimeLab.text = LanguageHelper.getString(key: "homePage_Finish_Details_Transaction_Time")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

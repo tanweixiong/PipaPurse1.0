@@ -14,7 +14,7 @@ enum BusinessaDvertisementStyle {
     case finishStyle
 }
 class BusinessaDvertisementVC: MainViewController {
-    fileprivate let naviTitle = "广告纪录-"
+    fileprivate let naviTitle = "广告记录-"
     fileprivate let baseViewModel : BaseViewModel = BaseViewModel()
     fileprivate var indexRow = NSInteger()
     fileprivate var isRemindSeller = false
@@ -36,7 +36,6 @@ class BusinessaDvertisementVC: MainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        getData()
         getCoin()
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name(rawValue: R_NotificationC2COrderReload), object: nil)
     }
@@ -49,17 +48,17 @@ class BusinessaDvertisementVC: MainViewController {
     lazy var businessView: BusinessView = {
         let view = Bundle.main.loadNibNamed("BusinessView", owner: nil, options: nil)?.last as! BusinessView
         view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight , width: SCREEN_WIDTH, height: 45)
-        view.sellBtn.setTitle("出售订单", for: .normal)
-        view.sellBtn.addTarget(self, action: #selector(processingAndFinish(_:)), for: .touchUpInside)
-        view.sellBtn.setTitleColor(R_ZYSelectNormalColor, for: .normal)
-        view.sellBtn.setTitleColor(UIColor.white, for: .selected)
-        
         view.buyBtn.backgroundColor = R_UIThemeSkyBlueColor
         view.buyBtn.setTitle("购买订单", for: .normal)
         view.buyBtn.addTarget(self, action: #selector(processingAndFinish(_:)), for: .touchUpInside)
         view.buyBtn.setTitleColor(R_ZYSelectNormalColor, for: .normal)
         view.buyBtn.setTitleColor(UIColor.white, for: .selected)
         view.buyBtn.isSelected = true
+        
+        view.sellBtn.setTitle("出售订单", for: .normal)
+        view.sellBtn.addTarget(self, action: #selector(processingAndFinish(_:)), for: .touchUpInside)
+        view.sellBtn.setTitleColor(R_ZYSelectNormalColor, for: .normal)
+        view.sellBtn.setTitleColor(UIColor.white, for: .selected)
         return view
     }()
     
@@ -330,49 +329,24 @@ extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if style == .buyStyle {
-            let model = viewModel.processingModel[indexPath.row]
-            if model.state == 1 {
-                return 180
-            }else if model.state == 6 {
-                return 170
-            }else{
-                return 230
-            }
-        }
-        return 170
+        return 274
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if style == .buyStyle {
-            let model = viewModel.processingModel[indexPath.row]
-            //纠纷中
-            if model.state == 6 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: businessOrderFinishCell, for: indexPath) as! BusinessOrderFinishCell
-                cell.selectionStyle = .none
-                cell.model = viewModel.processingModel[indexPath.row]
-                return cell
-            }else{
-                let cell = tableView.dequeueReusableCell(withIdentifier: businessaDvertisementCell, for: indexPath) as! BusinessaDvertisementCell
-                cell.selectionStyle = .none
-                cell.contactBtn.tag = indexPath.row
-                cell.contactBtn.addTarget(self, action: #selector(contactOnClick(_:)), for: .touchUpInside)
-                cell.cancelOrderBtn.tag = indexPath.row
-                cell.cancelOrderBtn.addTarget(self, action: #selector(cancelDealDetail(_:)), for: .touchUpInside)
-                cell.remindBtn.tag = indexPath.row
-                cell.remindBtn.addTarget(self, action: #selector(setStatusOnClick(_:)), for: .touchUpInside)
-                cell.initiateDisputeBtn.tag = indexPath.row
-                cell.initiateDisputeBtn.addTarget(self, action: #selector(initiateDisputeOnClick(_:)), for: .touchUpInside)
-//                cell.businessaStyle = self.style
-                cell.model = viewModel.processingModel[indexPath.row]
-                return cell
-            }
-        }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: businessOrderFinishCell, for: indexPath) as! BusinessOrderFinishCell
-            cell.selectionStyle = .none
-            cell.model = viewModel.finishModel[indexPath.row]
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: businessaDvertisementCell, for: indexPath) as! BusinessaDvertisementCell
+        if viewModel.processingModel.count != 0 || viewModel.finishModel.count != 0 {
+            cell.model = style == .buyStyle ? viewModel.processingModel[indexPath.row] : viewModel.finishModel[indexPath.row]
         }
+        cell.selectionStyle = .none
+        cell.contactBtn.tag = indexPath.row
+        cell.contactBtn.addTarget(self, action: #selector(contactOnClick(_:)), for: .touchUpInside)
+        cell.cancelOrderBtn.tag = indexPath.row
+        cell.cancelOrderBtn.addTarget(self, action: #selector(cancelDealDetail(_:)), for: .touchUpInside)
+        cell.remindBtn.tag = indexPath.row
+        cell.remindBtn.addTarget(self, action: #selector(setStatusOnClick(_:)), for: .touchUpInside)
+        cell.initiateDisputeBtn.tag = indexPath.row
+        cell.initiateDisputeBtn.addTarget(self, action: #selector(initiateDisputeOnClick(_:)), for: .touchUpInside)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
