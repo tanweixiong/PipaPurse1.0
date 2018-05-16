@@ -10,8 +10,8 @@ import UIKit
 import SVProgressHUD
 
 enum BusinessBuyHistoryStatus{
-     case processingStyle //进行中
-     case dropOffStyle //已下架
+     case processingStyle //购买
+     case dropOffStyle //出售
 }
 enum BusinessTransactionStyle {
      case buyStyle //购买
@@ -23,9 +23,9 @@ class BusinessBuyHistoryVC: MainViewController {
     fileprivate lazy var viewModel : BusinessBuyHistoryVM = BusinessBuyHistoryVM()
     fileprivate lazy var coinViewModel : BusinessVM = BusinessVM()
     fileprivate lazy var baseViewModel : BaseViewModel = BaseViewModel()
-    fileprivate var style = BusinessBuyHistoryStatus.processingStyle
+//    fileprivate var style = BusinessBuyHistoryStatus.processingStyle
     fileprivate var coinNum = Tools.getBtcCoinNum()
-    var transactionStyle = BusinessTransactionStyle.buyStyle
+    var transactionStyle = BusinessTransactionStyle.sellStyle
     fileprivate let coinArray = NSMutableArray()
     fileprivate let naviTitle = "广告纪录-"
     fileprivate var pageSize = 0
@@ -45,14 +45,14 @@ class BusinessBuyHistoryVC: MainViewController {
     lazy var businessView: BusinessView = {
         let view = Bundle.main.loadNibNamed("BusinessView", owner: nil, options: nil)?.last as! BusinessView
         view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight , width: SCREEN_WIDTH, height: 45)
-        view.sellBtn.setTitle(LanguageHelper.getString(key: "C2C_mine_advertisement_finish"), for: .normal)
+        view.sellBtn.setTitle(LanguageHelper.getString(key: "C2C_mine_advertisement_processing"), for: .normal)
         view.sellBtn.addTarget(self, action: #selector(sellAndBuyOnClick(_:)), for:.touchUpInside)
         view.sellBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x545B71), for: .normal)
         view.sellBtn.setTitleColor(UIColor.white, for: .selected)
         
         view.buyBtn.backgroundColor = R_UIThemeSkyBlueColor
         view.buyBtn.addTarget(self, action: #selector(sellAndBuyOnClick(_:)), for:.touchUpInside)
-        view.buyBtn.setTitle(LanguageHelper.getString(key: "C2C_mine_advertisement_processing"), for: .normal)
+        view.buyBtn.setTitle(LanguageHelper.getString(key: "C2C_mine_advertisement_finish"), for: .normal)
         view.buyBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x545B71), for: .normal)
         view.buyBtn.setTitleColor(UIColor.white, for: .selected)
         view.buyBtn.isSelected = true
@@ -62,7 +62,7 @@ class BusinessBuyHistoryVC: MainViewController {
     lazy var chooseVw: MineChooseBtn = {
         let view = MineChooseBtn.createView()
         view.frame = CGRect(x: SCREEN_WIDTH/2 - 145/2, y: 32, width: 145 , height: 22)
-        view.chooseBtn.tag = 4
+        view.chooseBtn.tag = 3
         view.chooseBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
         return view
     }()
@@ -95,6 +95,14 @@ class BusinessBuyHistoryVC: MainViewController {
         return view
     }()
     
+    lazy var selectVw: IntegralApplicationStatusVw = {
+        let view = Bundle.main.loadNibNamed("IntegralApplicationStatusVw", owner: nil, options: nil)?.last as! IntegralApplicationStatusVw
+        view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height:SCREEN_HEIGHT)
+        view.delegare = self
+        view.isHidden = true
+        return view
+    }()
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(R_NotificationAdvertisingeReload), object: nil)
     }
@@ -102,12 +110,11 @@ class BusinessBuyHistoryVC: MainViewController {
 
 extension BusinessBuyHistoryVC {
     func setupUI(){
-        let title = transactionStyle == .buyStyle ? LanguageHelper.getString(key: "C2C_mine_My_purchase_advertisement") : LanguageHelper.getString(key: "C2C_mine_My_sale_advertisement")
-        setNormalNaviBar(title: title)
+        setNormalNaviBar(title: "")
         view.addSubview(businessView)
         view.addSubview(tableView)
         view.addSubview(chooseVw)
-        UIApplication.shared.keyWindow?.addSubview(liberateView)
+        UIApplication.shared.keyWindow?.addSubview(selectVw)
     }
     
     @objc func liberateOnClick(_ sender:UIButton){
@@ -124,10 +131,9 @@ extension BusinessBuyHistoryVC {
         let token = UserDefaults.standard.getUserInfo().token!
         let coinNo = coinNum
         let entrustType = transactionStyle == .buyStyle ? "0" : "1"  //0：买，1：卖
-        let entrustState = style == .processingStyle ? "0" : "1" //0：进行中，1：已全部
         let pageSize = self.pageSize
         let lineSize = self.lineSize
-        let parameters = ["token":token,"coinNo":coinNo,"entrustType":entrustType,"entrustState":entrustState,"pageSize":pageSize,"lineSize":lineSize] as [String : Any]
+        let parameters = ["token":token,"coinNo":coinNo,"entrustType":entrustType,"entrustState":"2","pageSize":pageSize,"lineSize":lineSize] as [String : Any]
         viewModel.loadDetailsSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetSpotEntrustByUserNo, parameters: parameters, showIndicator: false) {
             self.tableView.reloadData()
         }
@@ -158,9 +164,14 @@ extension BusinessBuyHistoryVC {
                 }
             }
             if self.coinArray.count != 0 {
+                //设置标题栏
                 let model = self.coinViewModel.coinModel.first
                 self.chooseVw.titleLab.text = self.naviTitle + (model?.coinName!)!
                 self.coinNum = (model?.id?.stringValue)!
+                //弹出框
+                self.selectVw.selectList = 0
+                self.selectVw.selectFirstIndex = IndexPath(row: 0, section: 0)
+                self.selectVw.dataArray = self.coinArray
             }
             self.getData()
         }}
@@ -175,14 +186,14 @@ extension BusinessBuyHistoryVC {
     @objc func sellAndBuyOnClick(_ sender:UIButton){
         //出售
         if sender == businessView.sellBtn  {
-            style = .dropOffStyle
+            transactionStyle = .sellStyle
             businessView.sellBtn.isSelected = true
             businessView.sellBtn.backgroundColor = R_UIThemeSkyBlueColor
             businessView.buyBtn.isSelected = false
             businessView.buyBtn.backgroundColor = UIColor.white
         //购买
         }else{
-            style = .processingStyle
+            transactionStyle = .buyStyle
             businessView.sellBtn.isSelected = false
             businessView.sellBtn.backgroundColor = UIColor.white
             businessView.buyBtn.isSelected = true
@@ -202,7 +213,20 @@ extension BusinessBuyHistoryVC {
             businessBuyVC.style = .buyStyle
             self.navigationController?.pushViewController(businessBuyVC, animated: true)
             self.liberateView.isHidden = true
+        }else if sender.tag == 3 {
+            if self.coinArray.count == 0 {
+                getCoin()
+            }else{
+                self.selectVw.isHidden = false
+            }
         }
+    }
+    
+    @objc func advertisingDetailOnClick(_ sender:UIButton){
+        let model = viewModel.model[sender.tag]
+        let businessBuyHistoryDetailsVC = BusinessBuyHistoryDetailsVC()
+        businessBuyHistoryDetailsVC.entrustNo = (model.id?.stringValue)!
+        self.navigationController?.pushViewController(businessBuyHistoryDetailsVC, animated: true)
     }
 }
 
@@ -217,25 +241,21 @@ extension BusinessBuyHistoryVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         return 300
+         return 285
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: businessBuyHistoryCell, for: indexPath) as! BusinessBuyHistoryCell
         cell.selectionStyle = .none
+        cell.style = self.transactionStyle
         cell.model = viewModel.model[indexPath.row]
         cell.operatingBtn.tag = indexPath.row
         cell.operatingBtn.addTarget(self, action: #selector(advertisingOnClick(_:)), for: .touchUpInside)
+        cell.detailsBtn.tag = indexPath.row
+        cell.detailsBtn.addTarget(self, action: #selector(advertisingDetailOnClick(_:)), for: .touchUpInside)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = viewModel.model[indexPath.row]
-        let businessBuyHistoryDetailsVC = BusinessBuyHistoryDetailsVC()
-        businessBuyHistoryDetailsVC.entrustNo = (model.id?.stringValue)!
-        businessBuyHistoryDetailsVC.style = self.style
-        self.navigationController?.pushViewController(businessBuyHistoryDetailsVC, animated: true)
-    }
 }
  
  extension BusinessBuyHistoryVC :IntegralApplicationStatusDelegate {

@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="be5-OQ-Imd" customClass="MineChooseBtn" customModule="BCPPurse" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="be5-OQ-Imd" customClass="MineChooseBtn" customModule="PipaPurse" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="145" height="22"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -36,7 +36,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="145" height="22"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.60784313729999995" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="7mJ-2i-jU7" secondAttribute="bottom" id="4sO-GD-UVQ"/>
                         <constraint firstItem="Rvd-Od-8Gb" firstAttribute="centerY" secondItem="hXO-dz-BAd" secondAttribute="centerY" id="672-At-bbJ"/>
@@ -51,7 +50,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="hXO-dz-BAd" firstAttribute="leading" secondItem="be5-OQ-Imd" secondAttribute="leading" id="5Rf-2X-OXr"/>
                 <constraint firstItem="hXO-dz-BAd" firstAttribute="top" secondItem="be5-OQ-Imd" secondAttribute="top" id="H7u-p7-kWZ"/>

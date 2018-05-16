@@ -22,7 +22,7 @@ class IntegralApplicationStatusVw: UIView {
             self.statusTw.reloadData()
         }
     }
-    fileprivate var lastIndexPath = IndexPath()
+    fileprivate var lastIndexPath = IndexPath(row: 0, section: 0)
     var delegare:IntegralApplicationStatusDelegate?
     @IBOutlet weak var titleVw: UIView!
     @IBOutlet weak var backGroundVw: UIView!
@@ -49,7 +49,6 @@ class IntegralApplicationStatusVw: UIView {
     @IBAction func onClick(_ sender: UIButton) {
         self.isHidden = true
     }
-    
 }
 
 extension IntegralApplicationStatusVw:UITableViewDelegate,UITableViewDataSource{
@@ -70,26 +69,19 @@ extension IntegralApplicationStatusVw:UITableViewDelegate,UITableViewDataSource{
         cell.selectionStyle = .none
         cell.headingLab.text = dataArray[indexPath.row] as? String
         cell.iconImgeVw.sd_setImage(with: NSURL(string: "")! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
-         cell.statusBtn.isSelected = false
-        if selectFirstIndex.count != 0 && selectList == 0 {
-            cell.statusBtn.isSelected = indexPath == selectFirstIndex ? true : false
-        }
-        if selectSecondIndex.count != 0 && selectList == 1 {
-            cell.statusBtn.isSelected = indexPath == selectSecondIndex ? true : false
-        }
+        cell.statusBtn.isSelected = indexPath == self.lastIndexPath ? true : false
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let titles = dataArray[indexPath.row]
-        self.delegare?.integralApplicationStatusSelectRow(index: indexPath.row, name: (titles as? String)!, selectList: self.selectList)
         let cell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0)) as! IntegralApplicationStatusCell
         cell.statusBtn.isSelected = true
-        if lastIndexPath.count != 0 {
-            let lastCell = tableView.cellForRow(at: self.lastIndexPath) as! IntegralApplicationStatusCell
-            lastCell.statusBtn.isSelected = false
-        }
+
         self.isHidden = true
         self.lastIndexPath = indexPath
+        
+        self.delegare?.integralApplicationStatusSelectRow(index: indexPath.row, name: (titles as? String)!, selectList: self.selectList)
+        self.statusTw.reloadData()
     }
 }

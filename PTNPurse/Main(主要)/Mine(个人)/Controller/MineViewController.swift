@@ -14,16 +14,18 @@ class MineViewController: UIViewController {
 
     @IBOutlet weak var photoImg: UIImageView!
     @IBOutlet weak var usernameLab: UILabel!
+    
+    let newImage = UIImageView()
 
     // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setNaviStyle()
+        getData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
     }
     
     @IBAction func onClick(_ sender: UIButton) {
@@ -71,7 +73,6 @@ class MineViewController: UIViewController {
         if let username = UserDefaults.standard.getUserInfo().username {
             usernameLab.text = (username as! String)
         }
-        
         if let photo = UserDefaults.standard.getUserInfo().photo {
             photoImg.sd_setImage(with: NSURL(string: photo as! String)! as URL, placeholderImage:UIImage.init(named: "ic_defaultPicture"))
         }

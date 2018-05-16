@@ -16,9 +16,9 @@ class BusinessaDvertisementVM: NSObject {
     lazy var processingModel : [BusinessaDvertisementModel] = [BusinessaDvertisementModel]()
     lazy var finishModel :[BusinessaDvertisementModel] = [BusinessaDvertisementModel]()
     
-    func loadDetailsSuccessfullyReturnedData(requestType: HTTPMethod, URLString : String, parameters : [String : Any]? = nil,style:BusinessaDvertisementStyle, showIndicator: Bool,finishedCallback : @escaping () -> ()) {
+    func loadDetailsSuccessfullyReturnedData(requestType: HTTPMethod, URLString : String, parameters : [String : Any]? = nil,style:BusinessTransactionStyle, showIndicator: Bool,finishedCallback : @escaping () -> ()) {
         baseViewModel.loadSuccessfullyReturnedData(requestType: requestType, URLString: URLString, parameters: parameters, showIndicator: showIndicator) {(model:HomeBaseModel) in
-            if style == .processingStyle{
+            if style == .buyStyle{
                self.processingModel = Mapper<BusinessaDvertisementModel>().mapArray(JSONObject: model.data)!
             }else{
                self.finishModel = Mapper<BusinessaDvertisementModel>().mapArray(JSONObject: model.data)!

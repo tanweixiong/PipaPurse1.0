@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineViewController" customModule="PTNPurse" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineViewController" customModule="PipaPurse" customModuleProvider="target">
             <connections>
                 <outlet property="photoImg" destination="b1Y-fY-Atn" id="QuR-Ak-wbk"/>
                 <outlet property="usernameLab" destination="luf-U6-oho" id="OaS-k3-WWI"/>
@@ -294,14 +294,14 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pen" translatesAutoresizingMaskIntoConstraints="NO" id="9GA-YZ-Tst">
-                            <rect key="frame" x="187" y="34" width="80" height="80"/>
+                            <rect key="frame" x="172" y="39" width="80" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="CCf-2p-7b9"/>
                                 <constraint firstAttribute="height" constant="80" id="PeV-Ze-diO"/>
                             </constraints>
                         </imageView>
                         <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4I-L1-dOc">
-                            <rect key="frame" x="204" y="54.5" width="46" height="39"/>
+                            <rect key="frame" x="189" y="59.5" width="46" height="39"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="46" id="Jqa-NP-c83"/>
                                 <constraint firstAttribute="height" constant="39" id="fGb-kt-hNK"/>
@@ -316,6 +316,12 @@
                                 <constraint firstAttribute="width" constant="69" id="Ke4-ua-0Wt"/>
                                 <constraint firstAttribute="height" constant="69" id="lw0-Em-sTk"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="40"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="onClick:" destination="-1" eventType="touchUpInside" id="VdZ-l4-7w4"/>
                             </connections>
@@ -337,14 +343,14 @@
                         <constraint firstItem="Yzs-SF-gHQ" firstAttribute="leading" secondItem="eYM-W0-B9I" secondAttribute="leading" id="PAK-cf-5JB"/>
                         <constraint firstItem="b1Y-fY-Atn" firstAttribute="centerX" secondItem="eYM-W0-B9I" secondAttribute="centerX" id="QKY-XS-AsS"/>
                         <constraint firstItem="luf-U6-oho" firstAttribute="top" secondItem="b1Y-fY-Atn" secondAttribute="bottom" constant="14" id="RwU-Mo-YYW"/>
-                        <constraint firstItem="9GA-YZ-Tst" firstAttribute="centerX" secondItem="b1Y-fY-Atn" secondAttribute="trailing" id="Yl1-Gw-XUQ"/>
+                        <constraint firstItem="9GA-YZ-Tst" firstAttribute="centerX" secondItem="b1Y-fY-Atn" secondAttribute="trailing" constant="-15" id="Yl1-Gw-XUQ"/>
                         <constraint firstItem="Yzs-SF-gHQ" firstAttribute="height" secondItem="QSi-q3-KOT" secondAttribute="height" id="Yqf-Mi-aZH"/>
                         <constraint firstItem="QSi-q3-KOT" firstAttribute="top" secondItem="lfI-wY-B8D" secondAttribute="bottom" id="hkY-HA-yjV"/>
                         <constraint firstItem="Yzs-SF-gHQ" firstAttribute="top" secondItem="QSi-q3-KOT" secondAttribute="bottom" id="iAl-8u-ZKq"/>
                         <constraint firstItem="b1Y-fY-Atn" firstAttribute="top" secondItem="eYM-W0-B9I" secondAttribute="top" constant="64" id="iSe-eN-fl6"/>
                         <constraint firstItem="w4I-L1-dOc" firstAttribute="centerX" secondItem="9GA-YZ-Tst" secondAttribute="centerX" id="jLq-l2-EQA"/>
                         <constraint firstItem="Yzs-SF-gHQ" firstAttribute="width" secondItem="QSi-q3-KOT" secondAttribute="width" id="jhS-rn-EAW"/>
-                        <constraint firstItem="9GA-YZ-Tst" firstAttribute="centerY" secondItem="b1Y-fY-Atn" secondAttribute="top" constant="10" id="s8k-tH-wRj"/>
+                        <constraint firstItem="9GA-YZ-Tst" firstAttribute="centerY" secondItem="b1Y-fY-Atn" secondAttribute="top" constant="15" id="s8k-tH-wRj"/>
                     </constraints>
                 </view>
             </subviews>

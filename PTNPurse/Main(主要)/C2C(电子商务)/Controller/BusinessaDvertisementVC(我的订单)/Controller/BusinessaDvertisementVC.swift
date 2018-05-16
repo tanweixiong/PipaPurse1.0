@@ -14,6 +14,7 @@ enum BusinessaDvertisementStyle {
     case finishStyle
 }
 class BusinessaDvertisementVC: MainViewController {
+    fileprivate let naviTitle = "广告纪录-"
     fileprivate let baseViewModel : BaseViewModel = BaseViewModel()
     fileprivate var indexRow = NSInteger()
     fileprivate var isRemindSeller = false
@@ -22,7 +23,8 @@ class BusinessaDvertisementVC: MainViewController {
     fileprivate lazy var viewModel : BusinessaDvertisementVM = BusinessaDvertisementVM()
     fileprivate lazy var businessViewModel : BusinessVM = BusinessVM()
     fileprivate var coinNum = Tools.getBtcCoinNum()
-    fileprivate var style = BusinessaDvertisementStyle.processingStyle
+    fileprivate var style = BusinessTransactionStyle.sellStyle
+    
     fileprivate let coinArray = NSMutableArray()
     fileprivate var phoneNum = String()
     fileprivate let businessaDvertisementCell = "BusinessaDvertisementCell"
@@ -47,13 +49,13 @@ class BusinessaDvertisementVC: MainViewController {
     lazy var businessView: BusinessView = {
         let view = Bundle.main.loadNibNamed("BusinessView", owner: nil, options: nil)?.last as! BusinessView
         view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight , width: SCREEN_WIDTH, height: 45)
-        view.sellBtn.setTitle("购买订单", for: .normal)
+        view.sellBtn.setTitle("出售订单", for: .normal)
         view.sellBtn.addTarget(self, action: #selector(processingAndFinish(_:)), for: .touchUpInside)
         view.sellBtn.setTitleColor(R_ZYSelectNormalColor, for: .normal)
         view.sellBtn.setTitleColor(UIColor.white, for: .selected)
         
         view.buyBtn.backgroundColor = R_UIThemeSkyBlueColor
-        view.buyBtn.setTitle("出售订单", for: .normal)
+        view.buyBtn.setTitle("购买订单", for: .normal)
         view.buyBtn.addTarget(self, action: #selector(processingAndFinish(_:)), for: .touchUpInside)
         view.buyBtn.setTitleColor(R_ZYSelectNormalColor, for: .normal)
         view.buyBtn.setTitleColor(UIColor.white, for: .selected)
@@ -102,7 +104,7 @@ class BusinessaDvertisementVC: MainViewController {
 
 extension BusinessaDvertisementVC {
     func setupUI(){
-        setNormalNaviBar(title: LanguageHelper.getString(key: "C2C_mine_my_advertisement_coin_list"))
+        setNormalNaviBar(title: "")
         view.addSubview(businessView)
         view.addSubview(tableView)
         view.addSubview(chooseVw)
@@ -128,10 +130,9 @@ extension BusinessaDvertisementVC {
     @objc func getData(){
         let token = (UserDefaults.standard.getUserInfo().token)!
         let coinNo = coinNum
-        let entrustState = style == .processingStyle ? "0" : "1" //状态：0进行中，1：已完成
-        let pageSize = style == .processingStyle ? self.processingPageSize : self.finishPageSize
+        let entrustType = style == .buyStyle ? "0" : "1" //状态：0购买，1：出售
         let lineSize = self.lineSize
-        let parameters = ["token":token,"coinNo":coinNo,"entrustState":entrustState,"pageSize":pageSize,"lineSize":lineSize] as [String : Any]
+        let parameters = ["token":token,"coinNo":coinNo,"entrustType":entrustType,"entrustState":"2","pageSize":"0","lineSize":lineSize] as [String : Any]
         viewModel.loadDetailsSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetDealDetailByUserNo, parameters: parameters, style:self.style, showIndicator: false) {
             self.tableView.reloadData()
         }
@@ -256,12 +257,23 @@ extension BusinessaDvertisementVC {
                     self.coinArray.add(model.coinName!)
                 }
             }
+            if self.coinArray.count != 0 {
+                //设置标题栏
+                let model = self.businessViewModel.coinModel.first
+                self.chooseVw.titleLab.text = self.naviTitle + (model?.coinName!)!
+                self.coinNum = (model?.id?.stringValue)!
+                //弹出框
+                self.selectVw.selectList = 0
+                self.selectVw.selectFirstIndex = IndexPath(row: 0, section: 0)
+                self.selectVw.dataArray = self.coinArray
+            }
+            self.getData()
         }}
     
     @objc func processingAndFinish(_ sender:UIButton){
         //进行中
         if sender == businessView.buyBtn  {
-            style = .processingStyle
+            style = .buyStyle
             businessView.sellBtn.isSelected = false
             businessView.sellBtn.backgroundColor = UIColor.white
             businessView.buyBtn.isSelected = true
@@ -269,7 +281,7 @@ extension BusinessaDvertisementVC {
             
         //已完成
         }else if sender == businessView.sellBtn {
-            style = .finishStyle
+            style = .sellStyle
             businessView.sellBtn.isSelected = true
             businessView.sellBtn.backgroundColor = R_UIThemeSkyBlueColor
             businessView.buyBtn.isSelected = false
@@ -279,8 +291,13 @@ extension BusinessaDvertisementVC {
     }
     
     @objc func distributeOnClick(_ sender:UIButton){
-          self.selectVw.dataArray = self.coinArray
-          self.selectVw.isHidden = !self.selectVw.isHidden
+        if sender.tag == 4 {
+            if self.coinArray.count == 0 {
+                self.getCoin()
+            }else{
+                self.selectVw.isHidden = false
+            }
+        }
     }
     
     func cleanData(){
@@ -290,9 +307,9 @@ extension BusinessaDvertisementVC {
     
     func getModel(index:NSInteger)->BusinessaDvertisementModel{
         var model = BusinessaDvertisementModel()
-        if style == .processingStyle {
+        if style == .buyStyle {
             model = viewModel.processingModel[index]
-        }else{
+        }else if style == .sellStyle{
             model = viewModel.finishModel[index]
         }
         return model!
@@ -302,7 +319,7 @@ extension BusinessaDvertisementVC {
 extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if style == .processingStyle {
+        if style == .buyStyle {
             return viewModel.processingModel.count
         }
         return viewModel.finishModel.count
@@ -313,7 +330,7 @@ extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if style == .processingStyle {
+        if style == .buyStyle {
             let model = viewModel.processingModel[indexPath.row]
             if model.state == 1 {
                 return 180
@@ -327,7 +344,7 @@ extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if style == .processingStyle {
+        if style == .buyStyle {
             let model = viewModel.processingModel[indexPath.row]
             //纠纷中
             if model.state == 6 {
@@ -346,7 +363,7 @@ extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
                 cell.remindBtn.addTarget(self, action: #selector(setStatusOnClick(_:)), for: .touchUpInside)
                 cell.initiateDisputeBtn.tag = indexPath.row
                 cell.initiateDisputeBtn.addTarget(self, action: #selector(initiateDisputeOnClick(_:)), for: .touchUpInside)
-                cell.businessaStyle = self.style
+//                cell.businessaStyle = self.style
                 cell.model = viewModel.processingModel[indexPath.row]
                 return cell
             }
@@ -362,7 +379,7 @@ extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
         let model = getModel(index: indexPath.row)
         let businessOrderDetailsVC = BusinessOrderDetailsVC()
         businessOrderDetailsVC.orderNo = (model.id!.stringValue)
-        businessOrderDetailsVC.businessaStyle = self.style
+        businessOrderDetailsVC.businessaStyle = .processingStyle
         self.navigationController?.pushViewController(businessOrderDetailsVC, animated: true)
     }
 }
@@ -371,7 +388,6 @@ extension BusinessaDvertisementVC :PST_MenuViewDelegate {
     func didSelectRow(at index: Int, title: String!, img: String!) {
         let model = businessViewModel.coinModel[index]
         self.coinNum = (model.id?.stringValue)!
-//        businessView.coinNameLab.text = model.coinName
         getData()
     }
 }
