@@ -300,11 +300,34 @@
                                 <constraint firstAttribute="height" constant="80" id="PeV-Ze-diO"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4I-L1-dOc">
+                            <rect key="frame" x="204" y="54.5" width="46" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="46" id="Jqa-NP-c83"/>
+                                <constraint firstAttribute="height" constant="39" id="fGb-kt-hNK"/>
+                            </constraints>
+                            <connections>
+                                <action selector="onClick:" destination="-1" eventType="touchUpInside" id="c4O-GJ-JAI"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HkH-wM-NxT">
+                            <rect key="frame" x="153" y="75" width="69" height="69"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="69" id="Ke4-ua-0Wt"/>
+                                <constraint firstAttribute="height" constant="69" id="lw0-Em-sTk"/>
+                            </constraints>
+                            <connections>
+                                <action selector="onClick:" destination="-1" eventType="touchUpInside" id="VdZ-l4-7w4"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.97613924741744995" green="0.97705000638961792" blue="0.98391109704971313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Yzs-SF-gHQ" secondAttribute="trailing" id="237-5h-02q"/>
+                        <constraint firstItem="HkH-wM-NxT" firstAttribute="centerX" secondItem="eYM-W0-B9I" secondAttribute="centerX" id="4s2-qC-KhM"/>
+                        <constraint firstItem="HkH-wM-NxT" firstAttribute="top" secondItem="eYM-W0-B9I" secondAttribute="top" constant="75" id="5e2-5T-Luv"/>
                         <constraint firstAttribute="trailing" secondItem="lfI-wY-B8D" secondAttribute="trailing" id="5fg-NO-O4l"/>
+                        <constraint firstItem="w4I-L1-dOc" firstAttribute="centerY" secondItem="9GA-YZ-Tst" secondAttribute="centerY" id="7Fk-b1-8di"/>
                         <constraint firstItem="QSi-q3-KOT" firstAttribute="leading" secondItem="eYM-W0-B9I" secondAttribute="leading" id="Aab-FY-rO7"/>
                         <constraint firstItem="luf-U6-oho" firstAttribute="leading" secondItem="eYM-W0-B9I" secondAttribute="leading" constant="15" id="HMp-ZK-dzZ"/>
                         <constraint firstAttribute="trailing" secondItem="QSi-q3-KOT" secondAttribute="trailing" id="HNS-ga-iN5"/>
@@ -319,6 +342,7 @@
                         <constraint firstItem="QSi-q3-KOT" firstAttribute="top" secondItem="lfI-wY-B8D" secondAttribute="bottom" id="hkY-HA-yjV"/>
                         <constraint firstItem="Yzs-SF-gHQ" firstAttribute="top" secondItem="QSi-q3-KOT" secondAttribute="bottom" id="iAl-8u-ZKq"/>
                         <constraint firstItem="b1Y-fY-Atn" firstAttribute="top" secondItem="eYM-W0-B9I" secondAttribute="top" constant="64" id="iSe-eN-fl6"/>
+                        <constraint firstItem="w4I-L1-dOc" firstAttribute="centerX" secondItem="9GA-YZ-Tst" secondAttribute="centerX" id="jLq-l2-EQA"/>
                         <constraint firstItem="Yzs-SF-gHQ" firstAttribute="width" secondItem="QSi-q3-KOT" secondAttribute="width" id="jhS-rn-EAW"/>
                         <constraint firstItem="9GA-YZ-Tst" firstAttribute="centerY" secondItem="b1Y-fY-Atn" secondAttribute="top" constant="10" id="s8k-tH-wRj"/>
                     </constraints>

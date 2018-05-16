@@ -16,7 +16,7 @@ class LoginController: UIViewController {
         view.addSubview(loginVw)
         
         let marqueeView = CQMarqueeView.init(frame: CGRect(x: SCREEN_WIDTH/2 - 174.5/2 , y: YMAKE(295), width: 174.5, height: YMAKE(42)))
-        marqueeView.marqueeTextArray = ["Welcome to Photon"]
+        marqueeView.marqueeTextArray = ["Welcome to pipa"]
         marqueeView.centerX  = self.view.centerX
         view.addSubview(marqueeView)
     }
@@ -33,8 +33,10 @@ class LoginController: UIViewController {
         view.createBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
         view.importBtn.tag = 2
         view.importBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
+        view.importBtn.backgroundColor = R_UIThemeColor
         view.chooseLanguageBtn.tag = 3
         view.chooseLanguageBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
+        view.languageLab.textColor = R_UIThemeColor
         return view
     }()
     

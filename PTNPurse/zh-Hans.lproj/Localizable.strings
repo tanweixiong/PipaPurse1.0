@@ -534,8 +534,9 @@
 "C2C_mine_My_purchase_advertisement" = "我的购买广告";
 "C2C_mine_My_sale_advertisement" = "我的出售广告";
 
-"C2C_mine_advertisement_processing" = "进行中";
-"C2C_mine_advertisement_finish" = "已完成";
+"C2C_mine_advertisement_processing" = "出售广告";
+"C2C_mine_advertisement_finish" = "购买广告";
+
 "C2C_mine_my_advertisement_coin_list" = "我的广告";
 "C2C_mine_my_advertisement_Price" = "价格";
 "C2C_mine_my_advertisement_Limit" = "交易限额";

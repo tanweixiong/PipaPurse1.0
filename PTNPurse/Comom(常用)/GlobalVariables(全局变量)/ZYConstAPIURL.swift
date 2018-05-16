@@ -11,8 +11,8 @@ import UIKit
 struct ZYConstAPI {
 
 //    static let kAPIH5BaseURL: String = "http://api.ptn.one:8080"
-//    static let kAPIBaseURL: String = "http://api.ptn.one:8080/"  //正式服务
-    static let kAPIBaseURL: String = "http://192.168.20.27:8080/"  //测试服务
+    static let kAPIBaseURL: String = "http://api.ptn.one:8080/"  //正式服务
+//    static let kAPIBaseURL: String = "http://192.168.20.27:8080/"  //测试服务
 //    static let kAPIBaseURL: String = "http://192.168.10.191/"  //美凯服务
 //    static let kAPIBaseURL: String = "http://192.168.10.139:8080/"   //仁政服务
 //    static let kAPIBaseURL: String = "http://192.168.20.48:8080/"  //科领服务
@@ -131,7 +131,9 @@ struct ZYConstAPI {
      //**************************************行情*************************************************//
     static let kAPIOpenCoinList = kAPIBaseURL + "openCoinList.do" //获取行情列表
     static let kAPIMarket = kAPIBaseURL + "market" //获取行情详情
-    //**************************************行情*************************************************//
+    //**************************************修改个人信息*************************************************//
+    static let kAPISetNickName = kAPIBaseURL + "setNickName.do" //设置用户昵称
+    static let kAPISetUserAddress = kAPIBaseURL + "setUserAddress.do" //设置用户地址
     
     static let ShareMessage = "随时随地交易数字商品，24小时替你盯盘，替你赚钱！http://47.92.122.8"
     

@@ -509,8 +509,10 @@
 
 "C2C_mine_My_purchase_advertisement" = "My purchase ad";
 "C2C_mine_My_sale_advertisement" = "My sale ad";
-"C2C_mine_advertisement_processing" = "Processing";
-"C2C_mine_advertisement_finish" = "Finish";
+
+"C2C_mine_advertisement_processing" = "Sell";
+"C2C_mine_advertisement_finish" = "Buy";
+
 "C2C_mine_my_advertisement_coin_list" = "My ad";
 "C2C_mine_my_advertisement_Price" = "Price";
 "C2C_mine_my_advertisement_Limit" = "Limit";

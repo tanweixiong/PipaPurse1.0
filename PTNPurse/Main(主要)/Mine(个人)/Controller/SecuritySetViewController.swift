@@ -18,7 +18,9 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
         "修改登录密码"
         ,"修改交易密码"
         ,"支付方式"
-        ,"语言设置"]
+        ,"语言设置"
+        ,"退出登录"
+        ]
     
     // MARK: - life Cycle
     override func viewDidLoad() {
@@ -82,19 +84,18 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
         case 3:
             let languageSetViewController = LanguageSetViewController()
             self.navigationController?.pushViewController(languageSetViewController, animated: true)
+        case 4:
+            logoutBtnTouched()
         default:
             break
         }
-        
     }
     
-    // MARK: - Private Method
     func setViewStyle() {
         topView.setViewContent(title: LanguageHelper.getString(key: "perseon_safety"))
         topView.setButtonCallBack { (sender) in
             self.navigationController?.popViewController(animated: true)
         }
-        
     }
     
     func getUserTradeState() {
@@ -120,9 +121,39 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
             SVProgressHUD.showError(withStatus: "无法连接到服务器")
             
         }
-        
     }
 
+    func logoutBtnTouched() {
+        let alert = UIAlertController.init(title: LanguageHelper.getString(key: "person_alert"), message: LanguageHelper.getString(key: "person_alertmessage"), preferredStyle: .alert)
+        let commitAction = UIAlertAction.init(title: LanguageHelper.getString(key: "person_quit"), style: .destructive) { (action) in
+            self.logout()
+        }
+        let cancelAction = UIAlertAction.init(title: LanguageHelper.getString(key: "login_cancle"), style: .cancel) { (action) in
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(commitAction)
+        self.present(alert, animated: true, completion: nil)
+    }
 
+    func logout() {
+        let token = (UserDefaults.standard.getUserInfo().token)!
+        let params = ["token" : token]
+        ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIQuitLogin, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
+            let result = Mapper<NodataResponse>().map(JSONObject: jsonObjc)
+            if let code = result?.code {
+                if code == 200 {
+                    Tools.removeCacheLoginData()
+                    Tools.switchToLoginViewController()
+                } else if code == -1 {
+                    SVProgressHUD.showError(withStatus: LanguageHelper.getString(key: "net_tokenout"))
+                    Tools.switchToLoginViewController()
+                } else {
+                    SVProgressHUD.showError(withStatus: result?.message!)
+                }
+            }
+        }) { (error) in
+            SVProgressHUD.showError(withStatus: LanguageHelper.getString(key: "net_networkerror"))
+        }
+    }
 
 }

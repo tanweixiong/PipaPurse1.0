@@ -69,6 +69,7 @@ extension BusinessWantFinishVC {
         }else{
             let businessWantBuyVC = BusinessBuyHistoryDetailsVC()
             businessWantBuyVC.entrustNo = self.orderNo
+            businessWantBuyVC.isHiddenDrop = true
             self.navigationController?.pushViewController(businessWantBuyVC, animated: true)
         }
     }

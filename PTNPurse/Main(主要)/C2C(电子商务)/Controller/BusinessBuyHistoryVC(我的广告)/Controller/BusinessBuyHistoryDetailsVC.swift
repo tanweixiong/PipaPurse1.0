@@ -14,6 +14,7 @@ class BusinessBuyHistoryDetailsVC: MainViewController {
     fileprivate lazy var detailsViewModel : BusinessVM = BusinessVM()
     fileprivate lazy var baseViewModel : BaseViewModel = BaseViewModel()
     var entrustNo = String()
+    var isHiddenDrop = false
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -41,15 +42,13 @@ class BusinessBuyHistoryDetailsVC: MainViewController {
     lazy var dropBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle(LanguageHelper.getString(key: "C2C_mine_my_advertisement_Drop"), for: .normal)
-        btn.frame = CGRect(x: SCREEN_WIDTH - 15 - 50, y: 70, width: 50, height:30)
-        btn.backgroundColor = UIColor.white
-        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x545B71), for: .normal)
+        btn.frame = CGRect(x: SCREEN_WIDTH - 15 - 34, y: 32, width: 34, height: 22)
+        btn.setTitleColor(UIColor.white, for: .normal)
         btn.addTarget(self, action: #selector(dropOnClick(_:)), for: .touchUpInside)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        btn.layer.cornerRadius = 5
-        btn.clipsToBounds = true
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         btn.tag = 1
         btn.isHidden = self.style == .processingStyle ? false : true
+        btn.isHidden = self.isHiddenDrop 
         return btn
     }()
 }

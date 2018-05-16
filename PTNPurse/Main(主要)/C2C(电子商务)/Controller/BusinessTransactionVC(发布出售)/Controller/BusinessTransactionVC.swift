@@ -119,13 +119,8 @@ extension BusinessTransactionVC {
    @objc func submitOnClick(){
          if Tools.noPaymentPasswordIsSetToExecute() == false{return}
         if checkInput() {
-            let input = InputPaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
+            let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
             input?.delegate = self
-            input?.setPaymentPasswordAlertPriceTitle("")
-            input?.setPaymentPasswordAlertHandicapCostTitle("")
-            input?.setPaymentPasswordAlertPrice("")
-            input?.setPaymentPasswordAlertHandicapCost("")
-            input?.paymentPasswordAlertVw.height = 190
             input?.show()
         }
     }
@@ -175,9 +170,9 @@ extension BusinessTransactionVC {
         let transactionsNum = transactionsNumTF.text!
         let transactionsPrice = transactionsPriceTF.text!
         let transactionsMin = transactionsMinTF.text!
-        let token = UserDefaults.standard.getUserInfo().token!
+        let token = (UserDefaults.standard.getUserInfo().token)!
         let coinNo = (self.chooseCoin?.id?.stringValue)!
-        let remarks = remarksCell.textView?.text!
+        let remarks = (remarksCell.textView?.text)!
         let md5Psd = tradePassword.md5()
         var parameters = [
             "token":token
@@ -209,7 +204,7 @@ extension BusinessTransactionVC {
             ]
         }
         
-        viewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIAddSpotEntrust, parameters: parameters as Any as? [String : Any] , showIndicator: false) { (model:HomeBaseModel) in
+        viewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIAddSpotEntrust, parameters: parameters , showIndicator: false) { (model:HomeBaseModel) in
             let responseData = Mapper<BusinessLiberateFinishDataModel>().map(JSONObject: model.data)
             if  model.code == Tools.noPaymentPasswordSetCode(){
                 let setPwdVC = ModifyTradePwdViewController()
@@ -277,7 +272,7 @@ extension BusinessTransactionVC {
     }
 }
 
-extension BusinessTransactionVC: InputPaymentPasswordDelegate{
+extension BusinessTransactionVC: PaymentPasswordDelegate{
     func inputPaymentPassword(_ pwd: String!) -> String! {
         postData(tradePassword: pwd)
         return pwd
@@ -400,6 +395,7 @@ extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
         if selectList == 0 {
             selectFirstIndex = IndexPath(row: index, section: 0)
             coinNameTF.text = name
+            getCoinObject(coinName: name)
         }else if selectList == 1 {
             selectSecondIndex = IndexPath(row: index, section: 0)
             self.paymentMethod = name //用于支付方式

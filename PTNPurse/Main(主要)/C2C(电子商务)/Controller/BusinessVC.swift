@@ -24,7 +24,6 @@ class BusinessVC: MainViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        getData()
         getCoin()
         BusinessVC.setPaymentData()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: R_NotificationC2CReload), object: nil)
@@ -45,7 +44,7 @@ class BusinessVC: MainViewController{
     
     lazy var selectCoinBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
-        btn.setTitle("LCT",for: .normal)
+        btn.setTitle("BTC",for: .normal)
         btn.setImage(UIImage.init(named: "ic_meun"), for: .normal)
         btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -10)
@@ -60,7 +59,8 @@ class BusinessVC: MainViewController{
     
     lazy var businessMeunVw: BusinessMeunVw = {
         let view = Bundle.main.loadNibNamed("BusinessMeunVw", owner: nil, options: nil)?.last as! BusinessMeunVw
-        view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height: SCREEN_HEIGHT )
+        view.frame = CGRect(x: 0, y: 20 , width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 20)
+        view.delegate = self
         view.isHidden = true
         return view
     }()
@@ -185,7 +185,7 @@ extension BusinessVC {
         view.addSubview(liberateBtn)
         view.addSubview(selectCoinBtn)
         UIApplication.shared.keyWindow?.addSubview(liberateView)
-//        UIApplication.shared.keyWindow?.addSubview(businessMeunVw)
+        UIApplication.shared.keyWindow?.addSubview(businessMeunVw)
         navigationController?.navigationBar.isHidden = true
     }
     
@@ -221,12 +221,6 @@ extension BusinessVC {
             businessBuyVC.style = .buyStyle
             self.navigationController?.pushViewController(businessBuyVC, animated: true)
             self.liberateView.isHidden = true
-        }else if sender.tag == 3 {
-            let coinArray = self.coinArray
-            let list_height = coinArray.count * 40 + 15
-            let menuView = PST_MenuView.init(frame: CGRect(x: Int(SCREEN_WIDTH - 120 - 15), y: Int(businessView.frame.maxY), width: 120, height: list_height), titleArr:coinArray as! [Any], imgArr: nil, arrowOffset: 100, rowHeight: 40, layoutType: PST_MenuViewLayoutType(rawValue: 1)!, directionType: PST_MenuViewDirectionType(rawValue: 0)!, delegate: self)
-            menuView?.arrowColor = UIColor.white
-            menuView?.titleColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
         }
     }
     
@@ -274,6 +268,18 @@ extension BusinessVC {
                     self.coinArray.add(model.coinName!)
                 }
             }
+            
+            //设置参数
+            if self.viewModel.coinModel.count != 0 {
+                let model = self.viewModel.coinModel.first
+                self.coinNo = (model?.id?.stringValue)!
+                self.selectCoinBtn.setTitle(model?.coinName, for: .normal)
+
+                self.businessMeunVw.indexPath = IndexPath(row: 0, section: 0)
+                self.businessMeunVw.dataArray = self.coinArray
+            }
+            
+            self.getData()
         }}
     
     @objc func reloadData(){
@@ -289,12 +295,12 @@ extension BusinessVC {
     }
 }
 
-extension BusinessVC:PST_MenuViewDelegate{
-    func didSelectRow(at index: Int, title: String!, img: String!) {
-        let model = self.viewModel.coinModel[index]
-        self.coinNo = (model.id?.stringValue)!
-        self.selectCoinBtn.setTitle(model.coinName, for: .normal)
-        cleanData()
-        getData()
+extension BusinessVC:BusinessMeunDelegate {
+    func businessMeunSelectFinish(indexPath: IndexPath, text: String) {
+         let model = self.viewModel.coinModel[indexPath.row]
+         self.coinNo = (model.id?.stringValue)!
+         self.selectCoinBtn.setTitle(model.coinName, for: .normal)
+         cleanData()
+         getData()
     }
 }

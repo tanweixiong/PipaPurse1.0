@@ -27,6 +27,7 @@ class UserInfo: NSObject,NSCoding {
     @objc var weChat: String?
     
     @objc var invitationCode: AnyObject?
+    @objc var address: String?
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(date, forKey:"date")
@@ -47,6 +48,8 @@ class UserInfo: NSObject,NSCoding {
         aCoder.encode(apay, forKey:"apay")
         aCoder.encode(weChat, forKey:"weChat")
         aCoder.encode(invitationCode, forKey:"invitationCode")
+        
+        aCoder.encode(address, forKey:"address")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -69,6 +72,9 @@ class UserInfo: NSObject,NSCoding {
         self.apay = aDecoder.decodeObject(forKey: "apay") as? String
         
         self.invitationCode = aDecoder.decodeObject(forKey: "invitationCode") as AnyObject
+        
+        
+         self.address = aDecoder.decodeObject(forKey: "address") as? String
     }
     
     override init() {

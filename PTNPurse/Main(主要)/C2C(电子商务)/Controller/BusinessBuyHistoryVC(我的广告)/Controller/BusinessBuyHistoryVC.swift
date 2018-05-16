@@ -27,12 +27,12 @@ class BusinessBuyHistoryVC: MainViewController {
     fileprivate var coinNum = Tools.getBtcCoinNum()
     var transactionStyle = BusinessTransactionStyle.buyStyle
     fileprivate let coinArray = NSMutableArray()
+    fileprivate let naviTitle = "广告纪录-"
     fileprivate var pageSize = 0
     fileprivate var lineSize = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        getData()
         getCoin()
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name(rawValue: R_NotificationAdvertisingeReload), object: nil)
     }
@@ -56,25 +56,15 @@ class BusinessBuyHistoryVC: MainViewController {
         view.buyBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x545B71), for: .normal)
         view.buyBtn.setTitleColor(UIColor.white, for: .selected)
         view.buyBtn.isSelected = true
-//        view.coinViewWidth.constant = 90
-//        view.coinNameLab.text = "BTC"
-//        view.chooseCoinBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
-//        view.chooseCoinBtn.tag = 3
         return view
     }()
     
-    lazy var liberateBtn: UIButton = {
-        let btn = UIButton.init(type: .custom)
-        btn.setTitle(LanguageHelper.getString(key: "C2C_home_Issue"), for: .normal)
-        btn.frame = CGRect(x: SCREEN_WIDTH - 15 - 50, y: 70, width: 50, height:30)
-        btn.backgroundColor = UIColor.white
-        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x545B71), for: .normal)
-        btn.addTarget(self, action: #selector(liberateOnClick(_:)), for: .touchUpInside)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        btn.layer.cornerRadius = 5
-        btn.clipsToBounds = true
-        btn.tag = 1
-        return btn
+    lazy var chooseVw: MineChooseBtn = {
+        let view = MineChooseBtn.createView()
+        view.frame = CGRect(x: SCREEN_WIDTH/2 - 145/2, y: 32, width: 145 , height: 22)
+        view.chooseBtn.tag = 4
+        view.chooseBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
+        return view
     }()
     
     lazy var tableView: UITableView = {
@@ -116,7 +106,7 @@ extension BusinessBuyHistoryVC {
         setNormalNaviBar(title: title)
         view.addSubview(businessView)
         view.addSubview(tableView)
-        view.addSubview(liberateBtn)
+        view.addSubview(chooseVw)
         UIApplication.shared.keyWindow?.addSubview(liberateView)
     }
     
@@ -167,6 +157,12 @@ extension BusinessBuyHistoryVC {
                     self.coinArray.add(model.coinName!)
                 }
             }
+            if self.coinArray.count != 0 {
+                let model = self.coinViewModel.coinModel.first
+                self.chooseVw.titleLab.text = self.naviTitle + (model?.coinName!)!
+                self.coinNum = (model?.id?.stringValue)!
+            }
+            self.getData()
         }}
     
     //下架广告
@@ -206,12 +202,6 @@ extension BusinessBuyHistoryVC {
             businessBuyVC.style = .buyStyle
             self.navigationController?.pushViewController(businessBuyVC, animated: true)
             self.liberateView.isHidden = true
-        }else if sender.tag == 3 {
-            let coinArray = self.coinArray
-            let list_height = coinArray.count * 40 + 15
-            let menuView = PST_MenuView.init(frame: CGRect(x: Int(SCREEN_WIDTH - 120 - 15), y: Int(businessView.frame.maxY), width: 120, height: list_height), titleArr:coinArray as! [Any], imgArr: nil, arrowOffset: 100, rowHeight: 40, layoutType: PST_MenuViewLayoutType(rawValue: 1)!, directionType: PST_MenuViewDirectionType(rawValue: 0)!, delegate: self)
-            menuView?.arrowColor = UIColor.white
-            menuView?.titleColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
         }
     }
 }
@@ -227,38 +217,33 @@ extension BusinessBuyHistoryVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let model = viewModel.model[indexPath.row]
-        let state = model.state
-        if state == 0 {
-            return 245
-        }
-        return 205
+         return 300
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: businessBuyHistoryCell, for: indexPath) as! BusinessBuyHistoryCell
         cell.selectionStyle = .none
-//        cell.model = viewModel.model[indexPath.row]
+        cell.model = viewModel.model[indexPath.row]
         cell.operatingBtn.tag = indexPath.row
         cell.operatingBtn.addTarget(self, action: #selector(advertisingOnClick(_:)), for: .touchUpInside)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let model = viewModel.model[indexPath.row]
-//        let businessBuyHistoryDetailsVC = BusinessBuyHistoryDetailsVC()
-//        businessBuyHistoryDetailsVC.entrustNo = (model.id?.stringValue)!
-//        businessBuyHistoryDetailsVC.style = self.style
-//        self.navigationController?.pushViewController(businessBuyHistoryDetailsVC, animated: true)
+        let model = viewModel.model[indexPath.row]
+        let businessBuyHistoryDetailsVC = BusinessBuyHistoryDetailsVC()
+        businessBuyHistoryDetailsVC.entrustNo = (model.id?.stringValue)!
+        businessBuyHistoryDetailsVC.style = self.style
+        self.navigationController?.pushViewController(businessBuyHistoryDetailsVC, animated: true)
     }
 }
  
- extension BusinessBuyHistoryVC:PST_MenuViewDelegate{
-    func didSelectRow(at index: Int, title: String!, img: String!) {
-        let model = self.coinViewModel.coinModel[index]
-        coinNum = (model.id?.stringValue)!
-//        businessView.coinNameLab.text = model.coinName!
-        getData()
+ extension BusinessBuyHistoryVC :IntegralApplicationStatusDelegate {
+    func integralApplicationStatusSelectRow(index: NSInteger, name: String, selectList: NSInteger) {
+         let model =  self.coinViewModel.coinModel[index]
+         chooseVw.titleLab.text = self.naviTitle + model.coinName!
+         coinNum = (model.id?.stringValue)!
+         getData()
     }
  }
  
