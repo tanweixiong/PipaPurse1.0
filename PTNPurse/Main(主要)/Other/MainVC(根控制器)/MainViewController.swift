@@ -86,7 +86,25 @@ extension MainViewController {
         let image = UIImageView(frame:naviBarView.bounds)
         image.image = UIImage.init(named: "ic_pubilc_normalBackground")
         naviBarView.addSubview(image)
-        setTitleAndBackBtn()
+        
+        //标题
+        titleLabel.frame = CGRect(x: 15, y: 32 , width: SCREEN_WIDTH - 15, height: 22)
+        titleLabel.text = title
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 16)
+        titleLabel.textAlignment = .center
+        naviBarView.addSubview(titleLabel)
+        view.addSubview(naviBarView)
+        
+        //返回按钮
+        let backBtn = UIButton.init(type: .custom)
+        backBtn.setImage(UIImage.init(named: "ic_back_let"), for: .normal)
+        backBtn.addTarget(self, action:#selector(backToPrevious), for: .touchUpInside)
+        backBtn.frame = CGRect(x: 15, y: 16, width: 100, height: 40)
+        backBtn.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -77, bottom: 0, right: 0)
+        naviBarView.addSubview(backBtn)
+        
+        self.backToBtn = backBtn
     }
     
     func setNormalNaviBar(title:String,BackgroundImage:UIImage){
@@ -96,10 +114,7 @@ extension MainViewController {
         let image = UIImageView(frame:naviBarView.bounds)
         image.image = BackgroundImage
         naviBarView.addSubview(image)
-        setTitleAndBackBtn()
-    }
-    
-    func setTitleAndBackBtn(){
+        
         //标题
         titleLabel.frame = CGRect(x: 15, y: 32 , width: SCREEN_WIDTH - 15, height: 22)
         titleLabel.text = title
@@ -108,6 +123,7 @@ extension MainViewController {
         titleLabel.textAlignment = .center
         naviBarView.addSubview(titleLabel)
         view.addSubview(naviBarView)
+        
         //返回按钮
         let backBtn = UIButton.init(type: .custom)
         backBtn.setImage(UIImage.init(named: "ic_back_let"), for: .normal)

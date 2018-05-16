@@ -12,6 +12,9 @@ import ObjectMapper
 
 class MineViewController: UIViewController {
 
+    @IBOutlet weak var photoImg: UIImageView!
+    @IBOutlet weak var usernameLab: UILabel!
+    
     // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +58,16 @@ class MineViewController: UIViewController {
             UIScrollView.appearance().contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
+        }
+    }
+    
+    func getData(){
+        if let username = UserDefaults.standard.getUserInfo().username {
+            usernameLab.text = (username as! String)
+        }
+        
+        if let photo = UserDefaults.standard.getUserInfo().photo {
+            photoImg.sd_setImage(with: NSURL(string: photo as! String)! as URL, placeholderImage:UIImage.init(named: "ic_defaultPicture"))
         }
     }
 

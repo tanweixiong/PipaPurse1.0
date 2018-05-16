@@ -60,7 +60,7 @@ class BusinessVC: MainViewController{
     
     lazy var businessMeunVw: BusinessMeunVw = {
         let view = Bundle.main.loadNibNamed("BusinessMeunVw", owner: nil, options: nil)?.last as! BusinessMeunVw
-        view.frame = CGRect(x: 0, y: 20 , width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 20)
+        view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height: SCREEN_HEIGHT )
         view.isHidden = true
         return view
     }()
@@ -185,7 +185,7 @@ extension BusinessVC {
         view.addSubview(liberateBtn)
         view.addSubview(selectCoinBtn)
         UIApplication.shared.keyWindow?.addSubview(liberateView)
-        UIApplication.shared.keyWindow?.addSubview(businessMeunVw)
+//        UIApplication.shared.keyWindow?.addSubview(businessMeunVw)
         navigationController?.navigationBar.isHidden = true
     }
     

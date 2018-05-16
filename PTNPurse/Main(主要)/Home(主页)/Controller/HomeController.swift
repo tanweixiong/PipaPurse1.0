@@ -290,8 +290,9 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             self.navigationController?.pushViewController(homeAddCoinVC, animated: true)
             return
         case 7 :
+            let title = UserDefaults.standard.getUserInfo().ptnaddress == "" || UserDefaults.standard.getUserInfo().ptnaddress == nil ? "导入钱包" : "备份钱包"
             let maxY = headView.anymoreBtn.frame.maxY + 50
-            let menuView = PST_MenuView.init(frame: CGRect(x: SCREEN_WIDTH - 20 - 120, y: maxY, width: 120, height: 90), titleArr: ["二维码","备份钱包"], imgArr: ["ic_home_code","ic_home_backup"], arrowOffset: 100, rowHeight: 40, layoutType: PST_MenuViewLayoutType(rawValue: 0)!, directionType: PST_MenuViewDirectionType(rawValue: 0)!, delegate: self)
+            let menuView = PST_MenuView.init(frame: CGRect(x: SCREEN_WIDTH - 20 - 120, y: maxY, width: 120, height: 90), titleArr: ["二维码",title], imgArr: ["ic_home_code","ic_home_backup"], arrowOffset: 100, rowHeight: 40, layoutType: PST_MenuViewLayoutType(rawValue: 0)!, directionType: PST_MenuViewDirectionType(rawValue: 0)!, delegate: self)
             menuView?.arrowColor = UIColor.white
             menuView?.titleColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
             menuView?.lineColor = UIColor.R_UIColorFromRGB(color: 0xEDF3F8)

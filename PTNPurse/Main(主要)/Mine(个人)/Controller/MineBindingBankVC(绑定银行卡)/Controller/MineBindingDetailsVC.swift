@@ -86,7 +86,7 @@ extension MineBindingDetailsVC {
         
         let bankCardNumber = bankCardNumberTF.text!
         if bankCardNumber.count > 21 || bankCardNumber.count < 13 {
-            SVProgressHUD.showInfo(withStatus: "请输入正确的银行卡号")
+            SVProgressHUD.showInfo(withStatus: "银行卡号需要在12-20位之间")
             return
         }
 

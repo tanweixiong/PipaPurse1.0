@@ -110,7 +110,7 @@ class BusinessTransactionVC: MainViewController {
 extension BusinessTransactionVC {
     func setupUI(){
         let title = self.style == .buyStyle ? LanguageHelper.getString(key: "C2C_home_transaction_purchase") : LanguageHelper.getString(key: "C2C_home_transaction_sale")
-        setCustomNaviBar(backgroundImage: "ic_naviBar_backgroundImg",title: title)
+        setNormalNaviBar(title: title)
         view.addSubview(tableView)
         view.addSubview(determineBtn)
         UIApplication.shared.keyWindow?.addSubview(selectVw)

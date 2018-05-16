@@ -20,7 +20,6 @@ class BusinessMeunVw: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        tableView.tableFooterView = UIView()
     }
     
     @IBAction func onClick(_ sender: UIButton) {
