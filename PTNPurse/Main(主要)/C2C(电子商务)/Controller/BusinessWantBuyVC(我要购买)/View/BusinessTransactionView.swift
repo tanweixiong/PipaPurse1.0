@@ -21,9 +21,9 @@ class BusinessTransactionView: UIView {
            let avatar = model?.photo == nil ? "" : model?.photo
            avatarImageView.sd_setImage(with:NSURL(string: avatar!)! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
             
-            let price = model?.entrustPrice == nil ? 0 : model?.entrustPrice
-            let newPrice = Tools.setPriceNumber(price: price!)
-            priceLab.text = Tools.getWalletAmount(amount: newPrice) + " CNY" + "/" + (model?.coinCore!)!
+            let price = model?.newPrice == nil ? 0 : model?.newPrice
+            let newPrice = Tools.setNSDecimalNumber(price!)
+            priceLab.text = newPrice + " CNY" + "/" + (model?.coinCore!)!
             
             let username = model?.username == nil ? "" : model?.username
             nameLab.text = username

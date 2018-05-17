@@ -51,6 +51,8 @@ class BusinessModel: Mappable {
     
     var entrustNo:String?
     
+    var newPrice:NSNumber?
+    
     required init?(map: Map) {
         
     }
@@ -86,6 +88,7 @@ class BusinessModel: Mappable {
         entrustPrice        <- map["entrustPrice"]
         remainNum        <- map["remainNum"]
         entrustNo        <- map["entrustNo"]
+        newPrice        <- map["newPrice"]
 
     }
 }

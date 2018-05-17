@@ -35,6 +35,7 @@ class BusinessWantBuyVC: MainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        getDetailsData()
         BusinessVC.setPaymentData()
     }
     
@@ -298,13 +299,11 @@ extension BusinessWantBuyVC {
     
     //查看订单详情
     func getDetailsData(){
-        let parameters = ["id":self.entrustNo]
+        let parameters = ["id":self.entrustNo,"language":Tools.getLocalLanguage()]
         detailsViewModel.loadLiberateSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetSpotEntrustById, parameters: parameters, showIndicator: false, finishedCallback: {
             if self.detailsViewModel.liberateModel.username != nil {
-                let model = self.detailsViewModel.liberateModel
-                let data = BusinessWantBuyData(avatarUrl: model.photo, entrustPrice: model.entrustPrice, entrustMaxPrice: model.entrustMaxPrice, entrustMinPrice: model.entrustMinPrice, remark: model.remark, name: model.username, coinCore: model.coinCore)
-                self.businessView.model = data
-                self.businessTransactionDeView.model = model
+                self.businessView.model = self.detailsViewModel.liberateModel
+                self.businessTransactionDeView.model = self.detailsViewModel.liberateModel
             }
         })
     }
