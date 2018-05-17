@@ -55,7 +55,7 @@ class MineMiningVC: MainViewController {
         view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height:460)
         view.incomeBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
         view.rankingBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
-        view.ruleDescriptionBtn.setTitle(LanguageHelper.getString(key: "Mine_Mining_Rule"), for: .normal)
+        view.ruleDescriptionBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
         return view
     }()
     
@@ -101,8 +101,8 @@ extension MineMiningVC{
     func getData(){
         let parameters = ["token":self.token]
         viewModel.loadSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetMineList, parameters: parameters, showIndicator: false) {_ in
-            let mineSumNum = (self.viewModel.balloonModel.mineSumNum?.stringValue)!
-            self.mineMiningVw.cumulativeIncomeLab.text = mineSumNum
+            let mineSumNum = self.viewModel.balloonModel.mineSumNum
+            self.mineMiningVw.cumulativeIncomeLab.text = LanguageHelper.getString(key: "Mine_Mining_Cumulative") + Tools.setNSDecimalNumber(mineSumNum!)
             self.createBalloon()
         }
     }
@@ -114,7 +114,7 @@ extension MineMiningVC{
             //根据当前收益
             var current = self.viewModel.balloonModel.mineSumNum?.doubleValue
             current = current! + (balloonModel.bonus?.doubleValue)!
-            self.mineMiningVw.cumulativeIncomeLab.text = Tools.setNSDecimalNumber(NSNumber(value: current!))
+            self.mineMiningVw.cumulativeIncomeLab.text = LanguageHelper.getString(key: "Mine_Mining_Cumulative") + Tools.setNSDecimalNumber(NSNumber(value: current!))
         }
     }
     

@@ -33,6 +33,7 @@ class MineMiningVw: UIView {
         
         incomeBtn.setTitle(LanguageHelper.getString(key: "Mine_Mining_My_Income"), for: .normal)
         rankingBtn.setTitle(LanguageHelper.getString(key: "Mine_Mining_Ranking"), for: .normal)
+        ruleDescriptionBtn.setTitle(LanguageHelper.getString(key: "Mine_Mining_Rule"), for: .normal)
     }
 
 }

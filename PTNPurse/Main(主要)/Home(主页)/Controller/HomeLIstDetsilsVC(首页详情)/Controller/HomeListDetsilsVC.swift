@@ -183,14 +183,12 @@ extension HomeListDetsilsVC {
     
     //获取所有的转账明细
     func getTransferDetails(style:HomeCoinDetailsStatus,data:String){
-        let style = "3"
         let coinNo = self.details.type == nil ? Tools.getPTNcoinNo() : (self.details.type?.stringValue)!
         let token = UserDefaults.standard.getUserInfo().token
-        let type = style
         let date = data
         let pageSize = "\(self.pageSize)"
         let lineSize = self.lineSize
-        let parameters = ["token":token!,"coinNo":coinNo,"type":type,"date":date,"pageSize":pageSize,"lineSize":lineSize] as [String : Any]
+        let parameters = ["token":token!,"coinNo":coinNo,"type":"2","date":date,"pageSize":pageSize,"lineSize":lineSize] as [String : Any]
         print(parameters)
         listViewModel.loadCoinDetailsSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetTradeInfo, parameters: parameters, showIndicator: false) {
             if self.listViewModel.model.count == 0 {

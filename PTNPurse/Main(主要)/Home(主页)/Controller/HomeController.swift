@@ -219,7 +219,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
     lazy var addBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         Tools.setViewShadow(btn)
-        btn.frame = CGRect(x: SCREEN_WIDTH - 12 - 30, y: 210 - 20, width: 30,height:30)
+        btn.frame = CGRect(x: SCREEN_WIDTH - 12 - 30, y: headView.frame.maxY - 15, width: 30,height:30)
         btn.setImage(UIImage.init(named: "ic_home_add"), for: .normal)
         btn.addTarget(self, action: #selector(handelOnClick(_:)), for: .touchUpInside)
         btn.tag = 1
