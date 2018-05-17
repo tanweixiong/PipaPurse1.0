@@ -592,8 +592,8 @@
 "C2C_transaction_finish_liberate" = "You have successfully published";
 "C2C_transaction_finish_liberate_currency" = "currency";
 
-"C2C_home_transaction_purchase" = "purchase";
-"C2C_home_transaction_sale" = "sale";
+"C2C_home_transaction_purchase" = "Purchase";
+"C2C_home_transaction_sale" = "Sale";
 
 "C2C_publish_order_Currency" = "Currency";
 "C2C_publish_order_Receiving" = "Receiving";
@@ -734,4 +734,24 @@
 "C2C_ReleaseData" = "Data";
 "C2C_Volume" = "Deal";
 "C2C_Trade" = "Trade";
+"C2C_Determine" = "Determine";
+
 "homePage_Scan_Address" = "Get Purse Address";
+"Transfer_Remark" = "Remark";
+
+"Mine_Mining" = "Mining";
+"Mine_MyAdvertisement" = "Advertisement";
+"Mine_AdvertisingRecords" = "Records";
+"Mine_InviteFriends" = "Invite friends";
+"Mine_ABoutUs" = "ABout us";
+"Mine_SecuritySettings" = "Settings";
+
+"Information_Announcement" = "Notice";
+"Information_News" = "News";
+
+"Mine_Mining_My_Income" = "My Income";
+"Mine_Mining_Ranking" = "Ranking";
+"Mine_Mining_Income" = "Income";
+"Mine_Mining_Cumulative" = "Cumulative";
+"Mine_Mining_Rule" = "Rule";
+

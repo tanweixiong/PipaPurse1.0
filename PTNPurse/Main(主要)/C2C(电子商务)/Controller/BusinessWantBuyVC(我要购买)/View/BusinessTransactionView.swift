@@ -29,10 +29,10 @@ class BusinessTransactionView: UIView {
             nameLab.text = username
             
             let dealNum = model?.dealNum == nil ? 0 : model?.dealNum
-            dealNumLab.text = LanguageHelper.getString(key: "C2C_Volume") + "：" + (dealNum?.stringValue)!
+            dealNumLab.text = LanguageHelper.getString(key: "C2C_Volume") + " " + (dealNum?.stringValue)! + "   "
             
             let receivablesType = model?.receivablesType == nil ? 0 : model?.receivablesType
-            receivablesTypeLab.text = LanguageHelper.getString(key: "C2C_payment_method") + "：" + Tools.getPaymentDetailsMethod((receivablesType!.stringValue))
+            receivablesTypeLab.text =  Tools.getPaymentDetailsMethod((receivablesType!.stringValue)) + "   "
         }
     }
     

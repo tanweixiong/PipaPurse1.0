@@ -38,9 +38,10 @@ class BusinessVM: NSObject {
     
     func loadLiberateSuccessfullyReturnedData(requestType: HTTPMethod, URLString : String, parameters : [String : Any]? = nil,showIndicator: Bool,finishedCallback : @escaping () -> ()) {
         baseViewModel.loadSuccessfullyReturnedData(requestType: requestType, URLString: URLString, parameters: parameters, showIndicator: showIndicator) {(model:HomeBaseModel) in
-            let responseData = Mapper<BusinessModel>().map(JSONObject: model.data)
+            let responseData = Mapper<BusinessEntrustModel>().map(JSONObject: model.data)
             if responseData != nil {
-               self.liberateModel = responseData!
+                self.liberateModel = (responseData?.spotEntrust!)!
+                self.liberateModel.newPrice = responseData?.newPrice
             }
             finishedCallback()
         }

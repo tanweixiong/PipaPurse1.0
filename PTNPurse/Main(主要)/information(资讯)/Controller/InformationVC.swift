@@ -124,12 +124,13 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             announcementBtn.backgroundColor = UIColor.clear
             newsBtn.backgroundColor = R_UIThemeSkyBlueColor
         }
+        hasNextPage = false
         getNews(removeData: false)
     }
     
     lazy var announcementBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
-        btn.setTitle("公告", for: .normal)
+        btn.setTitle(LanguageHelper.getString(key: "Information_Announcement"), for: .normal)
         btn.isSelected = true
         btn.frame = CGRect(x: 15, y: topView.frame.maxY + 10, width: 80, height: 35)
         btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD) , for: .normal)
@@ -144,7 +145,7 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     lazy var newsBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
-        btn.setTitle("新闻", for: .normal)
+        btn.setTitle(LanguageHelper.getString(key: "Information_News"), for: .normal)
         btn.frame = CGRect(x:announcementBtn.frame.maxX + 10, y: announcementBtn.frame.origin.y, width: 80, height:35)
         btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD) , for: .normal)
         btn.setTitleColor(UIColor.white, for: .selected)
@@ -215,6 +216,7 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @objc func refreshFooter() {
     
         if hasNextPage {
+            hasNextPage = true
             getNews(removeData: false)
         } else {
             SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "net_nomoredata"))

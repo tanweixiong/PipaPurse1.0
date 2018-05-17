@@ -71,7 +71,7 @@ class BusinessTransactionVC: MainViewController {
     
     lazy var determineBtn: UIButton = {
         let btn  = UIButton(type: .system)
-        btn.setTitle("确定发布", for: .normal)
+        btn.setTitle(LanguageHelper.getString(key: "Determine"), for: .normal)
         btn.frame = CGRect(x: 0, y: tableView.frame.maxY, width: SCREEN_WIDTH, height: 50)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)

@@ -80,7 +80,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="1" alpha="0.97683005136986301" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="Z4M-3G-1ON" firstAttribute="trailing" secondItem="buN-E2-i7b" secondAttribute="trailing" id="16k-Cj-Gxe"/>
                                         <constraint firstItem="ZcN-aJ-ggP" firstAttribute="centerY" secondItem="GsT-9O-837" secondAttribute="centerY" id="4qd-Jh-jza"/>
@@ -135,12 +135,6 @@
                                 <constraint firstItem="g3v-8t-a5n" firstAttribute="top" secondItem="iws-K8-JBM" secondAttribute="bottom" id="cx5-UA-9h3"/>
                                 <constraint firstItem="5Vg-dt-RrX" firstAttribute="leading" secondItem="eEP-y8-u5Z" secondAttribute="leading" id="i1d-cn-Iwi"/>
                             </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="5"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

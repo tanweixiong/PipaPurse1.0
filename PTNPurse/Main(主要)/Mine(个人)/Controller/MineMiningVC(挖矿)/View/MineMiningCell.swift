@@ -11,7 +11,7 @@ import UIKit
 class MineMiningCell: UITableViewCell {
     @IBOutlet weak var icomLab: UILabel!
     @IBOutlet weak var dataLab: UILabel!
-    
+    @IBOutlet weak var icomTitleLab: UILabel!
     
     var model = HomeMiningListModel(){
         didSet{
@@ -29,6 +29,7 @@ class MineMiningCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        icomTitleLab.text = LanguageHelper.getString(key: "Mine_Mining_Income")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -384,7 +384,7 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
             cell.textView?.layer.cornerRadius = 5
             cell.textView?.layer.masksToBounds = true
             cell.textView?.backgroundColor = UIColor.white
-            cell.textView?.placeholderText = "请输入您的备注信息....."
+            cell.textView?.placeholderText = LanguageHelper.getString(key: "Transfer_Remark")
             self.yytextfield = cell.textView!
             return cell
         }

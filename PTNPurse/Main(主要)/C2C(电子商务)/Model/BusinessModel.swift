@@ -27,7 +27,7 @@ class BusinessModel: Mappable {
     var nickname: String?
     var poundageCoin: String?
     var tradeSize: String?
-    var id: String?
+    var id: NSNumber?
     var state: NSNumber?
     var aPIDealNumber: String?
     var poundageScale: String?
@@ -90,5 +90,25 @@ class BusinessModel: Mappable {
         entrustNo        <- map["entrustNo"]
         newPrice        <- map["newPrice"]
 
+    }
+}
+
+class BusinessEntrustModel: Mappable {
+    var language: String?
+    var newPrice: NSNumber?
+    var spotEntrust:BusinessModel?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    required init?() {
+        
+    }
+    
+    func mapping(map: Map) {
+        language     <- map["language"]
+        newPrice     <- map["newPrice"]
+        spotEntrust    <- map["spotEntrust"]
     }
 }

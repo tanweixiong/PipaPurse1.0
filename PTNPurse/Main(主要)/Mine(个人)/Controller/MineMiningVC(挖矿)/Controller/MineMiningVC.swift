@@ -55,6 +55,7 @@ class MineMiningVC: MainViewController {
         view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height:460)
         view.incomeBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
         view.rankingBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
+        view.ruleDescriptionBtn.setTitle(LanguageHelper.getString(key: "Mine_Mining_Rule"), for: .normal)
         return view
     }()
     

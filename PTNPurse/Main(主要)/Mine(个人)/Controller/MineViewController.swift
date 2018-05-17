@@ -15,6 +15,12 @@ class MineViewController: UIViewController {
     @IBOutlet weak var photoImg: UIImageView!
     @IBOutlet weak var usernameLab: UILabel!
     
+    @IBOutlet weak var miningLab: UILabel!
+    @IBOutlet weak var myAdvertisementLab: UILabel!
+    @IBOutlet weak var advertisingRecordsLab: UILabel!
+    @IBOutlet weak var inviteFriendsLab: UILabel!
+    @IBOutlet weak var aBoutUsLab: UILabel!
+    @IBOutlet weak var securitySettingsLab: UILabel!
     let newImage = UIImageView()
 
     // MARK: - life cycle
@@ -67,6 +73,13 @@ class MineViewController: UIViewController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
+        
+        miningLab.text = LanguageHelper.getString(key: "Mine_Mining")
+        myAdvertisementLab.text = LanguageHelper.getString(key: "Mine_MyAdvertisement")
+        advertisingRecordsLab.text = LanguageHelper.getString(key: "Mine_AdvertisingRecords")
+        inviteFriendsLab.text = LanguageHelper.getString(key: "Mine_InviteFriends")
+        aBoutUsLab.text = LanguageHelper.getString(key: "Mine_ABoutUs")
+        securitySettingsLab.text = LanguageHelper.getString(key: "Mine_SecuritySettings")
     }
     
     func getData(){

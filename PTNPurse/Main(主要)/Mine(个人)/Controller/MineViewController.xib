@@ -13,7 +13,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineViewController" customModule="PipaPurse" customModuleProvider="target">
             <connections>
+                <outlet property="aBoutUsLab" destination="9cb-Gz-1Qr" id="hLV-dt-zhz"/>
+                <outlet property="advertisingRecordsLab" destination="AgC-RJ-ER4" id="lFr-W9-ZCk"/>
+                <outlet property="inviteFriendsLab" destination="lmw-ZL-4xd" id="yr4-QS-W9h"/>
+                <outlet property="miningLab" destination="F6t-Cv-Kbc" id="uZp-jF-95d"/>
+                <outlet property="myAdvertisementLab" destination="VIg-pQ-IxE" id="tSN-BH-ZVy"/>
                 <outlet property="photoImg" destination="b1Y-fY-Atn" id="QuR-Ak-wbk"/>
+                <outlet property="securitySettingsLab" destination="3cI-6H-fg1" id="PJ4-l7-1ef"/>
                 <outlet property="usernameLab" destination="luf-U6-oho" id="OaS-k3-WWI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

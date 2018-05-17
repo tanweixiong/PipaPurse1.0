@@ -169,7 +169,7 @@ extension BusinessVC: UITableViewDataSource,UITableViewDelegate{
         }
         let businessWantBuyVC = BusinessWantBuyVC()
         businessWantBuyVC.style = self.style
-        businessWantBuyVC.entrustNo = (model?.entrustNo)!
+        businessWantBuyVC.entrustNo = (model?.id?.stringValue)!
         businessWantBuyVC.receivablesType = (model?.receivablesType?.stringValue)!
         businessWantBuyVC.businessWantBuyData = BusinessWantBuyData(avatarUrl: model?.photo, entrustPrice: model?.entrustPrice, entrustMaxPrice: model?.entrustMaxPrice, entrustMinPrice: model?.entrustMinPrice, remark: model?.remark, name: model?.username, coinCore: model?.coinCore)
         businessWantBuyVC.detailsModel = model

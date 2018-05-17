@@ -51,12 +51,6 @@
                                 <constraint firstAttribute="trailing" secondItem="Oks-kF-bvO" secondAttribute="trailing" constant="15" id="YO2-u9-1tW"/>
                                 <constraint firstItem="Piv-ez-kEm" firstAttribute="centerY" secondItem="Fub-rf-dFq" secondAttribute="centerY" id="zmY-EQ-Hns"/>
                             </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="5"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLt-aI-Y6d">
                             <rect key="frame" x="0.0" y="0.5" width="345" height="0.5"/>
@@ -93,12 +87,6 @@
                                 <constraint firstItem="V7D-vo-aEj" firstAttribute="centerY" secondItem="ZV5-g4-E9L" secondAttribute="centerY" id="m8S-mH-vVC"/>
                                 <constraint firstItem="UeH-eh-MEb" firstAttribute="centerY" secondItem="ZV5-g4-E9L" secondAttribute="centerY" id="wef-Gm-pP7"/>
                             </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="5"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
