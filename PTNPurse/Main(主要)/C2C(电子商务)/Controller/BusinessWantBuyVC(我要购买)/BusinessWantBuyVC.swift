@@ -50,8 +50,8 @@ class BusinessWantBuyVC: MainViewController {
     
     lazy var businessView: BusinessTransactionView = {
         let view = Bundle.main.loadNibNamed("BusinessTransactionView", owner: nil, options: nil)?.last as! BusinessTransactionView
-        view.frame = CGRect(x: 15, y: 0 , width: SCREEN_WIDTH - 30, height: 191)
-        view.model = self.businessWantBuyData
+        view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height: 191)
+        view.model = self.detailsModel
         return view
     }()
     

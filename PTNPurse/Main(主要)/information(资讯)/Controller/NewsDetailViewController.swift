@@ -14,14 +14,14 @@ class NewsDetailViewController: UIViewController, WKUIDelegate, WKNavigationDele
     var topView: CreatTopView?
     var webView: WKWebView?
     var progressView: UIProgressView?
-    var news: Information?
+    var news: InformationData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.isHidden = true
         
-        let topViewHeight = SCREEN_WIDTH / CGFloat(375) * CGFloat(115)
+        let topViewHeight:CGFloat = 64
         
         topView = CreatTopView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: topViewHeight))
         topView?.setViewContent(title: LanguageHelper.getString(key: "news_newsdetail"))

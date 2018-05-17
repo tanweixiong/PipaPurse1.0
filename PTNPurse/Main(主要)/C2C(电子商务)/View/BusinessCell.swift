@@ -38,7 +38,7 @@ class BusinessCell: UITableViewCell {
             priceLab.text = Tools.getWalletAmount(amount: newPrice) + " " + "CNY"
             
             let dealNum = model?.dealNum == nil ? 0 : model?.dealNum
-            dealNumLab.text = LanguageHelper.getString(key: "C2C_home_Deal") + "：" + Tools.setPriceNumber(price: dealNum!)
+            dealNumLab.text = LanguageHelper.getString(key: "C2C_home_Deal") + "：" + (dealNum?.stringValue)!
             
             let receivablesType = model?.receivablesType == nil ? 0 : model?.receivablesType
             receivablesTypeLab.text = LanguageHelper.getString(key: "C2C_payment_method") + "：" + Tools.getPaymentDetailsMethod((receivablesType!.stringValue))

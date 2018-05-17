@@ -15,9 +15,17 @@ class BusinessTransactionDeView: UIView {
     @IBOutlet weak var dataLab: UILabel!
     @IBOutlet weak var remarkLab: UILabel!
     
+    @IBOutlet weak var quotationLab: UILabel!
+    @IBOutlet weak var transactionLimitLab: UILabel!
+    @IBOutlet weak var releaseDataLab: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         Tools.setViewShadow(backGroundVw)
+        
+        quotationLab.text = LanguageHelper.getString(key: "C2C_Quotation")
+        transactionLimitLab.text = LanguageHelper.getString(key: "C2C_home_Limit")
+        releaseDataLab.text = LanguageHelper.getString(key: "C2C_ReleaseData")
     }
     
     var model = BusinessModel(){

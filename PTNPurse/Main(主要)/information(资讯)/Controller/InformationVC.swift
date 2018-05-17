@@ -10,14 +10,25 @@ import UIKit
 import SVProgressHUD
 import ObjectMapper
 
+enum InformationStyle {
+    case announcement
+    case news
+}
+
 class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var topView: CreatTopView!
     @IBOutlet weak var tableView: UITableView!
+    fileprivate var  announcementArr = NSMutableArray()
+    fileprivate var newsArr = NSMutableArray()
     
-    var pageNumber: Int = 1
-    var pageSize: Int = 5
+    var style = InformationStyle.announcement
+    
+    var announcementPageNumber: Int = 1
+    var newsPageNumber: Int = 1
+    var lineSize: Int = 5
     var hasNextPage: Bool = true
+    var isFirst = true
     
     var infoArray: NSMutableArray = NSMutableArray()
     // MARK: - life Cycle
@@ -52,26 +63,37 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     // MARK: - NetWork Method
     func getNews(removeData: Bool) {
-        
-        let token = SingleTon.shared.userInfo?.token!
-        let params = [ "pageNum" : pageNumber, "pageSize":pageSize, "token" : token!] as [String : Any]
-        SVProgressHUD.show(with: .black)
+        let token = (UserDefaults.standard.getUserInfo().token)!
+        let type = style == .announcement ? "1" : "2"
+        let pageSize = style == .announcement ? "\(announcementPageNumber)" : "\(newsPageNumber)"
+        let params = [ "pageSize" : pageSize, "lineSize":lineSize, "token" : token,"type":type] as [String : Any]
+        if isFirst {
+           SVProgressHUD.show(with: .black)
+           isFirst = false
+        }
         ZYNetWorkTool.requestData(.get, URLString: ZYConstAPI.kAPIGetNews, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
             let result = Mapper<InfoRespondse>().map(JSONObject: jsonObjc)
             if let code = result?.code {
                 if code == 200 {
-                    if removeData {
-                        self.infoArray.removeAllObjects()
+                    self.infoArray.removeAllObjects()
+                    let arr = NSMutableArray()
+                    if self.style == .announcement {
+                        arr.addObjects(from: self.announcementArr as! [Any])
+                        arr.addObjects(from: (result?.data)!)
+                        self.announcementArr = arr
+                        self.infoArray.addObjects(from: arr as! [Any])
+                        self.announcementPageNumber = self.hasNextPage ? self.announcementPageNumber + 1 : self.announcementPageNumber
+                    }else{
+                        arr.addObjects(from: self.newsArr as! [Any])
+                        arr.addObjects(from: (result?.data)!)
+                        self.newsArr = arr
+                        self.infoArray.addObjects(from: arr as! [Any])
+                        self.newsPageNumber = self.hasNextPage ? self.newsPageNumber + 1 : self.newsPageNumber
                     }
-                    self.infoArray.addObjects(from: (result?.data?.pageInfo?.list)!)
-                    self.hasNextPage = (result?.data?.pageInfo?.hasNextPage)!
+
                     self.tableView.reloadData()
-    
-                    if self.hasNextPage {
-                        self.pageNumber += 1
-                    }
                     SVProgressHUD.dismiss()
                 } else {
                     SVProgressHUD.showError(withStatus: result?.message)
@@ -89,17 +111,20 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @objc func onClick(_ sender:UIButton){
         //公告
         if sender == announcementBtn {
+            style = .announcement
             announcementBtn.isSelected = true
             newsBtn.isSelected = false
             announcementBtn.backgroundColor = R_UIThemeSkyBlueColor
             newsBtn.backgroundColor = UIColor.clear
         //新闻
         }else if sender == newsBtn {
+            style = .news
             announcementBtn.isSelected = false
             newsBtn.isSelected = true
             announcementBtn.backgroundColor = UIColor.clear
             newsBtn.backgroundColor = R_UIThemeSkyBlueColor
         }
+        getNews(removeData: false)
     }
     
     lazy var announcementBtn: UIButton = {
@@ -143,7 +168,7 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("InfoTableViewCell", owner: nil, options: nil)?[0] as! InfoTableViewCell
-        cell.info = infoArray[indexPath.row] as? Information
+        cell.info = infoArray[indexPath.row] as? InformationData
         return cell
     }
     
@@ -151,13 +176,10 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return 250
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let detailvc = NewsDetailViewController()
-        detailvc.news = (infoArray[indexPath.row] as! Information)
+        detailvc.news = (infoArray[indexPath.row] as! InformationData)
         self.navigationController?.pushViewController(detailvc, animated: true)
-        
     }
     
     // MARK: - Private Method
@@ -172,13 +194,20 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         topView.backBtn.isHidden = true
         
+        self.tableView.backgroundColor = UIColor.R_UIRGBColor(red: 249, green: 249, blue: 251, alpha: 1)
         self.tableView.mj_header = MJRefreshNormalHeader.init(refreshingTarget: self, refreshingAction: #selector(InformationVC.refreshHeader))
         self.tableView.mj_footer = MJRefreshBackFooter.init(refreshingTarget: self, refreshingAction: #selector(InformationVC.refreshFooter))
 
     }
     
     @objc func refreshHeader() {
-        pageNumber = 1
+        if self.style == .announcement{
+            self.announcementPageNumber = 1
+            self.announcementArr.removeAllObjects()
+        }else if self.style == .news {
+            self.newsPageNumber = 1
+            self.newsArr.removeAllObjects()
+        }
         hasNextPage = true
         getNews(removeData: true)
     }

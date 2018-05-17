@@ -15,10 +15,14 @@ class BusinessConvertView: UIView {
     @IBOutlet weak var backgroundVw: UIView!
     @IBOutlet weak var coinNumTF: UITextField!
     @IBOutlet weak var disPriceTF: UITextField!
+    @IBOutlet weak var view1: UIView!
+    @IBOutlet weak var view2: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        Tools.setViewShadow(backgroundVw)
         coinNumTF.textColor = UIColor.R_UIColorFromRGB(color: 0x4D4F51)
+        
+        Tools.setViewShadow(view1)
+        Tools.setViewShadow(view2)
    }
     
 

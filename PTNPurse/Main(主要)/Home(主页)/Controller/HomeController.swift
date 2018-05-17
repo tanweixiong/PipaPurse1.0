@@ -63,6 +63,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             SVProgressHUD.show(withStatus: LanguageHelper.getString(key: "please_wait"))
         }
         viewModel.loadHomeSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetBalance, parameters: params, showIndicator: false) {
+            SVProgressHUD.dismiss()
             self.cleanArr()
             let totalMoney = self.viewModel.totalMoney == "" ? "0" : self.viewModel.totalMoney
             self.headView.totalMoneyLabel.text = Tools.getWalletAmount(amount: totalMoney)
@@ -96,10 +97,6 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             self.getPtnAddress()
         }
         tableView.mj_header.endRefreshing()
-        //超过三秒则隐藏 
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
-            SVProgressHUD.dismiss()
-        })
     }
     
     func getPtnAddress(){
@@ -290,9 +287,9 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             self.navigationController?.pushViewController(homeAddCoinVC, animated: true)
             return
         case 7 :
-            let title = UserDefaults.standard.getUserInfo().ptnaddress == "" || UserDefaults.standard.getUserInfo().ptnaddress == nil ? "导入钱包" : "备份钱包"
+            let title = UserDefaults.standard.getUserInfo().ptnaddress == "" || UserDefaults.standard.getUserInfo().ptnaddress == nil ? LanguageHelper.getString(key: "homePage_Import") : LanguageHelper.getString(key: "homePage_Export")
             let maxY = headView.anymoreBtn.frame.maxY + 50
-            let menuView = PST_MenuView.init(frame: CGRect(x: SCREEN_WIDTH - 20 - 120, y: maxY, width: 120, height: 90), titleArr: ["二维码",title], imgArr: ["ic_home_code","ic_home_backup"], arrowOffset: 100, rowHeight: 40, layoutType: PST_MenuViewLayoutType(rawValue: 0)!, directionType: PST_MenuViewDirectionType(rawValue: 0)!, delegate: self)
+            let menuView = PST_MenuView.init(frame: CGRect(x: SCREEN_WIDTH - 20 - 120, y: maxY, width: 120, height: 90), titleArr: [LanguageHelper.getString(key: "ic_Home_Code"),title], imgArr: ["ic_home_code","ic_home_backup"], arrowOffset: 100, rowHeight: 40, layoutType: PST_MenuViewLayoutType(rawValue: 0)!, directionType: PST_MenuViewDirectionType(rawValue: 0)!, delegate: self)
             menuView?.arrowColor = UIColor.white
             menuView?.titleColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
             menuView?.lineColor = UIColor.R_UIColorFromRGB(color: 0xEDF3F8)

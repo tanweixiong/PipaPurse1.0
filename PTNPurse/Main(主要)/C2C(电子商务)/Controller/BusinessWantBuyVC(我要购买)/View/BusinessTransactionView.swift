@@ -14,17 +14,25 @@ class BusinessTransactionView: UIView {
     @IBOutlet weak var nameLab: UILabel!
     @IBOutlet weak var backGroundVw: UIView!
     
-    var model = BusinessWantBuyData(){
+    @IBOutlet weak var dealNumLab: UILabel!
+    @IBOutlet weak var receivablesTypeLab: UILabel!
+    var model = BusinessModel(){
         didSet{
-           let avatar = model.avatarUrl == nil ? "" : model.avatarUrl
+           let avatar = model?.photo == nil ? "" : model?.photo
            avatarImageView.sd_setImage(with:NSURL(string: avatar!)! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
             
-            let price = model.entrustPrice == nil ? 0 : model.entrustPrice
+            let price = model?.entrustPrice == nil ? 0 : model?.entrustPrice
             let newPrice = Tools.setPriceNumber(price: price!)
-            priceLab.text = Tools.getWalletAmount(amount: newPrice) + " CNY" + "/" + model.coinCore!
+            priceLab.text = Tools.getWalletAmount(amount: newPrice) + " CNY" + "/" + (model?.coinCore!)!
             
-            let username = model.name == nil ? "" : model.name
-            self.nameLab.text = username
+            let username = model?.username == nil ? "" : model?.username
+            nameLab.text = username
+            
+            let dealNum = model?.dealNum == nil ? 0 : model?.dealNum
+            dealNumLab.text = LanguageHelper.getString(key: "C2C_Volume") + "：" + (dealNum?.stringValue)!
+            
+            let receivablesType = model?.receivablesType == nil ? 0 : model?.receivablesType
+            receivablesTypeLab.text = LanguageHelper.getString(key: "C2C_payment_method") + "：" + Tools.getPaymentDetailsMethod((receivablesType!.stringValue))
         }
     }
     

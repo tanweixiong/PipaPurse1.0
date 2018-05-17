@@ -18,13 +18,17 @@ class InfoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var bgView: UIView!
     
-    var info: Information? {
+    var info: InformationData? {
         didSet {
-            titleLabel.text = info?.newsTitle
-            let dateDouble = Double((info?.createTime)! / 1000)
-            dateLabel.text = Tools.timeStampToString(timeStamp: dateDouble)
+            titleLabel.text = (info?.newsTitle)! + ""
+            dateLabel.text = info?.createTime == nil ? "" : (info?.createTime)! + ""
+            
             if let imageurl = info?.newsImg {
                 self.infoImageView.sd_setImage(with: URL.init(string: imageurl), placeholderImage: UIImage.init(named: "ic_defaultPicture"))
+            }
+         
+            if let seeNum = info?.seeNum {
+                self.browseLab.text = (seeNum.stringValue)
             }
         }
     }

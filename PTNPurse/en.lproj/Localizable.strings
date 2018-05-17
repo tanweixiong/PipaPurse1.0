@@ -730,3 +730,8 @@
 "C2C_payment_method" = "Method";
 "C2C_Max" = "Max";
 
+"C2C_Quotation" = "Quotation";
+"C2C_ReleaseData" = "Data";
+"C2C_Volume" = "Deal";
+"C2C_Trade" = "Trade";
+"homePage_Scan_Address" = "Get Purse Address"

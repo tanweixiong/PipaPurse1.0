@@ -107,14 +107,13 @@ extension MineMiningVC{
     }
     
     func addData(_ index:NSInteger){
-        let model = viewModel.balloonModel.mineDetails![index]
-        let parameters = ["id":(model.id?.stringValue)!,"token":self.token]
+        let balloonModel = viewModel.balloonModel.mineDetails![index]
+        let parameters = ["id":(balloonModel.id?.stringValue)!,"token":self.token]
         baseVM.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIAddMine, parameters: parameters ,showIndicator: false) { (model:HomeBaseModel) in
-            if model.code == 200 {
-                SVProgressHUD.showInfo(withStatus: "成功")
-            }else{
-                SVProgressHUD.showInfo(withStatus: "失败")
-            }
+            //根据当前收益
+            var current = self.viewModel.balloonModel.mineSumNum?.doubleValue
+            current = current! + (balloonModel.bonus?.doubleValue)!
+            self.mineMiningVw.cumulativeIncomeLab.text = Tools.setNSDecimalNumber(NSNumber(value: current!))
         }
     }
     

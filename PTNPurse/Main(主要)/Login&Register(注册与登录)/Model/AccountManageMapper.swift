@@ -198,7 +198,7 @@ class InfoRespondse: Mappable {
     var code: Int?
     var message: String?
     var page: Int?
-    var data: PageInfo?
+    var data: [InformationData]?
     
     required init?(map: Map) {
         
@@ -212,49 +212,49 @@ class InfoRespondse: Mappable {
     }
 }
 
-class PageInfo: Mappable {
-    
-    var pageInfo: InformationData?
-    
-    required init?(map: Map) {
-        
-    }
-    
-    func mapping(map: Map) {
-        pageInfo                <- map["pageInfo"]
-       
-    }
-}
+//class PageInfo: Mappable {
+//
+//    var pageInfo: InformationData?
+//
+//    required init?(map: Map) {
+//
+//    }
+//
+//    func mapping(map: Map) {
+//        pageInfo                <- map["pageInfo"]
+//
+//    }
+//}
 
 class InformationData: Mappable {
-    var pageNum: Int?
-    var pageSize: Int?
-    var size: Int?
-    var orderBy: String?
-    var startRow: Int?
-    var endRow: Int?
-    var total: Int?
-    var pages: Int?
-    var list: [Information]?
-    var isLastPage: Bool?
-    var hasNextPage: Bool?
+    var adminId: String?
+    var createTime: String?
+    var id: NSNumber?
+    var newsImg: String?
+    var newsLangue: NSNumber?
+    var newsSummary: String?
+    var newsText: String?
+    var newsTitle: String?
+    var newsUrl: String?
+    var seeNum: NSNumber?
+    var type: NSNumber?
     
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        pageNum                <- map["pageNum"]
-        pageSize             <- map["pageSize"]
-        size             <- map["size"]
-        orderBy                <- map["orderBy"]
-        startRow             <- map["startRow"]
-        endRow             <- map["endRow"]
-        total             <- map["total"]
-        pages             <- map["pages"]
-        list             <- map["list"]
-        isLastPage             <- map["isLastPage"]
-        hasNextPage             <- map["hasNextPage"]
+        adminId                <- map["adminId"]
+        createTime             <- map["createTime"]
+        id             <- map["id"]
+        newsImg                <- map["newsImg"]
+        newsLangue             <- map["newsLangue"]
+        newsSummary             <- map["newsSummary"]
+        newsText             <- map["newsText"]
+        newsTitle             <- map["newsTitle"]
+        newsUrl             <- map["newsUrl"]
+        seeNum             <- map["seeNum"]
+        type             <- map["type"]
         
     }
 }

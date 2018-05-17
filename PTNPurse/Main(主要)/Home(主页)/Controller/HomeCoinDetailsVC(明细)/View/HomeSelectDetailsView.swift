@@ -20,8 +20,7 @@ class HomeSelectDetailsView: UIView {
         // Initialization code
 
         Tools.setViewShadow(transferView)
-        conversionLabel.text = LanguageHelper.getString(key: "homePage_conversion") + LanguageHelper.getString(key: "homePage_Details_Recording")
-        
+        conversionLabel.text = LanguageHelper.getString(key: "C2C_Trade")
     }
     
 }

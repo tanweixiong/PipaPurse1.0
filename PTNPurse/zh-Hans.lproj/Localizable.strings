@@ -734,6 +734,12 @@
 "C2C_Max" = "最大限额";
 "C2C_Proportion" = "溢价比例";
 
+"C2C_Quotation" = "报价";
+"C2C_ReleaseData" = "发布日期";
+"C2C_Volume" = "成交";
+"C2C_Trade" = "全部记录";
+"homePage_Scan_Address" = "扫描二维码获取钱包地址"
+
 
 
 

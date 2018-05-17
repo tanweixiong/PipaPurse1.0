@@ -13,7 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BusinessTransactionView" customModule="PTNPurse" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BusinessTransactionView" customModule="PipaPurse" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -63,6 +63,12 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝    " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mL0-fA-JNj">
                                     <rect key="frame" x="182.5" y="133" width="42.5" height="14"/>
@@ -113,8 +119,10 @@
             <connections>
                 <outlet property="avatarImageView" destination="8Qu-Dz-fTg" id="DNl-vS-Yay"/>
                 <outlet property="backGroundVw" destination="pQk-OS-zSB" id="Vxa-K0-uRB"/>
+                <outlet property="dealNumLab" destination="3k5-Ny-9qc" id="Uzk-Bq-H5X"/>
                 <outlet property="nameLab" destination="o6O-L7-4Rp" id="BSX-jc-qYh"/>
                 <outlet property="priceLab" destination="vfI-sA-TPW" id="nzq-rr-vF5"/>
+                <outlet property="receivablesTypeLab" destination="mL0-fA-JNj" id="cyn-qX-p6h"/>
             </connections>
             <point key="canvasLocation" x="24.5" y="52"/>
         </view>

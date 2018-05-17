@@ -23,7 +23,7 @@ class BusinessaDvertisementVC: MainViewController {
     fileprivate lazy var viewModel : BusinessaDvertisementVM = BusinessaDvertisementVM()
     fileprivate lazy var businessViewModel : BusinessVM = BusinessVM()
     fileprivate var coinNum = Tools.getBtcCoinNum()
-    fileprivate var style = BusinessTransactionStyle.sellStyle
+    fileprivate var style = BusinessTransactionStyle.buyStyle
     
     fileprivate let coinArray = NSMutableArray()
     fileprivate var phoneNum = String()
@@ -107,6 +107,7 @@ extension BusinessaDvertisementVC {
         view.addSubview(businessView)
         view.addSubview(tableView)
         view.addSubview(chooseVw)
+        UIApplication.shared.keyWindow?.addSubview(selectVw)
     }
     
     @objc func contactOnClick(_ sender:UIButton){
@@ -130,8 +131,8 @@ extension BusinessaDvertisementVC {
         let token = (UserDefaults.standard.getUserInfo().token)!
         let coinNo = coinNum
         let entrustType = style == .buyStyle ? "0" : "1" //状态：0购买，1：出售
-        let lineSize = self.lineSize
-        let parameters = ["token":token,"coinNo":coinNo,"entrustType":entrustType,"entrustState":"2","pageSize":"0","lineSize":lineSize] as [String : Any]
+        let lineSize = "\(self.lineSize)"
+        let parameters = ["token":token,"coinNo":coinNo,"entrustType":entrustType,"entrustState":"2","pageSize":"0","lineSize":lineSize]
         viewModel.loadDetailsSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetDealDetailByUserNo, parameters: parameters, style:self.style, showIndicator: false) {
             self.tableView.reloadData()
         }
@@ -329,7 +330,7 @@ extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 274
+        return 290
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -358,14 +359,6 @@ extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
     }
 }
 
-extension BusinessaDvertisementVC :PST_MenuViewDelegate {
-    func didSelectRow(at index: Int, title: String!, img: String!) {
-        let model = businessViewModel.coinModel[index]
-        self.coinNum = (model.id?.stringValue)!
-        getData()
-    }
-}
-
 extension BusinessaDvertisementVC: InputPaymentPasswordDelegate{
     func inputPaymentPassword(_ pwd: String!) -> String! {
         self.tradePassword = pwd
@@ -390,6 +383,12 @@ extension BusinessaDvertisementVC: InputPaymentPasswordDelegate{
 
 extension BusinessaDvertisementVC :IntegralApplicationStatusDelegate {
     func integralApplicationStatusSelectRow(index: NSInteger, name: String, selectList: NSInteger) {
-        chooseVw.titleLab.text = "广告纪录-" + name
+        let model = businessViewModel.coinModel[index]
+        chooseVw.titleLab.text = "广告记录-" + model.coinName!
+        coinNum = (model.id?.stringValue)!
+        getData()
     }
 }
+
+
+
