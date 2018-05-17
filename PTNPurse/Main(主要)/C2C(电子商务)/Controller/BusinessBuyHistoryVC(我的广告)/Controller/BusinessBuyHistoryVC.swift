@@ -27,7 +27,7 @@ class BusinessBuyHistoryVC: MainViewController {
     fileprivate var coinNum = Tools.getBtcCoinNum()
     var transactionStyle = BusinessTransactionStyle.sellStyle
     fileprivate let coinArray = NSMutableArray()
-    fileprivate let naviTitle = "广告纪录-"
+    fileprivate let naviTitle = LanguageHelper.getString(key: "Mine_Mining_Advertising_Records") + "-"
     fileprivate var pageSize = 0
     fileprivate var lineSize = 0
     override func viewDidLoad() {

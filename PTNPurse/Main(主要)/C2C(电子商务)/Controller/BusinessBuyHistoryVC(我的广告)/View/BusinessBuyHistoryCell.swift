@@ -52,11 +52,11 @@ class BusinessBuyHistoryCell: UITableViewCell {
             }
             
             if style == .buyStyle {
-                stateLabel.text = "购买广告"
+                stateLabel.text = LanguageHelper.getString(key: "C2C_mine_advertisement_finish")
                 stateLabel.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xFF7052)
                 entrustPriceLab.textColor = UIColor.R_UIColorFromRGB(color: 0xFF7052)
             }else if style == .sellStyle{
-                stateLabel.text = "出售广告"
+                stateLabel.text = LanguageHelper.getString(key: "C2C_mine_advertisement_processing")
                 stateLabel.backgroundColor = UIColor.R_UIColorFromRGB(color: 0x00D85A)
                 entrustPriceLab.textColor = UIColor.R_UIColorFromRGB(color: 0x00D85A)
             }
@@ -75,6 +75,7 @@ class BusinessBuyHistoryCell: UITableViewCell {
         
         detailsBtn.layer.borderWidth = 1
         detailsBtn.layer.borderColor = UIColor.R_UIColorFromRGB(color: 0xCED7E6).cgColor
+        detailsBtn.setTitle(LanguageHelper.getString(key: "C2C_mine_my_advertisement_Details"), for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
