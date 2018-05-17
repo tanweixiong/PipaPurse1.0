@@ -42,10 +42,11 @@ class BusinessBuyHistoryDetailsVC: MainViewController {
     lazy var dropBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle(LanguageHelper.getString(key: "C2C_mine_my_advertisement_Drop"), for: .normal)
-        btn.frame = CGRect(x: SCREEN_WIDTH - 15 - 34, y: 32, width: 34, height: 22)
+        btn.frame = CGRect(x: SCREEN_WIDTH - 15 - 45, y: 32, width: 45, height: 22)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.addTarget(self, action: #selector(dropOnClick(_:)), for: .touchUpInside)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        btn.titleLabel?.textAlignment = .right
         btn.tag = 1
         btn.isHidden = self.style == .processingStyle ? false : true
         btn.isHidden = self.isHiddenDrop 

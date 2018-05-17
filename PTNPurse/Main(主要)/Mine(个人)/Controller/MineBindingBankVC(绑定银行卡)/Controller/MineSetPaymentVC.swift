@@ -10,7 +10,7 @@ import UIKit
 
 class MineSetPaymentVC: MainViewController {
     fileprivate let securitySetViewCell = "SecuritySetViewCell"
-    fileprivate let dataArray = ["支付宝账号","微信账号","银行卡账号"]
+    fileprivate let dataArray = ["binding_Alipay_account","binding_Wechat_account","binding_BankCard_account"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class MineSetPaymentVC: MainViewController {
 
 extension MineSetPaymentVC {
     func setupUI(){
-         setNormalNaviBar(title: "支付方式")
+         setNormalNaviBar(title: LanguageHelper.getString(key: "Mine_PaymentMethod"))
          view.addSubview(tableView)
     }
 }
@@ -57,7 +57,7 @@ extension MineSetPaymentVC:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: securitySetViewCell, for: indexPath) as! SecuritySetViewCell
         cell.selectionStyle = .none
-        cell.headingContentLab.text = dataArray[indexPath.row]
+        cell.headingContentLab.text = LanguageHelper.getString(key: dataArray[indexPath.row])
         return cell
     }
     

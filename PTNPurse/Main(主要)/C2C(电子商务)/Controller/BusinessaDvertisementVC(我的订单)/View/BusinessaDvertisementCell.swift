@@ -45,7 +45,7 @@ class BusinessaDvertisementCell: UITableViewCell {
             
             orderNumLab.text = (model?.entrustNo)!
             
-            transactionTypeLab.text = model?.dealType == 0 ? "购买" : "出售"  + (model?.coinCore)!
+            transactionTypeLab.text = model?.dealType == 0 ? LanguageHelper.getString(key: "C2C_home_Buy") : LanguageHelper.getString(key: "C2C_home_Sell")  + (model?.coinCore)!
             transactionTypeLab.textColor = model?.dealType == 0 ? UIColor.R_UIColorFromRGB(color: 0x00D85A) : UIColor.R_UIColorFromRGB(color: 0xFF7052)
             
             transactionPriceLab.text = Tools.setNSDecimalNumber((model?.dealPrice)!) + " CNY"
@@ -204,11 +204,11 @@ class BusinessaDvertisementCell: UITableViewCell {
         super.awakeFromNib()
         Tools.setViewShadow(backgroundVw)
         
-        orderNumLab.text = LanguageHelper.getString(key: "C2C_transaction_finish_OrderNum")
-        orderTypeTLab.text = LanguageHelper.getString(key: "homePage_Finish_Details_Transaction_Type")
-        orderUnitLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Unit")
-        orderNumberLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Quantity")
-        orderTimeLab.text = LanguageHelper.getString(key: "homePage_Finish_Details_Transaction_Time")
+        orderTypeTLab.text = LanguageHelper.getString(key: "homePage_Finish_Details_Transaction_Type") + "："
+        orderUnitLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Unit") + "："
+        orderNumberLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Quantity") + "："
+        orderTimeLab.text = LanguageHelper.getString(key: "homePage_Finish_Details_Transaction_Time") + "："
+        orderNumTLab.text = LanguageHelper.getString(key: "C2C_transaction_finish_OrderNum") + "："
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

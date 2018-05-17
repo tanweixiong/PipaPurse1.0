@@ -16,7 +16,7 @@ class AboutUsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
-    let titleArray = ["person_currentversion", "person_latestversion","反馈与意见"]
+    let titleArray = ["person_currentversion", "person_latestversion","Mine_FeedbackAndOpinions"]
     let imageArray = ["ic_aboutus_details","ic_aboutus_details","ic_aboutus_details"]
     
     var newVersion: Version?

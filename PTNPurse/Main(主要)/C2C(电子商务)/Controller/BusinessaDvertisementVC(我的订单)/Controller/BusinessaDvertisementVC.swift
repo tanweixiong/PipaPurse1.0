@@ -14,7 +14,7 @@ enum BusinessaDvertisementStyle {
     case finishStyle
 }
 class BusinessaDvertisementVC: MainViewController {
-    fileprivate let naviTitle = "广告记录-"
+    fileprivate let naviTitle = LanguageHelper.getString(key: "Mine_Mining_Advertising_Records") + "-"
     fileprivate let baseViewModel : BaseViewModel = BaseViewModel()
     fileprivate var indexRow = NSInteger()
     fileprivate var isRemindSeller = false
@@ -49,13 +49,13 @@ class BusinessaDvertisementVC: MainViewController {
         let view = Bundle.main.loadNibNamed("BusinessView", owner: nil, options: nil)?.last as! BusinessView
         view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight , width: SCREEN_WIDTH, height: 45)
         view.buyBtn.backgroundColor = R_UIThemeSkyBlueColor
-        view.buyBtn.setTitle("购买订单", for: .normal)
+        view.buyBtn.setTitle(LanguageHelper.getString(key: "Mine_Mining_Purchase_Order"), for: .normal)
         view.buyBtn.addTarget(self, action: #selector(processingAndFinish(_:)), for: .touchUpInside)
         view.buyBtn.setTitleColor(R_ZYSelectNormalColor, for: .normal)
         view.buyBtn.setTitleColor(UIColor.white, for: .selected)
         view.buyBtn.isSelected = true
         
-        view.sellBtn.setTitle("出售订单", for: .normal)
+        view.sellBtn.setTitle(LanguageHelper.getString(key: "Mine_Mining_Sell_Order"), for: .normal)
         view.sellBtn.addTarget(self, action: #selector(processingAndFinish(_:)), for: .touchUpInside)
         view.sellBtn.setTitleColor(R_ZYSelectNormalColor, for: .normal)
         view.sellBtn.setTitleColor(UIColor.white, for: .selected)
@@ -93,6 +93,7 @@ class BusinessaDvertisementVC: MainViewController {
         view.frame = CGRect(x: SCREEN_WIDTH/2 - 145/2, y: 32, width: 145 , height: 22)
         view.chooseBtn.tag = 4
         view.chooseBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
+        view.titleLab.text = naviTitle
         return view
     }()
     
@@ -384,7 +385,7 @@ extension BusinessaDvertisementVC: InputPaymentPasswordDelegate{
 extension BusinessaDvertisementVC :IntegralApplicationStatusDelegate {
     func integralApplicationStatusSelectRow(index: NSInteger, name: String, selectList: NSInteger) {
         let model = businessViewModel.coinModel[index]
-        chooseVw.titleLab.text = "广告记录-" + model.coinName!
+        chooseVw.titleLab.text = naviTitle + model.coinName!
         coinNum = (model.id?.stringValue)!
         getData()
     }

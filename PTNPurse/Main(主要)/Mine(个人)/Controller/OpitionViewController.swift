@@ -161,7 +161,7 @@ class OpitionViewController: UIViewController, UITextFieldDelegate {
         adviceTextVeiew.noteTextView.textView.textColor = R_ZYThemeColor
         
 //        Tools.setButtonType(isBoarder: true, sender: topView.rightItemBtn, fontSize: 14, bgcolor: R_ZYThemeColor)
-        topView.rightItemBtn.setTitle("提交", for: .normal)
+        topView.rightItemBtn.setTitle(LanguageHelper.getString(key: "submit"), for: .normal)
         topView.rightItemBtn.isUserInteractionEnabled = false
         topView.rightItemBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), for: .normal)
         

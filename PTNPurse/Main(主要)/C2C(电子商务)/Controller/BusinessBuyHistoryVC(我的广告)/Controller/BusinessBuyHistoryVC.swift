@@ -64,6 +64,7 @@ class BusinessBuyHistoryVC: MainViewController {
         view.frame = CGRect(x: SCREEN_WIDTH/2 - 145/2, y: 32, width: 145 , height: 22)
         view.chooseBtn.tag = 3
         view.chooseBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
+        view.titleLab.text = naviTitle
         return view
     }()
     
@@ -255,7 +256,6 @@ extension BusinessBuyHistoryVC:UITableViewDataSource,UITableViewDelegate {
         cell.detailsBtn.addTarget(self, action: #selector(advertisingDetailOnClick(_:)), for: .touchUpInside)
         return cell
     }
-    
 }
  
  extension BusinessBuyHistoryVC :IntegralApplicationStatusDelegate {

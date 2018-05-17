@@ -44,7 +44,7 @@ class MineSetAccountVC: MainViewController {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), for: .normal)
         btn.setTitleColor(UIColor.white, for: .selected)
-        btn.setTitle("保存", for: .normal)
+        btn.setTitle(LanguageHelper.getString(key: "save"), for: .normal)
         btn.isEnabled = false
         btn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
         return btn

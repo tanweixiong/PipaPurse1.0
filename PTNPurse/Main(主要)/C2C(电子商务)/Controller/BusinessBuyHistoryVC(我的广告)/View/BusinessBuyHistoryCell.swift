@@ -24,10 +24,9 @@ class BusinessBuyHistoryCell: UITableViewCell {
     
     @IBOutlet weak var entrustPriceLab: UILabel!
     @IBOutlet weak var entrustPriceTitleLab: UILabel!
-    
-    
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var stateTitleLab: UILabel!
+    @IBOutlet weak var detailsX: NSLayoutConstraint!
     var model = BusinessBuyHistoryModel(){
         didSet{
             stateLabel.text = Tools.getMineAdvertisingMethod((model?.state?.stringValue)!)
@@ -49,6 +48,7 @@ class BusinessBuyHistoryCell: UITableViewCell {
                 operatingBtn.isHidden = false
             }else{
                 operatingBtn.isHidden = true
+                detailsX.constant = -70
             }
             
             if style == .buyStyle {

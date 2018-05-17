@@ -702,6 +702,8 @@
 
 "binding_Alipay_account" = "支付宝账号";
 "binding_Wechat_account" = "微信账号";
+"binding_BankCard_account" = "银行卡账号";
+
 "binding_Please_enter_alipay_account" = "输入支付宝账号";
 "binding_Please_enter_weChat_account" = "输入微信账号";
 "binding_Determine_binding" = "确定绑定";
@@ -759,6 +761,13 @@
 "Mine_Mining_Cumulative" = "累积收益";
 "Mine_Mining_Rule" = "规则说明";
 "Mine_Mining_Advertising_Records" = "广告记录";
+
+"Mine_Mining_Purchase_Order" = "购买订单";
+"Mine_Mining_Sell_Order" = "出售订单";
+
+"Mine_FeedbackAndOpinions" = "反馈与意见";
+"Mine_PaymentMethod" = "支付方式";
+"Mine_LanguageSettings" = "语言设置";
 
 
 

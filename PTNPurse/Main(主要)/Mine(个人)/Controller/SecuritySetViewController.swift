@@ -15,11 +15,11 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var topView: CreatTopView!
     @IBOutlet weak var talbeView: UITableView!
     let titleArray = [
-        "修改登录密码"
-        ,"修改交易密码"
-        ,"支付方式"
-        ,"语言设置"
-        ,"退出登录"
+        "modify_login_passsword"
+        ,"person_modifytradepwd"
+        ,"Mine_PaymentMethod"
+        ,"Mine_LanguageSettings"
+        ,"person_quitlogin"
         ]
     
     // MARK: - life Cycle

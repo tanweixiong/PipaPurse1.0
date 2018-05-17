@@ -27,7 +27,7 @@ class CreatTopView: ILXibView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        rightItemBtn.titleLabel?.textAlignment = .right
     }
     
     override init(frame: CGRect) {

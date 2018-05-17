@@ -237,6 +237,7 @@
                 <outlet property="backgroundVw" destination="Nhb-H9-FPf" id="ani-FI-sk1"/>
                 <outlet property="dateLab" destination="xtu-Bx-nPf" id="M6s-40-TeL"/>
                 <outlet property="detailsBtn" destination="E9b-uq-9kM" id="uz4-7W-LFq"/>
+                <outlet property="detailsX" destination="E5i-tG-SmJ" id="0fc-Gh-EFH"/>
                 <outlet property="entrustMaxPriceLab" destination="sBS-rb-9YR" id="aFt-M2-hcg"/>
                 <outlet property="entrustMinPriceLab" destination="w96-7t-1vw" id="N21-yk-tj0"/>
                 <outlet property="entrustMinPriceTitleLab" destination="F4n-tC-Mvf" id="Xka-G4-IZT"/>
