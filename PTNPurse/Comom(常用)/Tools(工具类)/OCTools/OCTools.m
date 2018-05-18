@@ -368,4 +368,60 @@
     return [decNumber stringValue];
 }
 
++(UIImage*)getSubImage:(UIImage *)image mCGRect:(CGRect)mCGRect
+             centerBool:(BOOL)centerBool{
+    /*如若centerBool为Yes则是由中心点取mCGRect范围的图片*/
+    float imgWidth = image.size.width;
+    float imgHeight = image.size.height;
+    float viewWidth = mCGRect.size.width;
+    float viewHidth = mCGRect.size.height;
+    CGRect rect;
+    if(centerBool){
+        rect = CGRectMake((imgWidth-viewWidth)/2,(imgHeight-viewHidth)/2,viewWidth,viewHidth);
+    }else{
+        if(viewHidth < viewWidth){
+            if(imgWidth <= imgHeight){
+                rect = CGRectMake(0, 0, imgWidth, imgWidth*imgHeight/viewWidth);
+            }else{
+                float width = viewWidth*imgHeight/viewHidth;
+                float x = (imgWidth - width)/2;
+                if(x > 0){
+                    rect = CGRectMake(x, 0, width, imgHeight);
+                }else{
+                    rect = CGRectMake(0, 0, imgWidth, imgWidth*viewHidth/viewWidth);
+                }
+            }
+        }else{
+            if(imgWidth <= imgHeight){
+                float height = viewHidth*imgWidth/viewWidth;
+                if(height < imgHeight){
+                    rect = CGRectMake(0,0, imgWidth, height);
+                }else{
+                    rect = CGRectMake(0,0, viewWidth*imgHeight/viewHidth,imgHeight);
+                }
+            }else{
+                float width = viewWidth * imgHeight / viewHidth;
+                if(width < imgWidth){
+                    float x = (imgWidth - width)/2;
+                    rect = CGRectMake(x,0,width, imgHeight);
+                }else{
+                    rect = CGRectMake(0,0,imgWidth, imgHeight);
+                }
+            }
+        }
+    }
+    
+    CGImageRef subImageRef = CGImageCreateWithImageInRect(image.CGImage, rect);
+    CGRect smallBounds = CGRectMake(0,0,CGImageGetWidth(subImageRef),CGImageGetHeight(subImageRef));
+    
+    UIGraphicsBeginImageContext(smallBounds.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextDrawImage(context, smallBounds, subImageRef);
+    UIImage *smallImage = [UIImage imageWithCGImage:subImageRef];
+    UIGraphicsEndImageContext();
+    
+    return smallImage;
+}
+
+
 @end

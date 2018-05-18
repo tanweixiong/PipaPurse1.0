@@ -610,8 +610,8 @@
 "C2C_publish_order_Successful_advertisement" = "Successful advertisement";
 "C2C_publish_order_Your_payment_method" = "Your payment method";
 "C2C_publish_order_Your_have_payment_method" = "Your have payment method";
-"C2C_publish_order_Please_select_your_trading_currency" = "Please select your trading currency";
-"C2C_publish_order_Please_select_your_receiving_method" = "Please select your receiving method";
+"C2C_publish_order_Please_select_your_trading_currency" = "Trading currency";
+"C2C_publish_order_Please_select_your_receiving_method" = "Receiving method";
 "C2C_publish_order_Submit_release" = "Submit release";
 "C2C_publish_order_Message" = "Message";
 "C2C_publish_order_Please_enter_the_remarks" = "Please enter the remarks";
@@ -764,4 +764,5 @@
 "Mine_FeedbackAndOpinions" = "Feedback and opinions";
 "Mine_PaymentMethod" = "Payment method";
 "Mine_LanguageSettings" = "Language aettings";
+"C2C_Transaction_Remarks" = "Remarks";
 

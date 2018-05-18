@@ -16,6 +16,11 @@ class BusinessReleaseMethodCell: UITableViewCell {
     @IBOutlet weak var selectMethodBtn: UIButton!
     @IBOutlet weak var cointf: UITextField!
     @IBOutlet weak var paymentMethodtf: UITextField!
+    
+    
+    @IBOutlet weak var tradingCurrencyLab: UILabel!
+    @IBOutlet weak var receivingMethodLab: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,6 +32,12 @@ class BusinessReleaseMethodCell: UITableViewCell {
         
         selectCoinBtn.tag = 1
         selectMethodBtn.tag = 2
+        
+        tradingCurrencyLab.text = LanguageHelper.getString(key: "C2C_publish_order_Currency")
+        receivingMethodLab.text = LanguageHelper.getString(key: "C2C_publish_order_Receiving")
+        
+        cointf.placeholder = LanguageHelper.getString(key: "C2C_publish_order_Please_select_your_trading_currency")
+        paymentMethodtf.placeholder = LanguageHelper.getString(key: "C2C_publish_order_Please_select_your_receiving_method")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

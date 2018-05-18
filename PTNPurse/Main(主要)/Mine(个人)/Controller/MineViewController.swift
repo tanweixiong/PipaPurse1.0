@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import ObjectMapper
+import Alamofire
 
 class MineViewController: UIViewController {
 
@@ -33,6 +34,15 @@ class MineViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+//    lazy var avatarImageVw: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.image = UIImage.init(named: "ic_defaultPicture")
+//        imageView.frame = CGRect(x: 15, y: 20, width: 80, height: 80)
+//        imageView.layer.masksToBounds = true
+//        imageView.layer.cornerRadius = 40
+//        return imageView
+//    }()
     
     @IBAction func onClick(_ sender: UIButton) {
         //挖矿
@@ -86,14 +96,17 @@ class MineViewController: UIViewController {
         if let username = UserDefaults.standard.getUserInfo().username {
             usernameLab.text = (username as! String)
         }
+        
         if let photo = UserDefaults.standard.getUserInfo().photo {
-            photoImg.sd_setImage(with: NSURL(string: photo as! String)! as URL, placeholderImage:UIImage.init(named: "ic_defaultPicture"))
+             photoImg.sd_setImage(with: (NSURL(string: photo as! String)! as URL), placeholderImage: UIImage(named: "ic_defaultPicture")) { (image, error, cacheType, url) -> Void in
+                
+            }
         }
     }
     
     func uploadImage(){
         let alertAction = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertAction.addAction(UIAlertAction.init(title: "相机", style: .default, handler: { (alertCamera) in
+        alertAction.addAction(UIAlertAction.init(title: LanguageHelper.getString(key: "person_camera"), style: .default, handler: { (alertCamera) in
             let pickerVC = UIImagePickerController()
             pickerVC.delegate = self
             pickerVC.sourceType = .camera
@@ -101,10 +114,11 @@ class MineViewController: UIViewController {
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 self.present(pickerVC, animated: true, completion: nil)
             } else {
-                SVProgressHUD .show(withStatus: "请允许访问相机")
+                SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "person_cameraenable"))
             }
         }))
-        alertAction.addAction(UIAlertAction.init(title: "相册", style: .default, handler: { (alertPhoto) in
+        
+        alertAction.addAction(UIAlertAction.init(title:LanguageHelper.getString(key: "person_photo"), style: .default, handler: { (alertPhoto) in
             let pickerVC = UIImagePickerController()
             pickerVC.delegate = self
             pickerVC.sourceType = .photoLibrary
@@ -112,10 +126,11 @@ class MineViewController: UIViewController {
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 self.present(pickerVC, animated: true, completion: nil)
             }  else {
-                SVProgressHUD .show(withStatus: "请允许访问相册")
+                SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "person_photoenable"))
             }
         }))
-        alertAction.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (alertCancel) in
+        alertAction.addAction(UIAlertAction.init(title:  LanguageHelper.getString(key: "login_cancle"), style: .cancel, handler: { (alertCancel) in
+            
         }))
         self.present(alertAction, animated: true, completion: nil)
     }
@@ -135,7 +150,7 @@ class MineViewController: UIViewController {
                 }
                 SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_success"))
                 if responseData?.data != nil {
-                    self.photoImg.image = image
+                    self.photoImg.image =  OCTools.getSubImage(image, mCGRect:  CGRect(x: 0, y: 0, width: 500, height: 500), center: false)
                     let userInfo = UserDefaults.standard.getUserInfo()
                     userInfo.photo = responseData?.data! as AnyObject
                     UserDefaults.standard.saveCustomObject(object: userInfo, key: R_UserInfo)

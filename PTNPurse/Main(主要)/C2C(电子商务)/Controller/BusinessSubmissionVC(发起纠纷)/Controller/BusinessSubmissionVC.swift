@@ -225,7 +225,6 @@ extension BusinessSubmissionVC:UIImagePickerControllerDelegate, UINavigationCont
                 SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "person_photoenable"))
             }
         }))
-        
         alertAction.addAction(UIAlertAction.init(title:  LanguageHelper.getString(key: "login_cancle"), style: .cancel, handler: { (alertCancel) in
             
         }))

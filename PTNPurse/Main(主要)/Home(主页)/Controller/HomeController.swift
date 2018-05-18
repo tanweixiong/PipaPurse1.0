@@ -40,6 +40,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.view.addSubview(headView)
         self.view.addSubview(tableView)
         self.view.addSubview(backGroundVw)
+        self.view.addSubview(addBtn)
         UIApplication.shared.keyWindow?.addSubview(codeView)
         NotificationCenter.default.addObserver(self, selector: #selector(setRefreshHeader), name: NSNotification.Name(rawValue: R_NotificationHomeReload), object: nil)
         self.getData()
@@ -54,6 +55,10 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        addBtn.frame.origin = CGPoint(x: SCREEN_WIDTH - 12 - 30, y: headView.backGroundVw.frame.origin.y + headView.backGroundImg.frame.size.height - 15)
+    }
+    
     func getData(){
         let token = UserDefaults.standard.getUserInfo().token
         let language = Tools.getLocalLanguage()
@@ -66,7 +71,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             SVProgressHUD.dismiss()
             self.cleanArr()
             let totalMoney = self.viewModel.totalMoney == "" ? "0" : self.viewModel.totalMoney
-            self.headView.totalMoneyLabel.text = Tools.getWalletAmount(amount: totalMoney)
+            self.headView.totalMoneyLabel.text = totalMoney
             //处理数据类型
             if self.viewModel.model.count != 0 {
                 for index in 0...self.viewModel.model.count - 1{
@@ -199,7 +204,6 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         view.assetsTitleLabel.text = LanguageHelper.getString(key: "homePage_Total_Assets")
         view.createAddressBtn.addTarget(self, action: #selector(getAddress), for: .touchUpInside)
         view.anymoreBtn.addTarget(self, action: #selector(handelOnClick(_:)), for: .touchUpInside)
-        view.addSubview(addBtn)
         return view
     }()
     
@@ -219,7 +223,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
     lazy var addBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         Tools.setViewShadow(btn)
-        btn.frame = CGRect(x: SCREEN_WIDTH - 12 - 30, y: headView.frame.maxY - 15, width: 30,height:30)
+        btn.frame = CGRect(x: SCREEN_WIDTH - 12 - 30, y: headView.backGroundVw.frame.origin.y + headView.backGroundImg.frame.size.height - 15, width: 30,height:30)
         btn.setImage(UIImage.init(named: "ic_home_add"), for: .normal)
         btn.addTarget(self, action: #selector(handelOnClick(_:)), for: .touchUpInside)
         btn.tag = 1

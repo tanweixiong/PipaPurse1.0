@@ -79,6 +79,7 @@ class MineMiningVC: MainViewController {
             tableView.reloadData()
         }else if sender == mineMiningVw.ruleDescriptionBtn{
             let vc = MineRuleDescriptionVC()
+            vc.url = (self.viewModel.balloonModel.remarkUrl)!
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

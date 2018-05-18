@@ -138,38 +138,40 @@ extension ActivateInformationVC {
     }
     
    @objc func uploadImageOnClick(_ sender:UIButton){
-        let alertAction = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertAction.addAction(UIAlertAction.init(title: "相机", style: .default, handler: { (alertCamera) in
-            let pickerVC = UIImagePickerController()
-            pickerVC.delegate = self
-            pickerVC.sourceType = .camera
-            pickerVC.allowsEditing = true
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                self.present(pickerVC, animated: true, completion: nil)
-            } else {
-                SVProgressHUD .show(withStatus: "请允许访问相机")
-            }
-        }))
-        alertAction.addAction(UIAlertAction.init(title: "相册", style: .default, handler: { (alertPhoto) in
-            let pickerVC = UIImagePickerController()
-            pickerVC.delegate = self
-            pickerVC.sourceType = .photoLibrary
-            pickerVC.allowsEditing = true
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                self.present(pickerVC, animated: true, completion: nil)
-            }  else {
-                SVProgressHUD .show(withStatus: "请允许访问相册")
-            }
-        }))
-        alertAction.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (alertCancel) in
-        }))
-        self.present(alertAction, animated: true, completion: nil)
+    let alertAction = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
+    alertAction.addAction(UIAlertAction.init(title: LanguageHelper.getString(key: "person_camera"), style: .default, handler: { (alertCamera) in
+        let pickerVC = UIImagePickerController()
+        pickerVC.delegate = self
+        pickerVC.sourceType = .camera
+        pickerVC.allowsEditing = true
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            self.present(pickerVC, animated: true, completion: nil)
+        } else {
+            SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "person_cameraenable"))
+        }
+    }))
+    
+    alertAction.addAction(UIAlertAction.init(title:LanguageHelper.getString(key: "person_photo"), style: .default, handler: { (alertPhoto) in
+        let pickerVC = UIImagePickerController()
+        pickerVC.delegate = self
+        pickerVC.sourceType = .photoLibrary
+        pickerVC.allowsEditing = true
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            self.present(pickerVC, animated: true, completion: nil)
+        }  else {
+            SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "person_photoenable"))
+        }
+    }))
+    alertAction.addAction(UIAlertAction.init(title:  LanguageHelper.getString(key: "login_cancle"), style: .cancel, handler: { (alertCancel) in
+        
+    }))
+    self.present(alertAction, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             picker.dismiss(animated: true, completion: nil)
-            self.uploadpictures(image: chosenImage)
+            self.uploadpictures(image: OCTools.getSubImage(chosenImage, mCGRect: CGRect(x: 0, y: 0, width: 100, height: 100), center: false))
         }
     }
     

@@ -23,4 +23,7 @@
 +(CGFloat)getDecimalsNum:(float)f;
 +(CGFloat)getDecimalsOfPlaces:(float)f;
 +(NSString *)decimalNumberWithDouble:(double)conversionValue;
+//将图片裁剪成正方形
++(UIImage*)getSubImage:(UIImage *)image mCGRect:(CGRect)mCGRect
+            centerBool:(BOOL)centerBool;
 @end

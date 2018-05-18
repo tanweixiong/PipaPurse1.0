@@ -626,6 +626,7 @@
 "C2C_publish_order_Limit" = "最小交易限额";
 "C2C_publish_order_Message" = "广告留言";
 "C2C_publish_order_Select_the_type_of_currency_you_trade" = "选择你交易的货币类型";
+
 "C2C_publish_order_Alipay_Wechat_bankCard" = "如：支付宝，微信，银行卡";
 "C2C_publish_order_Please_enter_the_number_of_transactions" = "请输入交易数目";
 "C2C_publish_order_Please_enter_the_transaction_unit_price" = "请输入交易单价";
@@ -635,8 +636,8 @@
 "C2C_publish_order_Successful_advertisement" = "广告发布成功";
 "C2C_publish_order_Your_payment_method" = "您的付款方式";
 "C2C_publish_order_Your_have_payment_method" = "您的收款方式";
-"C2C_publish_order_Please_select_your_trading_currency" = "请选择你的交易货币";
-"C2C_publish_order_Please_select_your_receiving_method" = "请选择你的接收方式";
+"C2C_publish_order_Please_select_your_trading_currency" = "选择交易货币";
+"C2C_publish_order_Please_select_your_receiving_method" = "选择接收方式";
 "C2C_publish_order_Submit_release" = "提交发布";
 "C2C_publish_order_Message" = "广告留言";
 "C2C_publish_order_Please_enter_the_remarks" = "请输入备注信息";
@@ -768,6 +769,7 @@
 "Mine_FeedbackAndOpinions" = "反馈与意见";
 "Mine_PaymentMethod" = "支付方式";
 "Mine_LanguageSettings" = "语言设置";
+"C2C_Transaction_Remarks" = "请说明有关您交易的相关条款或备注您的支付方式，如微信号，支付宝号等，以便对方可以快速和您交易。（下单前后都可见）";
 
 
 

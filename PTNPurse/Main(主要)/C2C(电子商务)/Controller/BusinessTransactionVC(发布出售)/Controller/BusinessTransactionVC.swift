@@ -360,10 +360,10 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
         }else{
             remarksCell = tableView.dequeueReusableCell(withIdentifier: homeTransferRemarksCell, for: indexPath) as! HomeTransferRemarksCell
             remarksCell.selectionStyle = .none
-            remarksCell.remarkLabel.text = "广告留言"
+            remarksCell.remarkLabel.text = LanguageHelper.getString(key: "C2C_publish_order_Message")
             remarksCell.remarkLabel.textColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
             remarksCell.remarkLabel.font = UIFont.systemFont(ofSize: 14)
-            remarksCell.textView?.placeholderText = "请说明有关您交易的相关条款或备注您的支付方式，如微信号，支付宝号等，以便对方可以快速和您交易。（下单前后都可见）"
+            remarksCell.textView?.placeholderText = LanguageHelper.getString(key: "C2C_Transaction_Remarks")
             remarksCell.textView?.placeholderFont = UIFont.systemFont(ofSize: 12)
             remarksCell.textView?.textColor = UIColor.R_UIColorFromRGB(color: 0xBDBDBD)
             remarksCell.textView?.placeholderTextColor = UIColor.R_UIColorFromRGB(color: 0xBDBDBD)

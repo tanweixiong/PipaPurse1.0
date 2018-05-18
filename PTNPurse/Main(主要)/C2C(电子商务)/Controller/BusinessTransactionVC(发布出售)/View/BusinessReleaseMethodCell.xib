@@ -14,7 +14,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="BusinessReleaseMethodCell" customModule="PTNPurse" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="BusinessReleaseMethodCell" customModule="PipaPurse" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -25,7 +25,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交易货币" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYc-XO-LIV">
-                                <rect key="frame" x="15" y="15" width="58" height="20"/>
+                                <rect key="frame" x="15" y="10" width="58" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ANk-mQ-d55"/>
                                 </constraints>
@@ -110,7 +110,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="接受方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tII-Hy-OkB">
-                                <rect key="frame" x="247" y="18" width="58" height="20"/>
+                                <rect key="frame" x="247" y="13" width="58" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="4c6-5r-id7"/>
                                 </constraints>
@@ -121,10 +121,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pYc-XO-LIV" firstAttribute="top" secondItem="SVj-NK-B3c" secondAttribute="top" constant="15" id="3f2-cE-2md"/>
+                            <constraint firstItem="pYc-XO-LIV" firstAttribute="top" secondItem="SVj-NK-B3c" secondAttribute="top" constant="10" id="3f2-cE-2md"/>
                             <constraint firstItem="pYc-XO-LIV" firstAttribute="baseline" secondItem="tII-Hy-OkB" secondAttribute="firstBaseline" id="44N-SZ-YVr"/>
                             <constraint firstAttribute="trailing" secondItem="tII-Hy-OkB" secondAttribute="trailing" constant="15" id="5ka-M4-tlI"/>
-                            <constraint firstItem="qeT-xj-6Fi" firstAttribute="top" secondItem="pYc-XO-LIV" secondAttribute="bottom" constant="5" id="GcR-rw-dx5"/>
+                            <constraint firstItem="qeT-xj-6Fi" firstAttribute="top" secondItem="pYc-XO-LIV" secondAttribute="bottom" constant="10" id="GcR-rw-dx5"/>
                             <constraint firstAttribute="centerX" secondItem="qeT-xj-6Fi" secondAttribute="trailing" constant="15" id="N72-Rt-W3g"/>
                             <constraint firstItem="pYc-XO-LIV" firstAttribute="leading" secondItem="SVj-NK-B3c" secondAttribute="leading" constant="15" id="P78-YA-k27"/>
                             <constraint firstItem="DbL-yZ-JsH" firstAttribute="top" secondItem="qeT-xj-6Fi" secondAttribute="top" id="bIA-Ru-3H7"/>
@@ -146,9 +146,11 @@
                 <outlet property="cointf" destination="yUk-SJ-CQp" id="kN9-U2-5Q1"/>
                 <outlet property="firstVw" destination="qeT-xj-6Fi" id="M1p-97-Y4d"/>
                 <outlet property="paymentMethodtf" destination="We2-sz-LTe" id="Gte-Ci-ENw"/>
+                <outlet property="receivingMethodLab" destination="tII-Hy-OkB" id="Fj3-mf-Lpc"/>
                 <outlet property="secondVw" destination="DbL-yZ-JsH" id="od9-Ty-3OY"/>
                 <outlet property="selectCoinBtn" destination="D8v-nr-cIy" id="Mgx-9d-7IZ"/>
                 <outlet property="selectMethodBtn" destination="zYT-y7-I9g" id="v3I-Uq-SQe"/>
+                <outlet property="tradingCurrencyLab" destination="pYc-XO-LIV" id="0tA-ax-GfF"/>
             </connections>
         </tableViewCell>
     </objects>

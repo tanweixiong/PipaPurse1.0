@@ -137,7 +137,7 @@ class ZYNetWorkTool: NSObject {
         }
     }
     
-    class func uploadPictures(url: String, parameter :[String:Any]?, image: UIImage, imageKey: String,success : @escaping (_ response : [String : AnyObject])->(), fail : @escaping (_ error : Error)->()){
+    class func uploadPictures(url: String, parameter :[String:Any]?, image: UIImage, imageKey: String,success : @escaping (_ response : [String : AnyObject])->(), fail : @escaping (_ error : Error)->()){  
         let requestHead = ["content-type":"multipart/form-data"]
         Alamofire.upload(
             multipartFormData: { multipartFormData in

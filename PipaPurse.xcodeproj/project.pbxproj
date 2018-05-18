@@ -744,7 +744,7 @@
 		23674A752020202400B4B96E /* SecuritySetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySetViewController.swift; sourceTree = "<group>"; };
 		23674A762020202400B4B96E /* OpitionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpitionViewController.xib; sourceTree = "<group>"; };
 		23674A772020202400B4B96E /* SystemSeUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemSeUpViewController.swift; sourceTree = "<group>"; };
-		23674A782020202400B4B96E /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		23674A782020202400B4B96E /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		23674A7A2020202400B4B96E /* AboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
 		23674A7B2020202400B4B96E /* SystemSeUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SystemSeUpViewController.xib; sourceTree = "<group>"; };
 		23674A7C2020202400B4B96E /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
