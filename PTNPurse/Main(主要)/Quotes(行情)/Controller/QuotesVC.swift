@@ -42,7 +42,7 @@ class QuotesVC: MainViewController {
     }
     
     lazy var chooseView: UIView = {
-        let view = UIView(frame: CGRect(x: 15, y:MainViewControllerUX.naviNormalHeight, width: QuotesUX.chooseWidth, height: 60))
+        let view = UIView(frame: CGRect(x: 15, y:115, width: QuotesUX.chooseWidth, height: 60))
         view.backgroundColor = UIColor.white
         view.addSubview(normalBtn)
         view.addSubview(otherBtn)
@@ -145,6 +145,7 @@ class QuotesVC: MainViewController {
 extension QuotesVC {
     func setupUI(){
         setNormalNaviBar(title: titleTex)
+        self.naviBarView.height = 115.00
         setHideBackBtn()
         view.addSubview(chooseView)
         view.addSubview(tableView)

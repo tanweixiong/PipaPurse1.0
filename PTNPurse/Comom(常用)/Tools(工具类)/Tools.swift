@@ -750,6 +750,11 @@ class Tools: NSObject {
         }
     }
     
+    /// 计算文本的宽度
+    class func textHieght(text: String, fontSize: CGFloat, height: CGFloat) -> CGFloat {
+        return text.boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: height), options: .usesLineFragmentOrigin, attributes: [.font: UIFont.systemFont(ofSize: fontSize)], context: nil).size.height
+    }
+    
 }
 
 

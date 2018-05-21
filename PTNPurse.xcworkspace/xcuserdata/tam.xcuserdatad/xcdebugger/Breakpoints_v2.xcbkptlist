@@ -57,14 +57,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PTNPurse/Main(&#x4e3b;&#x8981;)/Quotes(&#x884c;&#x60c5;)/Controller/QuotesDetailsVC.swift"
-            timestampString = "545019733.885713"
+            filePath = "PTNPurse/Main(&#x4e3b;&#x8981;)/Home(&#x4e3b;&#x9875;)/Controller/HomeTransferVC(&#x8f6c;&#x8d26;)/Controller/HomeTransferVC.swift"
+            timestampString = "548231466.216723"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "webView"
-            landmarkType = "24">
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "setDetermineStyle()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PTNPurse/Main(&#x4e3b;&#x8981;)/Home(&#x4e3b;&#x9875;)/Controller/HomeTransferVC(&#x8f6c;&#x8d26;)/Controller/HomeTransferVC.swift"
-            timestampString = "548231466.216723"
+            filePath = "PTNPurse/Main(&#x4e3b;&#x8981;)/C2C(&#x7535;&#x5b50;&#x5546;&#x52a1;)/Controller/BusinessVC.swift"
+            timestampString = "548319956.873804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "setDetermineStyle()"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "chooseCoinOnClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

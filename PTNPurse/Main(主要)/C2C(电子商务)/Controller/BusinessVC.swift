@@ -9,11 +9,12 @@
 import UIKit
 import SVProgressHUD
 
-class BusinessVC: MainViewController{
+class BusinessVC: MainViewController,Calculatable{
     fileprivate let businessCell = "BusinessCell"
     fileprivate lazy var viewModel : BusinessVM = BusinessVM()
     fileprivate var style = BusinessTransactionStyle.buyStyle
     fileprivate var coinNo = Tools.getBtcCoinNum()
+    fileprivate var currentTag = NSInteger()
     fileprivate let coinArray = NSMutableArray()
     fileprivate var buyPageSize = 0
     fileprivate var sellPageSize = 0
@@ -43,49 +44,8 @@ class BusinessVC: MainViewController{
         return btn
     }()
     
-    lazy var selectCoinBtn: UIButton = {
-        let btn = UIButton.init(type: .custom)
-        btn.setTitle("BTC",for: .normal)
-        btn.setImage(UIImage.init(named: "ic_meun"), for: .normal)
-        btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
-        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -10)
-        btn.frame = CGRect(x: 15, y: 32, width: 70, height:22)
-        btn.setTitleColor(UIColor.white, for: .normal)
-        btn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        btn.clipsToBounds = true
-        btn.tag = 1
-        return btn
-    }()
-    
-    lazy var businessMeunVw: BusinessMeunVw = {
-        let view = Bundle.main.loadNibNamed("BusinessMeunVw", owner: nil, options: nil)?.last as! BusinessMeunVw
-        view.frame = CGRect(x: 0, y: 20 , width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 20)
-        view.delegate = self
-        view.isHidden = true
-        return view
-    }()
-    
-    lazy var businessView: BusinessView = {
-        let view = Bundle.main.loadNibNamed("BusinessView", owner: nil, options: nil)?.last as! BusinessView
-        view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight , width: SCREEN_WIDTH, height: BusinessUX.chooseViewHeight)
-        view.buyBtn.isSelected = true
-        view.sellBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), for: .normal)
-        view.sellBtn.setTitleColor(UIColor.white, for: .selected)
-        view.buyBtn.backgroundColor = R_UIThemeSkyBlueColor
-        view.buyBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), for: .normal)
-        view.buyBtn.setTitleColor(UIColor.white, for: .selected)
-        view.sellBtn.addTarget(self, action: #selector(sellAndBuyOnClick(_:)), for:.touchUpInside)
-        view.buyBtn.addTarget(self, action: #selector(sellAndBuyOnClick(_:)), for:.touchUpInside)
-        view.buyBtn.layer.cornerRadius = 5
-        view.buyBtn.layer.masksToBounds = true
-        view.sellBtn.layer.cornerRadius = 5
-        view.sellBtn.layer.masksToBounds = true
-        return view
-    }()
-    
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x: 0, y:businessView.frame.maxY , width: SCREEN_WIDTH, height: SCREEN_HEIGHT - businessView.frame.maxY - 50))
+        let tableView = UITableView.init(frame: CGRect(x: 0, y: scrollView.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - scrollView.frame.maxY))
         tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
         tableView.delegate = self
@@ -109,6 +69,46 @@ class BusinessVC: MainViewController{
         view.liberateSellBtn.tag = 1
         view.liberateSellBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
         return view
+    }()
+    
+    lazy var buyBtn: UIButton = {
+        let btn = UIButton.init(type: .custom)
+        btn.setTitle("我要购买", for: .normal)
+        btn.isSelected = true
+        btn.frame = CGRect(x: XMAKE(100) , y: 35, width: 60, height: 22)
+        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD) , for: .normal)
+        btn.setTitleColor(UIColor.white, for: .selected)
+        btn.backgroundColor = UIColor.clear
+        btn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        btn.layer.cornerRadius = 5
+        btn.layer.masksToBounds = true
+        btn.tag = 3
+        return btn
+    }()
+    
+    lazy var sellBtn: UIButton = {
+        let btn = UIButton.init(type: .custom)
+        btn.setTitle("我要出售", for: .normal)
+        btn.frame = CGRect(x: (SCREEN_WIDTH - 60) - XMAKE(100), y: 35, width: 60, height:22)
+        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD) , for: .normal)
+        btn.setTitleColor(UIColor.white, for: .selected)
+        btn.backgroundColor = UIColor.clear
+        btn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        btn.layer.cornerRadius = 5
+        btn.layer.masksToBounds = true
+        btn.tag = 4
+        return btn
+    }()
+    
+    lazy var scrollView:UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight, width:SCREEN_WIDTH, height: 30 + 35)
+        scrollView.showsHorizontalScrollIndicator = false;
+        scrollView.clipsToBounds = false;
+        scrollView.bounces = false;
+        return scrollView
     }()
     
     deinit {
@@ -179,14 +179,14 @@ extension BusinessVC: UITableViewDataSource,UITableViewDelegate{
 
 extension BusinessVC {
     func setupUI(){
-        setNormalNaviBar(title: "C2C")
+        setNormalNaviBar(title: "")
         setHideBackBtn()
-        view.addSubview(businessView)
+        view.addSubview(buyBtn)
+        view.addSubview(sellBtn)
+        view.addSubview(scrollView)
         view.addSubview(tableView)
         view.addSubview(liberateBtn)
-        view.addSubview(selectCoinBtn)
         UIApplication.shared.keyWindow?.addSubview(liberateView)
-        UIApplication.shared.keyWindow?.addSubview(businessMeunVw)
         navigationController?.navigationBar.isHidden = true
     }
     
@@ -199,15 +199,20 @@ extension BusinessVC {
                 }, completion: { (finish) in
                 })
             }
-        }else if sender == selectCoinBtn {
-            if businessMeunVw.isHidden{
-                businessMeunVw.isHidden = false
-                UIView.animate(withDuration: 1, animations: {
-//                    self.liberateView.liberateViewY.constant = 0
-                }, completion: { (finish) in
-                })
-            }
         }
+    }
+    
+    @objc func chooseCoinOnClick(_ sender:UIButton){
+        let currentBtn = scrollView.viewWithTag(sender.tag) as! UIButton
+        currentBtn.backgroundColor = R_UIThemeColor
+
+        let lastBtn = scrollView.viewWithTag(currentTag) as! UIButton
+        lastBtn.backgroundColor = UIColor.clear
+        
+        let model = viewModel.coinModel[sender.tag]
+        coinNo = (model.id?.stringValue)!
+        currentTag = sender.tag
+        getData()
     }
     
     //发布购买和发布出售
@@ -222,28 +227,17 @@ extension BusinessVC {
             businessBuyVC.style = .buyStyle
             self.navigationController?.pushViewController(businessBuyVC, animated: true)
             self.liberateView.isHidden = true
-        }
-    }
-    
-    //切换已上架和进行中
-    @objc func sellAndBuyOnClick(_ sender:UIButton){
-        //出售
-        if sender == businessView.sellBtn  {
-            style = .sellStyle
-            businessView.sellBtn.isSelected = true
-            businessView.sellBtn.backgroundColor = R_UIThemeSkyBlueColor
-            businessView.buyBtn.isSelected = false
-            businessView.buyBtn.backgroundColor = UIColor.white
-        //购买
-        }else{
+        }else if sender.tag == 3 {
+            buyBtn.isSelected = true
+            sellBtn.isSelected = false
             style = .buyStyle
-            businessView.sellBtn.isSelected = false
-            businessView.sellBtn.backgroundColor = UIColor.white
-            businessView.buyBtn.isSelected = true
-            businessView.buyBtn.backgroundColor = R_UIThemeSkyBlueColor
+            getData()
+        }else if sender.tag == 4 {
+            buyBtn.isSelected = false
+            sellBtn.isSelected = true
+            style = .sellStyle
+            getData()
         }
-        getData()
-        self.tableView.reloadData()
     }
     
     //网络请求买方
@@ -271,18 +265,14 @@ extension BusinessVC {
                     self.coinArray.add(model.coinName!)
                 }
             }
-            
+            //创建上部分的按钮
+            self.createScrollView()
             //设置参数
             if self.viewModel.coinModel.count != 0 {
                 let model = self.viewModel.coinModel.first
                 self.coinNo = (model?.id?.stringValue)!
-                self.selectCoinBtn.setTitle(model?.coinName, for: .normal)
-
-                self.businessMeunVw.indexPath = IndexPath(row: 0, section: 0)
-                self.businessMeunVw.dataArray = self.coinArray
+                self.getData()
             }
-            
-            self.getData()
         }}
     
     @objc func reloadData(){
@@ -296,14 +286,30 @@ extension BusinessVC {
         self.viewModel.sellModel.removeAll()
         self.viewModel.buyModel.removeAll()
     }
-}
-
-extension BusinessVC:BusinessMeunDelegate {
-    func businessMeunSelectFinish(indexPath: IndexPath, text: String) {
-         let model = self.viewModel.coinModel[indexPath.row]
-         self.coinNo = (model.id?.stringValue)!
-         self.selectCoinBtn.setTitle(model.coinName, for: .normal)
-         cleanData()
-         getData()
+    
+    //创建上部分的导航
+    func createScrollView(){
+        if  self.coinArray.count != 0 {
+            let space:CGFloat = 10
+            var currentX:CGFloat = 0
+            for item in 0...self.coinArray.count - 1 {
+                let coin = self.coinArray[item] as! String
+                let width = Tools.textHieght(text: coin, fontSize: 14, height: 35)
+                currentX = space + width + currentX
+                let btn = UIButton.init(type: .custom)
+                btn.setTitle(coin, for: .normal)
+                btn.frame = CGRect(x:currentX, y: 15, width: width, height:35)
+                btn.setTitleColor(UIColor.white , for: .normal)
+                btn.addTarget(self, action: #selector(chooseCoinOnClick(_:)), for: .touchUpInside)
+                btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+                btn.layer.cornerRadius = 5
+                btn.layer.masksToBounds = true
+                scrollView.addSubview(btn)
+                if item == 0 {
+                   btn.backgroundColor = R_UIThemeColor
+                }
+            }
+        }
     }
 }
+

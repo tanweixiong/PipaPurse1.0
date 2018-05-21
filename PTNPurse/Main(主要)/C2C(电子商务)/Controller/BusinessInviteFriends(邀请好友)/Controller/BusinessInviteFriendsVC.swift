@@ -54,6 +54,13 @@ class BusinessInviteFriendsVC: UIViewController {
         return view
     }()
     
+    lazy var codeView: HomeCodeView = {
+        let view = Bundle.main.loadNibNamed("HomeCodeView", owner: nil, options: nil)?.last as! HomeCodeView
+        view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
+        view.isHidden = true
+        return view
+    }()
+    
     override func loadViewIfNeeded() {
          inviteFriendsVw.tableBackGroundVw.addSubview(tableView)
     }
@@ -91,19 +98,15 @@ extension BusinessInviteFriendsVC {
         if sender.tag == 1 {
             if self.viewModel.model.title != nil {
                 let model = self.viewModel.model
-                let detail = model.detail == nil ? "" : (model.detail)!
                 let invitationCode = model.invitationCode == nil ? "" : (model.invitationCode)!
-                let details = detail + invitationCode
-                let title = model.title == nil ? "" : model.title
-                let logo =  model.logo == nil ? "" : (model.logo)!
                 let url = model.url == nil ? "" : (model.url)! + invitationCode
-                OCTools.shareConfigurationShareText(details, shareTitle: title, shareImageArray: [logo], url: url)
+                self.codeView.codeImageView.image = Tools.createQRForString(qrString: url, qrImageName: "")
+                self.codeView.isHidden = false
             }
         }else if sender.tag == 2 {
             self.navigationController?.popViewController(animated: true)
         }
     }
-    
 }
 
 extension BusinessInviteFriendsVC:UITableViewDelegate,UITableViewDataSource {
