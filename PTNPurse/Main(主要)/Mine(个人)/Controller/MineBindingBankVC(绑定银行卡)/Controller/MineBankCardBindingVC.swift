@@ -82,7 +82,7 @@ extension MineBankCardBindingVC {
         let parameters = ["token":token,"id":id]
         baseViewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIBindDeleteBankCard, parameters: parameters, showIndicator: false) { (json) in
              self.viewModel.model.remove(at: sender.tag)
-             SVProgressHUD.showSuccess(withStatus: "删除成功")
+             SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "delete_sucess"))
              self.tableView.reloadData()
         }
     }

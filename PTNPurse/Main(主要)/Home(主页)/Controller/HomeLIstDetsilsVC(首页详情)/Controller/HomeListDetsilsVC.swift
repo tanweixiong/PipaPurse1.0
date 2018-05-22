@@ -66,15 +66,17 @@ class HomeListDetsilsVC: MainViewController,UIWebViewDelegate {
     
     lazy var selectDetailsView: HomeSelectDetailsView = {
         let view = Bundle.main.loadNibNamed("HomeSelectDetailsView", owner: nil, options: nil)?.last as! HomeSelectDetailsView
-        view.frame = CGRect(x: 0, y: naviBarView.frame.maxY, width: SCREEN_WIDTH, height: 60)
+        view.frame = CGRect(x: 0, y: naviBarView.frame.maxY, width: SCREEN_WIDTH, height: 50)
         view.backgroundColor = UIColor.R_UIRGBColor(red: 255, green: 255, blue: 255, alpha: 0.7)
         view.transferBtn.tag = 2
         view.transferBtn.addTarget(self, action: #selector(selectDetailsOnClick(_:)), for: .touchUpInside)
+        view.backGroundVw.backgroundColor = UIColor.clear
+//        view.centerDisY.constant = 5
         return view
     }()
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x: 0, y:selectDetailsView.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - selectDetailsView.frame.maxY - HomeListDetsilsUX.footHeight))
+        let tableView = UITableView.init(frame: CGRect(x: 0, y:selectDetailsView.frame.maxY - 5, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - selectDetailsView.frame.maxY - HomeListDetsilsUX.footHeight ))
         tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
         tableView.delegate = self
@@ -189,7 +191,6 @@ extension HomeListDetsilsVC {
         let pageSize = "\(self.pageSize)"
         let lineSize = self.lineSize
         let parameters = ["token":token!,"coinNo":coinNo,"type":"2","date":date,"pageSize":pageSize,"lineSize":lineSize] as [String : Any]
-        print(parameters)
         listViewModel.loadCoinDetailsSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetTradeInfo, parameters: parameters, showIndicator: false) {
             if self.listViewModel.model.count == 0 {
                 self.tableView.reloadData()

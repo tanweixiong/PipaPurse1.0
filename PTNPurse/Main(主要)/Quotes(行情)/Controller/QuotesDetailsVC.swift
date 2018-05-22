@@ -24,17 +24,22 @@ class QuotesDetailsVC: MainViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    lazy var quotesDetailsView: QuotesDetailsView = {
-        let view = Bundle.main.loadNibNamed("QuotesDetailsView", owner: nil, options: nil)?.last as! QuotesDetailsView
-        view.frame = CGRect(x: 0, y: MainViewControllerUX.naviHeight , width: SCREEN_WIDTH, height: 110)
+    lazy var conversionStatusView: HomeConversionStatusView = {
+        let view = Bundle.main.loadNibNamed("HomeConversionStatusView", owner: nil, options: nil)?.last as! HomeConversionStatusView
+        view.frame = CGRect(x: 0, y: Int(MainViewControllerUX.naviNormalHeight) + 10 , width: Int(SCREEN_WIDTH), height: 64)
+        view.rankLabel1.text = LanguageHelper.getString(key: "homePage_Numbers")
+        view.model = model
+        view.coinNameLabel.textColor = UIColor.R_UIColorFromRGB(color: 0x7F8795)
+        view.USDPriceLabel.textColor = UIColor.R_UIColorFromRGB(color: 0x7F8795)
+        view.CNYPriceLabel.textColor = UIColor.R_UIColorFromRGB(color: 0x7F8795)
+        view.rankLabel1.textColor = UIColor.R_UIColorFromRGB(color: 0x7F8795)
+        view.rankLabel2.textColor = UIColor.R_UIColorFromRGB(color: 0x7F8795)
         return view
     }()
     
-    lazy var conversionStatusView: HomeConversionStatusView = {
-        let view = Bundle.main.loadNibNamed("HomeConversionStatusView", owner: nil, options: nil)?.last as! HomeConversionStatusView
-        view.frame = CGRect(x: 0, y: Int(MainViewControllerUX.naviHeight_y) , width: Int(SCREEN_WIDTH), height: 75)
-        view.rankLabel1.text = LanguageHelper.getString(key: "homePage_Numbers")
-        view.model = model
+    lazy var quotesDetailsView: QuotesDetailsView = {
+        let view = Bundle.main.loadNibNamed("QuotesDetailsView", owner: nil, options: nil)?.last as! QuotesDetailsView
+        view.frame = CGRect(x: 0, y: conversionStatusView.frame.maxY , width: SCREEN_WIDTH, height: 110)
         return view
     }()
     
@@ -63,8 +68,8 @@ extension QuotesDetailsVC:UIWebViewDelegate{
 
 extension QuotesDetailsVC{
     func setupUI(){
-        setCustomNaviBar(backgroundImage: "ic_naviBar_backgroundImg",title: LanguageHelper.getString(key: "quotes_details"))
-        naviBarView.addSubview(conversionStatusView)
+        setNormalNaviBar(title:LanguageHelper.getString(key: "quotes_details"))
+        view.addSubview(conversionStatusView)
         view.addSubview(quotesDetailsView)
         view.addSubview(webView)
     }

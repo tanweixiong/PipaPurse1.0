@@ -84,6 +84,7 @@ class BusinessTransactionVC: MainViewController {
         let view = Bundle.main.loadNibNamed("IntegralApplicationStatusVw", owner: nil, options: nil)?.last as! IntegralApplicationStatusVw
         view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height:SCREEN_HEIGHT)
         view.delegare = self
+        view.selectedDefault = false
         view.isHidden = true
         return view
     }()

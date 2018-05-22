@@ -12,7 +12,8 @@ struct ZYConstAPI {
 
 //    static let kAPIH5BaseURL: String = "http://api.ptn.one:8080"
 //    static let kAPIBaseURL: String = "http://api.ptn.one:8080/"  //正式服务
-    static let kAPIBaseURL: String = "http://192.168.20.27:8080/"  //测试服务
+    static let kAPIBaseURL: String = "http://47.92.165.25:8080/"  //测试服务
+//    static let kAPIBaseURL: String = "http://192.168.20.27:8080/"  //测试服务
 //    static let kAPIBaseURL: String = "http://192.168.10.191/"  //美凯服务
 //    static let kAPIBaseURL: String = "http://192.168.10.139:8080/"   //仁政服务
 //    static let kAPIBaseURL: String = "http://192.168.20.48:8080/"  //科领服务
@@ -39,6 +40,7 @@ struct ZYConstAPI {
     
     static let kAPIGetUserByInvitation = kAPIBaseURL + "getUserByInvitation"//分享个人信息接口
     static let kAPIGetBonusDetailByUserNo = kAPIBaseURL + "getBonusDetailByUserNo"//分享个人信息列表接口
+//    static let kAPIGetUserByInvitation = kAPIBaseURL + "getUserByInvitation"//获取邀请好友接口
     
     static let kAPIAddAdvise = kAPIBaseURL + "addOpinion.do"
     static let kAPIGetAdviseList = kAPIBaseURL + "getOpinion.do"

@@ -14,7 +14,9 @@ class HomeSelectDetailsView: UIView {
     @IBOutlet weak var transferView: UIView!
     @IBOutlet weak var conversionLabel: UILabel!
     
+    @IBOutlet weak var backGroundVw: UIView!
     
+    @IBOutlet weak var centerDisY: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

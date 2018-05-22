@@ -93,8 +93,8 @@ class MineViewController: UIViewController {
     }
     
     func getData(){
-        if let username = UserDefaults.standard.getUserInfo().username {
-            usernameLab.text = (username as! String)
+        if let nickname = UserDefaults.standard.getUserInfo().nickname {
+            usernameLab.text = (nickname as! String)
         }
         
         if let photo = UserDefaults.standard.getUserInfo().photo {

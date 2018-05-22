@@ -33,7 +33,7 @@ class BusinessInviteFriendsVw: UIView {
     }
     
     
-    var model = BusinessInviteFriendsModel(){
+    var model = InviteFriendsModel(){
         didSet{
             let url = model?.userphoto == nil ? "" : model?.userphoto
             avatarImageVw.sd_setImage(with: NSURL(string: url!)! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))

@@ -104,42 +104,23 @@ extension BusinessSubmissionVC {
         }
         let token = (UserDefaults.standard.getUserInfo().token)!
         let remark = self.submissionVw.descriptionTF.text!
-        let photo = imageArray.componentsJoined(by: ",")
         let type = complaintStyle
         let orderNo = self.orderNo
         let language = Tools.getLocalLanguage()
-        let parameters = ["orderNo":orderNo,"token":token,"remark":remark,"photo":photo,"type":type,"language":language]
-        baseViewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPISpotDisputeSubmission, parameters: parameters, showIndicator: false, finishedCallback: { (json) in
-            SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "C2C_publish_dispute_prompt_Uploaded_successfully"))
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: R_NotificationC2COrderReload), object: nil)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-                self.navigationController?.popViewController(animated: true)
-            })
-        })
+        let parameters = ["orderNo":orderNo,"token":token,"remark":remark,"type":type,"language":language]
+       ZYNetWorkTool.uploadMuchPictures(url: ZYConstAPI.kAPISpotDisputeSubmission, parameter: parameters, imageArray: self.imageArray, imageKey: "photo", success: { (json) in
+        SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "C2C_publish_dispute_prompt_Uploaded_successfully"))
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: R_NotificationC2COrderReload), object: nil)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+            self.navigationController?.popViewController(animated: true)
+         })
+          }) { (error) in
+          }
     }
     
     func uploadImage(_ image:UIImage){
-        SVProgressHUD.show(withStatus: LanguageHelper.getString(key: "C2C_publish_dispute_prompt_Uploading"))
-        let token = (UserDefaults.standard.getUserInfo().token)!
-        let language = Tools.getLocalLanguage()
-        let parameter = ["token":token,"language":language]
-        ZYNetWorkTool.uploadPictures(url: ZYConstAPI.kAPISpotDisputeUploadImg, parameter: parameter, image: image, imageKey: "image", success: { (json) in
-            SVProgressHUD.dismiss()
-            let responseData = Mapper<NodataResponse>().map(JSONObject: json)
-            if let code = responseData?.code {
-                guard  200 == code else {
-                    SVProgressHUD.showError(withStatus: responseData?.message)
-                    return
-                }
-                let imageUrl = responseData?.data!
-                self.imageArray.add(imageUrl!)
-                self.addBtn(image)
-            } else {
-                SVProgressHUD.showError(withStatus: LanguageHelper.getString(key: "net_networkerror"))
-            }
-        }) { (error) in
-            SVProgressHUD.showInfo(withStatus:LanguageHelper.getString(key: "C2C_publish_dispute_prompt_Upload_failed"))
-        }
+        self.imageArray.add(image)
+        self.addBtn(image)
     }
     
     func setSubmitBtnStyle(){

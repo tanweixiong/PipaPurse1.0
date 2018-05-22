@@ -18,7 +18,7 @@ class BusinessInviteFriendsCell: UITableViewCell {
 
     }
     
-    var model = BusinessInviteListModel(){
+    var model = BusinessBonusDetailsModel(){
         didSet{
             let url = model?.userphoto == nil ? "" : (model?.userphoto)!
             avatarImageVw.sd_setImage(with: NSURL(string: url )! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))

@@ -36,7 +36,7 @@ class BusinessTransactionDeView: UIView {
             
             let entrustMaxPrice = model?.entrustMaxPrice == nil ? 0 : model?.entrustMaxPrice
             let entrustMinPrice = model?.entrustMinPrice == nil ? 0 : model?.entrustMinPrice
-            limteLab.text = Tools.getWalletAmount(amount: (entrustMaxPrice!.stringValue)) + "~" + Tools.getWalletAmount(amount: (entrustMinPrice!.stringValue)) +  "CNY"
+            limteLab.text = Tools.getWalletAmount(amount: (entrustMinPrice!.stringValue)) + "~" + Tools.getWalletAmount(amount: (entrustMaxPrice!.stringValue)) +  " CNY"
             
             if let data = model?.date {
                 dataLab.text = data

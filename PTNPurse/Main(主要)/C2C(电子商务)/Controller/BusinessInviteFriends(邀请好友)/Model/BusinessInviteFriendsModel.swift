@@ -8,17 +8,59 @@
 
 import ObjectMapper
 
-class BusinessInviteFriendsModel: Mappable {
-    var userphoto: String?
-    var sumPrice: String?
+class InviteFriendsModel: Mappable {
+    var detail: String?
+    var invitationCode: String?
+    var logo: String?
     var nickname: String?
     var sumNumber: String?
-    var logo: String?
-    var detail:String?
-    var title :String?
-    var invitationCode :String?
-    var url :String?
+    var sumPrice: String?
+    var title: String?
+    var url: String?
+    var username: String?
+    var userphoto: String?
+    
+    var bonusDetails:[BusinessBonusDetailsModel]?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    required init?() {
+        
+    }
+    
+    func mapping(map: Map) {
+        detail        <- map["detail"]
+        invitationCode        <- map["invitationCode"]
+        logo        <- map["logo"]
+        nickname        <- map["nickname"]
+        sumNumber        <- map["sumNumber"]
+        sumPrice        <- map["sumPrice"]
+        title        <- map["title"]
+        url        <- map["url"]
+        username        <- map["username"]
+        userphoto        <- map["userphoto"]
+
+    }
+}
+
+class BusinessBonusDetailsModel: Mappable {
+    var bonusKey: String?
+    var coinNo: String?
+    var date: String?
+    var id: NSNumber?
+    var initialState: String?
+    var price:NSNumber?
+    var recId :String?
+    var recWallet :String?
+    var remark :String?
+    var state:NSNumber?
+    var sumNumber:NSNumber?
+    var sumPrice:NSNumber?
+    var userId:String?
     var username:String?
+    var userphoto:String?
    
     required init?(map: Map) {
         
@@ -29,64 +71,23 @@ class BusinessInviteFriendsModel: Mappable {
     }
     
     func mapping(map: Map) {
-        userphoto        <- map["userphoto"]
-        sumPrice        <- map["sumPrice"]
-        nickname        <- map["nickname"]
+        bonusKey        <- map["bonusKey"]
+        coinNo        <- map["coinNo"]
+        date        <- map["date"]
+        id        <- map["id"]
+        initialState        <- map["initialState"]
+        price        <- map["price"]
+        
+        recId        <- map["recId"]
+        recWallet        <- map["recWallet"]
+        remark        <- map["remark"]
+        state        <- map["state"]
         sumNumber        <- map["sumNumber"]
-        logo        <- map["logo"]
-        detail        <- map["detail"]
-        title        <- map["title"]
-        invitationCode        <- map["invitationCode"]
-        url        <- map["url"]
+        sumPrice        <- map["sumPrice"]
+        userId        <- map["userId"]
         username        <- map["username"]
+        userphoto        <- map["userphoto"]
     }
 }
 
-class BusinessInviteListModel: Mappable {
-    var date: String?
-    var userphoto: String?
-    var bonusKey: String?
-    var initialState: String?
-    var sumPrice: String?
-    
-    var remark:String?
-    var userId :NSNumber?
-    var coinNo :NSNumber?
-    
-    var recWallet :String?
-    var price:NSNumber?
-    
-    var sumNumber :String?
-    var id :NSNumber?
-    var state :NSNumber?
-    var recId :NSNumber?
-    
-    var username :String?
-    
-    required init?(map: Map) {
-        
-    }
-    
-    required init?() {
-        
-    }
-    
-    func mapping(map: Map) {
-        date        <- map["date"]
-        userphoto        <- map["userphoto"]
-        bonusKey        <- map["bonusKey"]
-        initialState        <- map["initialState"]
-        sumPrice        <- map["sumPrice"]
-        remark        <- map["remark"]
-        userId        <- map["userId"]
-        coinNo        <- map["coinNo"]
-        
-        recWallet        <- map["recWallet"]
-        price        <- map["price"]
-        sumNumber        <- map["sumNumber"]
-        id        <- map["id"]
-        state        <- map["state"]
-        recId        <- map["recId"]
-        username        <- map["username"]
-    }
-}
+

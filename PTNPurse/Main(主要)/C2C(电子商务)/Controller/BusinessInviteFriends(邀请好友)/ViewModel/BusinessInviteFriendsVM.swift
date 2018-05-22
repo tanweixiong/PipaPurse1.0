@@ -13,18 +13,18 @@ import ObjectMapper
 class BusinessInviteFriendsVM: NSObject {
     fileprivate let baseViewModel = BaseViewModel()
     
-    lazy var model : BusinessInviteFriendsModel = BusinessInviteFriendsModel()!
-    func loadSuccessfullyReturnedData(requestType: HTTPMethod, URLString : String, parameters : [String : Any]? = nil, showIndicator: Bool,finishedCallback : @escaping () -> ()) {
-        baseViewModel.loadSuccessfullyReturnedData(requestType: requestType, URLString: URLString, parameters: parameters, showIndicator: showIndicator) {(model:HomeBaseModel) in
-            self.model = Mapper<BusinessInviteFriendsModel>().map(JSONObject: model.data)!
-            finishedCallback()
-        }
-    }
+//    lazy var model : BusinessInviteFriendsModel = BusinessInviteFriendsModel()!
+//    func loadSuccessfullyReturnedData(requestType: HTTPMethod, URLString : String, parameters : [String : Any]? = nil, showIndicator: Bool,finishedCallback : @escaping () -> ()) {
+//        baseViewModel.loadSuccessfullyReturnedData(requestType: requestType, URLString: URLString, parameters: parameters, showIndicator: showIndicator) {(model:HomeBaseModel) in
+//            self.model = Mapper<BusinessInviteFriendsModel>().map(JSONObject: model.data)!
+//            finishedCallback()
+//        }
+//    }
     
-    lazy var listModel : [BusinessInviteListModel] = [BusinessInviteListModel]()
+    lazy var inviteModel : InviteFriendsModel = InviteFriendsModel()!
     func loadListSuccessfullyReturnedData(requestType: HTTPMethod, URLString : String, parameters : [String : Any]? = nil, showIndicator: Bool,finishedCallback : @escaping () -> ()) {
         baseViewModel.loadSuccessfullyReturnedData(requestType: requestType, URLString: URLString, parameters: parameters, showIndicator: showIndicator) {(model:HomeBaseModel) in
-            self.listModel = Mapper<BusinessInviteListModel>().mapArray(JSONObject: model.data)!
+            self.inviteModel = Mapper<InviteFriendsModel>().map(JSONObject: model.data)!
             finishedCallback()
         }
     }

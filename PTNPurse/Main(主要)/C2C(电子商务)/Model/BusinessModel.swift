@@ -89,6 +89,8 @@ class BusinessModel: Mappable {
         remainNum        <- map["remainNum"]
         entrustNo        <- map["entrustNo"]
         newPrice        <- map["newPrice"]
+        
+        dealNum        <- map["dealNum"]
 
     }
 }

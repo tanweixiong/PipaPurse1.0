@@ -518,6 +518,10 @@
 
 "C2C_home_I_want_to_buy" = "我要购买";
 "C2C_home_I_want_to_sell" = "我要出售";
+"C2C_home_I_want_buy" = "我要购买";
+"C2C_home_I_want_sell" = "我要出售";
+
+
 "C2C_home_Want_buy" = "你想购买多少？";
 "C2C_home_Want_sell" = "你想出售多少？";
 

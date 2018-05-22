@@ -19,6 +19,8 @@ class BusinessVC: MainViewController,Calculatable{
     fileprivate var buyPageSize = 0
     fileprivate var sellPageSize = 0
     fileprivate var lineSize = 0
+    fileprivate let satrtPageSize = 0
+    fileprivate let normalColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
     struct BusinessUX {
         static let chooseViewHeight:CGFloat = 45
     }
@@ -73,38 +75,34 @@ class BusinessVC: MainViewController,Calculatable{
     
     lazy var buyBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
-        btn.setTitle("我要购买", for: .normal)
+        btn.setTitle(LanguageHelper.getString(key: "C2C_home_I_want_buy"), for: .normal)
         btn.isSelected = true
-        btn.frame = CGRect(x: XMAKE(100) , y: 35, width: 60, height: 22)
+        btn.frame = CGRect(x: XMAKE(100) , y: 32, width: 70, height: 22)
         btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD) , for: .normal)
         btn.setTitleColor(UIColor.white, for: .selected)
         btn.backgroundColor = UIColor.clear
-        btn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        btn.layer.cornerRadius = 5
-        btn.layer.masksToBounds = true
+        btn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         btn.tag = 3
         return btn
     }()
     
     lazy var sellBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
-        btn.setTitle("我要出售", for: .normal)
-        btn.frame = CGRect(x: (SCREEN_WIDTH - 60) - XMAKE(100), y: 35, width: 60, height:22)
+        btn.setTitle(LanguageHelper.getString(key: "C2C_home_I_want_sell"), for: .normal)
+        btn.frame = CGRect(x: (SCREEN_WIDTH - 70) - XMAKE(100), y: buyBtn.frame.origin.y, width: 70, height:22)
         btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD) , for: .normal)
         btn.setTitleColor(UIColor.white, for: .selected)
         btn.backgroundColor = UIColor.clear
-        btn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        btn.layer.cornerRadius = 5
-        btn.layer.masksToBounds = true
+        btn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         btn.tag = 4
         return btn
     }()
     
     lazy var scrollView:UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight, width:SCREEN_WIDTH, height: 30 + 35)
+        scrollView.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight, width:SCREEN_WIDTH, height: 20 + 35)
         scrollView.showsHorizontalScrollIndicator = false;
         scrollView.clipsToBounds = false;
         scrollView.bounces = false;
@@ -146,6 +144,7 @@ extension BusinessVC: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: businessCell, for: indexPath) as! BusinessCell
         cell.selectionStyle = .none
+        cell.style = self.style
         if style == .buyStyle {
             if viewModel.buyModel.count != 0 {
                 cell.model = viewModel.buyModel[indexPath.row]
@@ -205,13 +204,17 @@ extension BusinessVC {
     @objc func chooseCoinOnClick(_ sender:UIButton){
         let currentBtn = scrollView.viewWithTag(sender.tag) as! UIButton
         currentBtn.backgroundColor = R_UIThemeColor
-
-        let lastBtn = scrollView.viewWithTag(currentTag) as! UIButton
-        lastBtn.backgroundColor = UIColor.clear
+        currentBtn.isSelected = true
         
-        let model = viewModel.coinModel[sender.tag]
+        let lastBtn = scrollView.viewWithTag(currentTag == 0 ? 1 : currentTag) as! UIButton
+        lastBtn.backgroundColor = UIColor.clear
+        lastBtn.isSelected = false
+        
+        let model = viewModel.coinModel[sender.tag - 1]
         coinNo = (model.id?.stringValue)!
         currentTag = sender.tag
+        buyPageSize = self.satrtPageSize
+        sellPageSize = self.satrtPageSize
         getData()
     }
     
@@ -291,24 +294,38 @@ extension BusinessVC {
     func createScrollView(){
         if  self.coinArray.count != 0 {
             let space:CGFloat = 10
+            let startSpace:CGFloat = 15
             var currentX:CGFloat = 0
+            var maxX:CGFloat = 0
+            
             for item in 0...self.coinArray.count - 1 {
                 let coin = self.coinArray[item] as! String
-                let width = Tools.textHieght(text: coin, fontSize: 14, height: 35)
-                currentX = space + width + currentX
                 let btn = UIButton.init(type: .custom)
                 btn.setTitle(coin, for: .normal)
-                btn.frame = CGRect(x:currentX, y: 15, width: width, height:35)
-                btn.setTitleColor(UIColor.white , for: .normal)
+                btn.setTitleColor(UIColor.white , for: .selected)
+                btn.setTitleColor(normalColor , for: .normal)
+                btn.isSelected = item == 0 ? true : false
                 btn.addTarget(self, action: #selector(chooseCoinOnClick(_:)), for: .touchUpInside)
                 btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
                 btn.layer.cornerRadius = 5
                 btn.layer.masksToBounds = true
+                btn.tag = item + 1
+                btn.backgroundColor = item == 0 ? R_UIThemeColor : UIColor.clear
                 scrollView.addSubview(btn)
+                
+                //计算位置
+                let width = Tools.textWidth(text: coin, fontSize: 14, height: 35) + 20
                 if item == 0 {
-                   btn.backgroundColor = R_UIThemeColor
+                     btn.frame = CGRect(x:startSpace, y: 10, width: width, height:35)
+                }else{
+                    let lastBtn = scrollView.viewWithTag(item) as! UIButton
+                    currentX =  space + lastBtn.frame.maxX
+                    btn.frame = CGRect(x:currentX, y: 10, width: width, height:35)
+                    //获取最右边的值
+                    maxX = item == coinArray.count - 1 ? btn.frame.maxX : 0
                 }
             }
+            scrollView.contentSize = CGSize(width: maxX, height: 0)
         }
     }
 }

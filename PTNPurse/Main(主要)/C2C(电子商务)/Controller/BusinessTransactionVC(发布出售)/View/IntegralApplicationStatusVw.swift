@@ -17,6 +17,7 @@ class IntegralApplicationStatusVw: UIView {
     var selectFirstIndex = IndexPath()
     var selectSecondIndex = IndexPath()
     var selectList = NSInteger()
+    var selectedDefault:Bool = true
     var dataArray = NSMutableArray(){
         didSet{
             self.statusTw.reloadData()
@@ -70,16 +71,21 @@ extension IntegralApplicationStatusVw:UITableViewDelegate,UITableViewDataSource{
         cell.headingLab.text = dataArray[indexPath.row] as? String
         cell.iconImgeVw.sd_setImage(with: NSURL(string: "")! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
         cell.statusBtn.isSelected = indexPath == self.lastIndexPath ? true : false
+        if !selectedDefault {
+            cell.statusBtn.isSelected = false
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let titles = dataArray[indexPath.row]
         let cell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0)) as! IntegralApplicationStatusCell
         cell.statusBtn.isSelected = true
 
         self.isHidden = true
         self.lastIndexPath = indexPath
+        self.selectedDefault = true
         
         self.delegare?.integralApplicationStatusSelectRow(index: indexPath.row, name: (titles as? String)!, selectList: self.selectList)
         self.statusTw.reloadData()

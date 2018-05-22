@@ -306,16 +306,6 @@
                                 <constraint firstAttribute="height" constant="80" id="PeV-Ze-diO"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4I-L1-dOc">
-                            <rect key="frame" x="189" y="59.5" width="46" height="39"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="46" id="Jqa-NP-c83"/>
-                                <constraint firstAttribute="height" constant="39" id="fGb-kt-hNK"/>
-                            </constraints>
-                            <connections>
-                                <action selector="onClick:" destination="-1" eventType="touchUpInside" id="c4O-GJ-JAI"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HkH-wM-NxT">
                             <rect key="frame" x="153" y="75" width="69" height="69"/>
                             <constraints>
@@ -330,6 +320,16 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="onClick:" destination="-1" eventType="touchUpInside" id="VdZ-l4-7w4"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4I-L1-dOc">
+                            <rect key="frame" x="189" y="59" width="46" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="46" id="Jqa-NP-c83"/>
+                                <constraint firstAttribute="height" constant="39" id="fGb-kt-hNK"/>
+                            </constraints>
+                            <connections>
+                                <action selector="onClick:" destination="-1" eventType="touchUpInside" id="c4O-GJ-JAI"/>
                             </connections>
                         </button>
                     </subviews>

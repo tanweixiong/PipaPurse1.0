@@ -42,7 +42,7 @@ class QuotesVC: MainViewController {
     }
     
     lazy var chooseView: UIView = {
-        let view = UIView(frame: CGRect(x: 15, y:115, width: QuotesUX.chooseWidth, height: 60))
+        let view = UIView(frame: CGRect(x: 15, y:MainViewControllerUX.naviNormalHeight, width: QuotesUX.chooseWidth, height: 60))
         view.backgroundColor = UIColor.white
         view.addSubview(normalBtn)
         view.addSubview(otherBtn)
@@ -79,7 +79,7 @@ class QuotesVC: MainViewController {
     }()
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x: 0, y: chooseView.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - chooseView.frame.maxY - 44))
+        let tableView = UITableView.init(frame: CGRect(x: 0, y: chooseView.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - chooseView.frame.maxY))
         tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
         tableView.delegate = self
@@ -99,8 +99,8 @@ class QuotesVC: MainViewController {
         let btn = UIButton.init(type: .custom)
         btn.setImage(UIImage.init(named: "ic_quotes_search"), for: .normal)
         btn.setTitle("", for: .normal)
-        btn.setTitle("取消", for: .selected)
-        btn.frame = CGRect(x: SCREEN_WIDTH - 15 - 50, y: 70, width: 50, height:30)
+        btn.setTitle(LanguageHelper.getString(key: "version_cancel"), for: .selected)
+        btn.frame = CGRect(x: SCREEN_WIDTH - 15 - 50, y: 24, width: 50, height:30)
         btn.backgroundColor = UIColor.white
         btn.setTitleColor(UIColor.white, for: .selected)
         btn.addTarget(self, action: #selector(searchOnClick(_:)), for: .touchUpInside)
@@ -112,14 +112,12 @@ class QuotesVC: MainViewController {
     }()
     
     lazy var textView:UITextView = {
+        let width = SCREEN_WIDTH - searchBtn.width - 50
         let view = UITextView.init(frame: CGRect.init(x: 0, y: 0, width:0, height: 0))
-//        view.placeholderText = "输入关键词搜索"
-//        view.placeholderFont = UIFont.systemFont(ofSize: 14)
-//        view.place = UIColor.R_UIColorFromRGB(color: 0x828A9E)
         view.textColor = UIColor.R_UIColorFromRGB(color: 0x828A9E)
         view.font = UIFont.systemFont(ofSize: 14)
         view.delegate = self
-        view.frame = CGRect(x: 15, y: 67.5, width: SCREEN_WIDTH - searchBtn.width - 50, height: 35)
+        view.frame = CGRect(x: searchBtn.frame.origin.x - width - 5, y: 20, width:width, height: 35)
         view.layer.masksToBounds = true
         view.backgroundColor = UIColor.R_UIRGBColor(red: 255, green: 255, blue: 255, alpha: 0.8)
         view.isHidden = true
@@ -127,7 +125,7 @@ class QuotesVC: MainViewController {
     }()
     
     lazy var placeholderLab: UILabel = {
-        let lab = UILabel(frame: CGRect(x: 20, y: 67.5, width: 100, height: textView.height))
+        let lab = UILabel(frame: CGRect(x: textView.frame.origin.x + 5, y: textView.frame.origin.y, width: 100, height: textView.height))
         lab.textColor = UIColor.R_UIColorFromRGB(color: 0x828A9E)
         lab.text = LanguageHelper.getString(key: "quotes_search")
         lab.font = UIFont.systemFont(ofSize: 14)
@@ -278,7 +276,7 @@ extension QuotesVC:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = dataArray[indexPath.row] as! QuotesModel
-        if model.coinNo == 40 || model.coinNo == 50 {
+        if model.coinNo == 40 || model.coinNo == 50 || model.coinNo == 90 {
              return
         }
         let quotesDetailsVC = QuotesDetailsVC()

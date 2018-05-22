@@ -46,6 +46,8 @@ class HomeCoinDetailsCell: UITableViewCell {
             let number = Tools.setNSDecimalNumber(model?.tradeNum == nil ? 0 : (model?.tradeNum)!)
             let type = model?.type == 0 ? "+" : "-"
             numberLabel.text = type + number
+            
+            unitLabel.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Num");
         }
     }
     

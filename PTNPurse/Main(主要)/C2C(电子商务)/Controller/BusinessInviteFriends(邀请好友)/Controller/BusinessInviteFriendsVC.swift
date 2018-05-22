@@ -18,7 +18,7 @@ class BusinessInviteFriendsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        getData()
+//        getData()
         getListData()
     }
     
@@ -64,23 +64,11 @@ class BusinessInviteFriendsVC: UIViewController {
     override func loadViewIfNeeded() {
          inviteFriendsVw.tableBackGroundVw.addSubview(tableView)
     }
-
 }
 
 extension BusinessInviteFriendsVC {
     func setupUI(){
         view.addSubview(inviteFriendsVw)
-    }
-    
-    func getData(){
-        let userNo = (UserDefaults.standard.getUserInfo().id?.stringValue)!
-        let token = (UserDefaults.standard.getUserInfo().token)!
-        let parameters = ["userNo":userNo,"token":token]
-        SVProgressHUD.show(withStatus: LanguageHelper.getString(key: "please_wait"))
-        viewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetUserByInvitation, parameters: parameters, showIndicator: false) {
-            SVProgressHUD.dismiss()
-            self.inviteFriendsVw.model = self.viewModel.model
-        }
     }
     
     func getListData(){
@@ -89,15 +77,15 @@ extension BusinessInviteFriendsVC {
         let pageSize = "\(self.pageSize)"
         let lineSize = "\(self.lineSize)"
         let parameters = ["userNo":userNo,"token":token,"pageSize":pageSize,"lineSize":lineSize]
-        viewModel.loadListSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetBonusDetailByUserNo, parameters: parameters, showIndicator: false) {
+        viewModel.loadListSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetUserByInvitation, parameters: parameters, showIndicator: false) {
             self.tableView.reloadData()
         }
     }
     
     @objc func onClick(_ sender:UIButton){
         if sender.tag == 1 {
-            if self.viewModel.model.title != nil {
-                let model = self.viewModel.model
+            if self.viewModel.inviteModel.url != nil {
+                let model = self.viewModel.inviteModel
                 let invitationCode = model.invitationCode == nil ? "" : (model.invitationCode)!
                 let url = model.url == nil ? "" : (model.url)! + invitationCode
                 self.codeView.codeImageView.image = Tools.createQRForString(qrString: url, qrImageName: "")
@@ -111,7 +99,7 @@ extension BusinessInviteFriendsVC {
 
 extension BusinessInviteFriendsVC:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.listModel.count
+        return (viewModel.inviteModel.bonusDetails?.count)!
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -125,7 +113,7 @@ extension BusinessInviteFriendsVC:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: businessInviteFriendsCell, for: indexPath) as! BusinessInviteFriendsCell
         cell.selectionStyle = .none
-        cell.model = viewModel.listModel[indexPath.row]
+        cell.model = viewModel.inviteModel.bonusDetails?[indexPath.row]
         return cell
     }
     

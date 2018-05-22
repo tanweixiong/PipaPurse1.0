@@ -327,7 +327,7 @@
 "login_walletplaceholder" = "Input wallet address";
 "login_next" = "Next";
 
-"login_ok" = "Ok";
+"login_ok" = "OK";
 "login_cancle" = "Cancel";
 
 "login_newpwd" = "New Password";
@@ -494,6 +494,9 @@
 
 "C2C_home_I_want_to_buy" = "I want to buy";
 "C2C_home_I_want_to_sell" = "I want to sell";
+"C2C_home_I_want_buy" = "Want buy";
+"C2C_home_I_want_sell" = "Want sell";
+
 "C2C_home_Want_buy" = "Want buy？";
 "C2C_home_Want_sell" = "Want sell？";
 

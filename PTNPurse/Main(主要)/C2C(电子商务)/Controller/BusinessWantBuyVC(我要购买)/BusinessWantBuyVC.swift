@@ -232,9 +232,19 @@ extension BusinessWantBuyVC {
         setSubmitBtnStyle()
         //判断是哪个输入框
         let textField = notification.object as! UITextField
+        let str = textField.text!
+        if str.count != 0 {
+            let specialStr = str.subString(start: 0, length: 1)
+            if specialStr == "."{
+                businessConvertView.coinNumTF.text = ""
+                businessConvertView.disPriceTF.text = ""
+                return
+            }
+        }
         if textField == businessConvertView.coinNumTF {
               let num = businessConvertView.coinNumTF.text!
               if num == "" || textField.text! == "" {
+                businessConvertView.coinNumTF.text = ""
                 businessConvertView.disPriceTF.text = ""
                 return
             }
@@ -246,6 +256,7 @@ extension BusinessWantBuyVC {
             if cny == "" || textField.text! == ""
             {
                 businessConvertView.coinNumTF.text = ""
+                businessConvertView.disPriceTF.text = ""
                 return
             }
             let price = self.businessWantBuyData.entrustPrice
