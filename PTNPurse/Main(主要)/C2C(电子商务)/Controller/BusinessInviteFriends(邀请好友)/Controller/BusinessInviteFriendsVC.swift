@@ -78,6 +78,7 @@ extension BusinessInviteFriendsVC {
         let lineSize = "\(self.lineSize)"
         let parameters = ["userNo":userNo,"token":token,"pageSize":pageSize,"lineSize":lineSize]
         viewModel.loadListSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetUserByInvitation, parameters: parameters, showIndicator: false) {
+            self.inviteFriendsVw.model = self.viewModel.inviteModel
             self.tableView.reloadData()
         }
     }
@@ -99,6 +100,9 @@ extension BusinessInviteFriendsVC {
 
 extension BusinessInviteFriendsVC:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if viewModel.inviteModel.bonusDetails == nil {
+            return 0
+        }
         return (viewModel.inviteModel.bonusDetails?.count)!
     }
     
@@ -113,7 +117,9 @@ extension BusinessInviteFriendsVC:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: businessInviteFriendsCell, for: indexPath) as! BusinessInviteFriendsCell
         cell.selectionStyle = .none
-        cell.model = viewModel.inviteModel.bonusDetails?[indexPath.row]
+        if viewModel.inviteModel.bonusDetails != nil {
+           cell.model = viewModel.inviteModel.bonusDetails?[indexPath.row]
+        }
         return cell
     }
     

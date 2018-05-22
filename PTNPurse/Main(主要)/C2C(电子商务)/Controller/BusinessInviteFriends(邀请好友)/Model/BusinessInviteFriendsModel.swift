@@ -41,7 +41,8 @@ class InviteFriendsModel: Mappable {
         url        <- map["url"]
         username        <- map["username"]
         userphoto        <- map["userphoto"]
-
+        
+        bonusDetails        <- map["bonusDetails"]
     }
 }
 
