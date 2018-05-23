@@ -93,6 +93,7 @@ class MineViewController: UIViewController {
     }
     
     func getData(){
+         usernameLab.text = "--"
         if let nickname = UserDefaults.standard.getUserInfo().nickname {
             usernameLab.text = (nickname as! String)
         }

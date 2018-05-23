@@ -729,8 +729,8 @@ class Tools: NSObject {
     
     //没有设置支付密码执行操作
     class func noPaymentPasswordIsSetToExecute()->Bool{
-        let password = UserDefaults.standard.getUserInfo().tradePassword
-        if password == nil || password == "" || password == "0" {
+        let password = UserDefaults.standard.getUserInfo().tradePasswordState
+        if password == 0 || password == nil {
             let currentvc = OCTools.getCurrentVC()
             let setPwdVC = ModifyTradePwdViewController()
             setPwdVC.type = ModifyPwdType.tradepwd
@@ -745,7 +745,7 @@ class Tools: NSObject {
     class func saveTransactionPassword(password:String){
         if password != "" {
             let userInfo = UserDefaults.standard.getUserInfo()
-            userInfo.tradePassword = password
+            userInfo.tradePasswordState = 1
             UserDefaults.standard.saveCustomObject(customObject: userInfo, key: R_UserInfo)
         }
     }

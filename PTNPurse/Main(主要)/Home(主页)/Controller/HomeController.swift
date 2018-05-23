@@ -140,6 +140,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     
                     //获取钱包地址
                     self.getPtnAddress()
+                    self.getData()
             }
         }
       }

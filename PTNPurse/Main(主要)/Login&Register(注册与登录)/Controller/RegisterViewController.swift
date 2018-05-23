@@ -117,6 +117,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             params = [ "username" : phone, "type" : "1"]
         } else if type == .forgetpwd {
             params = [ "username" : phone, "type" : "2"]
+        } else if type == .setPaymentPsd {
+            params = [ "username" : phone, "type" : "3"]
         }
         
         ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIGetAuthorCode, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
@@ -221,7 +223,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                     }else if self.type == .setPaymentPsd{
                         self.navigationController?.popToRootViewController(animated: true)
                     }
-                    Tools.saveTransactionPassword(password: pwdmd5)
+                    Tools.saveTransactionPassword(password: pwd)
                 } else {
                     SVProgressHUD.showError(withStatus: result?.message)
                 }
@@ -278,7 +280,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             pwdTextView.titleLabel.text = LanguageHelper.getString(key: "login_loginpwd")
 
         }else if type == .setPaymentPsd{
-            topImageView.setViewContent(title: LanguageHelper.getString(key: "set_pay_password"))
+            topImageView.setViewContent(title: LanguageHelper.getString(key: "Mine_Transaction_Password"))
             pwdTextView.titleLabel.text = LanguageHelper.getString(key: "set_pay_password")
             pwdTextView.textField.placeholder = LanguageHelper.getString(key: "person_plase_settradepwd")
         }
@@ -350,20 +352,31 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
    @objc func textFieldTextDidChangeOneCI(noti:NSNotification){
         let textField = noti.object as! UITextField
-        if textField ==  self.nameTextView.textField{
-           let string = textField.text!
-            let length = string.lengthOfBytes(using: String.Encoding.utf8)
-            if length == 11 {
-               isRegisterFinish(account: string)
+        if type == .register {
+            if textField ==  self.nameTextView.textField{
+                let string = textField.text!
+                let length = string.lengthOfBytes(using: String.Encoding.utf8)
+                if length == 11 {
+                    isRegisterFinish(account: string)
+                }
+                //限制字数
+                self.setLimitTheNumberOfWords(wordNum: 11, textField: textField)
             }
-            //限制字数
-            let textContent = textField.text
-            let textNum = textContent?.count
-            if textNum! > 11 {
-                let index = textContent?.index((textContent?.startIndex)!, offsetBy: 11)
-                let str = textContent?.substring(to: index!)
-                textField.text = str
+        }else if type == .setPaymentPsd{
+            if textField == self.pwdTextView.textField{
+                self.setLimitTheNumberOfWords(wordNum: 6, textField: textField)
             }
+        }
+    }
+    
+    //限制字数
+    func setLimitTheNumberOfWords(wordNum:NSInteger,textField:UITextField){
+        let textContent = textField.text
+        let textNum = textContent?.count
+        if textNum! > wordNum {
+            let index = textContent?.index((textContent?.startIndex)!, offsetBy: wordNum)
+            let str = textContent?.substring(to: index!)
+            textField.text = str
         }
     }
     

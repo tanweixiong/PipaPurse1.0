@@ -775,6 +775,8 @@
 "Mine_LanguageSettings" = "语言设置";
 "C2C_Transaction_Remarks" = "请说明有关您交易的相关条款或备注您的支付方式，如微信号，支付宝号等，以便对方可以快速和您交易。（下单前后都可见）";
 
+"Mine_Transaction_Password" = "交易密码";
+
 
 
 

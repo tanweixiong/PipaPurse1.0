@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0EB3670C61037AD8316B0FB0 /* Pods_PTNPurse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C347AD53D0CABFA945E523 /* Pods_PTNPurse.framework */; };
-		230CFE1C2015F38100D4B9C4 /* HomeCoinDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CFE162015F38100D4B9C4 /* HomeCoinDetailsVC.swift */; };
 		230CFE1D2015F38100D4B9C4 /* HomeSelectDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CFE182015F38100D4B9C4 /* HomeSelectDetailsView.swift */; };
 		230CFE1E2015F38100D4B9C4 /* HomeCoinDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 230CFE192015F38100D4B9C4 /* HomeCoinDetailsCell.xib */; };
 		230CFE1F2015F38100D4B9C4 /* HomeCoinDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CFE1A2015F38100D4B9C4 /* HomeCoinDetailsCell.swift */; };
@@ -299,6 +298,7 @@
 		236B624C20A420240025DCA1 /* HomeTransferDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B624A20A420240025DCA1 /* HomeTransferDetailsCell.swift */; };
 		236B624D20A420240025DCA1 /* HomeTransferDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236B624B20A420240025DCA1 /* HomeTransferDetailsCell.xib */; };
 		236B91522062570000F27C30 /* BusinessTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B91512062570000F27C30 /* BusinessTransactionVC.swift */; };
+		236F48BF20B5076900886F69 /* HomeCoinDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236F48BE20B5076800886F69 /* HomeCoinDetailsVC.swift */; };
 		236FA07A2069E06E00FD5CB6 /* BusinessSubmissionMsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236FA0792069E06E00FD5CB6 /* BusinessSubmissionMsgModel.swift */; };
 		236FA081206A250100FD5CB6 /* MessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236FA080206A250100FD5CB6 /* MessageVC.swift */; };
 		236FA084206A263000FD5CB6 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236FA082206A263000FD5CB6 /* MessageCell.swift */; };
@@ -448,7 +448,6 @@
 
 /* Begin PBXFileReference section */
 		1A2B17ACEF909D5F8DFA126F /* Pods-PTNPurseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PTNPurseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PTNPurseUITests/Pods-PTNPurseUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		230CFE162015F38100D4B9C4 /* HomeCoinDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoinDetailsVC.swift; sourceTree = "<group>"; };
 		230CFE182015F38100D4B9C4 /* HomeSelectDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSelectDetailsView.swift; sourceTree = "<group>"; };
 		230CFE192015F38100D4B9C4 /* HomeCoinDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCoinDetailsCell.xib; sourceTree = "<group>"; };
 		230CFE1A2015F38100D4B9C4 /* HomeCoinDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoinDetailsCell.swift; sourceTree = "<group>"; };
@@ -787,6 +786,7 @@
 		236B624A20A420240025DCA1 /* HomeTransferDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTransferDetailsCell.swift; sourceTree = "<group>"; };
 		236B624B20A420240025DCA1 /* HomeTransferDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTransferDetailsCell.xib; sourceTree = "<group>"; };
 		236B91512062570000F27C30 /* BusinessTransactionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTransactionVC.swift; sourceTree = "<group>"; };
+		236F48BE20B5076800886F69 /* HomeCoinDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoinDetailsVC.swift; sourceTree = "<group>"; };
 		236FA0792069E06E00FD5CB6 /* BusinessSubmissionMsgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSubmissionMsgModel.swift; sourceTree = "<group>"; };
 		236FA080206A250100FD5CB6 /* MessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageVC.swift; sourceTree = "<group>"; };
 		236FA082206A263000FD5CB6 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -1018,7 +1018,7 @@
 		230CFE152015F38100D4B9C4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				230CFE162015F38100D4B9C4 /* HomeCoinDetailsVC.swift */,
+				236F48BE20B5076800886F69 /* HomeCoinDetailsVC.swift */,
 				232DF51C201F0ADF00842491 /* HomeCoinTransferDetailsVC.swift */,
 			);
 			path = Controller;
@@ -3444,8 +3444,8 @@
 				23674AC82020205400B4B96E /* MineBackupVC.swift in Sources */,
 				233201A6202AFEDD001815DE /* UIScrollView+MJRefresh.m in Sources */,
 				236FA081206A250100FD5CB6 /* MessageVC.swift in Sources */,
+				236F48BF20B5076900886F69 /* HomeCoinDetailsVC.swift in Sources */,
 				23A537F7205F520E00EDB714 /* HNChannelModel.m in Sources */,
-				230CFE1C2015F38100D4B9C4 /* HomeCoinDetailsVC.swift in Sources */,
 				237858AE2018209D0014DACD /* BRAddressModel.m in Sources */,
 				23A538F8205F537400EDB714 /* BusinessCell.swift in Sources */,
 				233165AE20A9A33500597302 /* MineMiningRankingVC.swift in Sources */,
@@ -3743,6 +3743,7 @@
 			baseConfigurationReference = 7EA8DC0263BD5A0A79634B0C /* Pods-PTNPurse.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -3799,6 +3800,7 @@
 			baseConfigurationReference = 8FB8AB799BD9A62AA93B9B67 /* Pods-PTNPurse.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

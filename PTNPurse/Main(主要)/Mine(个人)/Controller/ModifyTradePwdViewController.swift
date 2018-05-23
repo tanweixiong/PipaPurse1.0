@@ -121,7 +121,7 @@ class ModifyTradePwdViewController: UIViewController, UITextFieldDelegate {
                 if code == 200 {
                     SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_success"))
                     self.navigationController?.popViewController(animated: true)
-                    Tools.saveTransactionPassword(password: pwdmd5)
+                    Tools.saveTransactionPassword(password: pwd)
                 } else {
                     SVProgressHUD.showError(withStatus: result?.message)
                 }
@@ -200,6 +200,8 @@ class ModifyTradePwdViewController: UIViewController, UITextFieldDelegate {
         pwdTextView.textField.placeholder = LanguageHelper.getString(key: "login_newpwdplaceholder")
         pwdTextView.textField.textColor = UIColor.black
         pwdTextView.textField.isSecureTextEntry = true
+        NotificationCenter.default.addObserver(self, selector: #selector(ModifyTradePwdViewController.textFieldTextDidChangeOneCI), name:NSNotification.Name.UITextFieldTextDidChange, object: nil)
+
         
         codeTextView.addTextFieldAndRightBtn(viewType: .SecondsCountType)
         codeTextView.textField.setKeyboardStyle(textType: .TextFieldIntegerNumber)
@@ -230,5 +232,18 @@ class ModifyTradePwdViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @objc func textFieldTextDidChangeOneCI(noti:NSNotification){
+        let textField = noti.object as! UITextField
+        if textField == self.pwdTextView.textField{
+            let textContent = textField.text
+            let textNum = textContent?.count
+            if textNum! > 6 {
+                let index = textContent?.index((textContent?.startIndex)!, offsetBy: 6)
+                let str = textContent?.substring(to: index!)
+                textField.text = str
+            }
+        }
+            
+    }
 
 }
