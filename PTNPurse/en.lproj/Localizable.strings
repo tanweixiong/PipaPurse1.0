@@ -623,7 +623,7 @@
 "C2C_publish_details_order_Unit" = "Unit";
 "C2C_publish_details_order_Limit" = "Limit";
 "C2C_publish_details_order_Method" = "Method";
-"C2C_publish_details_order_Minimum_limit" = "Minimum limit";
+"C2C_publish_details_order_Minimum_limit" = "Minimum";
 "C2C_publish_details_order_Time" = "Time";
 
 "C2C_publish_dispute_prompt_Submit_a_complaint" = "Submit a complaint";
@@ -770,4 +770,6 @@
 "C2C_Transaction_Remarks" = "Remarks";
 
 "Mine_Transaction_Password" = "Transaction password";
+"Mine_Transaction_SumPrice" = "Sum";
+"Mine_Transaction_Finish" = "Finish";
 

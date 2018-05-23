@@ -595,6 +595,23 @@ class Tools: NSObject {
         }
     }
     
+    class func getWalletPrice(amount:String)->String{
+        let strArray = amount.components(separatedBy: ".")
+        if strArray.count == 1 {
+            return strArray.first! + ".00"
+        }else{
+            let price = strArray.first
+            let point = strArray.last
+            var newPoint = point
+            if 7 < (point?.count)! {
+                let index = point?.index((point?.startIndex)!, offsetBy: 8)
+                newPoint = (point?.substring(to: index!))!
+            }
+            let amount = price! + "." + newPoint!
+            return amount
+        }
+    }
+    
     //0是中文英文
     class func getLocalLanguage()->String{
         let language = UserDefaults.standard.object(forKey: UserLanguage) as! String

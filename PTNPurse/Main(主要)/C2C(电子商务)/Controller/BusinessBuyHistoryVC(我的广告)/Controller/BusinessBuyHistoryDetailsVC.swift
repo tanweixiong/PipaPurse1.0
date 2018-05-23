@@ -28,7 +28,7 @@ class BusinessBuyHistoryDetailsVC: MainViewController {
     
     lazy var detailsView: BusinessBuyHistoryDetailsVw = {
         let view = Bundle.main.loadNibNamed("BusinessBuyHistoryDetailsVw", owner: nil, options: nil)?.last as! BusinessBuyHistoryDetailsVw
-        view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight + 15, width: SCREEN_WIDTH, height: 300)
+        view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight + 15, width: SCREEN_WIDTH, height: 360)
         return view
     }()
     
@@ -36,6 +36,7 @@ class BusinessBuyHistoryDetailsVC: MainViewController {
         let view = Bundle.main.loadNibNamed("BusinessRemarkView", owner: nil, options: nil)?.last as! BusinessRemarkView
         view.frame = CGRect(x: 0, y: detailsView.frame.maxY, width: SCREEN_WIDTH, height: 84)
         view.isUserInteractionEnabled = false
+        view.remarkLab.text = LanguageHelper.getString(key: "C2C_publish_order_Message")
         return view
     }()
 

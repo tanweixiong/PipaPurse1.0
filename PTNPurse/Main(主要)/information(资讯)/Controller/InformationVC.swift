@@ -63,10 +63,9 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     // MARK: - NetWork Method
     func getNews(removeData: Bool) {
-        let token = (UserDefaults.standard.getUserInfo().token)!
         let type = style == .announcement ? "1" : "2"
         let pageSize = style == .announcement ? "\(announcementPageNumber)" : "\(newsPageNumber)"
-        let params = [ "pageSize" : pageSize, "lineSize":lineSize, "token" : token,"type":type] as [String : Any]
+        let params = [ "pageSize" : pageSize, "lineSize":lineSize,"type":type] as [String : Any]
         if isFirst {
            SVProgressHUD.show(with: .black)
            isFirst = false

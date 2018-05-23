@@ -145,7 +145,8 @@ extension MineBankCardBindingVC:PaymentPasswordDelegate{
         let model = viewModel.model[btnTag]
         let token = (UserDefaults.standard.getUserInfo().token)!
         let id = (model.id?.stringValue)!
-        let parameters = ["token":token,"id":id]
+        let md5 = pwd.md5()
+        let parameters = ["token":token,"id":id,"dealPwd":md5]
         baseViewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIBindDeleteBankCard, parameters: parameters, showIndicator: false) { (json) in
             self.viewModel.model.remove(at: self.btnTag)
             SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "delete_sucess"))

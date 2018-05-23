@@ -17,6 +17,8 @@ class BusinessBuyHistoryDetailsVw: UIView {
     @IBOutlet weak var nameLab: UILabel!
     @IBOutlet weak var stateLab: UILabel!
     @IBOutlet weak var receivablesTypeLab: UILabel!
+    @IBOutlet weak var sumLab: UILabel!
+    @IBOutlet weak var transactionFinishLab: UILabel!
     @IBOutlet weak var backgroundVw: UIView!
     
     @IBOutlet weak var title1Lab: UILabel!
@@ -25,6 +27,8 @@ class BusinessBuyHistoryDetailsVw: UIView {
     @IBOutlet weak var title4Lab: UILabel!
     @IBOutlet weak var title5Lab: UILabel!
     @IBOutlet weak var title6Lab: UILabel!
+    @IBOutlet weak var title7Lab: UILabel!
+    @IBOutlet weak var title8Lab: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,13 +42,13 @@ class BusinessBuyHistoryDetailsVw: UIView {
             avatarImageView.sd_setImage(with:NSURL(string: avatar!)! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
             
             let price = model?.entrustPrice == nil ? 0 : model?.entrustPrice
-            priceLab.text = Tools.getWalletAmount(amount: (price?.stringValue)!) + "CNY"
-
+            priceLab.text = Tools.getWalletPrice(amount: (price?.stringValue)!) + "CNY"
+            
             let data = model?.date == nil ? "" : model?.date
             dataLab.text = data
             
             let entrustMinPrice = model?.entrustMinPrice == nil ? 0 : model?.entrustMinPrice
-            limitLab.text = (entrustMinPrice?.stringValue)! + LanguageHelper.getString(key: "homePage_Numbers")
+            limitLab.text = Tools.getWalletPrice(amount: (entrustMinPrice?.stringValue)!) + LanguageHelper.getString(key: "homePage_Numbers")
             
             let receivablesType = model?.receivablesType == nil ? 0 : model?.receivablesType
             receivablesTypeLab.text = Tools.getPaymentDetailsMethod((receivablesType?.stringValue)!)
@@ -56,15 +60,25 @@ class BusinessBuyHistoryDetailsVw: UIView {
             stateLab.text = Tools.getMineAdvertisingMethod((state?.stringValue)!)
             
             let entrustMaxPrice = model?.entrustMaxPrice == nil ? 0 : model?.entrustMaxPrice
-            entrustMaxPriceLab.text = (entrustMaxPrice?.stringValue)! + LanguageHelper.getString(key: "homePage_Numbers")
+            entrustMaxPriceLab.text = Tools.getWalletPrice(amount: (entrustMaxPrice?.stringValue)!) + LanguageHelper.getString(key: "homePage_Numbers")
+            
+            let unitPrice = Tools.setNSDecimalNumber((model?.entrustPrice)!)
+            let quantity = Tools.setNSDecimalNumber((model?.entrustNum)!)
+            let sum = (unitPrice as NSString).doubleValue * (quantity as NSString).doubleValue
+            sumLab.text = String(format: "%.2f", sum) + LanguageHelper.getString(key: "homePage_Numbers")
+            
+            let dealNum = model?.dealNum == nil ? 0 : model?.dealNum
+            transactionFinishLab.text = (dealNum?.stringValue)! + LanguageHelper.getString(key: "homePage_Numbers")
             
             //标题
-            title1Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Status")
-            title2Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Unit")
-            title3Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Limit")
-            title4Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Method")
-            title5Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Minimum_limit")
-            title6Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Time")
+            title1Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Status") + "："
+            title2Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Unit") + "："
+            title3Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Limit") + "："
+            title4Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Method") + "："
+            title5Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Minimum_limit") + "："
+            title6Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Time") + "："
+            title7Lab.text = LanguageHelper.getString(key: "Mine_Transaction_SumPrice") + "："
+            title8Lab.text = LanguageHelper.getString(key: "Mine_Transaction_Finish") + "："
         }
     }
 

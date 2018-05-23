@@ -40,12 +40,12 @@ class BusinessBuyHistoryCell: UITableViewCell {
             operatingBtn.setTitle(LanguageHelper.getString(key: "C2C_mine_my_advertisement_Drop"), for: .normal)
             maxTitleLab.text = LanguageHelper.getString(key: "C2C_Max") + "："
             
-            
             entrustMaxPriceLab.text = String(format: "%.2f", (model?.entrustMaxPrice?.doubleValue)!) + "CNY"
             entrustMinPriceLab.text = String(format: "%.2f", (model?.entrustMinPrice?.doubleValue)!) + "CNY"
             
             if model?.state == 0 {
                 operatingBtn.isHidden = false
+                detailsX.constant = 10
             }else{
                 operatingBtn.isHidden = true
                 detailsX.constant = -70

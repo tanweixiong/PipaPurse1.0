@@ -99,7 +99,7 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func getUserTradeState() {
-        let token = UserDefaults.standard.value(forKey: "token")
+        let token = (UserDefaults.standard.value(forKey: "token"))!
         let userno = (UserDefaults.standard.getUserInfo().id?.stringValue)!
         let params = ["token" : token,"userNo":userno]
         ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIHasSetTradePwd, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
