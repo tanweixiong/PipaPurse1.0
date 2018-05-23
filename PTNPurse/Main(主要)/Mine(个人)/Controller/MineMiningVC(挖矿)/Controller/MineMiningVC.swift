@@ -44,6 +44,7 @@ class MineMiningVC: MainViewController {
         tableView.separatorInset = UIEdgeInsetsMake(0,SCREEN_WIDTH, 0,SCREEN_WIDTH);
         tableView.separatorColor = UIColor.R_UIColorFromRGB(color: 0xF1F1F1)
         tableView.tableHeaderView = self.mineMiningVw
+        tableView.tableFooterView = UIView()
         tableView.mj_footer = MJRefreshAutoNormalFooter.init(refreshingBlock: {
             self.getListData()
         })

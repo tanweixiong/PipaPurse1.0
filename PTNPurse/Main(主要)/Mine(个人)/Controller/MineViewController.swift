@@ -95,7 +95,7 @@ class MineViewController: UIViewController {
     func getData(){
          usernameLab.text = "--"
         if let nickname = UserDefaults.standard.getUserInfo().nickname {
-            usernameLab.text = (nickname as! String)
+            usernameLab.text = (nickname as! String) == "" ? "--" : (nickname as! String)
         }
         
         if let photo = UserDefaults.standard.getUserInfo().photo {

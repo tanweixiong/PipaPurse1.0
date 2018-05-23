@@ -21,8 +21,10 @@ class MineBankCardBindingVC: MainViewController {
     fileprivate let mineBankCardBindingCell = "MineBankCardBindingCell"
     fileprivate lazy var viewModel : MineBindingBankVM = MineBindingBankVM()
     fileprivate lazy var baseViewModel : BaseViewModel = BaseViewModel()
+    fileprivate var btnTag = NSInteger()
     var delegate:MineBankCardBindingDelegate?
     var style = MineBankCardBindingStyle.normalStyle
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,15 +78,13 @@ extension MineBankCardBindingVC {
     }
     
     @objc func deleteOnClick(_ sender:UIButton){
-        let model = viewModel.model[sender.tag]
-        let token = (UserDefaults.standard.getUserInfo().token)!
-        let id = (model.id?.stringValue)!
-        let parameters = ["token":token,"id":id]
-        baseViewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIBindDeleteBankCard, parameters: parameters, showIndicator: false) { (json) in
-             self.viewModel.model.remove(at: sender.tag)
-             SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "delete_sucess"))
-             self.tableView.reloadData()
-        }
+        if Tools.noPaymentPasswordIsSetToExecute() == false{ view.endEditing(true)
+            return}
+        let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+        input?.delegate = self
+        input?.show()
+        
+        btnTag = sender.tag
     }
     
   @objc func getData(){
@@ -138,5 +138,27 @@ extension MineBankCardBindingVC:UITableViewDelegate,UITableViewDataSource{
             self.navigationController?.pushViewController(mineBindingDetailsVC, animated: true)
         }
     }
+}
+
+extension MineBankCardBindingVC:PaymentPasswordDelegate{
+    func inputPaymentPassword(_ pwd: String!) -> String! {
+        let model = viewModel.model[btnTag]
+        let token = (UserDefaults.standard.getUserInfo().token)!
+        let id = (model.id?.stringValue)!
+        let parameters = ["token":token,"id":id]
+        baseViewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIBindDeleteBankCard, parameters: parameters, showIndicator: false) { (json) in
+            self.viewModel.model.remove(at: self.btnTag)
+            SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "delete_sucess"))
+            self.tableView.reloadData()
+        }
+        return pwd
+    }
     
+    func inputPaymentPasswordChangeForgetPassword() {
+        let forgetvc = ModifyTradePwdViewController()
+        forgetvc.type = ModifyPwdType.tradepwd
+        forgetvc.status = .modify
+        forgetvc.isNeedNavi = false
+        self.navigationController?.pushViewController(forgetvc, animated: true)
+    }
 }
