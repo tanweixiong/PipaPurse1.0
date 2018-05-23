@@ -71,7 +71,7 @@ class BusinessTransactionVC: MainViewController {
     
     lazy var determineBtn: UIButton = {
         let btn  = UIButton(type: .system)
-        btn.setTitle(LanguageHelper.getString(key: "Determine"), for: .normal)
+        btn.setTitle(LanguageHelper.getString(key: "C2C_Determine"), for: .normal)
         btn.frame = CGRect(x: 0, y: tableView.frame.maxY, width: SCREEN_WIDTH, height: 50)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)
@@ -186,6 +186,7 @@ extension BusinessTransactionVC {
             ,"minPrice":transactionsMin
             ,"tradePassword":md5Psd
             ,"remark":remarks
+            ,"bankcardId":"0"
         ]
         
         //如果是银行卡则需要多传
@@ -206,7 +207,7 @@ extension BusinessTransactionVC {
         }
         
         viewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIAddSpotEntrust, parameters: parameters , showIndicator: false) { (model:HomeBaseModel) in
-            let responseData = Mapper<BusinessLiberateFinishDataModel>().map(JSONObject: model.data)
+//            let responseData = Mapper<BusinessLiberateFinishDataModel>().map(JSONObject: model.data)
             if  model.code == Tools.noPaymentPasswordSetCode(){
                 let setPwdVC = ModifyTradePwdViewController()
                 setPwdVC.type = ModifyPwdType.tradepwd
@@ -217,10 +218,12 @@ extension BusinessTransactionVC {
             SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "C2C_publish_order_Successful_advertisement"))
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: R_NotificationC2CReload), object: nil)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                let id = model.data == nil ? "" : (model.data)!
+                let orderNo = "\(id as Any)"
                 let businessWantFinishVC = BusinessWantFinishVC()
                 businessWantFinishVC.style = .liberateStyle
                 businessWantFinishVC.liberateStyle = self.style
-                businessWantFinishVC.orderNo = (responseData?.entrustId?.stringValue)!
+                businessWantFinishVC.orderNo = orderNo
                 businessWantFinishVC.coinName = self.coinNameTF.text!
                 businessWantFinishVC.liberateStyle = self.style
                 self.navigationController?.pushViewController(businessWantFinishVC, animated: true)
@@ -345,15 +348,18 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
                     cell.textfield.keyboardType = .decimalPad
                     cell.textfield.delegate = self
                     cell.thinLinesVw.isHidden = false
+                    cell.unitLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Num")
                     self.transactionsNumTF = cell.textfield
                 }else if indexPath.row == 2 {
                     cell.textfield.keyboardType = .decimalPad
                     cell.textfield.delegate = self
                     cell.thickLinesVw.isHidden = false
+                    cell.unitLab.text = "CNY"
                     self.transactionsPriceTF = cell.textfield
                 }else if indexPath.row == 3 {
                     cell.textfield.keyboardType = .decimalPad
                     cell.thinLinesVw.isHidden = false
+                    cell.unitLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Num")
                     self.transactionsMinTF = cell.textfield
                 }
                 return cell
