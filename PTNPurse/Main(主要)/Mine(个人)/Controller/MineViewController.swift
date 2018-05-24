@@ -99,7 +99,7 @@ class MineViewController: UIViewController {
         }
         
         if let photo = UserDefaults.standard.getUserInfo().photo {
-             photoImg.sd_setImage(with: (NSURL(string: photo as! String)! as URL), placeholderImage: UIImage(named: "ic_defaultPicture")) { (image, error, cacheType, url) -> Void in
+             photoImg.sd_setImage(with: (NSURL(string: photo as! String)! as URL), placeholderImage: UIImage(named: "ic_mine_avatar")) { (image, error, cacheType, url) -> Void in
                 
             }
         }

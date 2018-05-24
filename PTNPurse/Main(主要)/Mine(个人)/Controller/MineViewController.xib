@@ -277,7 +277,7 @@
                                 <constraint firstItem="3cI-6H-fg1" firstAttribute="top" secondItem="lmw-ZL-4xd" secondAttribute="top" id="y5L-Yh-zPL"/>
                             </constraints>
                         </view>
-                        <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="ic_defaultPicture" translatesAutoresizingMaskIntoConstraints="NO" id="b1Y-fY-Atn">
+                        <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="ic_mine_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="b1Y-fY-Atn">
                             <rect key="frame" x="147" y="64" width="80" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="uVn-oU-Bgm"/>
@@ -373,9 +373,9 @@
     <resources>
         <image name="ic_aboutus" width="23" height="20"/>
         <image name="ic_advertising" width="24" height="25"/>
-        <image name="ic_defaultPicture" width="200" height="199"/>
         <image name="ic_gem" width="17" height="26"/>
         <image name="ic_invite" width="19" height="20"/>
+        <image name="ic_mine_avatar" width="80" height="80"/>
         <image name="ic_mine_backGround" width="375" height="230"/>
         <image name="ic_pen" width="100" height="100"/>
         <image name="ic_records" width="24" height="24"/>
