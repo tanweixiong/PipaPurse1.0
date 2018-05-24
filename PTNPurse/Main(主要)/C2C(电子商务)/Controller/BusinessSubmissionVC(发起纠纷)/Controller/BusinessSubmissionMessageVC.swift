@@ -19,7 +19,7 @@ class BusinessSubmissionMessageVC: MainViewController {
         setupUI()
         getData()
     }
-    
+
     lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame: CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight, width:SCREEN_WIDTH , height: SCREEN_HEIGHT - MainViewControllerUX.naviNormalHeight))
         tableView.showsVerticalScrollIndicator = false
@@ -34,6 +34,22 @@ class BusinessSubmissionMessageVC: MainViewController {
         })
         return tableView
     }()
+    
+    lazy var noDataImgeVw: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage.init(named: "ic_home_finish")
+        let size = CGSize(width: 130, height: 100)
+        image.frame = CGRect(x: SCREEN_WIDTH/2 - size.width/2, y: (SCREEN_HEIGHT/2 - size.height/2) - YMAKE(50), width: size.width, height: size.height)
+        view.addSubview(image)
+        let lab = UILabel()
+        lab.text = LanguageHelper.getString(key: "no_record")
+        lab.font = UIFont.systemFont(ofSize: 14)
+        lab.textAlignment = .center
+        lab.frame = CGRect(x: 0, y: image.height + 5, width: image.width, height: 22)
+        lab.textColor = R_UIThemeColor
+        image.addSubview(lab)
+        return image
+    }()
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -42,7 +58,7 @@ class BusinessSubmissionMessageVC: MainViewController {
 
 extension BusinessSubmissionMessageVC {
     func setupUI(){
-        setNormalNaviBar(title: LanguageHelper.getString(key: "C2C_transaction_Feedback_record"))
+        setNormalNaviBar(title: LanguageHelper.getString(key: "Mine_Representation_Record"))
         view.addSubview(tableView)
     }
     
@@ -53,10 +69,14 @@ extension BusinessSubmissionMessageVC {
         let pageNum = "\(self.pageNum)"
         let pageSize = "\(self.pageSize)"
         let parameters = ["language":language,"token":token,"userId":userId,"pageNum":pageNum,"pageSize":pageSize] as [String : Any]
-        print(parameters)
         viewModel.loadSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPISpotDisputeDisputeList, parameters: parameters, showIndicator: false) {
-             self.pageNum = self.pageNum + 1
-             self.tableView.reloadData()
+            self.pageNum = self.pageNum + 1
+            self.tableView.reloadData()
+            if self.viewModel.model.count == 0 {
+                self.view.bringSubview(toFront: self.noDataImgeVw)
+            }else{
+                self.view.bringSubview(toFront: self.tableView)
+            }
         }
         self.tableView.mj_footer.endRefreshing()
     }

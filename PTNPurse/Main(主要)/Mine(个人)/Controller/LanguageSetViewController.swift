@@ -120,25 +120,13 @@ class LanguageSetViewController: UIViewController, UITableViewDelegate, UITableV
         return 65
     }
     
-   
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = self.tableView(tableView, cellForRowAt: indexPath) as! MineViewTableViewCell
         cell.viewType = .checkmark
-        var langeuage = ""
         var currency = ""
         if type == .language {
-            if indexPath.row == 0 {
-                langeuage = "zh-Hans"
-                LanguageHelper.shareInstance.setLanguage(langeuage: langeuage)
-            }else if indexPath.row == 1 {
-                langeuage = "en"
-                LanguageHelper.shareInstance.setLanguage(langeuage: langeuage)
-            }
-            UserDefaults.standard.set(langeuage, forKey: UserLanguage)
-            LanguageHelper.shareInstance.setLanguage(langeuage: langeuage)
-            self.tableView.reloadData()
-            self.setViewStyle()
+
         } else if type == .currency {
             currency = currencytitleArray[indexPath.row]
             UserDefaults.standard.set(currency, forKey: UserCurrency)
@@ -151,6 +139,7 @@ class LanguageSetViewController: UIViewController, UITableViewDelegate, UITableV
         let myTitle = Tools.getLocalLanguage() != "0" ? "Prompt" : "提示";
         let alert = UIAlertController.init(title: myTitle, message: titles, preferredStyle: .alert)
         let commitAction = UIAlertAction.init(title:confirm, style: .destructive) { (action) in
+            self.setLanguage(indexPath: indexPath)
             if self.style == .special {
                 let loginNav = FMNavigationController.init(rootViewController: LoginController())
                 UIApplication.shared.keyWindow?.rootViewController = loginNav
@@ -169,6 +158,21 @@ class LanguageSetViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = self.tableView(tableView, cellForRowAt: indexPath) as! MineViewTableViewCell
         cell.viewType = .noright
 
+    }
+    
+    func setLanguage(indexPath:IndexPath){
+        var langeuage = ""
+        if indexPath.row == 0 {
+            langeuage = "zh-Hans"
+            LanguageHelper.shareInstance.setLanguage(langeuage: langeuage)
+        }else if indexPath.row == 1 {
+            langeuage = "en"
+            LanguageHelper.shareInstance.setLanguage(langeuage: langeuage)
+        }
+        UserDefaults.standard.set(langeuage, forKey: UserLanguage)
+        LanguageHelper.shareInstance.setLanguage(langeuage: langeuage)
+        self.tableView.reloadData()
+        self.setViewStyle()
     }
     
     // MARK: - Private Method

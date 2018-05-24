@@ -31,7 +31,7 @@ class MineMiningVC: MainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        getData()
+        getData(isCreateBalloon: true)
     }
     
     lazy var tableView: UITableView = {
@@ -99,12 +99,14 @@ extension MineMiningVC{
         setNormalNaviBar(title: "", BackgroundImage: UIImage.creatImageWithColor(color: UIColor.clear, size: CGSize(width:SCREEN_WIDTH,height:SCREEN_HEIGHT), alpha: 1))
     }
     
-    func getData(){
+    func getData(isCreateBalloon:Bool){
         let parameters = ["token":self.token]
         viewModel.loadSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetMineList, parameters: parameters, showIndicator: false) {_ in
             let mineSumNum = self.viewModel.balloonModel.mineSumNum
             self.mineMiningVw.cumulativeIncomeLab.text = LanguageHelper.getString(key: "Mine_Mining_Cumulative") + Tools.setNSDecimalNumber(mineSumNum!)
-            self.createBalloon()
+            if isCreateBalloon {
+               self.createBalloon()
+            }
             self.getListData(isReload: true)
         }
     }
@@ -114,10 +116,7 @@ extension MineMiningVC{
         let parameters = ["id":(balloonModel.id?.stringValue)!,"token":self.token]
         baseVM.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIAddMine, parameters: parameters ,showIndicator: false) { (model:HomeBaseModel) in
             //根据当前收益
-            var current = self.viewModel.balloonModel.mineSumNum?.doubleValue
-            current = current! + (balloonModel.bonus?.doubleValue)!
-            self.mineMiningVw.cumulativeIncomeLab.text = LanguageHelper.getString(key: "Mine_Mining_Cumulative") + Tools.setNSDecimalNumber(NSNumber(value: current!))
-            self.getListData(isReload: true)
+            self.getData(isCreateBalloon: false)
         }
     }
     

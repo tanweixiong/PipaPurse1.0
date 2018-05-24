@@ -16,8 +16,8 @@ class AboutUsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
-    let titleArray = ["person_currentversion", "person_latestversion","Mine_FeedbackAndOpinions"]
-    let imageArray = ["ic_aboutus_details","ic_aboutus_details","ic_aboutus_details"]
+    let titleArray = ["person_currentversion", "person_latestversion","Mine_FeedbackAndOpinions","Mine_Representation_Record"]
+    let imageArray = ["ic_aboutus_details","ic_aboutus_details","ic_aboutus_details","ic_aboutus_details"]
     
     var newVersion: Version?
     
@@ -83,6 +83,9 @@ class AboutUsViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 2:
             let opitionViewController = OpitionViewController()
             self.navigationController?.pushViewController(opitionViewController, animated: true)
+        case 3:
+            let businessSubmissionMessageVC = BusinessSubmissionMessageVC()
+            self.navigationController?.pushViewController(businessSubmissionMessageVC, animated: true)
         default:
             break
         }

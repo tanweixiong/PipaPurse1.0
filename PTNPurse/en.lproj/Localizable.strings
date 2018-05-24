@@ -766,7 +766,7 @@
 
 "Mine_FeedbackAndOpinions" = "Feedback and opinions";
 "Mine_PaymentMethod" = "Payment method";
-"Mine_LanguageSettings" = "Language aettings";
+"Mine_LanguageSettings" = "Language settings";
 "C2C_Transaction_Remarks" = "Remarks";
 
 "Mine_Transaction_Password" = "Transaction password";
@@ -777,5 +777,6 @@
 "Mine_Modify_New_Password" = "New password";
 "Mine_Modify_Repeat_Password" = "Repeat password";
 "Mine_Modify_Determine_Password" = "Determine";
+"Mine_Representation_Record" = "Representation record";
 
 
