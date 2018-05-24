@@ -624,7 +624,7 @@ class Tools: NSObject {
     
     //获取当前app 币种
     class func getAppCoinName()->String{
-        return "PTN"
+        return "PIPAY"
     }
     
     class func getIsChinese()->Bool{

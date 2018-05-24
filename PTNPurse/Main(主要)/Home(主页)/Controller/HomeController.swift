@@ -71,7 +71,8 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             SVProgressHUD.dismiss()
             self.cleanArr()
             let totalMoney = self.viewModel.totalMoney == "" ? "0" : self.viewModel.totalMoney
-            self.headView.totalMoneyLabel.text = totalMoney + " CNY"
+            let language =  language == "0" ? "CNY" : "USD"
+            self.headView.totalMoneyLabel.text = totalMoney + " " + language
             //处理数据类型
             if self.viewModel.model.count != 0 {
                 for index in 0...self.viewModel.model.count - 1{
@@ -294,7 +295,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         case 7 :
             let title = UserDefaults.standard.getUserInfo().ptnaddress == "" || UserDefaults.standard.getUserInfo().ptnaddress == nil ? LanguageHelper.getString(key: "homePage_Import") : LanguageHelper.getString(key: "homePage_Export")
             let maxY = headView.anymoreBtn.frame.maxY + 50
-            let menuView = PST_MenuView.init(frame: CGRect(x: SCREEN_WIDTH - 20 - 120, y: maxY, width: 120, height: 90), titleArr: [LanguageHelper.getString(key: "ic_Home_Code"),title], imgArr: ["ic_home_code","ic_home_backup"], arrowOffset: 100, rowHeight: 40, layoutType: PST_MenuViewLayoutType(rawValue: 0)!, directionType: PST_MenuViewDirectionType(rawValue: 0)!, delegate: self)
+            let menuView = PST_MenuView.init(frame: CGRect(x: SCREEN_WIDTH - 20 - 120, y: maxY, width: 120, height: 129), titleArr: [LanguageHelper.getString(key: "ic_Home_Code"),title,LanguageHelper.getString(key: "Home_Alert_Conver")], imgArr: ["ic_home_code","ic_home_backup","ic_home_conver"], arrowOffset: 100, rowHeight: 40, layoutType: PST_MenuViewLayoutType(rawValue: 0)!, directionType: PST_MenuViewDirectionType(rawValue: 0)!, delegate: self)
             menuView?.arrowColor = UIColor.white
             menuView?.titleColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
             menuView?.lineColor = UIColor.R_UIColorFromRGB(color: 0xEDF3F8)
@@ -335,6 +336,9 @@ extension HomeController:PST_MenuViewDelegate{
                 let homeBackupDetailsVC = HomeBackupDetailsVC()
                 self.navigationController?.pushViewController(homeBackupDetailsVC, animated: true)
             }
+        }else if index == 2 {
+            let vc = HomeConvertVC()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

@@ -51,6 +51,19 @@ class HomeCoinDetailsCell: UITableViewCell {
         }
     }
     
+    
+    var convertModel = HomeConvertModel(){
+        didSet{
+            backgroundVw.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)
+            backgroundVw.layer.borderColor = UIColor.R_UIColorFromRGB(color: 0x009BFD).cgColor
+            statusBtn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0x009BFD)
+            statusLabel.textColor = UIColor.R_UIColorFromRGB(color: 0x009BFD)
+            numberLabel.textColor = UIColor.R_UIColorFromRGB(color: 0x009BFD)
+            
+            statusBtn.setBackgroundImage(UIImage.init(named: "ic_home_conver_backGround"), for: .normal)
+        }
+    }
+    
     var transferModel = HomeCoinTransferDetailsModel(){
         didSet{
   

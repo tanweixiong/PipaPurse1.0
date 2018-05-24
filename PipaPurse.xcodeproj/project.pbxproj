@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0EB3670C61037AD8316B0FB0 /* Pods_PTNPurse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C347AD53D0CABFA945E523 /* Pods_PTNPurse.framework */; };
+		230921DD20B6972200456B02 /* HomeConvertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230921DB20B6972200456B02 /* HomeConvertVC.swift */; };
+		230921DE20B6972200456B02 /* HomeConvertVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 230921DC20B6972200456B02 /* HomeConvertVC.xib */; };
+		230921E120B69D5600456B02 /* HomeSubmitConvertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230921DF20B69D5600456B02 /* HomeSubmitConvertVC.swift */; };
+		230921E220B69D5600456B02 /* HomeSubmitConvertVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 230921E020B69D5600456B02 /* HomeSubmitConvertVC.xib */; };
+		230921E520B6B47600456B02 /* HomeConvertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230921E420B6B47600456B02 /* HomeConvertModel.swift */; };
 		230CFE1D2015F38100D4B9C4 /* HomeSelectDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CFE182015F38100D4B9C4 /* HomeSelectDetailsView.swift */; };
 		230CFE1E2015F38100D4B9C4 /* HomeCoinDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 230CFE192015F38100D4B9C4 /* HomeCoinDetailsCell.xib */; };
 		230CFE1F2015F38100D4B9C4 /* HomeCoinDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230CFE1A2015F38100D4B9C4 /* HomeCoinDetailsCell.swift */; };
@@ -450,6 +455,11 @@
 
 /* Begin PBXFileReference section */
 		1A2B17ACEF909D5F8DFA126F /* Pods-PTNPurseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PTNPurseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PTNPurseUITests/Pods-PTNPurseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		230921DB20B6972200456B02 /* HomeConvertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConvertVC.swift; sourceTree = "<group>"; };
+		230921DC20B6972200456B02 /* HomeConvertVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeConvertVC.xib; sourceTree = "<group>"; };
+		230921DF20B69D5600456B02 /* HomeSubmitConvertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSubmitConvertVC.swift; sourceTree = "<group>"; };
+		230921E020B69D5600456B02 /* HomeSubmitConvertVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSubmitConvertVC.xib; sourceTree = "<group>"; };
+		230921E420B6B47600456B02 /* HomeConvertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConvertModel.swift; sourceTree = "<group>"; };
 		230CFE182015F38100D4B9C4 /* HomeSelectDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSelectDetailsView.swift; sourceTree = "<group>"; };
 		230CFE192015F38100D4B9C4 /* HomeCoinDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCoinDetailsCell.xib; sourceTree = "<group>"; };
 		230CFE1A2015F38100D4B9C4 /* HomeCoinDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoinDetailsCell.swift; sourceTree = "<group>"; };
@@ -883,7 +893,7 @@
 		23A537EB205F520D00EDB714 /* UINavigationController+Cloudox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Cloudox.m"; sourceTree = "<group>"; };
 		23A537EC205F520D00EDB714 /* UIViewController+Cloudox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Cloudox.h"; sourceTree = "<group>"; };
 		23A537EE205F520D00EDB714 /* RegularDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularDefinition.swift; sourceTree = "<group>"; };
-		23A537EF205F520D00EDB714 /* ZYConstAPIURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYConstAPIURL.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		23A537EF205F520D00EDB714 /* ZYConstAPIURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYConstAPIURL.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		23A53883205F537300EDB714 /* BusinessModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		23A53884205F537300EDB714 /* BusinessCoinModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCoinModel.swift; sourceTree = "<group>"; };
 		23A53888205F537300EDB714 /* BusinessRemarkView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessRemarkView.xib; sourceTree = "<group>"; };
@@ -1008,6 +1018,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		230921D820B6971000456B02 /* HomeConvertVC(转换法币) */ = {
+			isa = PBXGroup;
+			children = (
+				230921D920B6971000456B02 /* Controller */,
+				230921DA20B6971000456B02 /* View */,
+				230921E320B6B40B00456B02 /* Model */,
+			);
+			path = "HomeConvertVC(转换法币)";
+			sourceTree = "<group>";
+		};
+		230921D920B6971000456B02 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				230921DC20B6972200456B02 /* HomeConvertVC.xib */,
+				230921DB20B6972200456B02 /* HomeConvertVC.swift */,
+				230921E020B69D5600456B02 /* HomeSubmitConvertVC.xib */,
+				230921DF20B69D5600456B02 /* HomeSubmitConvertVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		230921DA20B6971000456B02 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		230921E320B6B40B00456B02 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				230921E420B6B47600456B02 /* HomeConvertModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		230CFE142015F38100D4B9C4 /* HomeCoinDetailsVC(明细) */ = {
 			isa = PBXGroup;
 			children = (
@@ -1618,6 +1664,7 @@
 				23247EC3201033E7009739F0 /* HomeBackupVC(备份钱包) */,
 				230CFE142015F38100D4B9C4 /* HomeCoinDetailsVC(明细) */,
 				4E77F930204F88D300D6807E /* HomeCertificationVC(认证) */,
+				230921D820B6971000456B02 /* HomeConvertVC(转换法币) */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3019,6 +3066,7 @@
 				236FA08D206A28EC00FD5CB6 /* MessageInformationVw.xib in Resources */,
 				4E77F93A204FB91B00D6807E /* HomeCertificationView.xib in Resources */,
 				23328196200DE35300094849 /* HomeStampView.xib in Resources */,
+				230921E220B69D5600456B02 /* HomeSubmitConvertVC.xib in Resources */,
 				232F3D3420A919BD0002C3C6 /* BusinessReleaseMethodCell.xib in Resources */,
 				232C540020637B560005F64C /* BusinessBuyHistoryDetailsVw.xib in Resources */,
 				237805DE200F73BB00C1429D /* HomeAddCoinCell.xib in Resources */,
@@ -3095,6 +3143,7 @@
 				232C543020AA8BFF002C8780 /* ic_mining_person.gif in Resources */,
 				4E77F940204FD46C00D6807E /* HomeCertificationListCell.xib in Resources */,
 				237D0431200F2CED000C12B1 /* HomeConversionListCell.xib in Resources */,
+				230921DE20B6972200456B02 /* HomeConvertVC.xib in Resources */,
 				23304405207B517600579A95 /* MineImportWalletVw.xib in Resources */,
 				2331658D20A9678800597302 /* MineChooseBtn.xib in Resources */,
 				2364D88B20A52E2B00EFE97C /* BusinessMeunVw.xib in Resources */,
@@ -3371,6 +3420,7 @@
 				23674A8F2020202400B4B96E /* SystemSeUpViewController.swift in Sources */,
 				23F52A55205A202E008D8B75 /* QuotesVM.swift in Sources */,
 				23328191200DE0C300094849 /* HomeListCell.swift in Sources */,
+				230921DD20B6972200456B02 /* HomeConvertVC.swift in Sources */,
 				237858CE20183CAD0014DACD /* HomeBackupDetailsVC.swift in Sources */,
 				232C542A20AA868F002C8780 /* MineModel.swift in Sources */,
 				23A537F9205F520E00EDB714 /* OCTools.m in Sources */,
@@ -3420,6 +3470,7 @@
 				2332D4D7200DA1BC009B4D5E /* Constraint.swift in Sources */,
 				233201AB202AFEDD001815DE /* UIView+MJExtension.m in Sources */,
 				23674AD72020205400B4B96E /* NoteTextView.swift in Sources */,
+				230921E520B6B47600456B02 /* HomeConvertModel.swift in Sources */,
 				23A537FE205F520E00EDB714 /* UserInfo.swift in Sources */,
 				237858B02018209D0014DACD /* BRAddressPickerView.m in Sources */,
 				23A538FB205F537400EDB714 /* BusinessVM.swift in Sources */,
@@ -3486,6 +3537,7 @@
 				2331659320A9843900597302 /* MineSetPaymentVC.swift in Sources */,
 				232C542820AA7F58002C8780 /* MineViewModel.swift in Sources */,
 				236FA07A2069E06E00FD5CB6 /* BusinessSubmissionMsgModel.swift in Sources */,
+				230921E120B69D5600456B02 /* HomeSubmitConvertVC.swift in Sources */,
 				23674A962020202400B4B96E /* FriendTableViewCell.swift in Sources */,
 				233165AA20A99C2D00597302 /* YLGIFImage.m in Sources */,
 				23A537F8205F520E00EDB714 /* LanguageHelper.swift in Sources */,

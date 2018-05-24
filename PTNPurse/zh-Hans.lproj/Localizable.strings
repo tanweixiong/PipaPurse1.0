@@ -120,7 +120,7 @@
 "assets" = "总资产(¥)";
 "asset_name" = "资产名称";
 "lastest_price" = "最新价";
-"up_low" = "涨跌幅";
+"up_low" = "涨跌比例";
 "add_markets" = "添加行情";
 "edit_markets" = "编辑行情";
 "recent_records" = "最近交易记录";
@@ -785,7 +785,7 @@
 "Mine_Modify_Determine_Password" = "确定修改";
 "Mine_Representation_Record" = "申述记录";
 
-
+"Home_Alert_Conver" = "转换法币";
 
 
 

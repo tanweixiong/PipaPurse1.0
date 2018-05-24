@@ -41,7 +41,7 @@ extension MinePasswordVC {
         setNormalNaviBar(title: LanguageHelper.getString(key: "login_loginpwd"))
         oldPasswordTF.placeholder = LanguageHelper.getString(key: "Mine_Modify_Old_Password")
         oldPasswordTF.textColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
-//        oldPasswordTF.isSecureTextEntry = true
+        oldPasswordTF.isSecureTextEntry = true
         newPasswordTF.placeholder = LanguageHelper.getString(key: "Mine_Modify_New_Password")
         newPasswordTF.textColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
         newPasswordTF.isSecureTextEntry = true

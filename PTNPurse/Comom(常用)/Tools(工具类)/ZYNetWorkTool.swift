@@ -118,9 +118,7 @@ class ZYNetWorkTool: NSObject {
             }
         } else {
             sessionManager.request(URLString, method: requestType).validate().responseJSON { (response) in
-                
                 Tools.DLog(message:"all response info \(response)")
-                
                 switch response.result {
                 case .success(let value):
                     success(value)
