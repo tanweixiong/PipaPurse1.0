@@ -207,6 +207,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         let params = ["username": name, "dealPwd":pwdmd5, "code": code,"type":"3"]
         SVProgressHUD.show(with: .black)
         ZYNetWorkTool.requestData(.post, URLString: url, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
+            SVProgressHUD.dismiss()
             let result = Mapper<NodataResponse>().map(JSONObject: jsonObjc)
             if let code = result?.code {
                 if code == 200 {
@@ -221,7 +222,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                         successvc.type = RegisterSuccessViewControllerType.register
                         self.navigationController?.pushViewController(successvc, animated: true)
                     }else if self.type == .setPaymentPsd{
-                        self.navigationController?.popToRootViewController(animated: true)
+                        SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "modify_pay_pwd_success"))
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                             self.navigationController?.popToRootViewController(animated: true)
+                        })
                     }
                     Tools.saveTransactionPassword(password: pwd)
                 } else {
@@ -329,6 +333,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         if type == .setPaymentPsd {
             registerBtn.setTitle(LanguageHelper.getString(key: "login_ok"), for: .normal)
+            pwdTextView.textField.keyboardType = .numberPad
         }
         
         if status == .modify {
