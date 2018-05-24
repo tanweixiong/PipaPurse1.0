@@ -32,7 +32,6 @@ class MineMiningVC: MainViewController {
         super.viewDidLoad()
         setupUI()
         getData()
-        getListData()
     }
     
     lazy var tableView: UITableView = {
@@ -46,7 +45,7 @@ class MineMiningVC: MainViewController {
         tableView.tableHeaderView = self.mineMiningVw
         tableView.tableFooterView = UIView()
         tableView.mj_footer = MJRefreshAutoNormalFooter.init(refreshingBlock: {
-            self.getListData()
+            self.getListData(isReload: false)
         })
         return tableView
     }()
@@ -106,6 +105,7 @@ extension MineMiningVC{
             let mineSumNum = self.viewModel.balloonModel.mineSumNum
             self.mineMiningVw.cumulativeIncomeLab.text = LanguageHelper.getString(key: "Mine_Mining_Cumulative") + Tools.setNSDecimalNumber(mineSumNum!)
             self.createBalloon()
+            self.getListData(isReload: true)
         }
     }
     
@@ -117,10 +117,15 @@ extension MineMiningVC{
             var current = self.viewModel.balloonModel.mineSumNum?.doubleValue
             current = current! + (balloonModel.bonus?.doubleValue)!
             self.mineMiningVw.cumulativeIncomeLab.text = LanguageHelper.getString(key: "Mine_Mining_Cumulative") + Tools.setNSDecimalNumber(NSNumber(value: current!))
+            self.getListData(isReload: true)
         }
     }
     
-    func getListData(){
+    func getListData(isReload:Bool){
+        if isReload {
+            self.pageSize = 1
+            self.viewModel.mineListModel.removeAll()
+        }
         let parameters = ["token":self.token,"pageSize":"\(self.pageSize)","lineSize":"\(self.lineSize)"]
         viewModel.loadSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetMine, parameters: parameters, showIndicator: false) {(newData:Bool) in
             if newData{
