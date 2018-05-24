@@ -69,6 +69,7 @@ class BusinessInviteFriendsVC: UIViewController {
 extension BusinessInviteFriendsVC {
     func setupUI(){
         view.addSubview(inviteFriendsVw)
+        UIApplication.shared.keyWindow?.addSubview(codeView)
     }
     
     func getListData(){
@@ -91,6 +92,11 @@ extension BusinessInviteFriendsVC {
                 let url = model.url == nil ? "" : (model.url)! + invitationCode
                 self.codeView.codeImageView.image = Tools.createQRForString(qrString: url, qrImageName: "")
                 self.codeView.isHidden = false
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.codeView.codeBackgroundVw.alpha = 1
+                    self.codeView.codeBackgroundVw.frame = CGRect(x: 30, y: 150, width: self.codeView.codeBackgroundVw.frame.size.width, height: self.codeView.codeBackgroundVw.frame.size.height)
+                }, completion: { (isfinish:Bool) in
+                })
             }
         }else if sender.tag == 2 {
             self.navigationController?.popViewController(animated: true)

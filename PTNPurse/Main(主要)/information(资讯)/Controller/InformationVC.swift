@@ -21,7 +21,7 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var tableView: UITableView!
     fileprivate var  announcementArr = NSMutableArray()
     fileprivate var newsArr = NSMutableArray()
-    
+    fileprivate var isLoad:Bool = true
     var style = InformationStyle.announcement
     
     var announcementPageNumber: Int = 1
@@ -108,6 +108,7 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     @objc func onClick(_ sender:UIButton){
+        self.infoArray.removeAllObjects()
         //公告
         if sender == announcementBtn {
             style = .announcement
@@ -115,6 +116,7 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             newsBtn.isSelected = false
             announcementBtn.backgroundColor = R_UIThemeSkyBlueColor
             newsBtn.backgroundColor = UIColor.clear
+            self.infoArray.addObjects(from: announcementArr as! [Any])
         //新闻
         }else if sender == newsBtn {
             style = .news
@@ -122,9 +124,14 @@ class InformationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             newsBtn.isSelected = true
             announcementBtn.backgroundColor = UIColor.clear
             newsBtn.backgroundColor = R_UIThemeSkyBlueColor
+            self.infoArray.addObjects(from: newsArr as! [Any])
+            if isLoad {
+                hasNextPage = false
+                isLoad = false
+                getNews(removeData: false)
+            }
         }
-        hasNextPage = false
-        getNews(removeData: false)
+        self.tableView.reloadData()
     }
     
     lazy var announcementBtn: UIButton = {

@@ -71,7 +71,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             SVProgressHUD.dismiss()
             self.cleanArr()
             let totalMoney = self.viewModel.totalMoney == "" ? "0" : self.viewModel.totalMoney
-            self.headView.totalMoneyLabel.text = totalMoney
+            self.headView.totalMoneyLabel.text = totalMoney + " CNY"
             //处理数据类型
             if self.viewModel.model.count != 0 {
                 for index in 0...self.viewModel.model.count - 1{

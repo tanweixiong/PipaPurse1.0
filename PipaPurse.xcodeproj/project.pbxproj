@@ -64,6 +64,8 @@
 		232C60F920AAE75700525BCC /* PaymentAlertVw.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232C60F620AAE75600525BCC /* PaymentAlertVw.xib */; };
 		232D7E6D207D976D00BBBB4D /* BusinessInviteFriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232D7E6C207D976D00BBBB4D /* BusinessInviteFriendsModel.swift */; };
 		232D7E6F207D987C00BBBB4D /* BusinessInviteFriendsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232D7E6E207D987C00BBBB4D /* BusinessInviteFriendsVM.swift */; };
+		232DBB3F20B64E73001A0782 /* MinePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232DBB3D20B64E73001A0782 /* MinePasswordVC.swift */; };
+		232DBB4020B64E73001A0782 /* MinePasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232DBB3E20B64E73001A0782 /* MinePasswordVC.xib */; };
 		232DF518201EF10700842491 /* HomeCoinDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232DF517201EF10700842491 /* HomeCoinDetailsVM.swift */; };
 		232DF51B201EF19200842491 /* HomeCoinDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232DF51A201EF19200842491 /* HomeCoinDetailsModel.swift */; };
 		232DF51D201F0ADF00842491 /* HomeCoinTransferDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232DF51C201F0ADF00842491 /* HomeCoinTransferDetailsVC.swift */; };
@@ -515,6 +517,8 @@
 		232C60F620AAE75600525BCC /* PaymentAlertVw.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentAlertVw.xib; sourceTree = "<group>"; };
 		232D7E6C207D976D00BBBB4D /* BusinessInviteFriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInviteFriendsModel.swift; sourceTree = "<group>"; };
 		232D7E6E207D987C00BBBB4D /* BusinessInviteFriendsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInviteFriendsVM.swift; sourceTree = "<group>"; };
+		232DBB3D20B64E73001A0782 /* MinePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinePasswordVC.swift; sourceTree = "<group>"; };
+		232DBB3E20B64E73001A0782 /* MinePasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinePasswordVC.xib; sourceTree = "<group>"; };
 		232DF517201EF10700842491 /* HomeCoinDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoinDetailsVM.swift; sourceTree = "<group>"; };
 		232DF51A201EF19200842491 /* HomeCoinDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoinDetailsModel.swift; sourceTree = "<group>"; };
 		232DF51C201F0ADF00842491 /* HomeCoinTransferDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoinTransferDetailsVC.swift; sourceTree = "<group>"; };
@@ -2028,6 +2032,8 @@
 				23674A7C2020202400B4B96E /* AboutUsViewController.swift */,
 				23674A6F2020202400B4B96E /* MineViewController.xib */,
 				23674A782020202400B4B96E /* MineViewController.swift */,
+				232DBB3D20B64E73001A0782 /* MinePasswordVC.swift */,
+				232DBB3E20B64E73001A0782 /* MinePasswordVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3034,6 +3040,7 @@
 				23A538D0205F537400EDB714 /* BusinessRemarkView.xib in Resources */,
 				232B18C820ABBB9F003230E7 /* ActivateInformationCell.xib in Resources */,
 				23674A872020202400B4B96E /* MineViewController.xib in Resources */,
+				232DBB4020B64E73001A0782 /* MinePasswordVC.xib in Resources */,
 				23674ACE2020205400B4B96E /* LoginNoteTextView.xib in Resources */,
 				23674A6620201DDE00B4B96E /* InformationVC.xib in Resources */,
 				23A538D3205F537400EDB714 /* BusinessTransactionView.xib in Resources */,
@@ -3343,6 +3350,7 @@
 				2332D4D0200DA1BC009B4D5E /* ConstraintOffsetTarget.swift in Sources */,
 				2332D4C9200DA1BC009B4D5E /* ConstraintConfig.swift in Sources */,
 				23674A902020202400B4B96E /* MineViewController.swift in Sources */,
+				232DBB3F20B64E73001A0782 /* MinePasswordVC.swift in Sources */,
 				2388F476201ACFFD005E8F1B /* HomeAddCoinVM.swift in Sources */,
 				2332D453200DA1A7009B4D5E /* ViewController.swift in Sources */,
 				232DF51F201F0BE000842491 /* HomeCoinTransferDetailsModel.swift in Sources */,

@@ -779,6 +779,10 @@
 "Mine_Transaction_SumPrice" = "交易总额";
 "Mine_Transaction_Finish" = "交易完成";
 
+"Mine_Modify_Old_Password" = "旧密码";
+"Mine_Modify_New_Password" = "新登录密码(6-16)";
+"Mine_Modify_Repeat_Password" = "重复密码";
+"Mine_Modify_Determine_Password" = "确定修改";
 
 
 

@@ -773,3 +773,9 @@
 "Mine_Transaction_SumPrice" = "Sum";
 "Mine_Transaction_Finish" = "Finish";
 
+"Mine_Modify_Old_Password" = "Old password";
+"Mine_Modify_New_Password" = "New password";
+"Mine_Modify_Repeat_Password" = "Repeat password";
+"Mine_Modify_Determine_Password" = "Determine";
+
+

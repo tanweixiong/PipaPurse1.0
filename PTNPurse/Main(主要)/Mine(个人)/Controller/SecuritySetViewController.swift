@@ -71,8 +71,7 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
         
         switch indexPath.row {
         case 0:
-            let vc = RegisterViewController()
-            vc.type = .forgetpwd
+            let vc = MinePasswordVC()
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
             let vc = RegisterViewController()

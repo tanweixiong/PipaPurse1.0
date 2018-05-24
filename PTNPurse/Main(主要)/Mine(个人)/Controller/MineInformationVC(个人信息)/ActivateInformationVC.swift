@@ -125,6 +125,7 @@ extension ActivateInformationVC {
                 userInfo.nickname = model.data as AnyObject
             }
             UserDefaults.standard.saveCustomObject(object: userInfo, key: R_UserInfo)
+            self.delegate?.activateInformationModifiedFinish()
         }
     }
     
