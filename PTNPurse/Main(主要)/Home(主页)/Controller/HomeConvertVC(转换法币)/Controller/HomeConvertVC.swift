@@ -10,6 +10,7 @@ import UIKit
 
 class HomeConvertVC: MainViewController {
     fileprivate let homeCoinDetailsCell = "HomeCoinDetailsCell"
+    fileprivate lazy var viewModel : HomeListDetsilsVM = HomeListDetsilsVM()
     @IBOutlet weak var navi: UIView!{
         didSet{
             navi.backgroundColor = R_UIThemeColor
@@ -55,8 +56,11 @@ class HomeConvertVC: MainViewController {
     }()
     
     @IBAction func onClick(_ sender: UIButton) {
-        let vc = HomeSubmitConvertVC()
-        self.navigationController?.pushViewController(vc, animated: true)
+        if self.viewModel.model.userWallet != nil {
+            let vc = HomeSubmitConvertVC()
+            vc.model = self.viewModel.model.userWallet
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
@@ -69,7 +73,14 @@ extension HomeConvertVC {
     }
     
     func getData(){
-        
+        let parameters = ["type":Tools.getPTNcoinNo(),"language":Tools.getLocalLanguage(),"token":(UserDefaults.standard.getUserInfo().token)!]
+        viewModel.loadDetailsSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetCoinDetail, parameters: parameters, showIndicator: false) {
+            let model = self.viewModel.model.userWallet
+            let enableBalance = model?.enableBalance == nil ? "0" : model?.enableBalance
+            self.detsilsAssetsView.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available")  + "：" + enableBalance!
+            let unableBalance = model?.unableBalance == nil ? "0" : model?.unableBalance
+            self.detsilsAssetsView.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") +  "：" + unableBalance!
+        }
     }
 }
 

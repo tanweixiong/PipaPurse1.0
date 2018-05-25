@@ -9,6 +9,7 @@
 import UIKit
 
 class HomeSubmitConvertVC: MainViewController {
+    var model = HomeWalletsModel()
     @IBOutlet weak var convertBtn: UIButton!{
         didSet{
             convertBtn.layer.borderWidth = 1
@@ -42,8 +43,10 @@ class HomeSubmitConvertVC: MainViewController {
         let view = Bundle.main.loadNibNamed("HomeDetsilsAssetsView", owner: nil, options: nil)?.last as! HomeDetsilsAssetsView
         view.frame = CGRect(x: 0, y: Int(MainViewControllerUX.naviNormalHeight + 15), width: Int(SCREEN_WIDTH), height: 35)
         view.backgroundColor = R_UIThemeSkyBlueColor
-        view.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available") + "：0"
-        view.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：0"
+        let enableBalance = model?.enableBalance == nil ? "0" : model?.enableBalance
+        view.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available")  + "：" + enableBalance!
+        let unableBalance = model?.unableBalance == nil ? "0" : model?.unableBalance
+        view.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") +  "：" + unableBalance!
         return view
     }()
     
