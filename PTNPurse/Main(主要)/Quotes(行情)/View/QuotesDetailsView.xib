@@ -279,7 +279,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8LW-RU-Crr">
-                    <rect key="frame" x="0.0" y="149" width="375" height="1"/>
+                    <rect key="frame" x="15" y="149" width="345" height="1"/>
                     <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="xSq-zh-vBt"/>
@@ -290,12 +290,12 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Rbp-yW-vQn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ALb-AA-qk0"/>
-                <constraint firstItem="8LW-RU-Crr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="G5Z-oD-7is"/>
+                <constraint firstItem="8LW-RU-Crr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="G5Z-oD-7is"/>
                 <constraint firstAttribute="trailing" secondItem="Rbp-yW-vQn" secondAttribute="trailing" id="GdE-0h-Run"/>
                 <constraint firstItem="TEz-p5-i2e" firstAttribute="top" secondItem="Rbp-yW-vQn" secondAttribute="bottom" id="Rvg-Du-a8O"/>
                 <constraint firstItem="8LW-RU-Crr" firstAttribute="top" secondItem="TEz-p5-i2e" secondAttribute="bottom" id="SoT-NS-I9w"/>
                 <constraint firstItem="TEz-p5-i2e" firstAttribute="height" secondItem="Rbp-yW-vQn" secondAttribute="height" id="Wze-Vd-8AC"/>
-                <constraint firstAttribute="trailing" secondItem="8LW-RU-Crr" secondAttribute="trailing" id="a7n-fk-upv"/>
+                <constraint firstAttribute="trailing" secondItem="8LW-RU-Crr" secondAttribute="trailing" constant="15" id="a7n-fk-upv"/>
                 <constraint firstAttribute="trailing" secondItem="TEz-p5-i2e" secondAttribute="trailing" id="f44-Q9-EVh"/>
                 <constraint firstItem="Rbp-yW-vQn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="f9R-Lf-heM"/>
                 <constraint firstItem="TEz-p5-i2e" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fZD-2f-WnX"/>

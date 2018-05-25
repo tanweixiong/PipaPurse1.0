@@ -32,7 +32,7 @@ class QuotesDetailsVC: MainViewController {
     
     lazy var webView : UIWebView = {
         let webView = UIWebView()
-         webView.frame = CGRect(x: 15, y: self.quotesDetailsView.frame.maxY, width: SCREEN_WIDTH - 30, height: SCREEN_HEIGHT - self.quotesDetailsView.frame.maxY - 15)
+         webView.frame = CGRect(x: 15, y: self.quotesDetailsView.frame.maxY + 5, width: SCREEN_WIDTH - 30, height: SCREEN_HEIGHT - self.quotesDetailsView.frame.maxY - 15 - 5)
         let coinNo = (self.model?.coinNo?.stringValue)!
         let url = ZYConstAPI.kAPIQuotesDetailsH5BaseURL + coinNo
          webView.loadRequest(URLRequest(url:URL(string: url)!))
