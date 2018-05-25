@@ -9,7 +9,8 @@
 import UIKit
 
 class HomeSubmitConvertVC: MainViewController {
-    var model = HomeWalletsModel()
+    @IBOutlet weak var availableLab: UILabel!
+    @IBOutlet weak var freezeLab: UILabel!
     @IBOutlet weak var convertBtn: UIButton!{
         didSet{
             convertBtn.layer.borderWidth = 1
@@ -28,11 +29,10 @@ class HomeSubmitConvertVC: MainViewController {
     }
     @IBOutlet weak var convertNumTF: UITextField!{
         didSet{
-            convertNumTF.text = LanguageHelper.getString(key: "C2C_publish_order_Please_enter_the_number_of_transactions")
+            convertNumTF.placeholder = LanguageHelper.getString(key: "C2C_publish_order_Please_enter_the_number_of_transactions")
         }
     }
-    @IBOutlet weak var availableLab: UILabel!
-    @IBOutlet weak var freezeLab: UILabel!
+    var model = HomeWalletsModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

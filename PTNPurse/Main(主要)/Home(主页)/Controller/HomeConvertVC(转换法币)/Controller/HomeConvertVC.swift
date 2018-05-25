@@ -11,6 +11,12 @@ import UIKit
 class HomeConvertVC: MainViewController {
     fileprivate let homeCoinDetailsCell = "HomeCoinDetailsCell"
     fileprivate lazy var viewModel : HomeListDetsilsVM = HomeListDetsilsVM()
+    fileprivate lazy var baseVM : MineViewModel = MineViewModel()
+    fileprivate var pageSize = 1
+    fileprivate var lineSize = 10
+    
+    @IBOutlet weak var availableLab: UILabel!
+    @IBOutlet weak var freezeLab: UILabel!
     @IBOutlet weak var navi: UIView!{
         didSet{
             navi.backgroundColor = R_UIThemeColor
@@ -22,16 +28,11 @@ class HomeConvertVC: MainViewController {
             convertBtn.layer.borderColor = R_UIThemeColor.cgColor
         }
     }
-    @IBOutlet weak var availableLab: UILabel!
-    @IBOutlet weak var freezeLab: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        getData()
     }
     
     lazy var detsilsAssetsView: HomeDetsilsAssetsView = {
@@ -52,11 +53,17 @@ class HomeConvertVC: MainViewController {
         tableView.backgroundColor = UIColor.white
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
+        tableView.mj_footer = MJRefreshAutoNormalFooter.init(refreshingBlock: {
+            self.getListData(isRefresh: false)
+        })
+        tableView.mj_header = MJRefreshHeader.init(refreshingBlock: {
+            self.getListData(isRefresh: true)
+        })
         return tableView
     }()
     
     @IBAction func onClick(_ sender: UIButton) {
-        if self.viewModel.model.userWallet != nil {
+        if self.viewModel.model.userWallet == nil {
             let vc = HomeSubmitConvertVC()
             vc.model = self.viewModel.model.userWallet
             self.navigationController?.pushViewController(vc, animated: true)
@@ -80,17 +87,32 @@ extension HomeConvertVC {
             self.detsilsAssetsView.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available")  + "：" + enableBalance!
             let unableBalance = model?.unableBalance == nil ? "0" : model?.unableBalance
             self.detsilsAssetsView.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") +  "：" + unableBalance!
+            self.getListData(isRefresh: false)
+        }
+    }
+
+    func getListData(isRefresh:Bool){
+        if isRefresh {
+            self.pageSize = 1
+            self.baseVM.convertListModel.removeAll()
+        }
+        let parameters = ["token":(UserDefaults.standard.getUserInfo().token)!,"pageSize":"\(self.pageSize)","lineSize":"\(self.lineSize)"]
+        baseVM.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIConvertCoinList, parameters: parameters, showIndicator: false) { (hasData:Bool) in
+            if hasData {
+               self.pageSize = self.pageSize + 1
+            }
+            self.tableView.reloadData()
         }
     }
 }
 
 extension HomeConvertVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return baseVM.convertListModel.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return  10
+        return  1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -100,7 +122,7 @@ extension HomeConvertVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: homeCoinDetailsCell, for: indexPath) as! HomeCoinDetailsCell
         cell.selectionStyle = .none
-        cell.convertModel = HomeConvertModel()
+        cell.convertModel = baseVM.convertListModel[indexPath.row]
         return cell
     }
     

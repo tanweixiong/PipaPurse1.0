@@ -22,6 +22,9 @@ class MineViewModel: NSObject {
 
     lazy var mineListModel : [HomeMiningListModel] = [HomeMiningListModel]()
     
+    lazy var convertListModel : [HomeConvertModel] = [HomeConvertModel]()
+    
+    
     func loadSuccessfullyReturnedData(requestType: HTTPMethod, URLString : String, parameters : [String : Any]? = nil, showIndicator: Bool,finishedCallback : @escaping (_ data:Bool) -> ()) {
         baseViewModel.loadSuccessfullyReturnedData(requestType: requestType, URLString: URLString, parameters: parameters, showIndicator: showIndicator) {(model:HomeBaseModel) in
             //获取气泡
@@ -39,7 +42,9 @@ class MineViewModel: NSObject {
                 arr.addObjects(from: responseData.mineList!)
                 self.mineListModel = arr as! [HomeMiningListModel]
                 finishedCallback(responseData.mineList?.count != 0 ? true : false)
-            //获取收益排行
+            //获取转换法币接口
+            }else if URLString.contains(ZYConstAPI.kAPIConvertCoinList){
+                finishedCallback(true)
             }
         }
     }

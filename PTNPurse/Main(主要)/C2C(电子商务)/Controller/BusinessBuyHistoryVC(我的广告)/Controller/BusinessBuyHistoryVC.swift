@@ -146,7 +146,8 @@ extension BusinessBuyHistoryVC {
         let token = (UserDefaults.standard.getUserInfo().token)!
         let entrustNo = entrustNo
         let language = Tools.getLocalLanguage()
-        let parameters = ["token":token,"entrustNo":entrustNo,"language":language]
+        let userNo = (UserDefaults.standard.getUserInfo().id?.stringValue)!
+        let parameters = ["token":token,"entrustNo":entrustNo,"language":language,"userNo":userNo]
         baseViewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIDelSpotEntrust, parameters: parameters, showIndicator: false) { (json) in
             self.viewModel.model.remove(at: index)
             self.tableView.reloadData()

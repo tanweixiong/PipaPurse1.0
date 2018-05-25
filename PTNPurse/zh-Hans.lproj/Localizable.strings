@@ -573,7 +573,7 @@
 "C2C_advertisement_status_Delegate" = "委托中";
 "C2C_advertisement_status_Finish" = "已完成";
 "C2C_advertisement_status_Drop" = "已下架";
-"C2C_advertisement_status_Match" = "匹配中";
+"C2C_advertisement_status_Match" = "自动撤销";
 
 "C2C_transaction_Matching" = "匹配中";
 "C2C_transaction_Completed" = "已完成";

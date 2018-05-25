@@ -79,7 +79,8 @@ extension BusinessBuyHistoryDetailsVC {
         let token = (UserDefaults.standard.getUserInfo().token)!
         let entrustNo = self.detailsViewModel.liberateModel.entrustNo!
         let language = Tools.getLocalLanguage()
-        let parameters = ["token":token,"entrustNo":entrustNo,"language":language]
+        let userNo = (UserDefaults.standard.getUserInfo().id?.stringValue)!
+        let parameters = ["token":token,"entrustNo":entrustNo,"language":language,"userNo":userNo]
         baseViewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIDelSpotEntrust, parameters: parameters, showIndicator: false) { (json) in
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: R_NotificationAdvertisingeReload), object: nil)
             SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "C2C_mine_my_advertisement_Drop_finish"))
