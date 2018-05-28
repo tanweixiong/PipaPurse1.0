@@ -91,6 +91,9 @@ public let R_HasChefGoodAtDishes = "Has_Chef_Good_At_Dishes"
 //刷新主页
 public let R_NotificationHomeReload = "R_Notification_Home_Reload"
 
+//刷新详情页面
+public let R_NotificationHomeConvertReload = "R_Notification_Home_Convert_Reload"
+
 //刷新银行卡列表
 public let R_NotificationBankListReload = "R_Notification_Bank_List_Reload"
 

@@ -138,7 +138,8 @@ struct ZYConstAPI {
     static let kAPISetUserAddress = kAPIBaseURL + "setUserAddress.do" //设置用户地址
     
     //**************************************转换法币*************************************************//
-    static let kAPIConvertCoinList = kAPIBaseURL + "setUserAddress.do" //获取法币列表
+    static let kAPIConvertCoinList = kAPIBaseURL + "getChange" //获取法币列表
+    static let kAPIChangeCoin = kAPIBaseURL + "change" //转换法币
     
     
     

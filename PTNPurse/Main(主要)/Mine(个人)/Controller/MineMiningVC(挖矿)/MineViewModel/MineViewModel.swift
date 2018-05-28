@@ -22,8 +22,9 @@ class MineViewModel: NSObject {
 
     lazy var mineListModel : [HomeMiningListModel] = [HomeMiningListModel]()
     
-    lazy var convertListModel : [HomeConvertModel] = [HomeConvertModel]()
+    lazy var homeConvertModel : HomeConvertModel = HomeConvertModel()!
     
+     lazy var homeConvertListModel : [HomeConvertListModel] = [HomeConvertListModel]()
     
     func loadSuccessfullyReturnedData(requestType: HTTPMethod, URLString : String, parameters : [String : Any]? = nil, showIndicator: Bool,finishedCallback : @escaping (_ data:Bool) -> ()) {
         baseViewModel.loadSuccessfullyReturnedData(requestType: requestType, URLString: URLString, parameters: parameters, showIndicator: showIndicator) {(model:HomeBaseModel) in
@@ -44,7 +45,14 @@ class MineViewModel: NSObject {
                 finishedCallback(responseData.mineList?.count != 0 ? true : false)
             //获取转换法币接口
             }else if URLString.contains(ZYConstAPI.kAPIConvertCoinList){
-                finishedCallback(true)
+                let responseData = Mapper<HomeConvertModel>().map(JSONObject: model.data)!
+                self.homeConvertModel = responseData
+                //下拉刷新
+                let arr = NSMutableArray()
+                arr.addObjects(from: self.homeConvertListModel)
+                arr.addObjects(from: responseData.changeList!)
+                self.homeConvertListModel = arr as! [HomeConvertListModel]
+                finishedCallback(responseData.changeList?.count != 0 ? true : false)
             }
         }
     }

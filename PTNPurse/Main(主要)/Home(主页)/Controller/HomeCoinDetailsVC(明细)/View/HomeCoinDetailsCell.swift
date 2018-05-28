@@ -52,11 +52,12 @@ class HomeCoinDetailsCell: UITableViewCell {
     }
     
     
-    var convertModel = HomeConvertModel(){
+    var convertModel = HomeConvertListModel(){
         didSet{
           statusLabel.text = LanguageHelper.getString(key: "convert")
-            
-            
+          unitLabel.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Num")
+          dataLabel.text = convertModel?.date
+          numberLabel.text = (convertModel?.number?.stringValue)!
           setConvertStyle()
         }
     }

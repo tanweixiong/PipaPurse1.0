@@ -65,7 +65,7 @@ class MineBindingDetailsVC: MainViewController {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), for: .normal)
         btn.setTitleColor(UIColor.white, for: .selected)
-        btn.setTitle("新增", for: .normal)
+        btn.setTitle(LanguageHelper.getString(key: "Home_Alert_Add"), for: .normal)
         btn.isEnabled = false
         btn.addTarget(self, action: #selector(determinebOnClick(_:)), for: .touchUpInside)
         return btn
@@ -82,14 +82,12 @@ extension MineBindingDetailsVC {
     
     @objc func determinebOnClick(_ sender:UIButton){
         if Tools.noPaymentPasswordIsSetToExecute() == false{ view.endEditing(true)
-        return}
-        
+            return}
         let bankCardNumber = bankCardNumberTF.text!
         if bankCardNumber.count > 21 || bankCardNumber.count < 13 {
             SVProgressHUD.showInfo(withStatus: "银行卡号需要在12-20位之间")
             return
         }
-
         let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
         input?.delegate = self
         input?.show()

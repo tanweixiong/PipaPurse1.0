@@ -251,7 +251,7 @@ extension BusinessaDvertisementVC {
     
     //获取币种
     func getCoin(){
-        let parameters = ["state":"3","type":"3"]
+        let parameters = ["state":"1","type":"3"]
         businessViewModel.loadCoinSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetCoin, parameters: parameters, showIndicator: false) {
             for item in 0...self.businessViewModel.coinModel.count {
                 if item != self.businessViewModel.coinModel.count {

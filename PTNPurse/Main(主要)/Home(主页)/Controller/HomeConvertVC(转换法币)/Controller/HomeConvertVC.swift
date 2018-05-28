@@ -10,17 +10,14 @@ import UIKit
 
 class HomeConvertVC: MainViewController {
     fileprivate let homeCoinDetailsCell = "HomeCoinDetailsCell"
-    fileprivate lazy var viewModel : HomeListDetsilsVM = HomeListDetsilsVM()
-    fileprivate lazy var baseVM : MineViewModel = MineViewModel()
     fileprivate var pageSize = 1
     fileprivate var lineSize = 10
-    
+    fileprivate lazy var viewModel : HomeListDetsilsVM = HomeListDetsilsVM()
+    fileprivate lazy var baseVM : MineViewModel = MineViewModel()
     @IBOutlet weak var availableLab: UILabel!
     @IBOutlet weak var freezeLab: UILabel!
     @IBOutlet weak var navi: UIView!{
-        didSet{
-            navi.backgroundColor = R_UIThemeColor
-        }
+        didSet{navi.backgroundColor = R_UIThemeColor}
     }
     @IBOutlet weak var convertBtn: UIButton!{
         didSet{
@@ -32,7 +29,7 @@ class HomeConvertVC: MainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        getData()
+        getListData(isRefresh: true)
     }
     
     lazy var detsilsAssetsView: HomeDetsilsAssetsView = {
@@ -69,6 +66,10 @@ class HomeConvertVC: MainViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(R_NotificationHomeConvertReload), object: nil)
+    }
 }
 
 extension HomeConvertVC {
@@ -77,27 +78,22 @@ extension HomeConvertVC {
         availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available") + "：0"
         freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：0"
         view.addSubview(tableView)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshConvert), name: NSNotification.Name(rawValue: R_NotificationHomeConvertReload), object: nil)
     }
     
-    func getData(){
-        let parameters = ["type":Tools.getPTNcoinNo(),"language":Tools.getLocalLanguage(),"token":(UserDefaults.standard.getUserInfo().token)!]
-        viewModel.loadDetailsSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetCoinDetail, parameters: parameters, showIndicator: false) {
-            let model = self.viewModel.model.userWallet
-            let enableBalance = model?.enableBalance == nil ? "0" : model?.enableBalance
-            self.detsilsAssetsView.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available")  + "：" + enableBalance!
-            let unableBalance = model?.unableBalance == nil ? "0" : model?.unableBalance
-            self.detsilsAssetsView.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") +  "：" + unableBalance!
-            self.getListData(isRefresh: false)
-        }
+    @objc func refreshConvert(){
+         getListData(isRefresh: true)
     }
 
     func getListData(isRefresh:Bool){
         if isRefresh {
             self.pageSize = 1
-            self.baseVM.convertListModel.removeAll()
+            self.baseVM.homeConvertListModel.removeAll()
         }
         let parameters = ["token":(UserDefaults.standard.getUserInfo().token)!,"pageSize":"\(self.pageSize)","lineSize":"\(self.lineSize)"]
-        baseVM.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIConvertCoinList, parameters: parameters, showIndicator: false) { (hasData:Bool) in
+        baseVM.loadSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIConvertCoinList, parameters: parameters, showIndicator: false) { (hasData:Bool) in
+            self.detsilsAssetsView.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available") + "：" + (self.baseVM.homeConvertModel.fakebalance?.stringValue)!
+            self.detsilsAssetsView.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：" + (self.baseVM.homeConvertModel.totalbalance?.stringValue)!
             if hasData {
                self.pageSize = self.pageSize + 1
             }
@@ -108,7 +104,7 @@ extension HomeConvertVC {
 
 extension HomeConvertVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return baseVM.convertListModel.count
+        return baseVM.homeConvertListModel.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -122,7 +118,9 @@ extension HomeConvertVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: homeCoinDetailsCell, for: indexPath) as! HomeCoinDetailsCell
         cell.selectionStyle = .none
-        cell.convertModel = baseVM.convertListModel[indexPath.row]
+        if  baseVM.homeConvertListModel != nil {
+             cell.convertModel = baseVM.homeConvertListModel[indexPath.row]
+        }
         return cell
     }
     

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class HomeSubmitConvertVC: MainViewController {
+    fileprivate lazy var  viewModel : BaseViewModel = BaseViewModel()
     @IBOutlet weak var availableLab: UILabel!
     @IBOutlet weak var freezeLab: UILabel!
     @IBOutlet weak var convertBtn: UIButton!{
@@ -30,6 +32,7 @@ class HomeSubmitConvertVC: MainViewController {
     @IBOutlet weak var convertNumTF: UITextField!{
         didSet{
             convertNumTF.placeholder = LanguageHelper.getString(key: "C2C_publish_order_Please_enter_the_number_of_transactions")
+            convertNumTF.keyboardType = .decimalPad
         }
     }
     var model = HomeWalletsModel()
@@ -50,16 +53,27 @@ class HomeSubmitConvertVC: MainViewController {
         return view
     }()
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+    @IBAction func convertOnClick(_ sender: UIButton) {
+        let convertNum = self.convertNumTF.text!
+        if convertNum != "" {
+            let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+            input?.delegate = self
+            input?.show()
+        }else{
+            SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "homePage_Enter_Conversion_Prompt"))
+        }
+    }
+    
+    @IBAction func onClick(_ sender: Any) {
+         self.view.endEditing(true)
     }
     
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return OCTools.existenceDecimal(textField.text, range: range, replacementString: string)
     }
     
-    @IBAction func convertOnClick(_ sender: UIButton) {
-        
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,6 +89,25 @@ extension HomeSubmitConvertVC {
          freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：0"
     }
    
+}
+
+extension HomeSubmitConvertVC:PaymentPasswordDelegate{
+    func inputPaymentPassword(_ pwd: String!) -> String! {
+        let parameters = ["token":(UserDefaults.standard.getUserInfo().token)!,"number":self.convertNumTF.text!,"password":pwd.md5()]
+        viewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIChangeCoin, parameters: parameters, showIndicator: false) { (model:HomeBaseModel) in
+            SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "homePage_Details_Conversion_Finish"))
+             NotificationCenter.default.post(name: NSNotification.Name(rawValue: R_NotificationHomeConvertReload), object: nil)
+        }
+        return pwd
+    }
+    
+    func inputPaymentPasswordChangeForgetPassword() {
+        let forgetvc = ModifyTradePwdViewController()
+        forgetvc.type = ModifyPwdType.tradepwd
+        forgetvc.status = .modify
+        forgetvc.isNeedNavi = false
+        self.navigationController?.pushViewController(forgetvc, animated: true)
+    }
 }
 
 

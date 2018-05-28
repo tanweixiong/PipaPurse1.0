@@ -258,7 +258,7 @@ extension BusinessVC {
     
     //获取币种
     func getCoin(){
-        let parameters = ["state":"3","type":"3"]
+        let parameters = ["state":"1","type":"3"]
         SVProgressHUD.show(withStatus: LanguageHelper.getString(key: "please_wait"))
         viewModel.loadCoinSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetCoin, parameters: parameters, showIndicator: false) {
             SVProgressHUD.dismiss()

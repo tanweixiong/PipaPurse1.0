@@ -13,7 +13,8 @@ class HomeConvertModel: Mappable {
     var coinImg:String?
     var totalbalance:NSNumber?
     var fakebalance:NSNumber?
-    var changeList:String?
+    var coinCore:String?
+    var changeList:[HomeConvertListModel]?
     
     required init?(map: Map) {
         
@@ -25,6 +26,7 @@ class HomeConvertModel: Mappable {
     
     func mapping(map: Map) {
         coinImg     <- map["coinImg"]
+        coinCore     <- map["coinCore"]
         totalbalance     <- map["totalbalance"]
         fakebalance     <- map["fakebalance"]
         changeList     <- map["changeList"]
@@ -32,10 +34,14 @@ class HomeConvertModel: Mappable {
 }
 
 class HomeConvertListModel: Mappable {
-    var coinImg:String?
-    var totalbalance:NSNumber?
-    var fakebalance:NSNumber?
-    var changeList:String?
+    var id:NSNumber?
+    var orderNo:String?
+    var userNo:NSNumber?
+    var coinNo:NSNumber?
+    var number:NSNumber?
+    var address:String?
+    var remark:String?
+    var date:String?
     
     required init?(map: Map) {
         
@@ -46,9 +52,14 @@ class HomeConvertListModel: Mappable {
     }
     
     func mapping(map: Map) {
-        coinImg     <- map["coinImg"]
-        totalbalance     <- map["totalbalance"]
-        fakebalance     <- map["fakebalance"]
-        changeList     <- map["changeList"]
+        id     <- map["id"]
+        orderNo     <- map["orderNo"]
+        userNo     <- map["userNo"]
+        coinNo     <- map["coinNo"]
+        number     <- map["number"]
+        address     <- map["address"]
+        remark     <- map["remark"]
+        address     <- map["address"]
+        date     <- map["date"]
     }
 }
