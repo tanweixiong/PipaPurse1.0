@@ -17,6 +17,7 @@
                 <outlet property="convertNumTF" destination="XCU-lD-34T" id="5VT-18-9Nc"/>
                 <outlet property="freezeLab" destination="ila-ty-46X" id="fb7-Gg-fuT"/>
                 <outlet property="navi" destination="OgY-7v-Hbf" id="bR4-D3-aBZ"/>
+                <outlet property="unitLab" destination="vQb-K2-Dlt" id="GII-KB-kne"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

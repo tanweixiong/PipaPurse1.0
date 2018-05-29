@@ -31,12 +31,13 @@ func       YMAKE(_ y: CGFloat) -> CGFloat {
 
 //极光推送appKey
 public let R_UITheme_JPushKey = "356c31a60d81ebcec7c65a0d"
-
+//定义项目名称
+public let R_Theme_Project_Name = "btwotc"
 //环信AppKey
 public let R_huangXinChatKey = "1163171010178071#ec"
 
 //二维码标识
-public let R_Theme_QRCode = "ptn"
+public let R_Theme_QRCode = "btwotc"
 
 //K线图的地址
 public let R_Theme_lineGraph = "http://10.0.0.11/dhs-wallet/"

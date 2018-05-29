@@ -13,9 +13,13 @@ class HomeSubmitConvertVC: MainViewController {
     fileprivate lazy var  viewModel : BaseViewModel = BaseViewModel()
     var fakebalance = String() //现有资产
     var availableAssets = String()
-    
     @IBOutlet weak var availableLab: UILabel!
     @IBOutlet weak var freezeLab: UILabel!
+    @IBOutlet weak var unitLab: UILabel!{
+        didSet{
+            unitLab.text = R_Theme_Project_Name
+        }
+    }
     @IBOutlet weak var convertBtn: UIButton!{
         didSet{
             convertBtn.layer.borderWidth = 1

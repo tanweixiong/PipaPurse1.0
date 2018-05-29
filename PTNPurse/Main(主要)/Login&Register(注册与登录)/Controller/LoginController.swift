@@ -16,7 +16,7 @@ class LoginController: UIViewController {
         view.addSubview(loginVw)
         
         let marqueeView = CQMarqueeView.init(frame: CGRect(x: SCREEN_WIDTH/2 - 174.5/2 , y: YMAKE(295), width: 174.5, height: YMAKE(42)))
-        marqueeView.marqueeTextArray = ["Welcome to pipa"]
+        marqueeView.marqueeTextArray = ["Welcome to " + R_Theme_Project_Name]
         marqueeView.centerX  = self.view.centerX
         view.addSubview(marqueeView)
     }
