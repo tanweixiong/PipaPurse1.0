@@ -27,6 +27,8 @@ class BusinessWantBuyVC: MainViewController {
     fileprivate var bankCardNumber = String()
     fileprivate var bankCardId = String()
     fileprivate var bank = String()
+    fileprivate var retentionNumber:Int = 4 //保留币种4位小数
+    fileprivate var retentionCny:Int = 2 //保留CNY2位小数
     var businessWantBuyData = BusinessWantBuyData()
     var detailsModel = BusinessModel()
     var isDetails = false
@@ -76,8 +78,11 @@ class BusinessWantBuyVC: MainViewController {
         view.isHidden = self.isDetails ? true : false
         view.coinNumTF.placeholder = self.style == .buyStyle ? LanguageHelper.getString(key: "C2C_home_Please_enter_the_purchase") : LanguageHelper.getString(key: "C2C_home_Please_enter_the_number_of_sales")
         view.disPriceTF.placeholder = LanguageHelper.getString(key: "C2C_home_Converted_amount")
-        
+        view.disPriceTF.delegate = self
+        view.disPriceTF.tag = 1
         view.coinNumTF.textColor = UIColor.R_UIColorFromRGB(color: 0x4D4F51)
+        view.coinNumTF.delegate = self
+        view.coinNumTF.tag = 2
         view.disPriceTF.textColor = UIColor.R_UIColorFromRGB(color: 0x4D4F51)
         view.coinNameLab.textColor = UIColor.R_UIColorFromRGB(color: 0x4D4F51)
         view.disNameLab.textColor = UIColor.R_UIColorFromRGB(color: 0x4D4F51)
@@ -94,6 +99,15 @@ class BusinessWantBuyVC: MainViewController {
         button.isHidden = isDetails ? true : false
         return button
     }()
+    
+    override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.tag == 2 {
+           return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: retentionNumber)
+        }else if textField.tag == 1 {
+           return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: retentionCny)
+        }
+        return true
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -250,7 +264,7 @@ extension BusinessWantBuyVC {
             }
               let price = self.businessWantBuyData.entrustPrice
               let cny = (price?.floatValue)! * Float(num)!
-              businessConvertView.disPriceTF.text = "\(cny)"
+              businessConvertView.disPriceTF.text = String(format: "%.2f", cny)
         }else{
             let cny = businessConvertView.disPriceTF.text!
             if cny == "" || textField.text! == ""
@@ -261,7 +275,7 @@ extension BusinessWantBuyVC {
             }
             let price = self.businessWantBuyData.entrustPrice
             let newprice =  Float(cny)! / (price?.floatValue)!
-            businessConvertView.coinNumTF.text = "\(newprice)"
+            businessConvertView.coinNumTF.text = String(format: "%.4f", newprice)
         }
     }
     

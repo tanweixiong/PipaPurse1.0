@@ -35,7 +35,9 @@ class HomeSubmitConvertVC: MainViewController {
     @IBOutlet weak var convertNumTF: UITextField!{
         didSet{
             convertNumTF.placeholder = LanguageHelper.getString(key: "C2C_publish_order_Please_enter_the_number_of_transactions")
-            convertNumTF.keyboardType = .decimalPad
+            convertNumTF.keyboardType = .numberPad
+            convertNumTF.delegate = self
+            
         }
     }
     var model = HomeWalletsModel()
@@ -47,7 +49,12 @@ class HomeSubmitConvertVC: MainViewController {
     
     @IBAction func convertOnClick(_ sender: UIButton) {
         let convertNum = self.convertNumTF.text!
-        if convertNum != "" {
+        if convertNum.count != 0 {
+            let newConvertStr = convertNum.subString(start: 0, length: 1)
+            if newConvertStr == "0" {
+                SVProgressHUD.showInfo(withStatus:LanguageHelper.getString(key: "Home_Conver_Transactions_Number"))
+                return
+            }
             let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
             input?.delegate = self
             input?.show()
@@ -61,7 +68,7 @@ class HomeSubmitConvertVC: MainViewController {
     }
     
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return OCTools.existenceDecimal(textField.text, range: range, replacementString: string)
+        return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: 0)
     }
     
     deinit {
