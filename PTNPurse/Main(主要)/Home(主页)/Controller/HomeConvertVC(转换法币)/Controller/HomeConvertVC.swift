@@ -82,6 +82,7 @@ extension HomeConvertVC {
         if isRefresh {
             self.pageSize = 1
             self.baseVM.homeConvertListModel.removeAll()
+            self.tableView.mj_footer.resetNoMoreData()
         }
         let parameters = ["token":(UserDefaults.standard.getUserInfo().token)!,"pageSize":"\(self.pageSize)","lineSize":"\(self.lineSize)"]
         baseVM.loadSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIConvertCoinList, parameters: parameters, showIndicator: false) { (hasData:Bool) in
@@ -89,9 +90,13 @@ extension HomeConvertVC {
             self.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：" + (self.baseVM.homeConvertModel.totalbalance?.stringValue)!
             if hasData {
                self.pageSize = self.pageSize + 1
+            }else{
+               self.tableView.mj_footer.endRefreshingWithNoMoreData()
             }
             self.tableView.reloadData()
         }
+        self.tableView.mj_footer.endRefreshing()
+        self.tableView.mj_header.endRefreshing()
     }
 }
 
