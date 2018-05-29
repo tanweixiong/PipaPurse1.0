@@ -260,7 +260,7 @@ extension BusinessTransactionVC {
                 listArray.add(LanguageHelper.getString(key: "C2C_payment_WeChat"))
             }
             
-            let alipayStr = UserDefaults.standard.getUserInfo().apay!
+            alipayStr = UserDefaults.standard.getUserInfo().apay!
             if  alipayStr != "" {
                 listArray.add(LanguageHelper.getString(key: "C2C_payment_Alipay") + alipayStr)
             }else{
@@ -417,6 +417,7 @@ extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
             }else if method.contains(LanguageHelper.getString(key: "C2C_payment_Alipay")) {
                 account = method
                 //前往设置支付宝
+                alipayStr = (UserDefaults.standard.getUserInfo().apay)!
                 if alipayStr == "" {
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .alipayStyle
@@ -427,13 +428,13 @@ extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
             }else if method.contains(LanguageHelper.getString(key: "C2C_payment_WeChat")){
                 account = method
                 //前往设置微信
+                weChatStr = (UserDefaults.standard.getUserInfo().weChat)!
                 if weChatStr == "" {
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .weChatStyle
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }
-                
             }
             self.methodTF.text = account
             self.methodType = Tools.getPaymentMethod(method)
