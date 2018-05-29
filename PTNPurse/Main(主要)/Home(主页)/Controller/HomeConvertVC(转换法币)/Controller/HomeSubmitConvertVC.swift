@@ -11,6 +11,9 @@ import SVProgressHUD
 
 class HomeSubmitConvertVC: MainViewController {
     fileprivate lazy var  viewModel : BaseViewModel = BaseViewModel()
+    var fakebalance = String() //现有资产
+    var availableAssets = String()
+    
     @IBOutlet weak var availableLab: UILabel!
     @IBOutlet weak var freezeLab: UILabel!
     @IBOutlet weak var convertBtn: UIButton!{
@@ -41,17 +44,6 @@ class HomeSubmitConvertVC: MainViewController {
         super.viewDidLoad()
         setupUI()
     }
-    
-    lazy var detsilsAssetsView: HomeDetsilsAssetsView = {
-        let view = Bundle.main.loadNibNamed("HomeDetsilsAssetsView", owner: nil, options: nil)?.last as! HomeDetsilsAssetsView
-        view.frame = CGRect(x: 0, y: Int(MainViewControllerUX.naviNormalHeight + 15), width: Int(SCREEN_WIDTH), height: 35)
-        view.backgroundColor = R_UIThemeSkyBlueColor
-        let enableBalance = model?.enableBalance == nil ? "0" : model?.enableBalance
-        view.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available")  + "：" + enableBalance!
-        let unableBalance = model?.unableBalance == nil ? "0" : model?.unableBalance
-        view.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") +  "：" + unableBalance!
-        return view
-    }()
     
     @IBAction func convertOnClick(_ sender: UIButton) {
         let convertNum = self.convertNumTF.text!
@@ -85,10 +77,9 @@ class HomeSubmitConvertVC: MainViewController {
 extension HomeSubmitConvertVC {
     func setupUI(){
          setNormalNaviBar(title:LanguageHelper.getString(key: "Home_Alert_Conver"))
-         availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available") + "：0"
-         freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：0"
+         availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available") + "：" + self.fakebalance
+         freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：" + self.availableAssets
     }
-   
 }
 
 extension HomeSubmitConvertVC:PaymentPasswordDelegate{
@@ -97,6 +88,9 @@ extension HomeSubmitConvertVC:PaymentPasswordDelegate{
         viewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIChangeCoin, parameters: parameters, showIndicator: false) { (model:HomeBaseModel) in
             SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "homePage_Details_Conversion_Finish"))
              NotificationCenter.default.post(name: NSNotification.Name(rawValue: R_NotificationHomeConvertReload), object: nil)
+             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                  self.navigationController?.popViewController(animated: true)
+            })
         }
         return pwd
     }

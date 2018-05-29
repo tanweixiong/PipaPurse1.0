@@ -12,6 +12,15 @@ class HomeDetsilsAssetsView: UIView {
 
     @IBOutlet weak var availableLab: UILabel!
     @IBOutlet weak var freezeLab: UILabel!
+    
+    var model = HomeConvertModel(){
+        didSet{
+
+            self.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available") + "：" + (self.model?.fakebalance?.stringValue)!
+            self.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：" + (self.model?.totalbalance?.stringValue)!
+        }
+    }
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

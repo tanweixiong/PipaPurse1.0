@@ -32,15 +32,6 @@ class HomeConvertVC: MainViewController {
         getListData(isRefresh: true)
     }
     
-    lazy var detsilsAssetsView: HomeDetsilsAssetsView = {
-        let view = Bundle.main.loadNibNamed("HomeDetsilsAssetsView", owner: nil, options: nil)?.last as! HomeDetsilsAssetsView
-        view.frame = CGRect(x: 0, y: Int(MainViewControllerUX.naviNormalHeight + 15), width: 375, height: 35)
-        view.backgroundColor = R_UIThemeSkyBlueColor
-        view.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available") + "：0"
-        view.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：0"
-        return view
-    }()
-    
     lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame: CGRect(x: 0, y: navi.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - navi.frame.maxY - 50))
         tableView.showsVerticalScrollIndicator = false
@@ -63,6 +54,8 @@ class HomeConvertVC: MainViewController {
         if self.viewModel.model.userWallet == nil {
             let vc = HomeSubmitConvertVC()
             vc.model = self.viewModel.model.userWallet
+            vc.fakebalance = (self.baseVM.homeConvertModel.fakebalance?.stringValue)!
+            vc.availableAssets = (self.baseVM.homeConvertModel.totalbalance?.stringValue)!
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -92,8 +85,8 @@ extension HomeConvertVC {
         }
         let parameters = ["token":(UserDefaults.standard.getUserInfo().token)!,"pageSize":"\(self.pageSize)","lineSize":"\(self.lineSize)"]
         baseVM.loadSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIConvertCoinList, parameters: parameters, showIndicator: false) { (hasData:Bool) in
-            self.detsilsAssetsView.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available") + "：" + (self.baseVM.homeConvertModel.fakebalance?.stringValue)!
-            self.detsilsAssetsView.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：" + (self.baseVM.homeConvertModel.totalbalance?.stringValue)!
+            self.availableLab.text = LanguageHelper.getString(key: "homepage_Amount_Available") + "：" + (self.baseVM.homeConvertModel.fakebalance?.stringValue)!
+            self.freezeLab.text = LanguageHelper.getString(key: "homepage_Freeze_Amount") + "：" + (self.baseVM.homeConvertModel.totalbalance?.stringValue)!
             if hasData {
                self.pageSize = self.pageSize + 1
             }
@@ -118,7 +111,7 @@ extension HomeConvertVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: homeCoinDetailsCell, for: indexPath) as! HomeCoinDetailsCell
         cell.selectionStyle = .none
-        if  baseVM.homeConvertListModel != nil {
+        if  baseVM.homeConvertListModel.count != 0 {
              cell.convertModel = baseVM.homeConvertListModel[indexPath.row]
         }
         return cell
