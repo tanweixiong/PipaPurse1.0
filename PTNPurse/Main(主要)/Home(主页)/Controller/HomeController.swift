@@ -293,20 +293,20 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             self.navigationController?.pushViewController(homeAddCoinVC, animated: true)
             return
         case 7 :
-            let user = UserDefaults.standard.getUserInfo()
-            user.ptnaddress = "123"
-            UserDefaults.standard.saveCustomObject(customObject: user, key: R_UserInfo)
-            
-            print((UserDefaults.standard.getUserInfo().ptnaddress)!)
-            
             let maxY = headView.anymoreBtn.frame.maxY + 50
             let titleArr = NSMutableArray(array: [LanguageHelper.getString(key: "ic_Home_Code")])
             let imageArr = NSMutableArray(array: ["ic_home_code"])
+            //新增备份和导入功能
             if UserDefaults.standard.getUserInfo().ptnaddress != "" && UserDefaults.standard.getUserInfo().ptnaddress != nil {
+                titleArr.add(LanguageHelper.getString(key: "homePage_Export"))
+                imageArr.add("ic_home_backup")
                 titleArr.add(LanguageHelper.getString(key: "Home_Alert_Conver"))
                 imageArr.add("ic_home_conver")
+            }else{
+                titleArr.add(LanguageHelper.getString(key: "homePage_Import"))
+                imageArr.add("ic_home_backup")
             }
-            let height:CGFloat = CGFloat(titleArr.count * 45)
+            let height:CGFloat = CGFloat(titleArr.count * 43)
             let menuView = PST_MenuView.init(frame: CGRect(x: SCREEN_WIDTH - 20 - 120, y: maxY, width: 120, height: height), titleArr: titleArr as! [Any], imgArr: imageArr as! [Any], arrowOffset: 100, rowHeight: 40, layoutType: PST_MenuViewLayoutType(rawValue: 0)!, directionType: PST_MenuViewDirectionType(rawValue: 0)!, delegate: self)
             menuView?.arrowColor = UIColor.white
             menuView?.titleColor = UIColor.R_UIColorFromRGB(color: 0x545B71)
@@ -339,9 +339,19 @@ extension HomeController:PST_MenuViewDelegate{
                 }, completion: { (isfinish:Bool) in
                 })
             }
-        }else if index == 1 {
-            let vc = HomeConvertVC()
-            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            if UserDefaults.standard.getUserInfo().ptnaddress != "" && UserDefaults.standard.getUserInfo().ptnaddress != nil {
+                if index == 1 {
+                    let homeBackupDetailsVC = HomeBackupDetailsVC()
+                    self.navigationController?.pushViewController(homeBackupDetailsVC, animated: true)
+                }else if index == 2 {
+                    let vc = HomeConvertVC()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }else{
+                let fileSelectViewController = FileSelectViewController()
+                self.navigationController?.pushViewController(fileSelectViewController, animated: true)
+            }
         }
     }
 }

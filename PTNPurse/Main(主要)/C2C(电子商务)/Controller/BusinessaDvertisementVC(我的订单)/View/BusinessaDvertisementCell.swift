@@ -26,12 +26,16 @@ class BusinessaDvertisementCell: UITableViewCell {
     @IBOutlet weak var transactionDataLab: UILabel!
     @IBOutlet weak var backgroundVw: UIView!
     
-    
     @IBOutlet weak var orderNumTLab: UILabel!
     @IBOutlet weak var orderTypeTLab: UILabel!
     @IBOutlet weak var orderUnitLab: UILabel!
     @IBOutlet weak var orderNumberLab: UILabel!
     @IBOutlet weak var orderTimeLab: UILabel!
+    @IBOutlet weak var orderSumLab: UILabel!
+    @IBOutlet weak var transactionSumLab: UILabel!
+//    fileprivate var maximumHeight:CGFloat = 0
+    
+    
     var model = BusinessaDvertisementModel(){
         didSet{
             let photo = model?.photo == nil ? "" :  model?.photo
@@ -43,16 +47,18 @@ class BusinessaDvertisementCell: UITableViewCell {
             //状态，0：匹配中，1：已完成，2：撤销，3：等待买方付款，4：等待卖方确认，5：未付款回滚订单，6：纠纷强制打款，7：纠纷强制回滚
             stateLab.text = Tools.getBusinessaTransactionStyle(Style: (model?.state?.stringValue)!)
             
-            orderNumLab.text = (model?.entrustNo)!
+            orderNumLab.text = model?.orderNo == nil ? "" : (model?.orderNo)!
             
             transactionTypeLab.text = model?.dealType == 0 ? LanguageHelper.getString(key: "C2C_home_Buy") : LanguageHelper.getString(key: "C2C_home_Sell")  + (model?.coinCore)!
-            transactionTypeLab.textColor = model?.dealType == 0 ? UIColor.R_UIColorFromRGB(color: 0x00D85A) : UIColor.R_UIColorFromRGB(color: 0xFF7052)
+            transactionTypeLab.textColor = model?.dealType == 0 ? UIColor.R_UIColorFromRGB(color: 0xFF7052) : UIColor.R_UIColorFromRGB(color: 0x00D85A)
             
             transactionPriceLab.text = Tools.setNSDecimalNumber((model?.dealPrice)!) + " CNY"
             
             transactionCoinPriceLab.text = Tools.setNSDecimalNumber((model?.dealNum)!) + " 个"
             
             transactionDataLab.text = model?.dateFormatDate
+            
+            transactionSumLab.text = Tools.setNSDecimalNumber((model?.sumPrice)!) + " CNY"
             
             style = model?.dealType == 0 ? .detriment : .sell
    
@@ -102,11 +108,12 @@ class BusinessaDvertisementCell: UITableViewCell {
                 cancelOrderBtn.isHidden = true
             }
         }
+
         setStartLayout()
         //发起纠纷
         if style == .sell && status == 4{
             backgroundVw.addSubview(initiateDisputeBtn)
-            initiateDisputeBtn.frame = CGRect(x: 23, y: self.transactionDataLab.frame.maxY + 20, width: 95, height: 30)
+            initiateDisputeBtn.frame = CGRect(x: 23, y: orderSumLab.frame.maxY + 10, width: 95, height: 30)
         }else{
              initiateDisputeBtn.isHidden = true
         }
@@ -125,21 +132,21 @@ class BusinessaDvertisementCell: UITableViewCell {
         
         remindBtn.snp.updateConstraints { (make) in
             make.right.equalTo(self.backgroundVw.snp.right).offset(-15)
-            make.top.equalTo(self.transactionDataLab.snp.bottom).offset(20)
+            make.top.equalTo(self.orderSumLab.snp.bottom).offset(10)
             make.width.equalTo(width)
             make.height.equalTo(30)
         }
         
         cancelOrderBtn.snp.updateConstraints { (make) in
             make.right.equalTo(self.remindBtn.snp.left).offset(right_x)
-            make.top.equalTo(self.transactionDataLab.snp.bottom).offset(20)
+            make.top.equalTo(self.orderSumLab.snp.bottom).offset(10)
             make.width.equalTo(cancelOrderWidth)
             make.height.equalTo(30)
         }
         
         contactBtn.snp.updateConstraints { (make) in
             make.right.equalTo(self.cancelOrderBtn.snp.left).offset(contact_x)
-            make.top.equalTo(self.transactionDataLab.snp.bottom).offset(20)
+            make.top.equalTo(self.orderSumLab.snp.bottom).offset(10)
             make.width.equalTo(contactWidth)
             make.height.equalTo(contactHeight)
         }
@@ -148,7 +155,7 @@ class BusinessaDvertisementCell: UITableViewCell {
     lazy var contactBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle(LanguageHelper.getString(key: "C2C_mine_My_advertisement_Contact"), for: .normal)
-        btn.frame = CGRect(x: 0, y: transactionDataLab.frame.maxY, width: 95, height:30)
+        btn.frame = CGRect(x: 0, y: 0, width: 95, height:30)
         btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xCFD3D5), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         btn.layer.cornerRadius = 5
@@ -162,7 +169,7 @@ class BusinessaDvertisementCell: UITableViewCell {
     lazy var cancelOrderBtn : UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle(LanguageHelper.getString(key: "C2C_mine_My_advertisement_Cancel"), for: .normal)
-        btn.frame = CGRect(x: 0, y: transactionDataLab.frame.maxY, width: 95, height:30)
+        btn.frame = CGRect(x: 0, y: 0, width: 95, height:30)
         btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xCFD3D5), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         btn.layer.cornerRadius = 5
@@ -176,7 +183,7 @@ class BusinessaDvertisementCell: UITableViewCell {
     lazy var remindBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle(LanguageHelper.getString(key: "C2C_transaction_Confirm_Order"), for: .normal)
-        btn.frame = CGRect(x: 0, y: transactionDataLab.frame.maxY, width: 95, height:30)
+        btn.frame = CGRect(x: 0, y: 0, width: 95, height:30)
         btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xCFD3D5), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         btn.layer.cornerRadius = 5
@@ -209,6 +216,7 @@ class BusinessaDvertisementCell: UITableViewCell {
         orderNumberLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Quantity") + "："
         orderTimeLab.text = LanguageHelper.getString(key: "homePage_Finish_Details_Transaction_Time") + "："
         orderNumTLab.text = LanguageHelper.getString(key: "C2C_transaction_finish_OrderNum") + "："
+        orderSumLab.text = LanguageHelper.getString(key: "Mine_Transaction_SumPrice") + "："
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

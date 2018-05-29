@@ -20,6 +20,7 @@ class HomeSubmitConvertVC: MainViewController {
         didSet{
             convertBtn.layer.borderWidth = 1
             convertBtn.layer.borderColor = R_UIThemeColor.cgColor
+            convertBtn.setTitle(LanguageHelper.getString(key: "convert"), for: .normal)
         }
     }
     @IBOutlet weak var navi: UIView!{

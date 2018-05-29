@@ -33,6 +33,7 @@ class BusinessWantBuyVC: MainViewController {
     var detailsModel = BusinessModel()
     var isDetails = false
     var entrustNo = String()
+    var orderNumber = String()
     var receivablesType = String()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,7 +132,7 @@ extension BusinessWantBuyVC {
     
     func postData(tradePassword:String){
         let token = (UserDefaults.standard.getUserInfo().token)!
-        let entrustNo = self.entrustNo
+        let entrustNo = self.orderNumber
         let tradeNum = businessConvertView.coinNumTF.text!
         let md5Psd = tradePassword.md5()
         let remark = businessTransactionDeView.remarkLab.text!
@@ -142,7 +143,7 @@ extension BusinessWantBuyVC {
             ,"tradePassword":md5Psd
             ,"remark":remark
             ,"language":language
-            ] as [String : Any]
+            ,"bankId":"0"] as [String : Any]
         
         //如果是银行卡则需要多传
         if receivablesType == "1" {
@@ -179,8 +180,10 @@ extension BusinessWantBuyVC {
     func setSubmitBtnStyle(){
         if submitBtn.isSelected {
             submitBtn.backgroundColor = R_UIThemeColor
+            submitBtn.isEnabled = true
         }else{
             submitBtn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)
+            submitBtn.isEnabled = false
         }
     }
     
@@ -240,9 +243,8 @@ extension BusinessWantBuyVC {
     }
     
     @objc func textFieldTextDidChangeOneCI(notification:NSNotification){
-        let coinNum = businessConvertView.coinNumTF.text!
-        self.submitBtn.isSelected = coinNum != "" ?  true : false
-        self.submitBtn.isEnabled = coinNum != "" ? true : false
+        let textfields = notification.object as! UITextField
+        submitBtn.isSelected = textfields.text != "" ?  true : false
         setSubmitBtnStyle()
         //判断是哪个输入框
         let textField = notification.object as! UITextField
@@ -264,7 +266,7 @@ extension BusinessWantBuyVC {
             }
               let price = self.businessWantBuyData.entrustPrice
               let cny = (price?.floatValue)! * Float(num)!
-              businessConvertView.disPriceTF.text = String(format: "%.2f", cny)
+              businessConvertView.disPriceTF.text = "\(cny)"
         }else{
             let cny = businessConvertView.disPriceTF.text!
             if cny == "" || textField.text! == ""
@@ -275,7 +277,7 @@ extension BusinessWantBuyVC {
             }
             let price = self.businessWantBuyData.entrustPrice
             let newprice =  Float(cny)! / (price?.floatValue)!
-            businessConvertView.coinNumTF.text = String(format: "%.4f", newprice)
+            businessConvertView.coinNumTF.text = "\(newprice)"
         }
     }
     
@@ -309,15 +311,8 @@ extension BusinessWantBuyVC {
     func setupPaymentPassword(){
          if Tools.noPaymentPasswordIsSetToExecute() == false{return}
         if self.checkInput() {
-            let input = InputPaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
+            let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
             input?.delegate = self
-            input?.setPaymentPasswordAlertPriceTitle("")
-            input?.setPaymentPasswordAlertHandicapCostTitle("")
-            input?.setPaymentPasswordAlertPrice("")
-            input?.setPaymentPasswordAlertHandicapCost("")
-            input?.paymentPasswordAlertVw.height = 190
-            input?.paymentPasswordAlertVw.titleLabel.text = LanguageHelper.getString(key: "homePage_Prompt_Enter_PayPassword")
-            input?.paymentPasswordAlertVw.forgetPwdBtn.setTitle(LanguageHelper.getString(key: "forget_password"), for: .normal)
             input?.show()
         }
     }
@@ -340,7 +335,7 @@ extension BusinessWantBuyVC:UIScrollViewDelegate{
     }
 }
 
-extension BusinessWantBuyVC :InputPaymentPasswordDelegate{
+extension BusinessWantBuyVC :PaymentPasswordDelegate{
     
     func inputPaymentPassword(_ pwd: String!) -> String! {
         self.postData(tradePassword: pwd)

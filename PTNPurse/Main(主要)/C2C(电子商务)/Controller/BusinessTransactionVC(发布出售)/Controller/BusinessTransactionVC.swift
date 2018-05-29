@@ -98,6 +98,8 @@ class BusinessTransactionVC: MainViewController {
            return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemePostPurchasePriceLimit)
         } else if  textField == self.transactionsNumTF {
              return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemePostPurchaseLimit)
+        } else if textField == self.transactionsMinTF{
+             return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemePostPurchaseLimit)
         }
         return true
     }
@@ -358,6 +360,7 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
                     self.transactionsPriceTF = cell.textfield
                 }else if indexPath.row == 3 {
                     cell.textfield.keyboardType = .decimalPad
+                    cell.textfield.delegate = self
                     cell.thinLinesVw.isHidden = false
                     cell.unitLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Num")
                     self.transactionsMinTF = cell.textfield
