@@ -24,7 +24,9 @@ class BusinessaDvertisementCell: UITableViewCell {
     @IBOutlet weak var transactionPriceLab: UILabel!
     @IBOutlet weak var transactionCoinPriceLab: UILabel!
     @IBOutlet weak var transactionDataLab: UILabel!
-    @IBOutlet weak var backgroundVw: UIView!
+    @IBOutlet weak var transactionSumLab: UILabel!
+    @IBOutlet weak var transactionPaymentLab: UILabel!
+    @IBOutlet weak var transactionPaymentX: NSLayoutConstraint!
     
     @IBOutlet weak var orderNumTLab: UILabel!
     @IBOutlet weak var orderTypeTLab: UILabel!
@@ -32,9 +34,11 @@ class BusinessaDvertisementCell: UITableViewCell {
     @IBOutlet weak var orderNumberLab: UILabel!
     @IBOutlet weak var orderTimeLab: UILabel!
     @IBOutlet weak var orderSumLab: UILabel!
-    @IBOutlet weak var transactionSumLab: UILabel!
-//    fileprivate var maximumHeight:CGFloat = 0
+    @IBOutlet weak var orderPaymentLab: UILabel!
     
+    @IBOutlet weak var paymentCodeBtn: UIButton!
+    @IBOutlet weak var backgroundVw: UIView!
+    @IBOutlet weak var codeImageVw: UIButton!
     
     var model = BusinessaDvertisementModel(){
         didSet{
@@ -60,7 +64,19 @@ class BusinessaDvertisementCell: UITableViewCell {
             
             transactionSumLab.text = Tools.setNSDecimalNumber((model?.sumPrice)!) + " CNY"
             
+            transactionPaymentLab.text = Tools.getPaymentDetailsMethod((model?.receivablesType?.stringValue)!)
+            
             style = model?.dealType == 0 ? .detriment : .sell
+            
+            if model?.receivablesType == 1 {
+                codeImageVw.isHidden = true
+                paymentCodeBtn.isHidden = true
+                transactionPaymentX.constant = -15
+            }else{
+                codeImageVw.isHidden = false
+                paymentCodeBtn.isHidden = false
+                transactionPaymentX.constant = 5
+            }
    
             //进行中需要
             addSubview(self.contactBtn)
@@ -113,7 +129,7 @@ class BusinessaDvertisementCell: UITableViewCell {
         //发起纠纷
         if style == .sell && status == 4{
             backgroundVw.addSubview(initiateDisputeBtn)
-            initiateDisputeBtn.frame = CGRect(x: 23, y: orderSumLab.frame.maxY + 10, width: 95, height: 30)
+            initiateDisputeBtn.frame = CGRect(x: 23, y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
         }else{
              initiateDisputeBtn.isHidden = true
         }
@@ -132,21 +148,21 @@ class BusinessaDvertisementCell: UITableViewCell {
         
         remindBtn.snp.updateConstraints { (make) in
             make.right.equalTo(self.backgroundVw.snp.right).offset(-15)
-            make.top.equalTo(self.orderSumLab.snp.bottom).offset(10)
+            make.top.equalTo(self.orderPaymentLab.snp.bottom).offset(10)
             make.width.equalTo(width)
             make.height.equalTo(30)
         }
         
         cancelOrderBtn.snp.updateConstraints { (make) in
             make.right.equalTo(self.remindBtn.snp.left).offset(right_x)
-            make.top.equalTo(self.orderSumLab.snp.bottom).offset(10)
+            make.top.equalTo(self.orderPaymentLab.snp.bottom).offset(10)
             make.width.equalTo(cancelOrderWidth)
             make.height.equalTo(30)
         }
         
         contactBtn.snp.updateConstraints { (make) in
             make.right.equalTo(self.cancelOrderBtn.snp.left).offset(contact_x)
-            make.top.equalTo(self.orderSumLab.snp.bottom).offset(10)
+            make.top.equalTo(self.orderPaymentLab.snp.bottom).offset(10)
             make.width.equalTo(contactWidth)
             make.height.equalTo(contactHeight)
         }
@@ -217,6 +233,7 @@ class BusinessaDvertisementCell: UITableViewCell {
         orderTimeLab.text = LanguageHelper.getString(key: "homePage_Finish_Details_Transaction_Time") + "："
         orderNumTLab.text = LanguageHelper.getString(key: "C2C_transaction_finish_OrderNum") + "："
         orderSumLab.text = LanguageHelper.getString(key: "Mine_Transaction_SumPrice") + "："
+        orderPaymentLab.text =  LanguageHelper.getString(key: "C2C_payment_method") + "："
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -784,11 +784,12 @@
 "Mine_Modify_Repeat_Password" = "重复密码";
 "Mine_Modify_Determine_Password" = "确定修改";
 "Mine_Representation_Record" = "申述记录";
-
 "Home_Alert_Conver" = "积分";
-
 "Home_Alert_Add" = "新增";
 "Home_Conver_Transactions_Number" = "请输入正确的交易数目";
+
+"Mine_Order_Alipay_account" = "支付宝帐号";
+"Mine_Order_WeChat_account" = "微信帐号";
 
 
 

@@ -97,6 +97,14 @@ class BusinessaDvertisementVC: MainViewController {
         return view
     }()
     
+    lazy var codeView: HomeCodeView = {
+        let view = Bundle.main.loadNibNamed("HomeCodeView", owner: nil, options: nil)?.last as! HomeCodeView
+        view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
+        view.isHidden = true
+        UIApplication.shared.keyWindow?.addSubview(view)
+        return view
+    }()
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(R_NotificationC2COrderReload), object: nil)
     }
@@ -272,6 +280,13 @@ extension BusinessaDvertisementVC {
             self.getData()
         }}
     
+    //二维码
+    func displayPaymentQRCode(_ sender:UIButton){
+        let model = self.getModel(index: sender.tag)
+        codeView.orderModel = model
+        codeView.isHidden = false
+    }
+    
     @objc func processingAndFinish(_ sender:UIButton){
         //进行中
         if sender == businessView.buyBtn  {
@@ -332,7 +347,7 @@ extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 308
+        return 338
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -349,6 +364,8 @@ extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
         cell.remindBtn.addTarget(self, action: #selector(setStatusOnClick(_:)), for: .touchUpInside)
         cell.initiateDisputeBtn.tag = indexPath.row
         cell.initiateDisputeBtn.addTarget(self, action: #selector(initiateDisputeOnClick(_:)), for: .touchUpInside)
+        cell.paymentCodeBtn.tag = indexPath.row
+        cell.paymentCodeBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
         return cell
     }
     

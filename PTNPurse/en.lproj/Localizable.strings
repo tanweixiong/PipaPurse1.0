@@ -782,4 +782,6 @@
 "Home_Alert_Add" = "Add";
 "Home_Conver_Transactions_Number" = "Please enter the correct number of transactions";
 
+"Mine_Order_Alipay_account" = "Alipay";
+"Mine_Order_WeChat_account" = "WeChat";
 

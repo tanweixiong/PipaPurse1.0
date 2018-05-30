@@ -20,9 +20,9 @@ class BusinessaDvertisementModel: Mappable {
     var state:NSNumber?//状态
     var id:NSNumber?
     var sumPrice:NSNumber?
-    
     var entrustNo:String?
-
+    var receivablesType:NSNumber?
+    var paymentCode:String?
 
     required init?(map: Map) {
         
@@ -45,6 +45,7 @@ class BusinessaDvertisementModel: Mappable {
         id        <- map["id"]
         sumPrice        <- map["sumPrice"]
         entrustNo        <- map["entrustNo"]
-
+        receivablesType        <- map["receivablesType"]
+        paymentCode        <- map["paymentCode"]
     }
 }
