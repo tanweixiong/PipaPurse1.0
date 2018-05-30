@@ -74,6 +74,7 @@ class UserInfoData: Mappable {
     var language:String?
     
     var address:String?
+    var phone:String?
     
     required init?(map: Map) {
         
@@ -99,6 +100,7 @@ class UserInfoData: Mappable {
         language                <- map["language"]
         
         address                <- map["address"]
+        phone                <- map["phone"]
     }
 }
 

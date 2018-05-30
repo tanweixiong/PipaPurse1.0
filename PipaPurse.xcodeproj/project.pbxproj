@@ -212,6 +212,8 @@
 		2333DC17207A2CBD002911BC /* BusinessInviteFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2333DC15207A2CBD002911BC /* BusinessInviteFriendsCell.swift */; };
 		2333DC18207A2CBD002911BC /* BusinessInviteFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2333DC16207A2CBD002911BC /* BusinessInviteFriendsCell.xib */; };
 		2334D0AC202C373F00DF2F43 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2334D0AB202C373F00DF2F43 /* Images.xcassets */; };
+		23378A1520BE465200CECE28 /* MineBindingPhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23378A1320BE465200CECE28 /* MineBindingPhoneVC.swift */; };
+		23378A1620BE465200CECE28 /* MineBindingPhoneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23378A1420BE465200CECE28 /* MineBindingPhoneVC.xib */; };
 		2349D4CD2091EB1700C51562 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2349D4CC2091EB1700C51562 /* ShareSDK.framework */; };
 		23519EE720579C9B00AA9A9C /* HomeDetsilsAssetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23519EE620579C9B00AA9A9C /* HomeDetsilsAssetsView.swift */; };
 		23519EE920579CAF00AA9A9C /* HomeDetsilsAssetsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23519EE820579CAF00AA9A9C /* HomeDetsilsAssetsView.xib */; };
@@ -707,6 +709,8 @@
 		2333DC15207A2CBD002911BC /* BusinessInviteFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInviteFriendsCell.swift; sourceTree = "<group>"; };
 		2333DC16207A2CBD002911BC /* BusinessInviteFriendsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessInviteFriendsCell.xib; sourceTree = "<group>"; };
 		2334D0AB202C373F00DF2F43 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		23378A1320BE465200CECE28 /* MineBindingPhoneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineBindingPhoneVC.swift; sourceTree = "<group>"; };
+		23378A1420BE465200CECE28 /* MineBindingPhoneVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineBindingPhoneVC.xib; sourceTree = "<group>"; };
 		2349D4CC2091EB1700C51562 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		23519EE620579C9B00AA9A9C /* HomeDetsilsAssetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetsilsAssetsView.swift; sourceTree = "<group>"; };
 		23519EE820579CAF00AA9A9C /* HomeDetsilsAssetsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeDetsilsAssetsView.xib; sourceTree = "<group>"; };
@@ -1961,6 +1965,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		23378A1220BE462900CECE28 /* MineBindingPhone(绑定手机号) */ = {
+			isa = PBXGroup;
+			children = (
+				23378A1320BE465200CECE28 /* MineBindingPhoneVC.swift */,
+				23378A1420BE465200CECE28 /* MineBindingPhoneVC.xib */,
+			);
+			path = "MineBindingPhone(绑定手机号)";
+			sourceTree = "<group>";
+		};
 		236137BA208583E300E73F9E /* MineBindingBankVC(绑定银行卡) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2063,6 +2076,7 @@
 				236137BA208583E300E73F9E /* MineBindingBankVC(绑定银行卡) */,
 				2331659420A993B200597302 /* MineMiningVC(挖矿) */,
 				232B18C120ABBB9E003230E7 /* MineInformationVC(个人信息) */,
+				23378A1220BE462900CECE28 /* MineBindingPhone(绑定手机号) */,
 				23674A762020202400B4B96E /* OpitionViewController.xib */,
 				23674A6C2020202400B4B96E /* OpitionViewController.swift */,
 				23674A6D2020202400B4B96E /* FriendsViewController.swift */,
@@ -3100,6 +3114,7 @@
 				23674A8B2020202400B4B96E /* SecuritySetViewController.xib in Resources */,
 				23674AC32020205400B4B96E /* FileSelectViewController.xib in Resources */,
 				230CFE1E2015F38100D4B9C4 /* HomeCoinDetailsCell.xib in Resources */,
+				23378A1620BE465200CECE28 /* MineBindingPhoneVC.xib in Resources */,
 				2333DC14207A217A002911BC /* BusinessInviteFriendsVw.xib in Resources */,
 				23674AC52020205400B4B96E /* RegisterViewController.xib in Resources */,
 				232A113F200E1975002F60C7 /* HomeReceiveView.xib in Resources */,
@@ -3361,6 +3376,7 @@
 				236137C6208583E300E73F9E /* MineBankCardBindingVC.swift in Sources */,
 				23674AD22020205400B4B96E /* ILXibView.swift in Sources */,
 				23A537F4205F520E00EDB714 /* UIButton+EX.m in Sources */,
+				23378A1520BE465200CECE28 /* MineBindingPhoneVC.swift in Sources */,
 				2332D4DB200DA1BC009B4D5E /* LayoutConstraint.swift in Sources */,
 				23A538F0205F537400EDB714 /* BusinessOrderDetailsModel.swift in Sources */,
 				236137CC208583E300E73F9E /* MineSetAccountVw.swift in Sources */,

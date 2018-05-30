@@ -11,6 +11,8 @@ import UIKit
 class MineSetAccountVw: UIView {
     @IBOutlet weak var titleLab: UILabel!
     @IBOutlet weak var paymentMethodTF: UITextField!
+    @IBOutlet weak var uploadBtn: UIButton!
+    @IBOutlet weak var codeImageVw: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import ObjectMapper
 
 enum MineSetAccountStyle{
     case alipayStyle
@@ -16,6 +17,7 @@ enum MineSetAccountStyle{
 
 class MineSetAccountVC: MainViewController {
     fileprivate lazy var viewModel : BaseViewModel = BaseViewModel()
+    fileprivate lazy var codeImage = UIImageView()
     var style = MineSetAccountStyle.alipayStyle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,7 @@ class MineSetAccountVC: MainViewController {
         view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight, width: SCREEN_WIDTH, height: SCREEN_HEIGHT -  MainViewControllerUX.naviNormalHeight)
         view.paymentMethodTF.placeholder = style == .alipayStyle ? LanguageHelper.getString(key: "binding_Please_enter_alipay_account") : LanguageHelper.getString(key: "binding_Please_enter_weChat_account")
         view.titleLab.text = style == .alipayStyle ? LanguageHelper.getString(key: "binding_Alipay_account_settings") : LanguageHelper.getString(key: "binding_WeChat_account_settings")
+        view.uploadBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
         NotificationCenter.default.addObserver(self, selector: #selector(MineSetAccountVC.textFieldTextDidChangeOneCI), name:NSNotification.Name.UITextFieldTextDidChange, object: nil)
         return view
     }()
@@ -66,34 +69,43 @@ extension MineSetAccountVC {
     }
     
     @objc func onClick(_ sender:UIButton){
-        if Tools.noPaymentPasswordIsSetToExecute() == false{view.endEditing(true)
-            return
+        if sender == submitBtn {
+            if Tools.noPaymentPasswordIsSetToExecute() == false{view.endEditing(true)
+                return
+            }
+            let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+            input?.delegate = self
+            input?.show()
+        }else if sender == mineSetAccountVw.uploadBtn {
+            uploadImage()
         }
-        let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
-        input?.delegate = self
-        input?.show()
     }
     
+    //上传资料
     func postData(dealPwd:String){
         let account = mineSetAccountVw.paymentMethodTF.text!
         let token = (UserDefaults.standard.getUserInfo().token)!
         let url = style == .alipayStyle ? ZYConstAPI.kAPIBindApay : ZYConstAPI.kAPIBindWeChat
         let type =  style == .alipayStyle ? "alipay" : "weChat"
+        let key = style == .alipayStyle ? "apayPhoto" : "weChatPhoto"
         let dealPwd = dealPwd.md5()
         let parameters = ["token":token,type:account,"dealPwd":dealPwd]
-        viewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: url, parameters: parameters, showIndicator: false) { (model:HomeBaseModel) in
-            SVProgressHUD.showSuccess(withStatus:LanguageHelper.getString(key: "Added_Successfully"))
-            let userInfo = UserDefaults.standard.getUserInfo()
-            if self.style == .alipayStyle {
-                userInfo.apay = account
-            }else if self.style == .weChatStyle{
-                userInfo.weChat = account
+        ZYNetWorkTool.uploadPictures(url: url, parameter: parameters, image: codeImage.image!, imageKey: key, success: { (json) in
+            let responseData = Mapper<NodataResponse>().map(JSONObject: json)
+            if let code = responseData?.code {
+                guard  200 == code else {
+                    SVProgressHUD.showError(withStatus: responseData?.message)
+                    return
+                }
+                SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_success"))
+                if responseData?.data != nil {
+                    self.mineSetAccountVw.codeImageVw = self.codeImage
+                }
+            } else {
+                SVProgressHUD.showError(withStatus: LanguageHelper.getString(key: "net_networkerror"))
             }
-            UserDefaults.standard.saveCustomObject(customObject: userInfo, key: R_UserInfo)
-            
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-                self.navigationController?.popViewController(animated: true)
-            })
+        }) { (error) in
+            SVProgressHUD.showError(withStatus: LanguageHelper.getString(key: "net_networkerror"))
         }
     }
     
@@ -111,14 +123,6 @@ extension MineSetAccountVC {
         }
     }
     
-    func checkInput()->Bool{
-        let account:String = mineSetAccountVw.paymentMethodTF.text!
-        if account.count > 0  {
-            return true
-        }
-        return false
-    }
-    
     func getData(){
         if style == .alipayStyle {
             let alipay = UserDefaults.standard.getUserInfo().apay
@@ -132,6 +136,48 @@ extension MineSetAccountVC {
             }
         }
         setTextfieldStyle()
+    }
+    
+    func uploadImage(){
+        let alertAction = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertAction.addAction(UIAlertAction.init(title: LanguageHelper.getString(key: "person_camera"), style: .default, handler: { (alertCamera) in
+            let pickerVC = UIImagePickerController()
+            pickerVC.delegate = self
+            pickerVC.sourceType = .camera
+            pickerVC.allowsEditing = true
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                self.present(pickerVC, animated: true, completion: nil)
+            } else {
+                SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "person_cameraenable"))
+            }
+        }))
+        
+        alertAction.addAction(UIAlertAction.init(title:LanguageHelper.getString(key: "person_photo"), style: .default, handler: { (alertPhoto) in
+            let pickerVC = UIImagePickerController()
+            pickerVC.delegate = self
+            pickerVC.sourceType = .photoLibrary
+            pickerVC.allowsEditing = true
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                self.present(pickerVC, animated: true, completion: nil)
+            }  else {
+                SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "person_photoenable"))
+            }
+        }))
+        alertAction.addAction(UIAlertAction.init(title:  LanguageHelper.getString(key: "login_cancle"), style: .cancel, handler: { (alertCancel) in
+            
+        }))
+        self.present(alertAction, animated: true, completion: nil)
+    }
+    
+    func checkInput()->Bool{
+        let account:String = mineSetAccountVw.paymentMethodTF.text!
+        if account.count == 0  {
+            return false
+        }
+        if codeImage.image != nil {
+            return false
+        }
+        return true
     }
 }
 
@@ -147,6 +193,15 @@ extension MineSetAccountVC:PaymentPasswordDelegate{
         forgetvc.status = .modify
         forgetvc.isNeedNavi = false
         self.navigationController?.pushViewController(forgetvc, animated: true)
+    }
+}
+
+extension MineSetAccountVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            picker.dismiss(animated: true, completion: nil)
+            self.codeImage.image = chosenImage
+        }
     }
 }
 

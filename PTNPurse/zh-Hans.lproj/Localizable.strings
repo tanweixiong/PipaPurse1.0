@@ -319,7 +319,7 @@
 "news_newsdetail" = "资讯详情";
 
 "login_loginaccount" = "登录账号";
-"login_loginaccountplaceholder" = "请输入您的手机号码";
+"login_loginaccountplaceholder" = "请输入您的手机号码或邮箱";
 "login_loginpwd" = "登录密码";
 "login_loginpwdplaceholder" = "请输入6~16位的登录密码";
 "login_tradepwdplaceholder" = "交易密码必须为6位";
@@ -790,6 +790,7 @@
 
 "Mine_Order_Alipay_account" = "支付宝帐号";
 "Mine_Order_WeChat_account" = "微信帐号";
+"Mine_Order_Bind_Phone" = "绑定手机号";
 
 
 

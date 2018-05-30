@@ -312,7 +312,7 @@
 "person_contactmethod" = "Contact Method";
 
 "login_loginaccount" = "Login Account";
-"login_loginaccountplaceholder" = "Input your Phone Number";
+"login_loginaccountplaceholder" = "Input your Phone Number or email";
 "login_loginpwd" = "Login Password";
 "login_loginpwdplaceholder" = "Input 6~10 Login password";
 "login_tradepwdplaceholder" = "Trade password must be 6 characters";
@@ -784,4 +784,5 @@
 
 "Mine_Order_Alipay_account" = "Alipay";
 "Mine_Order_WeChat_account" = "WeChat";
+"Mine_Order_Bind_Phone" = "Bind phone";
 

@@ -14,13 +14,12 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var topView: CreatTopView!
     @IBOutlet weak var talbeView: UITableView!
-    let titleArray = [
+    fileprivate let titleArray = NSMutableArray(array: [
         "modify_login_passsword"
         ,"person_modifytradepwd"
         ,"Mine_PaymentMethod"
         ,"Mine_LanguageSettings"
-        ,"person_quitlogin"
-        ]
+        ])
     
     // MARK: - life Cycle
     override func viewDidLoad() {
@@ -50,7 +49,7 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("SecuritySetViewCell", owner: nil, options: nil)?[0] as! SecuritySetViewCell
         cell.selectionStyle = .none
-        cell.headingContentLab.text = LanguageHelper.getString(key: titleArray[indexPath.row])
+        cell.headingContentLab.text = LanguageHelper.getString(key: titleArray[indexPath.row] as! String)
         if indexPath.row == 1 {
             if let flag = SingleTon.shared.pwdstate {
                 if flag == 1 {
@@ -84,6 +83,9 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
             let languageSetViewController = LanguageSetViewController()
             self.navigationController?.pushViewController(languageSetViewController, animated: true)
         case 4:
+            let mineBindingPhoneVC = MineBindingPhoneVC()
+            self.navigationController?.pushViewController(mineBindingPhoneVC, animated: true)
+        case 5:
             logoutBtnTouched()
         default:
             break
@@ -91,6 +93,9 @@ class SecuritySetViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func setViewStyle() {
+        titleArray.add("Mine_Order_Bind_Phone")
+        titleArray.add("person_quitlogin")
+        
         topView.setViewContent(title: LanguageHelper.getString(key: "perseon_safety"))
         topView.setButtonCallBack { (sender) in
             self.navigationController?.popViewController(animated: true)

@@ -114,7 +114,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         //1:用户注册,2:用户忘记密码,3:用户修改交易密码,4:用户忘记交易密码
         var params = [ "username" : phone, "type" : "1"]
         if type == .register {
-            params = [ "username" : phone, "type" : "1"]
+            //判断邮箱注册还是手机号码
+            if Tools.validateEmail(email: phone) {
+               params = [ "username" : phone, "type" : "4"]
+            }else{
+               params = [ "username" : phone, "type" : "1"]
+            }
         } else if type == .forgetpwd {
             params = [ "username" : phone, "type" : "2"]
         } else if type == .setPaymentPsd {

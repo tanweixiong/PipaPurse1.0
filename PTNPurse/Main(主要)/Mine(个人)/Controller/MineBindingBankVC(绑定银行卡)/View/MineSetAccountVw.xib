@@ -6,13 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MineSetAccountVw" customModule="PTNPurse" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MineSetAccountVw" customModule="PipaPurse" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -55,12 +56,73 @@
                                 <constraint firstItem="Ype-OI-AkA" firstAttribute="leading" secondItem="v20-rs-aFX" secondAttribute="leading" constant="40" id="nHd-Mc-9wQ"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciA-Mg-YJU">
+                            <rect key="frame" x="30" y="115" width="315" height="315"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_codes" translatesAutoresizingMaskIntoConstraints="NO" id="JKA-f8-YQn">
+                                    <rect key="frame" x="90" y="110" width="135" height="135"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="JKA-f8-YQn" secondAttribute="height" multiplier="1:1" id="5Cp-CC-3E0"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yf8-qj-g8r">
+                                    <rect key="frame" x="265" y="0.0" width="50" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="gkr-db-YXT"/>
+                                        <constraint firstAttribute="height" constant="50" id="vGV-y1-AuO"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_home_close"/>
+                                </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_code_backGround" translatesAutoresizingMaskIntoConstraints="NO" id="zsI-dy-Aib">
+                                    <rect key="frame" x="0.0" y="0.0" width="315" height="84"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="84" id="JMj-5Y-KBl"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMj-bT-5PA">
+                                    <rect key="frame" x="0.0" y="265" width="315" height="50"/>
+                                    <color key="backgroundColor" red="0.79744154214859009" green="0.91903442144393921" blue="0.99385565519332886" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="QI9-hY-TDG"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="上传收款二维码">
+                                        <color key="titleColor" red="0.0" green="0.60784313729999995" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="vMj-bT-5PA" secondAttribute="bottom" id="3nL-pG-pdx"/>
+                                <constraint firstItem="JKA-f8-YQn" firstAttribute="top" secondItem="zsI-dy-Aib" secondAttribute="bottom" constant="26" id="6hE-eo-hr0"/>
+                                <constraint firstItem="zsI-dy-Aib" firstAttribute="leading" secondItem="ciA-Mg-YJU" secondAttribute="leading" id="6iu-FQ-j1V"/>
+                                <constraint firstAttribute="width" secondItem="ciA-Mg-YJU" secondAttribute="height" multiplier="300:300" id="K5w-YS-rDg"/>
+                                <constraint firstItem="zsI-dy-Aib" firstAttribute="top" secondItem="ciA-Mg-YJU" secondAttribute="top" id="PmZ-JW-oDp"/>
+                                <constraint firstItem="yf8-qj-g8r" firstAttribute="top" secondItem="ciA-Mg-YJU" secondAttribute="top" id="S3l-n9-WJV"/>
+                                <constraint firstAttribute="trailing" secondItem="zsI-dy-Aib" secondAttribute="trailing" id="ViR-17-Rni"/>
+                                <constraint firstAttribute="trailing" secondItem="JKA-f8-YQn" secondAttribute="trailing" constant="90" id="Xs8-WV-RHW"/>
+                                <constraint firstItem="vMj-bT-5PA" firstAttribute="leading" secondItem="ciA-Mg-YJU" secondAttribute="leading" id="bby-VY-L5q"/>
+                                <constraint firstAttribute="trailing" secondItem="vMj-bT-5PA" secondAttribute="trailing" id="btp-UA-DHO"/>
+                                <constraint firstItem="JKA-f8-YQn" firstAttribute="leading" secondItem="ciA-Mg-YJU" secondAttribute="leading" constant="90" id="cj3-Vw-jT0"/>
+                                <constraint firstAttribute="trailing" secondItem="yf8-qj-g8r" secondAttribute="trailing" id="goY-0b-KRF"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="v20-rs-aFX" firstAttribute="leading" secondItem="cGI-ai-hx0" secondAttribute="leading" id="NWd-C0-FOy"/>
                         <constraint firstAttribute="trailing" secondItem="v20-rs-aFX" secondAttribute="trailing" id="PId-zr-fDF"/>
+                        <constraint firstItem="ciA-Mg-YJU" firstAttribute="top" secondItem="v20-rs-aFX" secondAttribute="bottom" constant="30" id="RAx-lr-AIp"/>
+                        <constraint firstItem="ciA-Mg-YJU" firstAttribute="width" secondItem="ciA-Mg-YJU" secondAttribute="height" multiplier="300:300" id="X6T-Ed-af9"/>
                         <constraint firstItem="v20-rs-aFX" firstAttribute="top" secondItem="cGI-ai-hx0" secondAttribute="top" constant="15" id="ntJ-dd-bMH"/>
+                        <constraint firstItem="ciA-Mg-YJU" firstAttribute="leading" secondItem="cGI-ai-hx0" secondAttribute="leading" constant="30" id="uXQ-dR-6Ra"/>
+                        <constraint firstAttribute="trailing" secondItem="ciA-Mg-YJU" secondAttribute="trailing" constant="30" id="vpI-1s-Eew"/>
                     </constraints>
                 </view>
             </subviews>
@@ -73,9 +135,16 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="codeImageVw" destination="JKA-f8-YQn" id="xFl-Xo-0Ml"/>
                 <outlet property="paymentMethodTF" destination="Ype-OI-AkA" id="BBq-gr-4Z8"/>
                 <outlet property="titleLab" destination="0hF-H0-3vB" id="Cho-5f-dzJ"/>
+                <outlet property="uploadBtn" destination="vMj-bT-5PA" id="tGs-dR-m6g"/>
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="ic_code_backGround" width="300" height="69"/>
+        <image name="ic_home_close" width="12" height="12"/>
+        <image name="ic_home_codes" width="146" height="145"/>
+    </resources>
 </document>
