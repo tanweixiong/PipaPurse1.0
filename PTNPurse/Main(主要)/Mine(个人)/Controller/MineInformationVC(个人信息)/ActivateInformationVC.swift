@@ -217,7 +217,7 @@ extension ActivateInformationVC:UITableViewDelegate,UITableViewDataSource{
             if UserDefaults.standard.getUserInfo().photo != nil {
                 photo = (UserDefaults.standard.getUserInfo().photo)! as! String
             }
-            cell.avatarImg.sd_setImage(with:NSURL(string: photo)! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
+            cell.avatarImg.sd_setImage(with:NSURL(string: photo)! as URL, placeholderImage: UIImage.init(named: "ic_mine_avatar"))
             cell.headingLab.text = headingArr[indexPath.row]
         }else{
             cell.headingLab.text = headingArr[indexPath.row]

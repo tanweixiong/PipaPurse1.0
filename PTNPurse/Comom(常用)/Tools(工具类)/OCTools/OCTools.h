@@ -26,4 +26,6 @@
 //将图片裁剪成正方形
 +(UIImage*)getSubImage:(UIImage *)image mCGRect:(CGRect)mCGRect
             centerBool:(BOOL)centerBool;
+//实现逆序功能
++(NSString *)traversingString:(NSString *)string;
 @end

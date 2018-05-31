@@ -337,7 +337,6 @@
 "login_codeplaceholder" = "Input your code";
 
 
-
 "login_infocantnil" = "infomation can't be nil";
 "login_refreshcode" = "Refresh";
 "login_codeerror" = "wrong code";
@@ -609,6 +608,7 @@
 
 "C2C_publish_order_Select_the_type_of_currency_you_trade" = "Select the type of currency you trade";
 "C2C_publish_Premium_Price" = "Quote based on premium rate";
+"C2C_publish_Premium_Ticp" = "Premium ticp for example, if the current price is 7000 and the premium rate is 10%, then the price is 7700";
 
 "C2C_publish_order_Alipay_Wechat_bankCard" = "Alipay、Wechat、bankCard";
 "C2C_publish_order_Please_enter_the_number_of_transactions" = "Please enter the number of transactions";
@@ -655,6 +655,7 @@
 "C2C_Upload_certificate" = "Upload certificate";
 "C2C_Upload_Instructions" = "Instructions";
 "C2C_Upload_reason" = "Reason";
+"C2C_Upload_Upload_Payment_QR_Code" = "Upload payment QR code";
 
 "C2C_Upload_Limit_input" = "Limit input 100";
 

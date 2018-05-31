@@ -636,6 +636,29 @@ class Tools: NSObject {
         }
     }
     
+    class func getConversionPrice(amount:String,count:NSInteger)->String{
+        let strArray = amount.components(separatedBy: ".")
+        if strArray.count == 1 {
+            return strArray.first!
+        }else{
+            let price = strArray.first
+            let point = strArray.last
+            var newPoint = point
+            if count - 1 < (point?.count)! {
+                let index = point?.index((point?.startIndex)!, offsetBy: count)
+                newPoint = (point?.substring(to: index!))!
+            }
+            //截取多余字符
+            let newAmount = OCTools.traversing(newPoint)
+            if newAmount == "" {
+                return price!
+            }else{
+                let amount = price! + "." + newAmount!
+                return amount
+            }
+        }
+    }
+    
     //0是中文英文
     class func getLocalLanguage()->String{
         let language = UserDefaults.standard.object(forKey: UserLanguage) as! String

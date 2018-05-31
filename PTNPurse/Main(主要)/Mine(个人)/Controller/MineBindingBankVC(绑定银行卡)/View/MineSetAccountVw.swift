@@ -15,6 +15,7 @@ class MineSetAccountVw: UIView {
     @IBOutlet weak var codeImageVw: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        uploadBtn.setTitle(LanguageHelper.getString(key: "C2C_Upload_Upload_Payment_QR_Code"), for: .normal)
     }
     
     @IBAction func cleanOnClick(_ sender: UIButton) {

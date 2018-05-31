@@ -36,6 +36,7 @@ class MineSetAccountVC: MainViewController {
     lazy var mineSetAccountVw: MineSetAccountVw = {
         let view = Bundle.main.loadNibNamed("MineSetAccountVw", owner: nil, options: nil)?.last as! MineSetAccountVw
         view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight, width: SCREEN_WIDTH, height: SCREEN_HEIGHT -  MainViewControllerUX.naviNormalHeight)
+        view.paymentMethodTF.delegate = self
         view.paymentMethodTF.placeholder = style == .alipayStyle ? LanguageHelper.getString(key: "binding_Please_enter_alipay_account") : LanguageHelper.getString(key: "binding_Please_enter_weChat_account")
         view.titleLab.text = style == .alipayStyle ? LanguageHelper.getString(key: "binding_Alipay_account_settings") : LanguageHelper.getString(key: "binding_WeChat_account_settings")
         view.uploadBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
@@ -43,18 +44,31 @@ class MineSetAccountVC: MainViewController {
         return view
     }()
     
-    //33 32
     lazy var submitBtn: UIButton = {
         let btn = UIButton(type: .custom)
-        btn.frame = CGRect(x: SCREEN_WIDTH - 15 - 34, y: 32, width: 34, height: 22)
+        btn.frame = CGRect(x: SCREEN_WIDTH - 15 - 40, y: 32, width: 40, height: 22)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), for: .normal)
         btn.setTitleColor(UIColor.white, for: .selected)
         btn.setTitle(LanguageHelper.getString(key: "save"), for: .normal)
+        btn.titleLabel?.textAlignment = .right
         btn.isEnabled = false
         btn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
         return btn
     }()
+    
+    //限制位数
+    override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == mineSetAccountVw.paymentMethodTF {
+            var maxLength:Int = 0
+            maxLength = 25
+            //限制长度
+            let proposeLength = (textField.text?.lengthOfBytes(using: String.Encoding.utf8))! - range.length + string.lengthOfBytes(using: String.Encoding.utf8)
+            if proposeLength > maxLength { return false }
+            return true
+        }
+        return true
+    }
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextFieldTextDidChange, object: nil)

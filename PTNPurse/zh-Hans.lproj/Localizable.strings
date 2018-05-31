@@ -634,6 +634,7 @@
 
 "C2C_publish_order_Select_the_type_of_currency_you_trade" = "选择你交易的货币类型";
 "C2C_publish_Premium_Price" = "基于溢价比例得出的报价，10分钟更新一次";
+"C2C_publish_Premium_Ticp" = "通过滑动溢出比例来调整公告，设置负数，报价将低于市场价，设置正数，报价将高于市场价，比如当前价格7000，溢价比例为10%，那么价格为7700";
 
 "C2C_publish_order_Alipay_Wechat_bankCard" = "如：支付宝，微信，银行卡";
 "C2C_publish_order_Please_enter_the_number_of_transactions" = "请输入交易数目";
@@ -679,6 +680,7 @@
 "C2C_Upload_certificate" = "上传凭证（最多3张）";
 "C2C_Upload_Instructions" = "投诉说明";
 "C2C_Upload_reason" = "投诉原因";
+"C2C_Upload_Upload_Payment_QR_Code" = "上传收款二维码";
 
 "C2C_Upload_Limit_input" = "输入的字数不能大于100位";
 

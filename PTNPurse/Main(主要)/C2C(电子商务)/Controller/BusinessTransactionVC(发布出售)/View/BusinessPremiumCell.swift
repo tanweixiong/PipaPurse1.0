@@ -16,21 +16,16 @@ class BusinessPremiumCell: UITableViewCell {
     @IBOutlet weak var percentageVw: UIView!
     @IBOutlet weak var sliderBgVw: UIView!
     @IBOutlet weak var percentLab: UILabel!
-    @IBOutlet weak var priceTitleLab: UILabel!{
-        didSet{
-            priceTitleLab.text = LanguageHelper.getString(key: "C2C_mine_my_advertisement_Price")
-        }
-    }
-    @IBOutlet weak var priceTipsLab: UILabel!{
-        didSet{
-            priceTipsLab.text = LanguageHelper.getString(key: "C2C_publish_Premium_Price")
-        }
-    }
+    @IBOutlet weak var priceTitleLab: UILabel!
+    @IBOutlet weak var priceTipsLab: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         percentageVw.layer.borderWidth = 1
         percentageVw.layer.borderColor = R_UIThemeColor.cgColor
         premiumTitleLab.text = LanguageHelper.getString(key: "C2C_Proportion_Title")
+        priceTitleLab.text = LanguageHelper.getString(key: "C2C_mine_my_advertisement_Price")
+        premiumTipsLab.text = LanguageHelper.getString(key: "C2C_publish_Premium_Ticp")
+        priceTipsLab.text = LanguageHelper.getString(key: "C2C_publish_Premium_Price")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

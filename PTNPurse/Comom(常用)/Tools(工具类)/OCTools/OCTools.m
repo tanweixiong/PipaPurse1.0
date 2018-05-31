@@ -423,5 +423,34 @@
     return smallImage;
 }
 
++(NSString *)traversingString:(NSString *)string{
+    //实现字符串的逆序
+    string= [OCTools stringByReversed:string];
+    NSString *traversingStr = string;
+    for (int i = 0; i<[string length]; i++) {
+        //截取字符串中的每一个字符
+        NSString *s = [string substringWithRange:NSMakeRange(i, 1)];
+        if ([s isEqualToString:@"0"]) {
+            NSRange range = NSMakeRange(0, 1);
+            //将字符串中的“m”转化为“w”
+            traversingStr =  [traversingStr stringByReplacingCharactersInRange:range withString:@""];
+        }else{
+            //终止循环
+            break;
+        }
+    }
+    NSString *positiveSequenceStr = [OCTools stringByReversed:traversingStr];
+    return  positiveSequenceStr;
+}
+
+//字符串逆序
++(NSString *)stringByReversed:(NSString *)str
+{
+    NSMutableString *s = [NSMutableString string];
+    for (NSUInteger i=str.length; i>0; i--) {
+        [s appendString:[str substringWithRange:NSMakeRange(i-1, 1)]];
+    }
+    return s;
+}
 
 @end
