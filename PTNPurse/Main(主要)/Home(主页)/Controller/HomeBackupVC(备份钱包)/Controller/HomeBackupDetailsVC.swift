@@ -76,30 +76,40 @@ class HomeBackupDetailsVC: MainViewController,HomeBackupDetailsViewDelegate {
             let result = Mapper<HomeImprotWalletBaseModel>().map(JSONObject: jsonObjc)
             if let code = result?.code {
                 if code == 200 {
-                    var ptnAddress = String()
-                    let dataArray = result?.data
-                    if (dataArray?.count)! != 0 {
-                        for item in 0...(dataArray?.count)! - 1 {
-                            let newModel = dataArray![item]
-                            if newModel.type == Tools.getPTNcoinNum() {
-                                ptnAddress = newModel.address!
-                            }
-                        }
-                    }
-                    let userInfo = UserDefaults.standard.getUserInfo()
-                    userInfo.ptnaddress = ptnAddress
-                    UserDefaults.standard.saveCustomObject(customObject: userInfo, key: R_UserInfo)
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: R_NotificationHomeReload), object: nil)
                     SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "person_Import_finish"))
-
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-                        self.navigationController?.popToRootViewController(animated: true)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: R_NotificationHomeReload), object: nil)
+      
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+                        self.navigationController?.popViewController(animated: true)
                     })
                 } else {
                     SVProgressHUD.showInfo(withStatus: result?.message)
                 }
             }
 
+        }) { (error) in
+            SVProgressHUD.dismiss()
+        }
+    }
+    
+    func getUserInfoByToken() {
+        let token = UserDefaults.standard.value(forKey: "token") as! String
+        let params = ["token" : token]
+        ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIGetUserInfoByToken, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
+            SVProgressHUD.dismiss()
+            let result = Mapper<LoginResponse>().map(JSONObject: jsonObjc)
+            if let code = result?.code {
+                if code == 200 {
+                    SingleTon.shared.userInfo = result?.data
+                    UserDefaults.standard.setValue(result?.data?.username, forKey: "phone")
+                    let dict = jsonObjc as! NSDictionary
+                    if (dict.object(forKey: "data") != nil){
+                        let userInfo = UserInfo(dict: dict.object(forKey: "data") as! [String : AnyObject])
+                        UserDefaults.standard.saveCustomObject(customObject: userInfo, key: R_UserInfo)
+                    }
+                    Tools.cacheLoginData(token: (result?.data?.token)!)
+                }
+            }
         }) { (error) in
             SVProgressHUD.dismiss()
         }
