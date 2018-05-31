@@ -277,7 +277,8 @@ extension BusinessWantBuyVC {
             }
             let price = self.businessWantBuyData.entrustPrice
             let newprice =  Float(cny)! / (price?.floatValue)!
-            businessConvertView.coinNumTF.text = Tools.getConversionPrice(amount: "\(newprice)", count: 4)
+            let ce =  floor(Double(newprice) * 10000) / 10000
+            businessConvertView.coinNumTF.text = Tools.getConversionPrice(amount: "\(ce)", count: 4)
         }
     }
     
