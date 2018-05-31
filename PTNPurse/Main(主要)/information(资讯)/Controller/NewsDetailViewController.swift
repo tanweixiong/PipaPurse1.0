@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class NewsDetailViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
-
+    fileprivate lazy var VM : BaseViewModel = BaseViewModel()
     var topView: CreatTopView?
     var webView: WKWebView?
     var progressView: UIProgressView?
@@ -50,17 +50,25 @@ class NewsDetailViewController: UIViewController, WKUIDelegate, WKNavigationDele
                 }
             }
         }
-       
+        
+        setIncreasePageviews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+    }
+    
+    func setIncreasePageviews(){
+        if news?.id != nil {
+            let parameters = ["id":(news?.id?.stringValue)!,"language":Tools.getLocalLanguage()]
+            VM.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetNewsDetail, parameters: parameters, showIndicator: false) { (model:HomeBaseModel) in
+//                print(model.data)
+            }
+        }
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

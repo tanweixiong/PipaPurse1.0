@@ -140,6 +140,7 @@ struct ZYConstAPI {
     static let kAPIConvertCoinList = kAPIBaseURL + "getChange" //获取法币列表
     static let kAPIChangeCoin = kAPIBaseURL + "change" //转换法币
     
+    static let kAPIGetNewsDetail  = kAPIBaseURL + "getNewsDetail" //增加浏览量
     
     
     static let ShareMessage = "随时随地交易数字商品，24小时替你盯盘，替你赚钱！http://47.92.122.8"

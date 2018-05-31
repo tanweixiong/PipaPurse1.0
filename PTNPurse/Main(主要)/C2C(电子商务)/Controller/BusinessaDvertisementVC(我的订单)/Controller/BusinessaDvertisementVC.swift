@@ -101,7 +101,6 @@ class BusinessaDvertisementVC: MainViewController {
         let view = Bundle.main.loadNibNamed("HomeCodeView", owner: nil, options: nil)?.last as! HomeCodeView
         view.frame = CGRect(x: 0, y: 0 , width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
         view.isHidden = true
-        UIApplication.shared.keyWindow?.addSubview(view)
         return view
     }()
     
@@ -117,6 +116,7 @@ extension BusinessaDvertisementVC {
         view.addSubview(tableView)
         view.addSubview(chooseVw)
         UIApplication.shared.keyWindow?.addSubview(selectVw)
+        UIApplication.shared.keyWindow?.addSubview(codeView)
     }
     
     @objc func contactOnClick(_ sender:UIButton){
@@ -281,10 +281,16 @@ extension BusinessaDvertisementVC {
         }}
     
     //二维码
-    func displayPaymentQRCode(_ sender:UIButton){
+   @objc func displayPaymentQRCodeOnClick(_ sender:UIButton){
         let model = self.getModel(index: sender.tag)
+        codeView.style = self.style
         codeView.orderModel = model
         codeView.isHidden = false
+       UIView.animate(withDuration: 0.5, animations: {
+        self.codeView.codeBackgroundVw.alpha = 1
+        self.codeView.codeBackgroundVw.frame = CGRect(x: self.codeView.codeBackgroundVw.frame.origin.x, y: YMAKE(170), width: self.codeView.codeBackgroundVw.frame.size.width, height: self.codeView.codeBackgroundVw.frame.size.height)
+        }, completion: { (isfinish:Bool) in
+         })
     }
     
     @objc func processingAndFinish(_ sender:UIButton){
@@ -365,7 +371,7 @@ extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
         cell.initiateDisputeBtn.tag = indexPath.row
         cell.initiateDisputeBtn.addTarget(self, action: #selector(initiateDisputeOnClick(_:)), for: .touchUpInside)
         cell.paymentCodeBtn.tag = indexPath.row
-        cell.paymentCodeBtn.addTarget(self, action: #selector(distributeOnClick(_:)), for: .touchUpInside)
+        cell.paymentCodeBtn.addTarget(self, action: #selector(displayPaymentQRCodeOnClick(_:)), for: .touchUpInside)
         return cell
     }
     
