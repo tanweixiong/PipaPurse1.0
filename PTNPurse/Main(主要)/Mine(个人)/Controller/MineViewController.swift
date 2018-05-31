@@ -98,6 +98,11 @@ class MineViewController: UIViewController {
             usernameLab.text = (nickname as! String) == "" ? "--" : (nickname as! String)
         }
         
+        if (UserDefaults.standard.getUserInfo().nickname)! as! String == "" {
+            let username = UserDefaults.standard.getUserInfo().username
+            usernameLab.text =  (username as! String) == "" ? "--" : (username as! String)
+        }
+        
         if let photo = UserDefaults.standard.getUserInfo().photo {
              photoImg.sd_setImage(with: (NSURL(string: photo as! String)! as URL), placeholderImage: UIImage(named: "ic_mine_avatar")) { (image, error, cacheType, url) -> Void in
                 

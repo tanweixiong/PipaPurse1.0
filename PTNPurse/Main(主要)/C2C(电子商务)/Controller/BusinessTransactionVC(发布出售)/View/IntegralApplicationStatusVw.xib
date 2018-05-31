@@ -91,6 +91,7 @@
             </constraints>
             <connections>
                 <outlet property="backGroundVw" destination="8up-dB-NFF" id="F0j-3A-94m"/>
+                <outlet property="integralStatusLab" destination="vde-V9-AG6" id="2kH-MQ-vff"/>
                 <outlet property="statusVw" destination="7ds-LO-H28" id="LVf-vm-lAc"/>
                 <outlet property="titleVw" destination="8SD-He-oge" id="9UM-JP-hUU"/>
             </connections>

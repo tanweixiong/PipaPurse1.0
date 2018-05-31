@@ -656,6 +656,7 @@
 "C2C_Upload_Instructions" = "Instructions";
 "C2C_Upload_reason" = "Reason";
 "C2C_Upload_Upload_Payment_QR_Code" = "Upload payment QR code";
+"C2C_Trading_Currency" = "Trading currency";
 
 "C2C_Upload_Limit_input" = "Limit input 100";
 
@@ -795,4 +796,6 @@
 "Mine_Order_Alipay_account" = "Alipay";
 "Mine_Order_WeChat_account" = "WeChat";
 "Mine_Order_Bind_Phone" = "Bind phone";
+
+"Mine_Please_enter_a_nickname" = "Please enter a nickname";
 

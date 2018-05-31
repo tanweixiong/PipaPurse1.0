@@ -282,6 +282,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             topImageView.setViewContent(title: LanguageHelper.getString(key: "Mine_Transaction_Password"))
             pwdTextView.titleLabel.text = LanguageHelper.getString(key: "set_pay_password")
             pwdTextView.textField.placeholder = LanguageHelper.getString(key: "person_plase_settradepwd")
+            registerBtn.isEnabled = false
         }
         
         nameTextView.addTextFieldAndRightBtn(viewType: .SecondsCountType)
@@ -353,6 +354,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
    @objc func textFieldTextDidChangeOneCI(noti:NSNotification){
         let textField = noti.object as! UITextField
         if type == .setPaymentPsd {
+            setPaymentPsdStyle()
             if textField == self.pwdTextView.textField{
                 self.setLimitTheNumberOfWords(wordNum: 6, textField: textField)
             }
@@ -368,6 +370,40 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             let str = textContent?.substring(to: index!)
             textField.text = str
         }
+    }
+    
+    //设置确定按钮状态
+    func setPaymentPsdStyle(){
+        if checkPaymentPsdInpunt() {
+            registerBtn.backgroundColor = R_UIThemeColor
+            registerBtn.setTitleColor(UIColor.white, for: .normal)
+            registerBtn.layer.borderWidth = 0
+            registerBtn.isEnabled = true
+        }else{
+            registerBtn.backgroundColor = UIColor.clear
+            registerBtn.setTitleColor(R_ZYPlaceholderColor, for: .normal)
+            registerBtn.layer.borderWidth = 1
+            registerBtn.isEnabled = false
+        }
+        
+    }
+    
+    func checkPaymentPsdInpunt()->Bool{
+        let nameText = nameTextView.textField.text!
+        if Tools.validateNewPhone(phone: nameText) == false && Tools.validateEmail(email: nameText) == false {
+            return false
+        }
+
+        let code = codeTextView.textField.text!
+        if code == "" {
+            return false
+        }
+        
+        let pwdText = pwdTextView.textField.text!
+        if pwdText.count < 6 {
+            return false
+        }
+        return true
     }
     
     deinit {

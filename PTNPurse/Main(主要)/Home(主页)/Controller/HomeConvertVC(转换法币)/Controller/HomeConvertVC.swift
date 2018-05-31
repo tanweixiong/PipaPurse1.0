@@ -52,7 +52,7 @@ class HomeConvertVC: MainViewController {
     }()
     
     @IBAction func onClick(_ sender: UIButton) {
-        if self.viewModel.model.userWallet == nil {
+        if self.baseVM.homeConvertModel.fakebalance != nil && self.baseVM.homeConvertModel.totalbalance != nil{
             let vc = HomeSubmitConvertVC()
             vc.model = self.viewModel.model.userWallet
             vc.fakebalance = (self.baseVM.homeConvertModel.fakebalance?.stringValue)!

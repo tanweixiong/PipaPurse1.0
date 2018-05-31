@@ -14,6 +14,7 @@ protocol IntegralApplicationStatusDelegate{
 
 class IntegralApplicationStatusVw: UIView {
     fileprivate let integralApplicationStatusCell = "IntegralApplicationStatusCell"
+    @IBOutlet weak var integralStatusLab: UILabel!
     var selectFirstIndex = IndexPath()
     var selectSecondIndex = IndexPath()
     var selectList = NSInteger()
@@ -32,6 +33,7 @@ class IntegralApplicationStatusVw: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         statusVw.addSubview(statusTw)
+        integralStatusLab.text = LanguageHelper.getString(key: "C2C_Trading_Currency")
     }
     
     lazy var statusTw: UITableView = {
@@ -69,7 +71,6 @@ extension IntegralApplicationStatusVw:UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: integralApplicationStatusCell, for: indexPath) as! IntegralApplicationStatusCell
         cell.selectionStyle = .none
         cell.headingLab.text = dataArray[indexPath.row] as? String
-        cell.iconImgeVw.sd_setImage(with: NSURL(string: "")! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
         cell.statusBtn.isSelected = indexPath == self.lastIndexPath ? true : false
         if !selectedDefault {
             cell.statusBtn.isSelected = false

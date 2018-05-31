@@ -222,6 +222,7 @@ extension ActivateInformationVC:UITableViewDelegate,UITableViewDataSource{
         }else{
             cell.headingLab.text = headingArr[indexPath.row]
             cell.textfield.text = contentArr[indexPath.row] as? String
+            cell.textfield.placeholder = LanguageHelper.getString(key: "Mine_Please_enter_a_nickname")
             cell.textfield.delegate = self
             cell.textfield.returnKeyType = .done
             if indexPath.row == 1 {

@@ -270,14 +270,14 @@ extension BusinessTransactionVC {
             if  weChatStr != "" {
                 listArray.add(LanguageHelper.getString(key: "C2C_payment_WeChat") + weChatStr)
             }else{
-                listArray.add(LanguageHelper.getString(key: "C2C_payment_WeChat"))
+                listArray.add(LanguageHelper.getString(key: "binding_Wechat_account"))
             }
             
             alipayStr = UserDefaults.standard.getUserInfo().apay!
             if  alipayStr != "" {
                 listArray.add(LanguageHelper.getString(key: "C2C_payment_Alipay") + alipayStr)
             }else{
-                listArray.add(LanguageHelper.getString(key: "C2C_payment_Alipay"))
+                listArray.add(LanguageHelper.getString(key: "binding_Alipay_account"))
             }
             listArray.add(LanguageHelper.getString(key: "C2C_payment_Bankcard"))
             
@@ -359,8 +359,8 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
                     let cell = tableView.dequeueReusableCell(withIdentifier: businessPremiumCell, for: indexPath) as! BusinessPremiumCell
                     cell.selectionStyle = .none
                     cell.premiumSliderBlock = { (value:String) in
-                        self.transactionsPriceTF.text = value
-                        self.marketPriceString = value
+                        self.transactionsPriceTF.text = Tools.getConversionPrice(amount: value, count: 2)
+                        self.marketPriceString = self.transactionsPriceTF.text!
                     }
                     self.percentLab = cell.percentLab
                     cell.setupUI(currencyPrices:marketPrice)
@@ -386,6 +386,7 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
                         cell.unitLab.text = "CNY"
                         self.transactionsPriceTF = cell.textfield
                         self.transactionsPriceTF.text = marketPriceString
+                        cell.textfield.textColor = UIColor.R_UIColorFromRGB(color: 0xFF7052)
                     }else if indexPath.row == 3 {
                         cell.textfield.keyboardType = .decimalPad
                         cell.textfield.delegate = self
@@ -397,6 +398,7 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
                         cell.textfield.isEnabled = false
                         let tradeMinPrice = self.chooseCoin?.tradeMinPrice == nil ? 0 : (self.chooseCoin?.tradeMinPrice)!
                         cell.textfield.text = Tools.setNSDecimalNumber(tradeMinPrice)
+                        cell.textfield.textColor = R_UIThemeColor
                     }
                     return cell
                 }

@@ -681,6 +681,7 @@
 "C2C_Upload_Instructions" = "投诉说明";
 "C2C_Upload_reason" = "投诉原因";
 "C2C_Upload_Upload_Payment_QR_Code" = "上传收款二维码";
+"C2C_Trading_Currency" = "交易货币";
 
 "C2C_Upload_Limit_input" = "输入的字数不能大于100位";
 
@@ -801,6 +802,8 @@
 "Mine_Order_Alipay_account" = "支付宝帐号";
 "Mine_Order_WeChat_account" = "微信帐号";
 "Mine_Order_Bind_Phone" = "绑定手机号";
+
+"Mine_Please_enter_a_nickname" = "请输入您的昵称";
 
 
 

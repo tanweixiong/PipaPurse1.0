@@ -38,7 +38,7 @@ class MineSetAccountVC: MainViewController {
         view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight, width: SCREEN_WIDTH, height: SCREEN_HEIGHT -  MainViewControllerUX.naviNormalHeight)
         view.paymentMethodTF.delegate = self
         view.paymentMethodTF.placeholder = style == .alipayStyle ? LanguageHelper.getString(key: "binding_Please_enter_alipay_account") : LanguageHelper.getString(key: "binding_Please_enter_weChat_account")
-        view.titleLab.text = style == .alipayStyle ? LanguageHelper.getString(key: "binding_Alipay_account_settings") : LanguageHelper.getString(key: "binding_WeChat_account_settings")
+        view.titleLab.text = style == .alipayStyle ? LanguageHelper.getString(key: "binding_Alipay_account") : LanguageHelper.getString(key: "binding_Wechat_account")
         view.uploadBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
         NotificationCenter.default.addObserver(self, selector: #selector(MineSetAccountVC.textFieldTextDidChangeOneCI), name:NSNotification.Name.UITextFieldTextDidChange, object: nil)
         return view
