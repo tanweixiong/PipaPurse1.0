@@ -32,6 +32,9 @@ class UserInfo: NSObject,NSCoding {
     @objc var tradePasswordState:NSNumber?
     @objc var phone:String?
     
+    @objc var apayUrl:String?
+    @objc var weChatUrl:String?
+    
     func encode(with aCoder: NSCoder) {
         aCoder.encode(date, forKey:"date")
         aCoder.encode(id, forKey:"id")
@@ -55,6 +58,9 @@ class UserInfo: NSObject,NSCoding {
         aCoder.encode(address, forKey:"address")
         aCoder.encode(tradePasswordState, forKey:"tradePasswordState")
         aCoder.encode(phone, forKey:"phone")
+        
+        aCoder.encode(apayUrl, forKey:"apayUrl")
+        aCoder.encode(weChatUrl, forKey:"weChatUrl")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -81,6 +87,9 @@ class UserInfo: NSObject,NSCoding {
         self.tradePasswordState = aDecoder.decodeObject(forKey: "tradePasswordState") as? NSNumber ?? 0
         
         self.phone = aDecoder.decodeObject(forKey: "phone") as? String
+        
+        self.apayUrl = aDecoder.decodeObject(forKey: "apayUrl") as? String
+        self.weChatUrl = aDecoder.decodeObject(forKey: "weChatUrl") as? String
     }
     
     override init() {

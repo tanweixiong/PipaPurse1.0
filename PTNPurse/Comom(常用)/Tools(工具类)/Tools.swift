@@ -13,11 +13,18 @@ class Tools: NSObject {
 
     //判断是否为邮箱
     class func validateEmail(email: String) -> Bool {
-        let emailRegex = "[A-Z0-9a-z._% -] @[A-Za-z0-9.-] \\.[A-Za-z]{2,4}"
+        let emailRegex = "^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         return emailTest.evaluate(with: email)
     }
 
+    //新的正则旧的
+    class func validateNewPhone(phone: String) -> Bool {
+        let MOBILERegex = "^(1+[0-9]{10})$"
+        let MOBILETest = NSPredicate(format: "SELF MATCHES %@", MOBILERegex)
+        return MOBILETest.evaluate(with: phone)
+    }
+    
     //判断是否为电话号码
     class func validateMobile(mobile: String) -> Bool {
         //电话号码
@@ -605,6 +612,23 @@ class Tools: NSObject {
             var newPoint = point
             if 7 < (point?.count)! {
                 let index = point?.index((point?.startIndex)!, offsetBy: 8)
+                newPoint = (point?.substring(to: index!))!
+            }
+            let amount = price! + "." + newPoint!
+            return amount
+        }
+    }
+    
+    class func getConversionPrice(amount:String)->String{
+        let strArray = amount.components(separatedBy: ".")
+        if strArray.count == 1 {
+            return strArray.first! + ".00"
+        }else{
+            let price = strArray.first
+            let point = strArray.last
+            var newPoint = point
+            if 1 < (point?.count)! {
+                let index = point?.index((point?.startIndex)!, offsetBy: 2)
                 newPoint = (point?.substring(to: index!))!
             }
             let amount = price! + "." + newPoint!

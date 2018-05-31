@@ -312,7 +312,7 @@
 "person_contactmethod" = "Contact Method";
 
 "login_loginaccount" = "Login Account";
-"login_loginaccountplaceholder" = "Input your Phone Number or email";
+"login_loginaccountplaceholder" = "Input your Phone Number or mailbox";
 "login_loginpwd" = "Login Password";
 "login_loginpwdplaceholder" = "Input 6~10 Login password";
 "login_tradepwdplaceholder" = "Trade password must be 6 characters";
@@ -332,7 +332,7 @@
 
 "login_newpwd" = "New Password";
 "login_newpwdplaceholder" = "Input new password";
-"login_registeraccount" = "Phone Number";
+"login_registeraccount" = "Phone Number or mailbox";
 "login_registercode" = "Code";
 "login_codeplaceholder" = "Input your code";
 
@@ -604,7 +604,12 @@
 "C2C_publish_order_Unit" = "Unit";
 "C2C_publish_order_Limit" = "Limit";
 "C2C_publish_order_Message" = "Message";
+"C2C_publish_order_Lowest_Price" = "Lowest price";
+"C2C_publish_enter_order_Lowest_Price" = "Please enter the lowest price";
+
 "C2C_publish_order_Select_the_type_of_currency_you_trade" = "Select the type of currency you trade";
+"C2C_publish_Premium_Price" = "Quote based on premium rate";
+
 "C2C_publish_order_Alipay_Wechat_bankCard" = "Alipay、Wechat、bankCard";
 "C2C_publish_order_Please_enter_the_number_of_transactions" = "Please enter the number of transactions";
 "C2C_publish_order_Please_enter_the_transaction_unit_price" = "Please enter the transaction unit price";
@@ -730,10 +735,14 @@
 "homepage_Create_Address" = " Create address";
 "homepage_Create_Finish" = "Create finish";
 "C2C_Proportion" = "Proportion";
+"C2C_Proportion_Title" = "Prop";
+"C2C_Proportion_Tips" = "Adjust the announcement through the sliding overflow ratio ";
 
 "ic_Home_Code" = "Code";
 "C2C_payment_method" = "Method";
 "C2C_Max" = "Max";
+
+"binding_Determine_right_binding" = "bind";
 
 "C2C_Quotation" = "Quotation";
 "C2C_ReleaseData" = "Data";

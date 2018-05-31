@@ -11,7 +11,8 @@ import ObjectMapper
 class BusinessCoinModel: Mappable {
     var coinName: String?
     var id: NSNumber?
-
+    var marketPrice:NSNumber?
+    var tradeMinPrice:NSNumber?
     
     required init?(map: Map) {
         
@@ -24,7 +25,7 @@ class BusinessCoinModel: Mappable {
     func mapping(map: Map) {
         coinName        <- map["coinName"]
         id     <- map["id"]
-
-        
+        marketPrice     <- map["marketPrice"]
+        tradeMinPrice     <- map["tradeMinPrice"]
     }
 }

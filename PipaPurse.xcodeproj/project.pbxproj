@@ -427,6 +427,8 @@
 		23F52A51205A0639008D8B75 /* QuotesDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F52A50205A0639008D8B75 /* QuotesDetailsView.xib */; };
 		23F52A55205A202E008D8B75 /* QuotesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F52A54205A202E008D8B75 /* QuotesVM.swift */; };
 		23F52A57205A203D008D8B75 /* QuotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F52A56205A203D008D8B75 /* QuotesModel.swift */; };
+		23F7849920BE802D009223D6 /* BusinessPremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7849720BE802D009223D6 /* BusinessPremiumCell.swift */; };
+		23F7849A20BE802D009223D6 /* BusinessPremiumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F7849820BE802D009223D6 /* BusinessPremiumCell.xib */; };
 		3D7F6C93200F4498004D60E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D7F6C95200F4498004D60E2 /* Localizable.strings */; };
 		4E77F936204F894B00D6807E /* HomeCertificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E77F935204F894B00D6807E /* HomeCertificationVC.swift */; };
 		4E77F938204FB8F800D6807E /* HomeCertificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E77F937204FB8F800D6807E /* HomeCertificationView.swift */; };
@@ -945,6 +947,8 @@
 		23F52A50205A0639008D8B75 /* QuotesDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuotesDetailsView.xib; sourceTree = "<group>"; };
 		23F52A54205A202E008D8B75 /* QuotesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesVM.swift; sourceTree = "<group>"; };
 		23F52A56205A203D008D8B75 /* QuotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesModel.swift; sourceTree = "<group>"; };
+		23F7849720BE802D009223D6 /* BusinessPremiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessPremiumCell.swift; sourceTree = "<group>"; };
+		23F7849820BE802D009223D6 /* BusinessPremiumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessPremiumCell.xib; sourceTree = "<group>"; };
 		3D7F6C91200F448F004D60E2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		3D7F6C92200F4490004D60E2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		3D7F6C94200F4498004D60E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -2620,6 +2624,8 @@
 				232F3D3820A926AD0002C3C6 /* IntegralApplicationStatusVw.xib */,
 				232F3D3D20A92FF50002C3C6 /* BusinessRelaseCell.swift */,
 				232F3D3E20A92FF50002C3C6 /* BusinessRelaseCell.xib */,
+				23F7849720BE802D009223D6 /* BusinessPremiumCell.swift */,
+				23F7849820BE802D009223D6 /* BusinessPremiumCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3128,6 +3134,7 @@
 				237567632068DF1D006AED6F /* BusinessSubmissionMessageCell.xib in Resources */,
 				2333DBED2079EAC4002911BC /* WeiboSDK.bundle in Resources */,
 				23F52A51205A0639008D8B75 /* QuotesDetailsView.xib in Resources */,
+				23F7849A20BE802D009223D6 /* BusinessPremiumCell.xib in Resources */,
 				23674A972020202400B4B96E /* MineViewTableViewCell.xib in Resources */,
 				2331659D20A9942500597302 /* MineMiningVC.xib in Resources */,
 				237D042D200F2BFC000C12B1 /* HomeConversionSubmitCell.xib in Resources */,
@@ -3427,6 +3434,7 @@
 				233201AC202AFEDD001815DE /* MJRefreshBackGifFooter.m in Sources */,
 				23F52A57205A203D008D8B75 /* QuotesModel.swift in Sources */,
 				232A113D200E196B002F60C7 /* HomeReceiveView.swift in Sources */,
+				23F7849920BE802D009223D6 /* BusinessPremiumCell.swift in Sources */,
 				2332D4CC200DA1BC009B4D5E /* ConstraintLayoutGuide.swift in Sources */,
 				232DF51B201EF19200842491 /* HomeCoinDetailsModel.swift in Sources */,
 				23F52A4D205A0603008D8B75 /* QuotesDetailsVC.swift in Sources */,

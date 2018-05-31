@@ -16,6 +16,7 @@ class MineBindingPhoneVC: MainViewController {
     @IBOutlet weak var phoneVw: UIView!
     @IBOutlet weak var phoneTF: UITextField!{
         didSet{
+            phoneTF.placeholder = LanguageHelper.getString(key: "login_phone")
             phoneTF.keyboardType = .numberPad
             phoneTF.delegate = self
         }
@@ -23,6 +24,7 @@ class MineBindingPhoneVC: MainViewController {
     @IBOutlet weak var verificationVw: UIView!
     @IBOutlet weak var verificationTF: UITextField!{
         didSet{
+            verificationTF.placeholder = LanguageHelper.getString(key: "login_codeplaceholder")
             verificationTF.keyboardType = .numberPad
             verificationTF.delegate = self
         }
@@ -62,7 +64,8 @@ extension MineBindingPhoneVC {
     func setupUI(){
         naviVw.setViewContent(title: LanguageHelper.getString(key: "Mine_Order_Bind_Phone"))
         naviVw.rightItemBtn.isHidden = false
-        naviVw.rightItemBtn.setTitle("绑定", for: .normal)
+        naviVw.rightItemBtn.setTitle(LanguageHelper.getString(key: "binding_Determine_right_binding"), for: .normal)
+        naviVw.rightItemBtn.isEnabled = false
         naviVw.rightItemBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), for: .normal)
         naviVw.rightItemBtn.setTitleColor(UIColor.white, for: .selected)
         naviVw.rightItemBtn.addTarget(self, action: #selector(submitOnClick(_:)), for: .touchUpInside)
@@ -72,17 +75,24 @@ extension MineBindingPhoneVC {
         rightAutorBtn.addTarget(self, action: #selector(codeBtnTouched(btn:)), for: .touchUpInside)
         verificationVw.addSubview(rightAutorBtn)
         view.bringSubview(toFront:rightAutorBtn)
+        rightAutorBtn.backgroundColor = UIColor.clear
+        rightAutorBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0x828A9E), for: .normal)
+        rightAutorBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         rightAutorBtn.snp.makeConstraints({ (make) in
             make.centerY.equalTo(verificationTF.snp.centerY)
             make.right.equalTo(self.view.snp.right).offset(-15)
-            make.height.equalTo(75)
-            make.width.equalTo(29)
+            make.height.equalTo(30)
+            make.width.equalTo(90)
         })
+        
         NotificationCenter.default.addObserver(self, selector: #selector(MineBindingPhoneVC.textFieldTextDidChangeOneCI), name:NSNotification.Name.UITextFieldTextDidChange, object: nil)
         
         if UserDefaults.standard.getUserInfo().phone != nil &&  UserDefaults.standard.getUserInfo().phone != "" {
             phoneTF.isUserInteractionEnabled = false
+            phoneTF.text = (UserDefaults.standard.getUserInfo().phone)!
             verificationVw.isHidden = true
+            naviVw.rightItemBtn.isHidden = true
+            
         }
     }
     
@@ -137,7 +147,7 @@ extension MineBindingPhoneVC {
         if phone.count != 11 {
            return false
         }
-        if verification.count != 0 {
+        if verification == "" {
             return false
         }
         return true
@@ -149,6 +159,14 @@ extension MineBindingPhoneVC : PaymentPasswordDelegate {
         let parameters = ["token":(UserDefaults.standard.getUserInfo().token)!,"phone":self.phoneTF.text!,"code":verificationTF.text!,"dealPwd":pwd.md5(),"language":Tools.getLocalLanguage()]
         VM.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIBindPhone, parameters: parameters, showIndicator: false) { (model:HomeBaseModel) in
             SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "Added_Successfully"))
+            if model.code == 200 {
+                let userInfo = UserDefaults.standard.getUserInfo()
+                userInfo.phone = self.phoneTF.text!
+                UserDefaults.standard.saveCustomObject(object: userInfo, key: R_UserInfo)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                     self.navigationController?.popViewController(animated: true)
+                })
+            }
         }
         return pwd
     }

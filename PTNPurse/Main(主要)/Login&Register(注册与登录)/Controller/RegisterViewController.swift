@@ -41,7 +41,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewStyle()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,25 +86,20 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func codeBtnTouched(btn:AutorizeButton) {
-
-        if !Tools.validateMobile(mobile: self.nameTextView.textField.text!) {
-            SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "net_rightphone"))
-            return
+        if checkInpunt() {
+            btn.isCounting = true
+            getAuthorizeCode()
         }
-        
-        if type == .register {
-            if isRegister {
-                if self.rigisterInformationStr != "" {
-                     SVProgressHUD.showInfo(withStatus: self.rigisterInformationStr)
-                }
-                return
-            }
-        }
-        
-        btn.isCounting = true
-        getAuthorizeCode()
     }
     
+    func checkInpunt()->Bool{
+        let nameTextView = self.nameTextView.textField.text!
+        if Tools.validateNewPhone(phone: nameTextView) == false && Tools.validateEmail(email: nameTextView) == false {
+            SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "please_fill_finish"))
+            return false
+        }
+        return true
+    }
     
     // MARK: - NetWork Method
     func getAuthorizeCode() {
@@ -115,11 +109,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         var params = [ "username" : phone, "type" : "1"]
         if type == .register {
             //判断邮箱注册还是手机号码
-            if Tools.validateEmail(email: phone) {
-               params = [ "username" : phone, "type" : "4"]
-            }else{
-               params = [ "username" : phone, "type" : "1"]
-            }
+            params = [ "username" : phone, "type" : "1"]
         } else if type == .forgetpwd {
             params = [ "username" : phone, "type" : "2"]
         } else if type == .setPaymentPsd {
@@ -295,7 +285,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
         
         nameTextView.addTextFieldAndRightBtn(viewType: .SecondsCountType)
-        nameTextView.textField.setKeyboardStyle(textType: .TextFieldIntegerNumber)
+        nameTextView.textField.setKeyboardStyle(textType: .TextFieldNormal)
         nameTextView.rightAutorBtn.setTitle(LanguageHelper.getString(key: "get_code"), for: .normal)
         nameTextView.backgroundColor = UIColor.clear
         nameTextView.titleLabel.text = LanguageHelper.getString(key: "login_registeraccount")
@@ -362,17 +352,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
    @objc func textFieldTextDidChangeOneCI(noti:NSNotification){
         let textField = noti.object as! UITextField
-        if type == .register {
-            if textField ==  self.nameTextView.textField{
-                let string = textField.text!
-                let length = string.lengthOfBytes(using: String.Encoding.utf8)
-                if length == 11 {
-                    isRegisterFinish(account: string)
-                }
-                //限制字数
-                self.setLimitTheNumberOfWords(wordNum: 11, textField: textField)
-            }
-        }else if type == .setPaymentPsd{
+        if type == .setPaymentPsd {
             if textField == self.pwdTextView.textField{
                 self.setLimitTheNumberOfWords(wordNum: 6, textField: textField)
             }

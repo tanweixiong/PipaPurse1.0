@@ -131,7 +131,6 @@ class OpitionViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Private Method
     func setViewStyle() {
-        
         topView.setViewContent(title: LanguageHelper.getString(key: "person_opinion"))
         topView.rightItemBtn.isHidden = false
         topView.setButtonCallBack { (sender) in

@@ -76,6 +76,11 @@ class BusinessaDvertisementCell: UITableViewCell {
                 codeImageVw.isHidden = false
                 paymentCodeBtn.isHidden = false
                 transactionPaymentX.constant = 5
+                if model?.receivablesType == 2 {
+                    codeImageVw.setImage(UIImage.init(named: "ic_AlipayCode"), for: .normal)
+                }else if model?.receivablesType == 3{
+                    codeImageVw.setImage(UIImage.init(named: "ic_WechatCode"), for: .normal)
+                }
             }
    
             //进行中需要

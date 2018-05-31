@@ -67,10 +67,12 @@ extension MineSetPaymentVC:UITableViewDataSource,UITableViewDelegate{
         case 0:
              let mineSetAccountVC = MineSetAccountVC()
              mineSetAccountVC.style = .alipayStyle
+             mineSetAccountVC.type = 0
              self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
         case 1:
             let mineSetAccountVC = MineSetAccountVC()
             mineSetAccountVC.style = .weChatStyle
+            mineSetAccountVC.type = 1
             self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
         case 2:
             let vc = MineBankCardBindingVC()

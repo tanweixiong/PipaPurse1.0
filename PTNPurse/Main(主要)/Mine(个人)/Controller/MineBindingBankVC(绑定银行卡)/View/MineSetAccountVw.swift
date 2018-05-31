@@ -16,6 +16,11 @@ class MineSetAccountVw: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    @IBAction func cleanOnClick(_ sender: UIButton) {
+        self.endEditing(true)
+    }
+    
 }
 
 

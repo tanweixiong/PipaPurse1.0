@@ -341,7 +341,7 @@
 
 "login_newpwd" = "新密码";
 "login_newpwdplaceholder" = "输入您的新密码";
-"login_registeraccount" = "手机号";
+"login_registeraccount" = "手机号或邮箱";
 "login_registercode" = "验证码";
 "login_codeplaceholder" = "请输入验证码";
 
@@ -629,7 +629,11 @@
 "C2C_publish_order_Unit" = "交易单价";
 "C2C_publish_order_Limit" = "最小交易限额";
 "C2C_publish_order_Message" = "广告留言";
+"C2C_publish_order_Lowest_Price" = "最低价格";
+"C2C_publish_enter_order_Lowest_Price" = "请输入最低价格";
+
 "C2C_publish_order_Select_the_type_of_currency_you_trade" = "选择你交易的货币类型";
+"C2C_publish_Premium_Price" = "基于溢价比例得出的报价，10分钟更新一次";
 
 "C2C_publish_order_Alipay_Wechat_bankCard" = "如：支付宝，微信，银行卡";
 "C2C_publish_order_Please_enter_the_number_of_transactions" = "请输入交易数目";
@@ -712,6 +716,8 @@
 "binding_Please_enter_alipay_account" = "输入支付宝账号";
 "binding_Please_enter_weChat_account" = "输入微信账号";
 "binding_Determine_binding" = "确定绑定";
+"binding_Determine_right_binding" = "绑定";
+
 "binding_Add" = "添加";
 "binding_Bank_card_binding" = "银行卡绑定";
 "binding_Date_added" = "添加日期";
@@ -740,6 +746,8 @@
 "C2C_payment_method" = "收款方式";
 "C2C_Max" = "最大限额";
 "C2C_Proportion" = "溢价比例";
+"C2C_Proportion_Title" = "溢价";
+"C2C_Proportion_Tips" = "通过滑动溢出比例来调整公告，设置负数，报价将低于市场价，设置正数，报价将高于市场价，";
 
 "C2C_Quotation" = "报价";
 "C2C_ReleaseData" = "发布日期";
@@ -791,6 +799,7 @@
 "Mine_Order_Alipay_account" = "支付宝帐号";
 "Mine_Order_WeChat_account" = "微信帐号";
 "Mine_Order_Bind_Phone" = "绑定手机号";
+
 
 
 

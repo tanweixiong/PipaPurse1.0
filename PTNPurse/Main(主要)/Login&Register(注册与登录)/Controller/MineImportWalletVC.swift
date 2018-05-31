@@ -31,7 +31,7 @@ class MineImportWalletVC: MainViewController {
         view.forgetBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
         view.backBtn.tag = 3
         view.backBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
-        view.accountTF.keyboardType = .phonePad
+//        view.accountTF.keyboardType = .phonePad
         view.passwordTF.isSecureTextEntry = true
         view.passwordTF.keyboardType = .numbersAndPunctuation
         NotificationCenter.default.addObserver(self, selector: #selector(MineImportWalletVC.textFieldTextDidChangeOneCI), name:NSNotification.Name.UITextFieldTextDidChange, object: nil)
@@ -132,7 +132,7 @@ extension MineImportWalletVC {
     func checkInpunt()->Bool{
         let account = backgroundVw.accountTF.text!
         let pwd = backgroundVw.passwordTF.text!
-        if account.lengthOfBytes(using: .utf8) != 11 {
+        if Tools.validateEmail(email: account) == false && Tools.validateNewPhone(phone: account) == false {
             return false
         }
         

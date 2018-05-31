@@ -24,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wV9-rQ-U0H">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wV9-rQ-U0H" customClass="CreatTopView" customModule="PipaPurse" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -32,7 +32,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVn-iF-dJn">
-                    <rect key="frame" x="0.0" y="84" width="375" height="70"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="70"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入绑定的手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H5C-Yj-3GZ">
                             <rect key="frame" x="15" y="32" width="360" height="17"/>
@@ -41,17 +41,16 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4s-JA-dPN">
-                            <rect key="frame" x="0.0" y="69" width="375" height="1"/>
-                            <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="15" y="69" width="345" height="1"/>
+                            <color key="backgroundColor" red="0.69086021184921265" green="0.70845001935958862" blue="0.75463390350341797" alpha="0.79858732876712324" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="8yU-mE-LI2"/>
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="Y4s-JA-dPN" firstAttribute="leading" secondItem="uVn-iF-dJn" secondAttribute="leading" id="1K8-db-dNH"/>
-                        <constraint firstAttribute="trailing" secondItem="Y4s-JA-dPN" secondAttribute="trailing" id="2GC-Vj-7J3"/>
+                        <constraint firstItem="Y4s-JA-dPN" firstAttribute="leading" secondItem="uVn-iF-dJn" secondAttribute="leading" constant="15" id="1K8-db-dNH"/>
+                        <constraint firstAttribute="trailing" secondItem="Y4s-JA-dPN" secondAttribute="trailing" constant="15" id="2GC-Vj-7J3"/>
                         <constraint firstItem="Y4s-JA-dPN" firstAttribute="top" secondItem="H5C-Yj-3GZ" secondAttribute="bottom" constant="20" id="Ag9-TN-wmj"/>
                         <constraint firstItem="H5C-Yj-3GZ" firstAttribute="leading" secondItem="uVn-iF-dJn" secondAttribute="leading" constant="15" id="XoW-ER-jZF"/>
                         <constraint firstAttribute="trailing" secondItem="H5C-Yj-3GZ" secondAttribute="trailing" id="Y5R-ax-qzt"/>
@@ -60,7 +59,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laz-K2-hVE">
-                    <rect key="frame" x="0.0" y="154" width="375" height="70"/>
+                    <rect key="frame" x="0.0" y="134" width="375" height="70"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的验证吗" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f17-Q7-zkh">
                             <rect key="frame" x="15" y="32" width="268" height="17"/>
@@ -69,21 +68,20 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c5Q-YM-v7b">
-                            <rect key="frame" x="0.0" y="69" width="375" height="1"/>
-                            <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="15" y="69" width="345" height="1"/>
+                            <color key="backgroundColor" red="0.69086021184921265" green="0.70845001935958862" blue="0.75463390350341797" alpha="0.79979130993150682" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="hD1-Q1-SSI"/>
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="c5Q-YM-v7b" secondAttribute="bottom" id="N4O-XR-OBg"/>
                         <constraint firstItem="c5Q-YM-v7b" firstAttribute="top" secondItem="f17-Q7-zkh" secondAttribute="bottom" constant="20" id="QdZ-W5-qmR"/>
-                        <constraint firstAttribute="trailing" secondItem="c5Q-YM-v7b" secondAttribute="trailing" id="j9T-5z-QoW"/>
+                        <constraint firstAttribute="trailing" secondItem="c5Q-YM-v7b" secondAttribute="trailing" constant="15" id="j9T-5z-QoW"/>
                         <constraint firstAttribute="trailing" secondItem="f17-Q7-zkh" secondAttribute="trailing" constant="92" id="otQ-SB-Urs"/>
                         <constraint firstItem="f17-Q7-zkh" firstAttribute="leading" secondItem="laz-K2-hVE" secondAttribute="leading" constant="15" id="snX-wn-Hbd"/>
-                        <constraint firstItem="c5Q-YM-v7b" firstAttribute="leading" secondItem="laz-K2-hVE" secondAttribute="leading" id="u8i-Vo-CX6"/>
+                        <constraint firstItem="c5Q-YM-v7b" firstAttribute="leading" secondItem="laz-K2-hVE" secondAttribute="leading" constant="15" id="u8i-Vo-CX6"/>
                         <constraint firstAttribute="height" constant="70" id="wxA-uj-B2g"/>
                     </constraints>
                 </view>
@@ -96,7 +94,7 @@
                 <constraint firstItem="uVn-iF-dJn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JxJ-GB-mBo"/>
                 <constraint firstItem="wV9-rQ-U0H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Kdw-yJ-5Gv"/>
                 <constraint firstItem="wV9-rQ-U0H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VgW-lV-c7p"/>
-                <constraint firstItem="uVn-iF-dJn" firstAttribute="top" secondItem="wV9-rQ-U0H" secondAttribute="bottom" constant="20" id="eny-zB-DyY"/>
+                <constraint firstItem="uVn-iF-dJn" firstAttribute="top" secondItem="wV9-rQ-U0H" secondAttribute="bottom" id="eny-zB-DyY"/>
                 <constraint firstAttribute="trailing" secondItem="laz-K2-hVE" secondAttribute="trailing" id="hY0-mj-DaJ"/>
                 <constraint firstItem="laz-K2-hVE" firstAttribute="top" secondItem="uVn-iF-dJn" secondAttribute="bottom" id="q0R-Fx-4Fv"/>
             </constraints>

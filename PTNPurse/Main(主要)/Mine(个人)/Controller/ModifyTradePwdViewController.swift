@@ -89,7 +89,6 @@ class ModifyTradePwdViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - NetWork Method
     func getAuthorizeCode() {
-        
         let phone = UserDefaults.standard.getUserInfo().username as! String
         //1:用户注册,2:用户忘记密码,3:用户修改交易密码,4:用户忘记交易密码
         let params = [ "username" : phone, "type" : "3"]

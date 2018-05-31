@@ -23,6 +23,8 @@ class BusinessaDvertisementModel: Mappable {
     var entrustNo:String?
     var receivablesType:NSNumber?
     var paymentCode:String?
+    
+    
 
     required init?(map: Map) {
         

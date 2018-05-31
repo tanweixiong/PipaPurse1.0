@@ -20,27 +20,35 @@ class BusinessTransactionVC: MainViewController {
     fileprivate var bankCardId = String()
     fileprivate var alipayStr = String()
     fileprivate var weChatStr = String()
+    fileprivate var marketPriceString = String()
     fileprivate var headingArray =
         [LanguageHelper.getString(key: "C2C_publish_order_Currency")
         ,LanguageHelper.getString(key: "C2C_publish_order_Number")
         ,LanguageHelper.getString(key: "C2C_publish_order_Unit")
         ,LanguageHelper.getString(key: "C2C_publish_order_Limit")
+        ,LanguageHelper.getString(key: "C2C_publish_order_Lowest_Price")
+        ,LanguageHelper.getString(key: "C2C_Proportion")
         ,LanguageHelper.getString(key: "C2C_publish_order_Message")]
+    
     fileprivate let headingContentArray =
         [LanguageHelper.getString(key: "C2C_publish_order_Select_the_type_of_currency_you_trade")
         ,LanguageHelper.getString(key: "C2C_publish_order_Please_enter_the_number_of_transactions")
         ,LanguageHelper.getString(key: "C2C_publish_order_Please_enter_the_transaction_unit_price")
         ,LanguageHelper.getString(key: "C2C_publish_order_Please_enter_the_minimum_transaction_limit_amount")
+        ,LanguageHelper.getString(key: "C2C_publish_enter_order_Lowest_Price")
+        ,"0.0000"
         ,LanguageHelper.getString(key: "C2C_publish_order_Enter_information_to_inform_each_other")]
     fileprivate let businessRelaseCell = "BusinessRelaseCell"
     fileprivate let homeTransferRemarksCell = "HomeTransferRemarksCell"
     fileprivate let businessReleaseMethodCell = "BusinessReleaseMethodCell"
+    fileprivate let businessPremiumCell = "BusinessPremiumCell"
     fileprivate let coinArray = NSMutableArray()
     fileprivate var coinNameTF = UITextField()
     fileprivate var methodTF = UITextField()
     fileprivate var transactionsNumTF = UITextField()
     fileprivate var transactionsPriceTF = UITextField()
     fileprivate var transactionsMinTF = UITextField()
+    fileprivate var percentLab = UILabel()
     fileprivate var methodType = String()
     fileprivate var remarkTV = YYTextView()
     fileprivate var remarksCell = HomeTransferRemarksCell()
@@ -63,6 +71,7 @@ class BusinessTransactionVC: MainViewController {
         tableView.register(UINib(nibName: "BusinessRelaseCell", bundle: nil),forCellReuseIdentifier: self.businessRelaseCell)
         tableView.register(UINib(nibName: "BusinessReleaseMethodCell", bundle: nil),forCellReuseIdentifier: self.businessReleaseMethodCell)
         tableView.register(UINib(nibName: "HomeTransferRemarksCell", bundle: nil),forCellReuseIdentifier: self.homeTransferRemarksCell)
+        tableView.register(UINib(nibName: "BusinessPremiumCell", bundle: nil),forCellReuseIdentifier: self.businessPremiumCell)
         tableView.backgroundColor = UIColor.white
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
@@ -95,6 +104,8 @@ class BusinessTransactionVC: MainViewController {
     
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == self.transactionsPriceTF {
+           //如果继续输入则溢价为空
+           self.percentLab.text = "--"
            return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemePostPurchasePriceLimit)
         } else if  textField == self.transactionsNumTF {
              return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemePostPurchaseLimit)
@@ -317,10 +328,14 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row != 4 {
-            return 94
-        }else{
+        if indexPath.row == 0 {
+            return 80
+        }else if indexPath.row == 5 {
+           return 180
+        }else if indexPath.row == 6 {
             return 184 + 15
+        }else{
+            return 94
         }
     }
     
@@ -329,7 +344,8 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row != 4 {
+        let marketPrice = self.chooseCoin?.marketPrice == nil ? 0 : (self.chooseCoin?.marketPrice)!
+        if indexPath.row != 6 {
             if indexPath.row == 0{
                let cell = tableView.dequeueReusableCell(withIdentifier: businessReleaseMethodCell, for: indexPath) as! BusinessReleaseMethodCell
                cell.selectionStyle = .none
@@ -339,33 +355,51 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
                methodTF = cell.paymentMethodtf
                return cell
             }else{
-                let cell = tableView.dequeueReusableCell(withIdentifier: businessRelaseCell, for: indexPath) as! BusinessRelaseCell
-                cell.selectionStyle = .none
-                cell.headContentLab.text = headingArray[indexPath.row]
-                cell.textfield.placeholder = headingContentArray[indexPath.row]
-                cell.textfield.textColor = UIColor.R_UIColorFromRGB(color: 0xBDBDBD)
-                cell.textfield.font = UIFont.systemFont(ofSize: 12)
-                cell.textfield.setValue(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), forKeyPath: "_placeholderLabel.textColor")
-                if indexPath.row == 1 {
-                    cell.textfield.keyboardType = .decimalPad
-                    cell.textfield.delegate = self
-                    cell.thinLinesVw.isHidden = false
-                    cell.unitLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Num")
-                    self.transactionsNumTF = cell.textfield
-                }else if indexPath.row == 2 {
-                    cell.textfield.keyboardType = .decimalPad
-                    cell.textfield.delegate = self
-                    cell.thickLinesVw.isHidden = false
-                    cell.unitLab.text = "CNY"
-                    self.transactionsPriceTF = cell.textfield
-                }else if indexPath.row == 3 {
-                    cell.textfield.keyboardType = .decimalPad
-                    cell.textfield.delegate = self
-                    cell.thinLinesVw.isHidden = false
-                    cell.unitLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Num")
-                    self.transactionsMinTF = cell.textfield
+                if indexPath.row == 5 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: businessPremiumCell, for: indexPath) as! BusinessPremiumCell
+                    cell.selectionStyle = .none
+                    cell.premiumSliderBlock = { (value:String) in
+                        self.transactionsPriceTF.text = value
+                        self.marketPriceString = value
+                    }
+                    self.percentLab = cell.percentLab
+                    cell.setupUI(currencyPrices:marketPrice)
+                    return cell
+                }else{
+                    let cell = tableView.dequeueReusableCell(withIdentifier: businessRelaseCell, for: indexPath) as! BusinessRelaseCell
+                    cell.selectionStyle = .none
+                    cell.headContentLab.text = headingArray[indexPath.row]
+                    cell.textfield.placeholder = headingContentArray[indexPath.row]
+                    cell.textfield.textColor = UIColor.R_UIColorFromRGB(color: 0xBDBDBD)
+                    cell.textfield.font = UIFont.systemFont(ofSize: 12)
+                    cell.textfield.setValue(UIColor.R_UIColorFromRGB(color: 0xBDBDBD), forKeyPath: "_placeholderLabel.textColor")
+                    if indexPath.row == 1 {
+                        cell.textfield.keyboardType = .decimalPad
+                        cell.textfield.delegate = self
+                        cell.thinLinesVw.isHidden = false
+                        cell.unitLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Num")
+                        self.transactionsNumTF = cell.textfield
+                    }else if indexPath.row == 2 {
+                        cell.textfield.keyboardType = .decimalPad
+                        cell.textfield.delegate = self
+                        cell.thickLinesVw.isHidden = false
+                        cell.unitLab.text = "CNY"
+                        self.transactionsPriceTF = cell.textfield
+                        self.transactionsPriceTF.text = marketPriceString
+                    }else if indexPath.row == 3 {
+                        cell.textfield.keyboardType = .decimalPad
+                        cell.textfield.delegate = self
+                        cell.thinLinesVw.isHidden = false
+                        cell.unitLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Num")
+                        self.transactionsMinTF = cell.textfield
+                    }else if indexPath.row == 4 {
+                        cell.unitLab.text = "CNY"
+                        cell.textfield.isEnabled = false
+                        let tradeMinPrice = self.chooseCoin?.tradeMinPrice == nil ? 0 : (self.chooseCoin?.tradeMinPrice)!
+                        cell.textfield.text = Tools.setNSDecimalNumber(tradeMinPrice)
+                    }
+                    return cell
                 }
-                return cell
             }
         }else{
             remarksCell = tableView.dequeueReusableCell(withIdentifier: homeTransferRemarksCell, for: indexPath) as! HomeTransferRemarksCell
@@ -406,6 +440,8 @@ extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
             selectFirstIndex = IndexPath(row: index, section: 0)
             coinNameTF.text = name
             getCoinObject(coinName: name)
+            marketPriceString = self.chooseCoin?.marketPrice == nil ? "0" : (self.chooseCoin?.marketPrice?.stringValue)!
+            tableView.reloadData()
         }else if selectList == 1 {
             selectSecondIndex = IndexPath(row: index, section: 0)
             self.paymentMethod = name //用于支付方式

@@ -184,9 +184,11 @@ class ZYNetWorkTool: NSObject {
         Alamofire.upload(
             multipartFormData: { multipartFormData in
                 if parameter != nil {
-                    for (key,value) in parameter!{
-                        multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName:key)
-                    }
+                    let jsonParameters =  Tools.getJSONStringFromDictionary(dictionary:parameter! as NSDictionary)
+                    multipartFormData.append(jsonParameters.data(using: String.Encoding.utf8)!, withName: "data")
+//                    for (key,value) in parameter!{
+//                        multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName:key)
+//                    }
                 }
                 if imageArray.count != 0 {
                     let imageName = Tools.getCurrentTime() + ".jpg"
