@@ -13,6 +13,7 @@ import ObjectMapper
 
 class BusinessTransactionVC: MainViewController {
     fileprivate lazy var viewModel : BaseViewModel = BaseViewModel()
+    fileprivate lazy var mineVM : MineViewModel = MineViewModel()
     fileprivate lazy var coinViewModel : BusinessVM = BusinessVM()
     fileprivate var chooseCoin = BusinessCoinModel()
     var style = BusinessTransactionStyle.buyStyle
@@ -132,11 +133,7 @@ extension BusinessTransactionVC {
     
    @objc func submitOnClick(){
          if Tools.noPaymentPasswordIsSetToExecute() == false{return}
-        if checkInput() {
-            let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
-            input?.delegate = self
-            input?.show()
-        }
+         self.getFee()
     }
     
     func checkInput()->Bool{
@@ -241,6 +238,22 @@ extension BusinessTransactionVC {
                 businessWantFinishVC.liberateStyle = self.style
                 self.navigationController?.pushViewController(businessWantFinishVC, animated: true)
             })
+        }
+    }
+    
+    //获取手续费
+    func getFee(){
+        let transactionsNum = transactionsNumTF.text!
+        let coinNo = (self.chooseCoin?.id?.stringValue)!
+        let parameters = ["coinNo":coinNo,"tradeNumber":transactionsNum]
+        mineVM.loadSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetSpotEntrustPoundage, parameters: parameters, showIndicator: false) { (json) in
+            let coinCore = (self.mineVM.homeConvertFreeModel.coinCore)!
+            let poundage = "≈" + Tools.setNSDecimalNumber(self.mineVM.homeConvertFreeModel.poundage!) + coinCore
+            let tradeNumber =  Tools.setNSDecimalNumber(self.mineVM.homeConvertFreeModel.tradeNumber!) + coinCore
+            let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
+            input?.delegate = self
+            input?.setUpFeesMinersFeesPoundage(poundage, tradeNumber: tradeNumber)
+            input?.show()
         }
     }
     
@@ -462,6 +475,7 @@ extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
                 if alipayStr == "" {
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .alipayStyle
+                    mineSetAccountVC.type = 0
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }
@@ -473,6 +487,7 @@ extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
                 if weChatStr == "" {
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .weChatStyle
+                    mineSetAccountVC.type = 1
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }

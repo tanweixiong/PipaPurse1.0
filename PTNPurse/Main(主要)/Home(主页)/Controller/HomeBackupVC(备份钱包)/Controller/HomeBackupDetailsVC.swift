@@ -72,7 +72,7 @@ class HomeBackupDetailsVC: MainViewController,HomeBackupDetailsViewDelegate {
         let params = ["addressJson": filecontent, "memorandum":memorandum,"userNo":(userNo.stringValue)]
         SVProgressHUD.show(with: .black)
         ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIImportAddress, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
-            SVProgressHUD.dismiss()
+
             let result = Mapper<HomeImprotWalletBaseModel>().map(JSONObject: jsonObjc)
             if let code = result?.code {
                 if code == 200 {
@@ -80,7 +80,7 @@ class HomeBackupDetailsVC: MainViewController,HomeBackupDetailsViewDelegate {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: R_NotificationHomeReload), object: nil)
       
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
-                        self.navigationController?.popViewController(animated: true)
+                        self.navigationController?.popToRootViewController(animated: true)
                     })
                 } else {
                     SVProgressHUD.showInfo(withStatus: result?.message)

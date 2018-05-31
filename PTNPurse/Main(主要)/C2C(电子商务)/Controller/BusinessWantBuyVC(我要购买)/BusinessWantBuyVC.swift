@@ -227,6 +227,7 @@ extension BusinessWantBuyVC {
                 if self.paymentMethod == "" &&  self.receivablesType == "2"{
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .alipayStyle
+                    mineSetAccountVC.type = 0
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }
@@ -235,6 +236,7 @@ extension BusinessWantBuyVC {
                 if self.paymentMethod == "" &&  self.receivablesType == "3" {
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .weChatStyle
+                    mineSetAccountVC.type = 1
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }

@@ -63,3 +63,26 @@ class HomeConvertListModel: Mappable {
         date     <- map["date"]
     }
 }
+
+
+//手续费
+class HomeConvertFreeModel: Mappable {
+    var poundage:NSNumber?
+    var coinCore:String?
+    var tradeNumber:NSNumber?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    required init?() {
+        
+    }
+    
+    func mapping(map: Map) {
+        poundage     <- map["poundage"]
+        coinCore     <- map["coinCore"]
+        tradeNumber     <- map["tradeNumber"]
+    }
+}
+

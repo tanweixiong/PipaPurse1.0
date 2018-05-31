@@ -238,10 +238,9 @@ extension BusinessaDvertisementVC {
         let model = viewModel.processingModel[sender.tag]
         let token = (UserDefaults.standard.getUserInfo().token)!
         let orderNo = model.orderNo!
-        let userType = (model.dealType?.stringValue)!
         let language = Tools.getLocalLanguage()
         let userNo = (UserDefaults.standard.getUserInfo().id?.stringValue)!
-        let parameters = ["token":token,"orderNo":orderNo,"userType":userType,"language":language,"userNo":userNo]
+        let parameters = ["token":token,"orderNo":orderNo,"language":language,"userNo":userNo]
         baseViewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPICancelDealDetail, parameters: parameters, showIndicator: false) { (json) in
             SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "C2C_transaction_Cancel_order_successfully"))
             self.viewModel.processingModel.remove(at: sender.tag)

@@ -84,7 +84,7 @@ class HomeTransferDetailsVC: MainViewController,UITableViewDataSource,UITableVie
             let tradeNum = "-" + Tools.setNSDecimalNumber(model.tradeNum == nil ? 0 : (model.tradeNum)!) + " " + LanguageHelper.getString(key: "homePage_Numbers")
             let inAddress = model.inAddress
             let data = model.date!
-            let ratio = String(format: "%.2f", (model.ratio?.stringValue)!)
+            let ratio = Tools.setNSDecimalNumber((model.ratio)!)
             let remark = model.remark
             if remark == "" {
                self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio])

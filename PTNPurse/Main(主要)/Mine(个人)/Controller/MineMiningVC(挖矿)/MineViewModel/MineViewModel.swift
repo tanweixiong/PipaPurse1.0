@@ -26,6 +26,8 @@ class MineViewModel: NSObject {
     
      lazy var homeConvertListModel : [HomeConvertListModel] = [HomeConvertListModel]()
     
+    lazy var homeConvertFreeModel: HomeConvertFreeModel = HomeConvertFreeModel()!
+    
     func loadSuccessfullyReturnedData(requestType: HTTPMethod, URLString : String, parameters : [String : Any]? = nil, showIndicator: Bool,finishedCallback : @escaping (_ data:Bool) -> ()) {
         baseViewModel.loadSuccessfullyReturnedData(requestType: requestType, URLString: URLString, parameters: parameters, showIndicator: showIndicator) {(model:HomeBaseModel) in
             //获取气泡
@@ -53,6 +55,10 @@ class MineViewModel: NSObject {
                 arr.addObjects(from: responseData.changeList!)
                 self.homeConvertListModel = arr as! [HomeConvertListModel]
                 finishedCallback(responseData.changeList?.count != 0 ? true : false)
+            }else if URLString.contains(ZYConstAPI.kAPIGetSpotEntrustPoundage){
+                let responseData = Mapper<HomeConvertFreeModel>().map(JSONObject: model.data)!
+                self.homeConvertFreeModel = responseData
+                finishedCallback(true)
             }
         }
     }

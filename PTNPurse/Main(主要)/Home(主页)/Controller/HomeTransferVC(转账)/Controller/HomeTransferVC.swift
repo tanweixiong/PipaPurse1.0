@@ -110,12 +110,14 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
     @objc func transferOnClick(){
         if Tools.noPaymentPasswordIsSetToExecute() == false{return}
         if checkEnter(){
+            let fee = sliderValueLab.text!
+            
             let input = InputPaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
             input?.delegate = self
             input?.setPaymentPasswordAlertPriceTitle(LanguageHelper.getString(key: "homePage_Number"))
             input?.setPaymentPasswordAlertPrice(collectNumTextField.text!)
             input?.setPaymentPasswordAlertHandicapCostTitle(LanguageHelper.getString(key: "homePage_Miner_Fee"))
-            input?.setPaymentPasswordAlertHandicapCost(String(format: "%.2f", slider.value))
+            input?.setPaymentPasswordAlertHandicapCost(Tools.getConversionPrice(amount: fee, count: 2))
             input?.paymentPasswordAlertVw.titleLabel.text = LanguageHelper.getString(key: "homePage_Prompt_Enter_PayPassword")
             input?.paymentPasswordAlertVw.forgetPwdBtn.setTitle(LanguageHelper.getString(key: "forget_password") + "?", for: .normal)
             input?.show()

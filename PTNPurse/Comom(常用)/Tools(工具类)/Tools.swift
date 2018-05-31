@@ -20,9 +20,17 @@ class Tools: NSObject {
 
     //新的正则旧的
     class func validateNewPhone(phone: String) -> Bool {
-        let MOBILERegex = "^(1+[0-9]{10})$"
-        let MOBILETest = NSPredicate(format: "SELF MATCHES %@", MOBILERegex)
-        return MOBILETest.evaluate(with: phone)
+        //电话号码
+        let MOBILE = "^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[067853])\\d{8}$"
+        //中国电信
+        let CM = "(^1(3[4-9]|4[7]|5[0-27-9]|7[8]|8[2-478])\\d{8}$)|(^1705\\d{7}$)"
+        //中国联通
+        let CU = "(^1(3[0-2]|4[5]|5[56]|7[6]|8[56])\\d{8}$)|(^1709\\d{7}$)"
+        if Tools.isValidateByRegex(regex: MOBILE, mobile: phone) || Tools.isValidateByRegex(regex: CM, mobile: phone) || Tools.isValidateByRegex(regex: CU, mobile: phone) {
+            return true
+        }else{
+            return false
+        }
     }
     
     //判断是否为电话号码

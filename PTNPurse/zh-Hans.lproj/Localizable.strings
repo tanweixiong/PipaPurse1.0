@@ -335,7 +335,6 @@
 "login_next" = "下一步";
 "login_codeerror" = "验证码错误";
 
-
 "login_ok" = "确定";
 "login_cancle" = "取消";
 
@@ -804,7 +803,7 @@
 "Mine_Order_Bind_Phone" = "绑定手机号";
 
 "Mine_Please_enter_a_nickname" = "请输入您的昵称";
-
+"Mine_Please_create_a_new_wallet_address" = "请新建钱包地址";
 
 
 

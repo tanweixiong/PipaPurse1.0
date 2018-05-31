@@ -47,8 +47,13 @@ class MineViewController: UIViewController {
     @IBAction func onClick(_ sender: UIButton) {
         //挖矿
         if sender.tag == 1 {
-            let mineMiningVC = MineMiningVC()
-            self.navigationController?.pushViewController(mineMiningVC, animated: true)
+            //判断是否有钱包地址
+            if UserDefaults.standard.getUserInfo().ptnaddress != "" && UserDefaults.standard.getUserInfo().ptnaddress != nil {
+                let mineMiningVC = MineMiningVC()
+                self.navigationController?.pushViewController(mineMiningVC, animated: true)
+            }else{
+                SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "Mine_Please_create_a_new_wallet_address"))
+            }
         }else if sender.tag == 2 {
             let businessBuyVC = BusinessBuyHistoryVC()
             businessBuyVC.transactionStyle = .buyStyle
@@ -95,7 +100,7 @@ class MineViewController: UIViewController {
     func getData(){
          usernameLab.text = "--"
         if let nickname = UserDefaults.standard.getUserInfo().nickname {
-            usernameLab.text = (nickname as! String) == "" ? "--" : (nickname as! String)
+            usernameLab.text =  UserDefaults.standard.getUserInfo().nickname == nil ? "--" : (nickname as! String)
         }
         
         if (UserDefaults.standard.getUserInfo().nickname)! as! String == "" {

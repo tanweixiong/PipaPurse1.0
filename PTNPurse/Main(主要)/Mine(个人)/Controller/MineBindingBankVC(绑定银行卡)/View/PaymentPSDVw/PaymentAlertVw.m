@@ -10,6 +10,8 @@
 
 @implementation PaymentAlertVw
 
+
+
 -(void)layoutSubviews{
     [super layoutSubviews];
 }

@@ -21,4 +21,5 @@
 - (void)show;
 - (instancetype)initWithFrame:(CGRect)frame isNormal:(BOOL)isNormal;
 - (instancetype)initWithFrame:(CGRect)frame;
+-(void)setUpFeesMinersFeesPoundage:(NSString *)poundage tradeNumber:(NSString *)tradeNumber;
 @end

@@ -266,9 +266,15 @@ static CGFloat const kDotWith_height = 10;
         if ([str isEqualToString:@"zh-Hans"]) {
             _paymentPasswordAlertVw.titleLabel.text = @"输入密码";
             [_paymentPasswordAlertVw.forgetPwdBtn setTitle:@"忘记密码?" forState:UIControlStateNormal];
+            
+            _paymentPasswordAlertVw.poundageTitleLab.text = @"手续费";
+            _paymentPasswordAlertVw.tradeNumberTitleLab.text = @"交易数量";
         }else{
             [_paymentPasswordAlertVw.forgetPwdBtn setTitle:@"Forget psd" forState:UIControlStateNormal];
              _paymentPasswordAlertVw.titleLabel.text = @"Please enter payment password";
+            
+            _paymentPasswordAlertVw.poundageTitleLab.text = @"Fees";
+            _paymentPasswordAlertVw.tradeNumberTitleLab.text = @"Number";
         }
     }
     return _paymentPasswordAlertVw;
@@ -321,6 +327,16 @@ static CGFloat const kDotWith_height = 10;
     }
 }
 
+-(void)setUpFeesMinersFeesPoundage:(NSString *)poundage tradeNumber:(NSString *)tradeNumber{
+    [_paymentPasswordAlertVw.titleLabel setHidden:YES];
+    [_paymentPasswordAlertVw.tradeNumberLab setHidden:NO];
+    [_paymentPasswordAlertVw.poundageLab setHidden:NO];
+    [_paymentPasswordAlertVw.tradeNumberTitleLab setHidden:NO];
+    [_paymentPasswordAlertVw.poundageTitleLab setHidden:NO];
+    _paymentPasswordAlertVw.poundageLab.text = poundage;
+    _paymentPasswordAlertVw.tradeNumberLab.text = tradeNumber;
+    _paymentPasswordAlertVw.titleTopY.constant = 5;
+}
 
 - (void)layoutSubviews
 {
