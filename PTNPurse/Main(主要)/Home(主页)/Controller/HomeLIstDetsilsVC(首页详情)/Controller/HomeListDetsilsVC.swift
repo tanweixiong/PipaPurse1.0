@@ -137,11 +137,11 @@ extension HomeListDetsilsVC {
     
     @objc func selectDetailsOnClick(_ sender:UIButton){
        if sender.tag == 2{
-            let model = self.details
-            let coinNo = (model.type?.stringValue)!
-            let homeCoinTransferDetailsVC = HomeCoinTransferDetailsVC()
-            homeCoinTransferDetailsVC.coinNum = coinNo
-            self.navigationController?.pushViewController(homeCoinTransferDetailsVC, animated: true)
+//            let model = self.details
+//            let coinNo = (model.type?.stringValue)!
+//            let homeCoinTransferDetailsVC = HomeCoinTransferDetailsVC()
+//            homeCoinTransferDetailsVC.coinNum = coinNo
+//            self.navigationController?.pushViewController(homeCoinTransferDetailsVC, animated: true)
         }
     }
     

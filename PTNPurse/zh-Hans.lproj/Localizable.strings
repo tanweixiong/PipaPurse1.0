@@ -487,8 +487,8 @@
 "perseon_Choose_Upload_File" = "请选择上传文件";
 "perseon_Upload_File" = "上传文件";
 
-"homepage_Amount_Available" = "可转资产";
-"homepage_Freeze_Amount" = "现有资产";
+"homepage_Amount_Available" = "可用金额";
+"homepage_Freeze_Amount" = "冻结金额";
 
 "homepage_Create_Address" = " 新建钱包地址";
 "homepage_Create_Finish" = "新建成功";

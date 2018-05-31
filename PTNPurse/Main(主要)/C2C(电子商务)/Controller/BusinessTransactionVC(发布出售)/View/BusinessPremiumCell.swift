@@ -43,6 +43,16 @@ class BusinessPremiumCell: UITableViewCell {
             make.width.equalTo(sliderBgVw.width)
             make.height.equalTo(20)
         }
+        
+        let currencyPricesStr = (self.currencyPrices.stringValue)
+        let transactionUnitPrice = self.currencyPrices.doubleValue * Double(10) / 100
+        let difference = currencyPrices.doubleValue + transactionUnitPrice
+        let transactionUnitPriceStr = Tools.getConversionPrice(amount: "\(difference)")
+        if Tools.getLocalLanguage() == "0" {
+            premiumTipsLab.text = "通过滑动溢出比例来调整公告，设置负数，报价将低于市场价，设置正数，报价将高于市场价，比如当前价格\(currencyPricesStr)，溢价比例为10%，那么价格为\(transactionUnitPriceStr)"
+        }else{
+             premiumTipsLab.text = "Premium ticp for example, if the current price is \(currencyPricesStr) and the premium rate is 10%, then the price is \(transactionUnitPriceStr)"
+        }
     }
     
     lazy var sliderView: PTNSlider = {
@@ -61,9 +71,11 @@ class BusinessPremiumCell: UITableViewCell {
         if progressInt > 100 {
             let positive = progressInt - 100
             currentProgress = positive
+            currentProgress =  currentProgress == 100 ? 99 : currentProgress
             percentLab.text = "\(currentProgress)"
         }else{
-            currentProgress = -progressInt
+            currentProgress =  (100 - progressInt) * -1
+            currentProgress =  currentProgress == -100 ? -99 : currentProgress
             percentLab.text = "\(currentProgress)"
         }
         let transactionUnitPrice = currencyPrices.doubleValue * Double(currentProgress) / 100

@@ -30,7 +30,7 @@ class MainTabBarController: UITabBarController {
         let informationVC = addChildVc(InformationVC(), title: LanguageHelper.getString(key: "tab_Information"), imageName: "ic_tabBar_information_n", selectedImageName: "ic_tabBar_information_s")
         let mineVc = addChildVc(MineViewController(), title: LanguageHelper.getString(key: "tab_Individual"), imageName: "ic_tab_mine_n", selectedImageName: "ic_tab_mine_s")
         viewControllers = [homeVc,quotesVC,businessVC,informationVC,mineVc]
-        self.selectedIndex = 2
+        self.selectedIndex = 0
     }
     
     func addChildVc(_ childVc: UIViewController, title: String, imageName: String, selectedImageName: String) -> UINavigationController {

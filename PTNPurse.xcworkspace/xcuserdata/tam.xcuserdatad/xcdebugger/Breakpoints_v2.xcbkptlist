@@ -57,22 +57,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PTNPurse/Main(&#x4e3b;&#x8981;)/Home(&#x4e3b;&#x9875;)/Controller/HomeTransferVC(&#x8f6c;&#x8d26;)/Controller/HomeTransferVC.swift"
-            timestampString = "549254736.1391881"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "setDetermineStyle()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "PTNPurse/Main(&#x4e3b;&#x8981;)/information(&#x8d44;&#x8baf;)/Controller/NewsDetailViewController.swift"
             timestampString = "549429080.4744509"
             startingColumnNumber = "9223372036854775807"
@@ -90,7 +74,7 @@
                   moduleName = "PipaPurse"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tam/Desktop/PipaPursePurse1.0/PTNPurse/Main(%E4%B8%BB%E8%A6%81)/information(%E8%B5%84%E8%AE%AF)/Controller/NewsDetailViewController.swift"
-                  timestampString = "549445817.823429"
+                  timestampString = "549449140.248693"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "70"
@@ -105,7 +89,7 @@
                   moduleName = "PipaPurse"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tam/Desktop/PipaPursePurse1.0/PTNPurse/Main(%E4%B8%BB%E8%A6%81)/information(%E8%B5%84%E8%AE%AF)/Controller/NewsDetailViewController.swift"
-                  timestampString = "549445817.825336"
+                  timestampString = "549449140.252771"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "70"

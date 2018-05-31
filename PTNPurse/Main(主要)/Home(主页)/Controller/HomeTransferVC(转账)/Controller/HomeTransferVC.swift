@@ -30,19 +30,16 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
     fileprivate let HomeCointTransViewHeight = 50
     fileprivate let HomeCointTransView_y =  111
     fileprivate var walletAddress = String()
-    fileprivate var pubKeyTextField = UITextField()
     fileprivate var isPTNCoin = false
     fileprivate var headingArray = [
         [LanguageHelper.getString(key: "homePage_Wallet_Address")
         ,LanguageHelper.getString(key: "homePage_Receivables_Address")
-        ,LanguageHelper.getString(key: "homePage_Transfer_Public_Key")
         ,LanguageHelper.getString(key: "homePage_Number")
         ,LanguageHelper.getString(key: "homePage_Miner_Fee")]
         ,[LanguageHelper.getString(key: "homePage_Remark_Information")]]
     fileprivate var headingContentArray = [
         [LanguageHelper.getString(key: "homePage_Transfer_Key")
         ,LanguageHelper.getString(key: "homePage_Transfer_Scan_Address")
-        ,LanguageHelper.getString(key: "homePage_Transfer_Enter_Public_Key")
         ,LanguageHelper.getString(key: "homePage_Transfer_textField_Number")
         ,LanguageHelper.getString(key: "homePage_Miner_Fee")]
         ,[LanguageHelper.getString(key: "homePage_Transfer_Scan_Address")]]
@@ -54,7 +51,6 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.isNeedPubKey()
         setCustomNaviBar(backgroundImage: "ic_naviBar_backgroundImg",title:"")
         naviBarView.addSubview(conversionStatusView)
         naviBarView.addSubview(detsilsAssetsView)
@@ -63,6 +59,7 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
         self.getCoinData()
         self.getMaxFeeData()
         NotificationCenter.default.addObserver(self, selector: #selector(getCoinData), name: NSNotification.Name(rawValue: R_NotificationHomeReload), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeTransferVC.textFieldTextDidChangeOneCI), name:NSNotification.Name.UITextFieldTextDidChange, object: nil)
     }
     
     @objc func getCoinData(){
@@ -105,27 +102,9 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
         }
     }
     
-    func isNeedPubKey(){
-        if details.type != nil {
-            //PTN需要公钥 其他不需要公钥匙
-            if Tools.getPTNcoinNo() != (details.type?.stringValue)!  {
-                let firstHeading = headingArray.first!
-                let firstHeadingArray = NSMutableArray()
-                firstHeadingArray.addObjects(from: firstHeading)
-                firstHeadingArray.removeObject(at: 2)
-                headingArray = [firstHeadingArray as! Array<String>,headingArray.last!]
-                let firstContent = headingContentArray.first!
-                let firstContentArray = NSMutableArray()
-                firstContentArray.addObjects(from: firstContent)
-                firstContentArray.removeObject(at: 2)
-                headingContentArray = [firstContentArray as! Array<String>,headingContentArray.last!]
-                isPTNCoin = false
-            }
-            
-            if Tools.getPTNcoinNo() == (details.type?.stringValue)!{
-                isPTNCoin = true
-            }
-        }
+    @objc func textFieldTextDidChangeOneCI(noti:NSNotification){
+        determineBtn.isSelected = self.checkInpunt()
+        setDetermineStyle()
     }
     
     @objc func transferOnClick(){
@@ -156,34 +135,20 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
         let tradeNum = collectNumTextField.text!
         let dealPwdMD5 = pwd.md5()
         let remark = self.yytextfield.text!
-        let pubKey = self.pubKeyTextField.text!
         let fee = sliderValueLab.text!
 
         var parameters = NSDictionary()
-        if isPTNCoin {
-            parameters = ["token":token!
-                ,"coinNo":coinNo
-                ,"fee":fee
-                ,"outAddress":outAddress
-                ,"inAddress":inAddress
-                ,"type":type
-                ,"tradeNum":tradeNum
-                ,"dealPwd":dealPwdMD5
-                ,"remark":remark
-                ,"pubKey":pubKey
-            ]
-        }else{
-            parameters = ["token":token!
-                ,"coinNo":coinNo
-                ,"fee":fee
-                ,"outAddress":outAddress
-                ,"inAddress":inAddress
-                ,"type":type
-                ,"tradeNum":tradeNum
-                ,"dealPwd":dealPwdMD5
-                ,"remark":remark
-            ]
-        }
+        parameters = ["token":token!
+            ,"coinNo":coinNo
+            ,"fee":fee
+            ,"outAddress":outAddress
+            ,"inAddress":inAddress
+            ,"type":type
+            ,"tradeNum":tradeNum
+            ,"dealPwd":dealPwdMD5
+            ,"remark":remark
+        ]
+        
         ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIAddTradeInfo, language: false, parameters: parameters as? [String : Any], showIndicator: false, success: { (json) in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
                 let responseData = Mapper<HomeTransferFinishModel>().map(JSONObject: json)
@@ -331,44 +296,23 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
                     cell.textfield.text = collectAddress
                 }
                 collectTextField = cell.textfield
+                cell.textfield.delegate = self
             }else{
-                if  isPTNCoin == true {
-                    if indexPath.row == 2{
-                        pubKeyTextField = cell.textfield
-                    } else if indexPath.row == 3 {
-                        cell.textfield.keyboardType = .decimalPad
-                        cell.lineVw.isHidden = false
-                        collectNumTextField = cell.textfield
-                        cell.textfield.delegate = self
-                    } else {
-                        cell.textfield.isHidden = true
-                        cell.setSlider()
-                        if coinDetailsVM.maxModel.maxFee != nil {
-                            //设置最大以及最小
-                            cell.sliderMin = coinDetailsVM.maxModel.minFee!
-                            cell.sliderMax = coinDetailsVM.maxModel.maxFee!
-                            slider = cell.sliderView
-                            sliderValueLab = cell.valueLabel
-                            cell.setSliderValue()
-                        }
-                    }
-                }else{
-                    if indexPath.row == 2 {
-                        cell.textfield.keyboardType = .decimalPad
-                        cell.lineVw.isHidden = false
-                        collectNumTextField = cell.textfield
-                        cell.textfield.delegate = self
-                    } else{
-                        cell.textfield.isHidden = true
-                        cell.setSlider()
-                        if coinDetailsVM.maxModel.maxFee != nil {
-                            //设置最大以及最小
-                            cell.sliderMin = coinDetailsVM.maxModel.minFee!
-                            cell.sliderMax = coinDetailsVM.maxModel.maxFee!
-                            slider = cell.sliderView
-                            sliderValueLab = cell.valueLabel
-                            cell.setSliderValue()
-                        }
+                if indexPath.row == 2 {
+                    cell.textfield.keyboardType = .decimalPad
+                    cell.lineVw.isHidden = false
+                    collectNumTextField = cell.textfield
+                    cell.textfield.delegate = self
+                } else{
+                    cell.textfield.isHidden = true
+                    cell.setSlider()
+                    if coinDetailsVM.maxModel.maxFee != nil {
+                        //设置最大以及最小
+                        cell.sliderMin = coinDetailsVM.maxModel.minFee!
+                        cell.sliderMax = coinDetailsVM.maxModel.maxFee!
+                        slider = cell.sliderView
+                        sliderValueLab = cell.valueLabel
+                        cell.setSliderValue()
                     }
                 }
             }
@@ -451,14 +395,13 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(R_NotificationHomeReload), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
     }
     
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == collectNumTextField {
             return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemeTransferLimit)
         }
-        determineBtn.isSelected = self.checkInpunt()
-        setDetermineStyle()
         return true
     }
     

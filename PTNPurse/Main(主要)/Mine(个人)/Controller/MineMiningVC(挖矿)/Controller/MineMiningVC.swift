@@ -112,11 +112,16 @@ extension MineMiningVC{
     }
     
     func addData(_ index:NSInteger){
-        let balloonModel = viewModel.balloonModel.mineDetails![index]
-        let parameters = ["id":(balloonModel.id?.stringValue)!,"token":self.token]
-        baseVM.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIAddMine, parameters: parameters ,showIndicator: false) { (model:HomeBaseModel) in
-            //根据当前收益
-            self.getData(isCreateBalloon: false)
+        if viewModel.balloonModel.mineDetails?.count != 0 {
+            if (viewModel.balloonModel.mineDetails?.count)! - 1 < index {
+                return
+            }
+            let balloonModel = viewModel.balloonModel.mineDetails![index]
+            let parameters = ["id":(balloonModel.id?.stringValue)!,"token":self.token]
+            baseVM.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIAddMine, parameters: parameters ,showIndicator: false) { (model:HomeBaseModel) in
+                //根据当前收益
+                self.getData(isCreateBalloon: false)
+            }
         }
     }
     
