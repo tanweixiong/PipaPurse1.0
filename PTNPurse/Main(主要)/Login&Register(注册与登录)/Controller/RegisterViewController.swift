@@ -277,7 +277,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             topImageView.setViewContent(title: LanguageHelper.getString(key: "login_creataccount"))
             pwdTextView.textField.placeholder = LanguageHelper.getString(key: "login_loginpwdplaceholder")
             pwdTextView.titleLabel.text = LanguageHelper.getString(key: "login_loginpwd")
-
+            registerBtn.isEnabled = false
         }else if type == .setPaymentPsd{
             topImageView.setViewContent(title: LanguageHelper.getString(key: "Mine_Transaction_Password"))
             pwdTextView.titleLabel.text = LanguageHelper.getString(key: "set_pay_password")
@@ -358,6 +358,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             if textField == self.pwdTextView.textField{
                 self.setLimitTheNumberOfWords(wordNum: 6, textField: textField)
             }
+        }else if type == .register {
+            setPaymentPsdStyle()
         }
     }
     

@@ -69,10 +69,10 @@ class HomeBackupDetailsVC: MainViewController,HomeBackupDetailsViewDelegate {
         let filename = SingleTon.shared.fileName!
         let filecontent = Tools.getJsonFileContentInDocuments(fileName: filename)
         let userNo = (UserDefaults.standard.getUserInfo().id)!
-        let params = ["addressJson": filecontent, "memorandum":memorandum,"userNo":(userNo.stringValue)]
+        let token = (UserDefaults.standard.getUserInfo().token)!
+        let params = ["addressJson": filecontent, "memorandum":memorandum,"userNo":(userNo.stringValue),"token":token]
         SVProgressHUD.show(with: .black)
         ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIImportAddress, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
-
             let result = Mapper<HomeImprotWalletBaseModel>().map(JSONObject: jsonObjc)
             if let code = result?.code {
                 if code == 200 {
