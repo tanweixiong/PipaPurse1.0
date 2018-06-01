@@ -119,9 +119,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             let result = Mapper<NodataResponse>().map(JSONObject: jsonObjc)
             if let code = result?.code {
                 if code == 200 {
-                    btn.isCounting = true
                     SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_requestsuccess"))
-           
+                    btn.isCounting = true
                 } else {
                     SVProgressHUD.showError(withStatus: result?.message)
                 }

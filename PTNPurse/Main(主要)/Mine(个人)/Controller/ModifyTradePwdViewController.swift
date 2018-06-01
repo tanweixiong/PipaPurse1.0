@@ -81,14 +81,12 @@ class ModifyTradePwdViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func codeBtnTouched(sender: AutorizeButton) {
-        
-        sender.isCounting = true
-        getAuthorizeCode()
+        getAuthorizeCode(sender: sender)
     }
     
     
     // MARK: - NetWork Method
-    func getAuthorizeCode() {
+    func getAuthorizeCode(sender: AutorizeButton) {
         let phone = UserDefaults.standard.getUserInfo().username as! String
         //1:用户注册,2:用户忘记密码,3:用户修改交易密码,4:用户忘记交易密码
         let params = [ "username" : phone, "type" : "3"]
@@ -97,6 +95,7 @@ class ModifyTradePwdViewController: UIViewController, UITextFieldDelegate {
             if let code = result?.code {
                 if code == 200 {
                     SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_requestsuccess"))
+                    sender.isCounting = true
                 } else {
                     SVProgressHUD.showError(withStatus: result?.message)
                 }

@@ -109,13 +109,13 @@ extension MineBindingPhoneVC {
             SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "net_rightphone"))
             return
         }
-        btn.isCounting = true
         let params = [ "username" : self.phoneTF.text!, "type" : "4"]
         ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIGetAuthorCode, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
             let result = Mapper<NodataResponse>().map(JSONObject: jsonObjc)
             if let code = result?.code {
                 if code == 200 {
                     SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_requestsuccess"))
+                    btn.isCounting = true
                 } else {
                     SVProgressHUD.showError(withStatus: result?.message)
                 }
