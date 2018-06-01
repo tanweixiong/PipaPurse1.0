@@ -228,6 +228,7 @@ extension BusinessBuyHistoryVC {
         let model = viewModel.model[sender.tag]
         let businessBuyHistoryDetailsVC = BusinessBuyHistoryDetailsVC()
         businessBuyHistoryDetailsVC.entrustNo = (model.id?.stringValue)!
+        businessBuyHistoryDetailsVC.isHiddenDrop = false
         self.navigationController?.pushViewController(businessBuyHistoryDetailsVC, animated: true)
     }
 }

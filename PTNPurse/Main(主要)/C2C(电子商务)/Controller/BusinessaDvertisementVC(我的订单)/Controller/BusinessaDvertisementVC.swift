@@ -359,18 +359,19 @@ extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: businessaDvertisementCell, for: indexPath) as! BusinessaDvertisementCell
         if viewModel.processingModel.count != 0 || viewModel.finishModel.count != 0 {
             cell.model = style == .buyStyle ? viewModel.processingModel[indexPath.row] : viewModel.finishModel[indexPath.row]
+            
+            cell.selectionStyle = .none
+            cell.contactBtn.tag = indexPath.row
+            cell.contactBtn.addTarget(self, action: #selector(contactOnClick(_:)), for: .touchUpInside)
+            cell.cancelOrderBtn.tag = indexPath.row
+            cell.cancelOrderBtn.addTarget(self, action: #selector(cancelDealDetail(_:)), for: .touchUpInside)
+            cell.remindBtn.tag = indexPath.row
+            cell.remindBtn.addTarget(self, action: #selector(setStatusOnClick(_:)), for: .touchUpInside)
+            cell.initiateDisputeBtn.tag = indexPath.row
+            cell.initiateDisputeBtn.addTarget(self, action: #selector(initiateDisputeOnClick(_:)), for: .touchUpInside)
+            cell.paymentCodeBtn.tag = indexPath.row
+            cell.paymentCodeBtn.addTarget(self, action: #selector(displayPaymentQRCodeOnClick(_:)), for: .touchUpInside)
         }
-        cell.selectionStyle = .none
-        cell.contactBtn.tag = indexPath.row
-        cell.contactBtn.addTarget(self, action: #selector(contactOnClick(_:)), for: .touchUpInside)
-        cell.cancelOrderBtn.tag = indexPath.row
-        cell.cancelOrderBtn.addTarget(self, action: #selector(cancelDealDetail(_:)), for: .touchUpInside)
-        cell.remindBtn.tag = indexPath.row
-        cell.remindBtn.addTarget(self, action: #selector(setStatusOnClick(_:)), for: .touchUpInside)
-        cell.initiateDisputeBtn.tag = indexPath.row
-        cell.initiateDisputeBtn.addTarget(self, action: #selector(initiateDisputeOnClick(_:)), for: .touchUpInside)
-        cell.paymentCodeBtn.tag = indexPath.row
-        cell.paymentCodeBtn.addTarget(self, action: #selector(displayPaymentQRCodeOnClick(_:)), for: .touchUpInside)
         return cell
     }
     

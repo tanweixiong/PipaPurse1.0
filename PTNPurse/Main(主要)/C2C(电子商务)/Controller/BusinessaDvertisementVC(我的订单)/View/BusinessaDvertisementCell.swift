@@ -39,7 +39,7 @@ class BusinessaDvertisementCell: UITableViewCell {
     @IBOutlet weak var paymentCodeBtn: UIButton!
     @IBOutlet weak var backgroundVw: UIView!
     @IBOutlet weak var codeImageVw: UIButton!
-    
+    @IBOutlet weak var statusVw: UIView!
     var model = BusinessaDvertisementModel(){
         didSet{
             let photo = model?.photo == nil ? "" :  model?.photo
@@ -140,8 +140,8 @@ class BusinessaDvertisementCell: UITableViewCell {
 
         setStartLayout()
         //发起纠纷
-        if style == .sell && status == 4{
-            backgroundVw.addSubview(initiateDisputeBtn)
+        if style == .detriment && status == 4{
+            statusVw.addSubview(initiateDisputeBtn)
             initiateDisputeBtn.frame = CGRect(x: 23, y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
         }else{
              initiateDisputeBtn.isHidden = true
@@ -226,12 +226,12 @@ class BusinessaDvertisementCell: UITableViewCell {
     lazy var initiateDisputeBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle(LanguageHelper.getString(key: "C2C_transaction_initiate_Dispute"), for: .normal)
-        btn.setTitleColor(R_UIThemeColor, for: .normal)
+        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xFF7052), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         btn.layer.cornerRadius = 5
         btn.layer.masksToBounds = true
         btn.layer.borderWidth = 1
-        btn.layer.borderColor = R_UIThemeColor.cgColor
+        btn.layer.borderColor = UIColor.R_UIColorFromRGB(color: 0xCFD3D5).cgColor
         btn.tag = 120
         return btn
     }()

@@ -42,7 +42,7 @@ class BusinessBuyHistoryDetailsVw: UIView {
             avatarImageView.sd_setImage(with:NSURL(string: avatar!)! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
             
             let price = model?.entrustPrice == nil ? 0 : model?.entrustPrice
-            priceLab.text = Tools.getWalletPrice(amount: (price?.stringValue)!) + "CNY"
+            priceLab.text = Tools.setNSDecimalNumber(price!) + "CNY"
             
             let data = model?.date == nil ? "" : model?.date
             dataLab.text = data
@@ -65,7 +65,7 @@ class BusinessBuyHistoryDetailsVw: UIView {
             let unitPrice = Tools.setNSDecimalNumber((model?.entrustPrice)!)
             let quantity = Tools.setNSDecimalNumber((model?.entrustNum)!)
             let sum = (unitPrice as NSString).doubleValue * (quantity as NSString).doubleValue
-            sumLab.text = String(format: "%.2f", sum) + LanguageHelper.getString(key: "homePage_Numbers")
+            sumLab.text = Tools.getConversionPrice(amount: String(format: "%.4f", sum), count: 2) + "CNY"
             
             let dealNum = model?.dealNum == nil ? 0 : model?.dealNum
             transactionFinishLab.text = (dealNum?.stringValue)! + LanguageHelper.getString(key: "homePage_Numbers")

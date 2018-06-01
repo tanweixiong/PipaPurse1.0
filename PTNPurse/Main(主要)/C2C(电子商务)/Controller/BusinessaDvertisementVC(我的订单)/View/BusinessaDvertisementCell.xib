@@ -314,6 +314,7 @@
                 <outlet property="paymentCodeBtn" destination="jRE-up-Oaf" id="be2-DV-gvw"/>
                 <outlet property="photoImageVw" destination="6Qd-ac-2HQ" id="B2B-du-XCE"/>
                 <outlet property="stateLab" destination="tEg-La-q9K" id="SOc-sK-BWz"/>
+                <outlet property="statusVw" destination="3BP-AS-cDF" id="ui3-oy-hcC"/>
                 <outlet property="transactionCoinPriceLab" destination="6Gk-lt-rwZ" id="4Pv-Ot-nbF"/>
                 <outlet property="transactionDataLab" destination="Jsq-u4-3Ev" id="luX-Jh-mIQ"/>
                 <outlet property="transactionPaymentLab" destination="KIz-6a-pS1" id="qS8-xZ-hVT"/>
