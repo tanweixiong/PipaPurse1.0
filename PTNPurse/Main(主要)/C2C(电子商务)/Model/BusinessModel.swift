@@ -16,7 +16,9 @@ class BusinessModel: Mappable {
     var completeState: String?
     var receivablesType: NSNumber?
     var userNo: String?
-    var poundage: String?
+    var poundage: NSNumber?
+    
+    var poundageCore: String?
     var dateFormatDate: String?
     var entrustCoin: String?
     var remark: String?
@@ -91,6 +93,7 @@ class BusinessModel: Mappable {
         newPrice        <- map["newPrice"]
         
         dealNum        <- map["dealNum"]
+        poundageCore        <- map["poundageCore"]
 
     }
 }

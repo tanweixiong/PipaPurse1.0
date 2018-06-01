@@ -21,6 +21,7 @@ class BusinessBuyHistoryDetailsVw: UIView {
     @IBOutlet weak var transactionFinishLab: UILabel!
     @IBOutlet weak var backgroundVw: UIView!
     
+    @IBOutlet weak var feeLab: UILabel!
     @IBOutlet weak var title1Lab: UILabel!
     @IBOutlet weak var title2Lab: UILabel!
     @IBOutlet weak var title3Lab: UILabel!
@@ -29,6 +30,8 @@ class BusinessBuyHistoryDetailsVw: UIView {
     @IBOutlet weak var title6Lab: UILabel!
     @IBOutlet weak var title7Lab: UILabel!
     @IBOutlet weak var title8Lab: UILabel!
+    @IBOutlet weak var title9Lab: UILabel!
+    var minerString = String()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -70,6 +73,11 @@ class BusinessBuyHistoryDetailsVw: UIView {
             let dealNum = model?.dealNum == nil ? 0 : model?.dealNum
             transactionFinishLab.text = (dealNum?.stringValue)! + LanguageHelper.getString(key: "homePage_Numbers")
             
+            let poundage = model?.poundage == nil ? 0 : (model?.poundage)!
+            let poundageCore = model?.poundageCore == nil ? "" : (model?.poundageCore)!
+            let miner = Tools.setNSDecimalNumber(poundage) +  poundageCore
+            feeLab.text = miner
+            
             //标题
             title1Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Status") + "："
             title2Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Unit") + "："
@@ -79,6 +87,7 @@ class BusinessBuyHistoryDetailsVw: UIView {
             title6Lab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Time") + "："
             title7Lab.text = LanguageHelper.getString(key: "Mine_Transaction_SumPrice") + "："
             title8Lab.text = LanguageHelper.getString(key: "Mine_Transaction_Finish") + "："
+            title9Lab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Details_Miner") + "："
         }
     }
 

@@ -28,7 +28,7 @@ class BusinessBuyHistoryDetailsVC: MainViewController {
     
     lazy var detailsView: BusinessBuyHistoryDetailsVw = {
         let view = Bundle.main.loadNibNamed("BusinessBuyHistoryDetailsVw", owner: nil, options: nil)?.last as! BusinessBuyHistoryDetailsVw
-        view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight + 15, width: SCREEN_WIDTH, height: 360)
+        view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight + 15, width: SCREEN_WIDTH, height: 395)
         return view
     }()
     
