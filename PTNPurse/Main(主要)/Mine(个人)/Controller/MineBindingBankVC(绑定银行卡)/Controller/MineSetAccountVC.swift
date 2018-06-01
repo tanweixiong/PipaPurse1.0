@@ -57,19 +57,6 @@ class MineSetAccountVC: MainViewController {
         return btn
     }()
     
-    //限制位数
-    override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == mineSetAccountVw.paymentMethodTF {
-            var maxLength:Int = 0
-            maxLength = 20
-            //限制长度
-            let proposeLength = (textField.text?.lengthOfBytes(using: String.Encoding.utf8))! - range.length + string.lengthOfBytes(using: String.Encoding.utf8)
-            if proposeLength > maxLength { return false }
-            return true
-        }
-        return true
-    }
-    
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
     }
@@ -173,7 +160,14 @@ extension MineSetAccountVC {
     }
     
     @objc func textFieldTextDidChangeOneCI(notification:NSNotification){
-         setTextfieldStyle()
+        setTextfieldStyle()
+        let textField: UITextField = notification.object as! UITextField
+        guard let _: UITextRange = textField.markedTextRange else{
+            if (textField.text! as NSString).length > 20{
+                textField.text = (textField.text! as NSString).substring(to: 20)
+            }
+            return
+        }
     }
     
     func setTextfieldStyle(){
