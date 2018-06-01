@@ -37,7 +37,6 @@ class MineSetAccountVC: MainViewController {
         let view = Bundle.main.loadNibNamed("MineSetAccountVw", owner: nil, options: nil)?.last as! MineSetAccountVw
         view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight, width: SCREEN_WIDTH, height: SCREEN_HEIGHT -  MainViewControllerUX.naviNormalHeight)
         view.paymentMethodTF.delegate = self
-        view.paymentMethodTF.keyboardType = .emailAddress
         view.paymentMethodTF.placeholder = style == .alipayStyle ? LanguageHelper.getString(key: "binding_Please_enter_alipay_account") : LanguageHelper.getString(key: "binding_Please_enter_weChat_account")
         view.titleLab.text = style == .alipayStyle ? LanguageHelper.getString(key: "binding_Alipay_account") : LanguageHelper.getString(key: "binding_Wechat_account")
         view.uploadBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
@@ -89,6 +88,7 @@ extension MineSetAccountVC {
         view.backgroundColor = UIColor.R_UIRGBColor(red: 249, green: 249, blue: 251, alpha: 1)
         view.addSubview(mineSetAccountVw)
         view.addSubview(submitBtn)
+        mineSetAccountVw.paymentMethodTF.keyboardType = .asciiCapable
     }
     
     @objc func onClick(_ sender:UIButton){

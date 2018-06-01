@@ -77,14 +77,14 @@ class HomeTransferDetailsVC: MainViewController,UITableViewDataSource,UITableVie
         let token = UserDefaults.standard.getUserInfo().token
         let parameters = ["tradeNo":tradeNo,"token":token!]
         viewModel.loadDetailsSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetTradeInfoByNo, parameters: parameters, showIndicator: false) {
-//            ["交易号","转账地址","交易数量","交易类型","交易时间","手续费"]
             let model = self.viewModel.model
             let orderNo = model.orderNo
             let trans = LanguageHelper.getString(key: "homePage_Details_Transfer")
             let tradeNum = "-" + Tools.setNSDecimalNumber(model.tradeNum == nil ? 0 : (model.tradeNum)!) + " " + LanguageHelper.getString(key: "homePage_Numbers")
             let inAddress = model.inAddress
             let data = model.date!
-            let ratio = Tools.setNSDecimalNumber((model.ratio)!)
+            let ratioCore = model.ratioCore == nil ? "" : (model.ratioCore)!
+            let ratio = Tools.setNSDecimalNumber((model.ratio)!) + ratioCore
             let remark = model.remark
             if remark == "" {
                self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio])

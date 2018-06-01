@@ -19,8 +19,8 @@ class HomeListDetsilsVC: MainViewController,UIWebViewDelegate {
     fileprivate var currentTimeString = String()
     fileprivate var dataArray = NSMutableArray()
     fileprivate var isFirst = true
-    fileprivate var pageSize:Int = 0 //默认显示全部
-    fileprivate var lineSize:Int = 0
+    fileprivate var pageSize:Int = 1 //默认显示全部
+    fileprivate var lineSize:Int = 1
     struct HomeListDetsilsUX {
         static let footHeight:CGFloat = 50
     }
@@ -214,8 +214,8 @@ extension HomeListDetsilsVC {
     }
     
     func clean(){
-        self.pageSize = 0
-        self.lineSize = 0
+        self.pageSize = 1
+        self.lineSize = 1
         self.listViewModel.model.removeAll()
         self.dataArray.removeAllObjects()
     }

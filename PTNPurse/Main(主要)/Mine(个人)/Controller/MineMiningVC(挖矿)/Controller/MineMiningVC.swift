@@ -37,11 +37,7 @@ class MineMiningVC: MainViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if #available(iOS 11.0, *) {
-            UIScrollView.appearance().contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.automatic
-        } else {
-            self.automaticallyAdjustsScrollViewInsets = false
-        }
+        self.edgesForExtendedLayout = .init(rawValue: 0)
     }
     
     lazy var tableView: UITableView = {

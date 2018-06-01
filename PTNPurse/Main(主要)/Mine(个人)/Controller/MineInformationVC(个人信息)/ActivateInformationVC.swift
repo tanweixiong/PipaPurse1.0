@@ -60,6 +60,11 @@ class ActivateInformationVC: MainViewController,UIImagePickerControllerDelegate,
             self.changeAddressOrNickname(style: .nickName)
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UITextFieldTextDidChange, object: nil)
+    }
+    
 }
 
 extension ActivateInformationVC {
@@ -67,6 +72,19 @@ extension ActivateInformationVC {
         setNormalNaviBar(title: "个人资料")
         view.backgroundColor = UIColor.R_UIRGBColor(red: 249, green: 249, blue: 251, alpha: 1)
         view.addSubview(tableView)
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(self.greetingTextFieldChanged), name:NSNotification.Name.UITextFieldTextDidChange,object: nil)
+    }
+    
+    @objc func greetingTextFieldChanged(obj: Notification) {
+        let textField: UITextField = obj.object as! UITextField
+        guard let _: UITextRange = textField.markedTextRange else{
+            if (textField.text! as NSString).length > 20{
+                textField.text = (textField.text! as NSString).substring(to: 20)
+            }
+            return
+        }
     }
     
     func getUserInfo(){

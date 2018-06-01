@@ -44,7 +44,6 @@
 		232AFAC0205B66D600B768A6 /* QFTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 232AFABB205B66D600B768A6 /* QFTimePickerView.m */; };
 		232AFAC1205B66D600B768A6 /* QFDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 232AFABE205B66D600B768A6 /* QFDatePickerView.m */; };
 		232AFAC3205B6EB600B768A6 /* HomeListDetsilsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232AFAC2205B6EB600B768A6 /* HomeListDetsilsVC.swift */; };
-		232B18C620ABBB9F003230E7 /* ActivateInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B18C220ABBB9F003230E7 /* ActivateInformationVC.swift */; };
 		232B18C720ABBB9F003230E7 /* ActivateInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B18C420ABBB9F003230E7 /* ActivateInformationCell.swift */; };
 		232B18C820ABBB9F003230E7 /* ActivateInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232B18C520ABBB9F003230E7 /* ActivateInformationCell.xib */; };
 		232B2C17201C2238004FB6DD /* HomeBackupDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2C16201C2238004FB6DD /* HomeBackupDetailsVM.swift */; };
@@ -185,6 +184,7 @@
 		2332D4FB200DA290009B4D5E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332D4F6200DA290009B4D5E /* MainTabBarController.swift */; };
 		2332D4FC200DA290009B4D5E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332D4F8200DA290009B4D5E /* MainViewController.swift */; };
 		2332D515200DAA22009B4D5E /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332D514200DAA22009B4D5E /* HomeController.swift */; };
+		2332D7EC20C122F600AA8296 /* ActivateInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332D7EB20C122F600AA8296 /* ActivateInformationVC.swift */; };
 		2333491720C0D43300014D26 /* BusinessSubmissionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2333491620C0D43300014D26 /* BusinessSubmissionDetailsVC.swift */; };
 		2333DBED2079EAC4002911BC /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2333DBD32079EAC3002911BC /* WeiboSDK.bundle */; };
 		2333DBEE2079EAC4002911BC /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2333DBD42079EAC3002911BC /* libWeiboSDK.a */; };
@@ -500,7 +500,6 @@
 		232AFABE205B66D600B768A6 /* QFDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFDatePickerView.m; sourceTree = "<group>"; };
 		232AFABF205B66D600B768A6 /* QFDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFDatePickerView.h; sourceTree = "<group>"; };
 		232AFAC2205B6EB600B768A6 /* HomeListDetsilsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListDetsilsVC.swift; sourceTree = "<group>"; };
-		232B18C220ABBB9F003230E7 /* ActivateInformationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivateInformationVC.swift; sourceTree = "<group>"; };
 		232B18C420ABBB9F003230E7 /* ActivateInformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivateInformationCell.swift; sourceTree = "<group>"; };
 		232B18C520ABBB9F003230E7 /* ActivateInformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivateInformationCell.xib; sourceTree = "<group>"; };
 		232B2C16201C2238004FB6DD /* HomeBackupDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBackupDetailsVM.swift; sourceTree = "<group>"; };
@@ -679,6 +678,7 @@
 		2332D4F8200DA290009B4D5E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2332D502200DA328009B4D5E /* PTNPurse_Brigding_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTNPurse_Brigding_Header.h; sourceTree = "<group>"; };
 		2332D514200DAA22009B4D5E /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		2332D7EB20C122F600AA8296 /* ActivateInformationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivateInformationVC.swift; sourceTree = "<group>"; };
 		2333491620C0D43300014D26 /* BusinessSubmissionDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessSubmissionDetailsVC.swift; sourceTree = "<group>"; };
 		2333DBD32079EAC3002911BC /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		2333DBD42079EAC3002911BC /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
@@ -1262,7 +1262,7 @@
 		232B18C120ABBB9E003230E7 /* MineInformationVC(个人信息) */ = {
 			isa = PBXGroup;
 			children = (
-				232B18C220ABBB9F003230E7 /* ActivateInformationVC.swift */,
+				2332D7EB20C122F600AA8296 /* ActivateInformationVC.swift */,
 				232B18C320ABBB9F003230E7 /* View */,
 			);
 			path = "MineInformationVC(个人信息)";
@@ -3437,6 +3437,7 @@
 				23F7849920BE802D009223D6 /* BusinessPremiumCell.swift in Sources */,
 				2332D4CC200DA1BC009B4D5E /* ConstraintLayoutGuide.swift in Sources */,
 				232DF51B201EF19200842491 /* HomeCoinDetailsModel.swift in Sources */,
+				2332D7EC20C122F600AA8296 /* ActivateInformationVC.swift in Sources */,
 				23F52A4D205A0603008D8B75 /* QuotesDetailsVC.swift in Sources */,
 				237858AC2018209D0014DACD /* BRDatePickerView.m in Sources */,
 				4E77F938204FB8F800D6807E /* HomeCertificationView.swift in Sources */,
@@ -3491,7 +3492,6 @@
 				232D7E6D207D976D00BBBB4D /* BusinessInviteFriendsModel.swift in Sources */,
 				233165AB20A99C2D00597302 /* YLImageView.m in Sources */,
 				237D042C200F2BFC000C12B1 /* HomeConversionSubmitCell.swift in Sources */,
-				232B18C620ABBB9F003230E7 /* ActivateInformationVC.swift in Sources */,
 				2332D4D7200DA1BC009B4D5E /* Constraint.swift in Sources */,
 				233201AB202AFEDD001815DE /* UIView+MJExtension.m in Sources */,
 				23674AD72020205400B4B96E /* NoteTextView.swift in Sources */,

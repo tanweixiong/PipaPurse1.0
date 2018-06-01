@@ -215,6 +215,11 @@ extension BusinessTransactionVC {
                 ,"bankcardId":self.bankCardId
             ]
         }
+    
+        if transactionsPrice == "0" {
+            SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "C2C_mine_My_advertisement_Unit_No_Data"))
+            return
+        }
         
         viewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIAddSpotEntrust, parameters: parameters , showIndicator: false) { (model:HomeBaseModel) in
 //            let responseData = Mapper<BusinessLiberateFinishDataModel>().map(JSONObject: model.data)

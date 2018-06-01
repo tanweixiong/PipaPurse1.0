@@ -24,6 +24,8 @@ class HomeTransferDetailsModel: Mappable {
     var inAddress:String?
     var outAddress:String?
     
+    var ratioCore:String?
+    
     func mapping(map: Map) {
         id     <- map["id"]
         userId     <- map["userId"]
@@ -38,6 +40,7 @@ class HomeTransferDetailsModel: Mappable {
         dateFormat      <- map["dateFormat"]
         inAddress      <- map["inAddress"]
         outAddress      <- map["outAddress"]
+        ratioCore      <- map["ratioCore"]
     }
     
     required init?(map: Map) {

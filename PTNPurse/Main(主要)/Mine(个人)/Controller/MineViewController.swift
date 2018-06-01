@@ -35,25 +35,12 @@ class MineViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-//    lazy var avatarImageVw: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.image = UIImage.init(named: "ic_defaultPicture")
-//        imageView.frame = CGRect(x: 15, y: 20, width: 80, height: 80)
-//        imageView.layer.masksToBounds = true
-//        imageView.layer.cornerRadius = 40
-//        return imageView
-//    }()
-    
     @IBAction func onClick(_ sender: UIButton) {
         //挖矿
         if sender.tag == 1 {
             //判断是否有钱包地址
-            if UserDefaults.standard.getUserInfo().ptnaddress != "" && UserDefaults.standard.getUserInfo().ptnaddress != nil {
-                let mineMiningVC = MineMiningVC()
-                self.navigationController?.pushViewController(mineMiningVC, animated: true)
-            }else{
-                SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "Mine_Please_create_a_new_wallet_address"))
-            }
+            let mineMiningVC = MineMiningVC()
+            self.navigationController?.pushViewController(mineMiningVC, animated: true)
         }else if sender.tag == 2 {
             let businessBuyVC = BusinessBuyHistoryVC()
             businessBuyVC.transactionStyle = .buyStyle
