@@ -180,7 +180,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x: 0, y: self.headView.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - self.headView.frame.maxY))
+        let tableView = UITableView.init(frame: CGRect(x: 0, y: self.headView.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - self.headView.frame.maxY - 44))
         tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
         tableView.delegate = self

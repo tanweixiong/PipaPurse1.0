@@ -47,7 +47,7 @@ class BusinessVC: MainViewController,Calculatable{
     }()
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x: 0, y: scrollView.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - scrollView.frame.maxY))
+        let tableView = UITableView.init(frame: CGRect(x: 0, y: scrollView.frame.maxY, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - scrollView.frame.maxY - 44))
         tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
         tableView.delegate = self
