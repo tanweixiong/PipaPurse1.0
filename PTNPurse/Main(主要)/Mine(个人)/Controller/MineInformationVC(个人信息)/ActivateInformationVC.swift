@@ -80,8 +80,8 @@ extension ActivateInformationVC {
     @objc func greetingTextFieldChanged(obj: Notification) {
         let textField: UITextField = obj.object as! UITextField
         guard let _: UITextRange = textField.markedTextRange else{
-            if (textField.text! as NSString).length > 20{
-                textField.text = (textField.text! as NSString).substring(to: 20)
+            if (textField.text! as NSString).length > 12{
+                textField.text = (textField.text! as NSString).substring(to: 12)
             }
             return
         }
