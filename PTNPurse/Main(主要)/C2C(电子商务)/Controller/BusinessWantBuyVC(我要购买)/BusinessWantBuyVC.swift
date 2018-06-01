@@ -188,6 +188,10 @@ extension BusinessWantBuyVC {
     }
     
     @objc func submitOnClick(){
+        if businessConvertView.disPriceTF.text == "0" || businessConvertView.coinNumTF.text == "0" {
+            SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "C2C_mine_My_advertisement_Unit_No_Datas"))
+            return
+        }
         let listArray = NSMutableArray()
         if receivablesType == "1" {
             self.paymentMethod = self.bank + self.bankCardNumber
@@ -312,7 +316,7 @@ extension BusinessWantBuyVC {
     }
     
     func setupPaymentPassword(){
-         if Tools.noPaymentPasswordIsSetToExecute() == false{return}
+        if Tools.noPaymentPasswordIsSetToExecute() == false{return}
         if self.checkInput() {
             let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
             input?.delegate = self

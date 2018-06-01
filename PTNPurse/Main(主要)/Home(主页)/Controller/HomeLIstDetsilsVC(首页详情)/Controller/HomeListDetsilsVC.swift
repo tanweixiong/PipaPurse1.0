@@ -20,7 +20,7 @@ class HomeListDetsilsVC: MainViewController,UIWebViewDelegate {
     fileprivate var dataArray = NSMutableArray()
     fileprivate var isFirst = true
     fileprivate var pageSize:Int = 1 //默认显示全部
-    fileprivate var lineSize:Int = 1
+    fileprivate var lineSize:Int = 10
     struct HomeListDetsilsUX {
         static let footHeight:CGFloat = 50
     }
@@ -187,10 +187,9 @@ extension HomeListDetsilsVC {
     func getTransferDetails(style:HomeCoinDetailsStatus,data:String){
         let coinNo = self.details.type == nil ? Tools.getPTNcoinNo() : (self.details.type?.stringValue)!
         let token = UserDefaults.standard.getUserInfo().token
-        let date = data
         let pageSize = "\(self.pageSize)"
-        let lineSize = self.lineSize
-        let parameters = ["token":token!,"coinNo":coinNo,"type":"2","date":date,"pageSize":pageSize,"lineSize":lineSize] as [String : Any]
+        let lineSize = "\(self.lineSize)"
+        let parameters = ["token":token!,"coinNo":coinNo,"type":"2","pageSize":pageSize,"lineSize":lineSize] as [String : Any]
         listViewModel.loadCoinDetailsSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetTradeInfo, parameters: parameters, showIndicator: false) {
             if self.listViewModel.model.count == 0 {
                 self.tableView.reloadData()
@@ -215,7 +214,7 @@ extension HomeListDetsilsVC {
     
     func clean(){
         self.pageSize = 1
-        self.lineSize = 1
+        self.lineSize = 10
         self.listViewModel.model.removeAll()
         self.dataArray.removeAllObjects()
     }

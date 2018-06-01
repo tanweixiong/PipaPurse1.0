@@ -55,6 +55,8 @@ class BusinessOrderDetailsModel: Mappable {
     var sellAccount:String?
     var receivablesType:NSNumber?
     
+    var poundageCore: String?
+    
     
     required init?(map: Map) {
         
@@ -113,6 +115,8 @@ class BusinessOrderDetailsModel: Mappable {
         buyAccount        <- map["buyAccount"]
         sellAccount        <- map["sellAccount"]
         receivablesType        <- map["receivablesType"]
+        
+        poundageCore        <- map["poundageCore"]
 
     }
 }

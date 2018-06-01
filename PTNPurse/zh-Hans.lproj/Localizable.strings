@@ -556,6 +556,7 @@
 "C2C_mine_My_advertisement_Buy" = "购买";
 "C2C_mine_My_advertisement_Unit" = "交易单价";
 "C2C_mine_My_advertisement_Unit_No_Data" = "交易单价不能为0";
+"C2C_mine_My_advertisement_Unit_No_Datas" = "交易不能为0";
 
 "C2C_mine_My_advertisement_Quantity" = "交易数量";
 "C2C_mine_My_advertisement_Status" = "交易状态";

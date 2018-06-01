@@ -120,7 +120,8 @@ extension BusinessOrderDetailsVC {
             let dealPrice = Tools.getConversionPrice(amount: (model.dealPrice?.stringValue)!, count: 2) + " CNY"
             let dealNum = Tools.setNSDecimalNumber(model.dealNum!)
             let minerFee = (model.minerFee?.stringValue)!
-            let poundage = (model.poundage?.stringValue)!
+            let poundageCore = model.poundageCore == nil ? "" : (model.poundageCore)!
+            let poundage = (model.poundage?.stringValue)! + poundageCore
             let data = (model.date)!
             let remark = model.remark!
             let receivablesType = Tools.getPaymentDetailsMethod((model.receivablesType?.stringValue)!)

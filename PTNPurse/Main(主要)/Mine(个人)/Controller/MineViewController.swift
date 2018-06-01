@@ -39,8 +39,12 @@ class MineViewController: UIViewController {
         //挖矿
         if sender.tag == 1 {
             //判断是否有钱包地址
-            let mineMiningVC = MineMiningVC()
-            self.navigationController?.pushViewController(mineMiningVC, animated: true)
+            if UserDefaults.standard.getUserInfo().ptnaddress != "" && UserDefaults.standard.getUserInfo().ptnaddress != nil {
+                let mineMiningVC = MineMiningVC()
+                self.navigationController?.pushViewController(mineMiningVC, animated: true)
+            }else{
+                SVProgressHUD.showInfo(withStatus:LanguageHelper.getString(key: "Mine_Please_create_a_new_wallet_address"))
+            }
         }else if sender.tag == 2 {
             let businessBuyVC = BusinessBuyHistoryVC()
             businessBuyVC.transactionStyle = .buyStyle

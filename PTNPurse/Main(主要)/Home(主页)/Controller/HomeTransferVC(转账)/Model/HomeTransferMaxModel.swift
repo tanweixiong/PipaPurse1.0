@@ -13,12 +13,14 @@ class HomeTransferMaxModel: Mappable {
     var minFee: NSNumber?
     var maxFee: NSNumber?
     var feeCore: NSNumber?
+    var poundage: NSNumber?
 
     
     func mapping(map: Map) {
         minFee     <- map["minFee"]
         maxFee     <- map["maxFee"]
         feeCore     <- map["feeCore"]
+        poundage     <- map["poundage"]
     }
     
     required init?(map: Map) {
