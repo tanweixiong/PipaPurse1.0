@@ -80,7 +80,22 @@ class HomeTransferDetailsVC: MainViewController,UITableViewDataSource,UITableVie
         let token = UserDefaults.standard.getUserInfo().token
         let parameters = ["tradeNo":tradeNo,"token":token!]
         viewModel.loadDetailsSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetTradeInfoByNo, parameters: parameters, showIndicator: false) {
-            self.getCoinFee(coinNo: (self.viewModel.model.coinNo?.stringValue)!)
+            let model = self.viewModel.model
+            let orderNo = model.orderNo
+            let trans = LanguageHelper.getString(key: "homePage_Details_Transfer")
+            let tradeNum = "-" + Tools.setNSDecimalNumber(model.tradeNum == nil ? 0 : (model.tradeNum)!) + " " + LanguageHelper.getString(key: "homePage_Numbers")
+            let inAddress = model.inAddress
+            let data = model.date!
+            let ratioCore = model.ratioCore == nil ? "" : (model.ratioCore)!
+            let ratios = model.ratio == nil ? 0 : (model.ratio)!
+            let ratio = Tools.setNSDecimalNumber(ratios) + ratioCore
+            let remark = model.remark
+            if remark == "" {
+                self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio])
+            }else{
+                self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio,remark!])
+            }
+            self.tableView.reloadData()
         }
     }
     
@@ -137,21 +152,6 @@ class HomeTransferDetailsVC: MainViewController,UITableViewDataSource,UITableVie
     func getCoinFee(coinNo:String){
         let parameters = ["coinNo":coinNo]
         coinDetailsVM.loadCoinNumberSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetCoinByNo, parameters: parameters, showIndicator: false) {
-            let model = self.viewModel.model
-            let orderNo = model.orderNo
-            let trans = LanguageHelper.getString(key: "homePage_Details_Transfer")
-            let tradeNum = "-" + Tools.setNSDecimalNumber(model.tradeNum == nil ? 0 : (model.tradeNum)!) + " " + LanguageHelper.getString(key: "homePage_Numbers")
-            let inAddress = model.inAddress
-            let data = model.date!
-            let ratioCore = model.ratioCore == nil ? "" : (model.ratioCore)!
-            let ratio = Tools.setNSDecimalNumber(model.ratio!) + ratioCore
-            let remark = model.remark
-            if remark == "" {
-                self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio])
-            }else{
-                self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio,remark!])
-            }
-            self.tableView.reloadData()
         }
     }
     
