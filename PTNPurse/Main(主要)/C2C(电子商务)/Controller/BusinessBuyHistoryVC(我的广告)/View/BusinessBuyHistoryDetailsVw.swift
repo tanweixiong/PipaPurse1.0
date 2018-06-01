@@ -42,7 +42,7 @@ class BusinessBuyHistoryDetailsVw: UIView {
             avatarImageView.sd_setImage(with:NSURL(string: avatar!)! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
             
             let price = model?.entrustPrice == nil ? 0 : model?.entrustPrice
-            priceLab.text = Tools.setNSDecimalNumber(price!) + "CNY"
+            priceLab.text =  Tools.setNSDecimalNumber(price!) + "CNY"
             
             let data = model?.date == nil ? "" : model?.date
             dataLab.text = data

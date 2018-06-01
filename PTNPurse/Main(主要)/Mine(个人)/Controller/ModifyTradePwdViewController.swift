@@ -224,8 +224,8 @@ class ModifyTradePwdViewController: UIViewController, UITextFieldDelegate {
         
         
         if status == .modify {
-            topView.setViewContent(title: LanguageHelper.getString(key: "edit_pay_password"))
-            pwdTextView.titleLabel.text = LanguageHelper.getString(key: "edit_pay_password")
+            topView.setViewContent(title: LanguageHelper.getString(key: "to_forget_password_paypwd"))
+            pwdTextView.titleLabel.text = LanguageHelper.getString(key: "homePage_Prompt_Enter_PayPassword")
             pwdTextView.textField.placeholder = LanguageHelper.getString(key: "edit_plase_pay_password")
         }
     }

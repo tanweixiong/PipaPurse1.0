@@ -185,6 +185,8 @@
 "out_success" = "transfer successful!";
 "error" = "Error";
 "to_set_paypwd" = "Go to set up payment password?";
+"to_forget_password_paypwd" = "Forget password";
+
 "to_find_paypwd" = "Go to get the payment password?";
 "number_remark" = "Note: Only supports the exact amount of the four digits after the decimal point";
 "my_qr_code" = "My QR Code";

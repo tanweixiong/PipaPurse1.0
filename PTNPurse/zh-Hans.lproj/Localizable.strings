@@ -188,6 +188,8 @@
 "out_success" = "转出成功!";
 "error" = "错误";
 "to_set_paypwd" = "去设置支付密码?";
+"to_forget_password_paypwd" = "忘记密码";
+
 "to_find_paypwd" = "去找回支付密码?";
 "number_remark" = "注:仅支持精确到小数点后四位金额";
 "my_qr_code" = "我的二维码";
