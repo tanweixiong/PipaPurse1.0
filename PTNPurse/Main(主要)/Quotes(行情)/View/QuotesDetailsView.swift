@@ -32,10 +32,10 @@ class QuotesDetailsView: UIView {
             lowLab.text =  Tools.getWalletAmount(amount: (model?.low?.stringValue)!)
             highLab.text =  Tools.getWalletAmount(amount: (model?.high?.stringValue)!)
             volLab.text =  Tools.getWalletAmount(amount: (model?.vol?.stringValue)!)
-            lastLab.text = Tools.getWalletAmount(amount: (model?.price?.stringValue)!)
+            lastLab.text = Tools.setNSDecimalNumber((model?.priceBySys)!)
             rangsLab.text = Tools.getWalletAmount(amount: (model?.range!)!)
-            priceBySysLab.text = Tools.setNSDecimalNumber((model?.priceBySys)!)
-            
+            priceBySysLab.text =  Tools.getWalletAmount(amount: (model?.price?.stringValue)!)
+        
             
             lastTiLab.text = LanguageHelper.getString(key: "lastest_price") + " CNY"
             volTiLab.text = LanguageHelper.getString(key: "volume")

@@ -13,8 +13,12 @@ class BusinessTransactionDeView: UIView {
     @IBOutlet weak var entrustPriceLab: UILabel!
     @IBOutlet weak var limteLab: UILabel!
     @IBOutlet weak var dataLab: UILabel!
-    @IBOutlet weak var remarkLab: UILabel!
-    
+    @IBOutlet weak var remarkLab: UILabel!{
+        didSet{
+            remarkLab.font = UIFont.systemFont(ofSize: 14)
+            remarkLab.textColor = UIColor.R_UIColorFromRGB(color: 0x4D4F51)
+        }
+    }
     @IBOutlet weak var quotationLab: UILabel!
     @IBOutlet weak var transactionLimitLab: UILabel!
     @IBOutlet weak var releaseDataLab: UILabel!
