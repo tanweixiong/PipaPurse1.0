@@ -12,11 +12,13 @@ import ObjectMapper
 class HomeTransferMaxModel: Mappable {
     var minFee: NSNumber?
     var maxFee: NSNumber?
+    var feeCore: NSNumber?
 
     
     func mapping(map: Map) {
         minFee     <- map["minFee"]
         maxFee     <- map["maxFee"]
+        feeCore     <- map["feeCore"]
     }
     
     required init?(map: Map) {

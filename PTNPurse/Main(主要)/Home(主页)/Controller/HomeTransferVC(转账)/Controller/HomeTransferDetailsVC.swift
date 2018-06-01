@@ -13,8 +13,11 @@ enum HomeTransferDetailsStatus{
     case transferStyle //转账详情
     case conversionStyle //转换详情
 }
+
 class HomeTransferDetailsVC: MainViewController,UITableViewDataSource,UITableViewDelegate {
     fileprivate lazy var viewModel : HomeTransferDetailsVM = HomeTransferDetailsVM()
+    fileprivate lazy var coinDetailsVM : HomeListDetsilsVM = HomeListDetsilsVM()
+    fileprivate lazy var mineVM : MineViewModel  = MineViewModel()
     var conversionDetials = HomeConversionDetialsModel()
     var style = HomeTransferDetailsStatus.receiveStyle
     var transactionId = String()
@@ -77,21 +80,7 @@ class HomeTransferDetailsVC: MainViewController,UITableViewDataSource,UITableVie
         let token = UserDefaults.standard.getUserInfo().token
         let parameters = ["tradeNo":tradeNo,"token":token!]
         viewModel.loadDetailsSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetTradeInfoByNo, parameters: parameters, showIndicator: false) {
-            let model = self.viewModel.model
-            let orderNo = model.orderNo
-            let trans = LanguageHelper.getString(key: "homePage_Details_Transfer")
-            let tradeNum = "-" + Tools.setNSDecimalNumber(model.tradeNum == nil ? 0 : (model.tradeNum)!) + " " + LanguageHelper.getString(key: "homePage_Numbers")
-            let inAddress = model.inAddress
-            let data = model.date!
-            let ratioCore = model.ratioCore == nil ? "" : (model.ratioCore)!
-            let ratio = Tools.setNSDecimalNumber((model.ratio)!) + ratioCore
-            let remark = model.remark
-            if remark == "" {
-               self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio])
-            }else{
-                self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio,remark!])
-            }
-            self.tableView.reloadData()
+            self.getCoinFee(coinNo: (self.viewModel.model.coinNo?.stringValue)!)
         }
     }
     
@@ -135,6 +124,27 @@ class HomeTransferDetailsVC: MainViewController,UITableViewDataSource,UITableVie
             let inAddress = model.outAddress
             let data = model.date!
             let ratio =  String(format: "%.2f", (model.ratio?.doubleValue)!)
+            let remark = model.remark
+            if remark == "" {
+                self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio])
+            }else{
+                self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio,remark!])
+            }
+            self.tableView.reloadData()
+        }
+    }
+    
+    func getCoinFee(coinNo:String){
+        let parameters = ["coinNo":coinNo]
+        coinDetailsVM.loadCoinNumberSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetCoinByNo, parameters: parameters, showIndicator: false) {
+            let model = self.viewModel.model
+            let orderNo = model.orderNo
+            let trans = LanguageHelper.getString(key: "homePage_Details_Transfer")
+            let tradeNum = "-" + Tools.setNSDecimalNumber(model.tradeNum == nil ? 0 : (model.tradeNum)!) + " " + LanguageHelper.getString(key: "homePage_Numbers")
+            let inAddress = model.inAddress
+            let data = model.date!
+            let ratioCore = model.ratioCore == nil ? "" : (model.ratioCore)!
+            let ratio = Tools.setNSDecimalNumber(model.ratio!) + ratioCore
             let remark = model.remark
             if remark == "" {
                 self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio])
