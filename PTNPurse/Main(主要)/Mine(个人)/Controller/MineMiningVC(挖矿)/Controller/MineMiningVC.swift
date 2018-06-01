@@ -25,13 +25,23 @@ class MineMiningVC: MainViewController {
     fileprivate lazy var baseVM : BaseViewModel = BaseViewModel()
     fileprivate var pageSize = 1
     fileprivate var lineSize = 10
-
+    fileprivate var isLoad:Bool = true
+    fileprivate var balloonArr = NSMutableArray()
     var cumulativeIncomeCenter = CGPoint()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         getData(isCreateBalloon: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if #available(iOS 11.0, *) {
+            UIScrollView.appearance().contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.automatic
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
     }
     
     lazy var tableView: UITableView = {
@@ -113,11 +123,8 @@ extension MineMiningVC{
     
     func addData(_ index:NSInteger){
         if viewModel.balloonModel.mineDetails?.count != 0 {
-            if (viewModel.balloonModel.mineDetails?.count)! - 1 < index {
-                return
-            }
-            let balloonModel = viewModel.balloonModel.mineDetails![index]
-            let parameters = ["id":(balloonModel.id?.stringValue)!,"token":self.token]
+            let idString = balloonArr[index]
+            let parameters = ["id":idString,"token":self.token]
             baseVM.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIAddMine, parameters: parameters ,showIndicator: false) { (model:HomeBaseModel) in
                 //根据当前收益
                 self.getData(isCreateBalloon: false)
@@ -138,6 +145,17 @@ extension MineMiningVC{
                 self.tableView.mj_footer.endRefreshingWithNoMoreData()
             }
             self.tableView.reloadData()
+            
+            if self.isLoad {
+                let arr = self.viewModel.balloonModel.mineDetails
+                if arr?.count != 0 {
+                    for item in 0...(arr?.count)! - 1 {
+                        let model = arr![item]
+                        self.balloonArr.add((model.id?.stringValue)!)
+                    }
+                }
+                self.isLoad = false
+            }
         }
         self.tableView.mj_footer.endRefreshing()
     }

@@ -30,7 +30,7 @@ class BusinessBuyHistoryCell: UITableViewCell {
     var model = BusinessBuyHistoryModel(){
         didSet{
             stateLabel.text = Tools.getMineAdvertisingMethod((model?.state?.stringValue)!)
-            entrustPriceLab.text = Tools.setPriceNumber(price: (model?.entrustPrice!)!) + " CNY"
+            entrustPriceLab.text = Tools.setNSDecimalNumber((model?.entrustPrice!)!) + " CNY"
             dateLab.text = model?.date
 
             payMethodLab.text = Tools.getPaymentDetailsMethod((model!.receivablesType!.stringValue))

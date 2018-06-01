@@ -117,8 +117,8 @@ extension BusinessOrderDetailsVC {
             self.statusStr = Tools.getBusinessaTransactionStyle(Style: (model.state!.stringValue))
             let orderNo = model.orderNo!
             let dealType = model.dealType == 0 ? LanguageHelper.getString(key: "C2C_mine_My_advertisement_Buy") : LanguageHelper.getString(key: "C2C_mine_My_advertisement_Sell")
-            let dealPrice = Tools.setPriceNumber(price: model.dealPrice!) + " CNY"
-            let dealNum = Tools.setPriceNumber(price: model.dealNum!)
+            let dealPrice = Tools.getConversionPrice(amount: (model.dealPrice?.stringValue)!, count: 2) + " CNY"
+            let dealNum = Tools.setNSDecimalNumber(model.dealNum!)
             let minerFee = (model.minerFee?.stringValue)!
             let poundage = (model.poundage?.stringValue)!
             let data = (model.date)!
@@ -160,13 +160,8 @@ extension BusinessOrderDetailsVC {
                 self.remindSms(orderNo: model.orderNo!)
                 return
             }
-            let input = InputPaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
+            let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
             input?.delegate = self
-            input?.setPaymentPasswordAlertPriceTitle("")
-            input?.setPaymentPasswordAlertHandicapCostTitle("")
-            input?.setPaymentPasswordAlertPrice("")
-            input?.setPaymentPasswordAlertHandicapCost("")
-            input?.paymentPasswordAlertVw.height = 190
             input?.show()
         }
     }
@@ -339,7 +334,7 @@ extension BusinessOrderDetailsVC:UITableViewDelegate,UITableViewDataSource {
     }
 }
 
-extension BusinessOrderDetailsVC: InputPaymentPasswordDelegate{
+extension BusinessOrderDetailsVC: PaymentPasswordDelegate{
     func inputPaymentPassword(_ pwd: String!) -> String! {
         self.tradePassword = pwd
         let model =  viewModel.model

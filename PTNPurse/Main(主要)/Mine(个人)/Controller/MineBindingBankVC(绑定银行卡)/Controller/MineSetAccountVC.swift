@@ -37,6 +37,7 @@ class MineSetAccountVC: MainViewController {
         let view = Bundle.main.loadNibNamed("MineSetAccountVw", owner: nil, options: nil)?.last as! MineSetAccountVw
         view.frame = CGRect(x: 0, y: MainViewControllerUX.naviNormalHeight, width: SCREEN_WIDTH, height: SCREEN_HEIGHT -  MainViewControllerUX.naviNormalHeight)
         view.paymentMethodTF.delegate = self
+        view.paymentMethodTF.keyboardType = .emailAddress
         view.paymentMethodTF.placeholder = style == .alipayStyle ? LanguageHelper.getString(key: "binding_Please_enter_alipay_account") : LanguageHelper.getString(key: "binding_Please_enter_weChat_account")
         view.titleLab.text = style == .alipayStyle ? LanguageHelper.getString(key: "binding_Alipay_account") : LanguageHelper.getString(key: "binding_Wechat_account")
         view.uploadBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
@@ -61,7 +62,7 @@ class MineSetAccountVC: MainViewController {
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == mineSetAccountVw.paymentMethodTF {
             var maxLength:Int = 0
-            maxLength = 25
+            maxLength = 20
             //限制长度
             let proposeLength = (textField.text?.lengthOfBytes(using: String.Encoding.utf8))! - range.length + string.lengthOfBytes(using: String.Encoding.utf8)
             if proposeLength > maxLength { return false }
