@@ -87,8 +87,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @objc func codeBtnTouched(btn:AutorizeButton) {
         if checkInpunt() {
-            btn.isCounting = true
-            getAuthorizeCode()
+            getAuthorizeCode(btn: btn)
         }
     }
     
@@ -102,7 +101,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - NetWork Method
-    func getAuthorizeCode() {
+    func getAuthorizeCode(btn:AutorizeButton) {
         
         let phone = nameTextView.textField.text!
         //1:用户注册,2:用户忘记密码,3:用户修改交易密码,4:用户忘记交易密码
@@ -120,7 +119,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             let result = Mapper<NodataResponse>().map(JSONObject: jsonObjc)
             if let code = result?.code {
                 if code == 200 {
+                    btn.isCounting = true
                     SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_requestsuccess"))
+           
                 } else {
                     SVProgressHUD.showError(withStatus: result?.message)
                 }
@@ -273,6 +274,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             topImageView.setViewContent(title: LanguageHelper.getString(key: "retrieve_Login_Password"))
             pwdTextView.titleLabel.text = LanguageHelper.getString(key: "retrieve_Login_Password")
             pwdTextView.textField.placeholder = LanguageHelper.getString(key: "login_newpwdplaceholder")
+            registerBtn.isEnabled = false
         } else if type == .register {
             topImageView.setViewContent(title: LanguageHelper.getString(key: "login_creataccount"))
             pwdTextView.textField.placeholder = LanguageHelper.getString(key: "login_loginpwdplaceholder")
@@ -359,6 +361,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 self.setLimitTheNumberOfWords(wordNum: 6, textField: textField)
             }
         }else if type == .register {
+            setPaymentPsdStyle()
+        }else if type == .forgetpwd{
             setPaymentPsdStyle()
         }
     }

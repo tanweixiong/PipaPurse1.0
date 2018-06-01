@@ -185,6 +185,7 @@
 		2332D4FB200DA290009B4D5E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332D4F6200DA290009B4D5E /* MainTabBarController.swift */; };
 		2332D4FC200DA290009B4D5E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332D4F8200DA290009B4D5E /* MainViewController.swift */; };
 		2332D515200DAA22009B4D5E /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332D514200DAA22009B4D5E /* HomeController.swift */; };
+		2333491720C0D43300014D26 /* BusinessSubmissionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2333491620C0D43300014D26 /* BusinessSubmissionDetailsVC.swift */; };
 		2333DBED2079EAC4002911BC /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2333DBD32079EAC3002911BC /* WeiboSDK.bundle */; };
 		2333DBEE2079EAC4002911BC /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2333DBD42079EAC3002911BC /* libWeiboSDK.a */; };
 		2333DBEF2079EAC4002911BC /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2333DBDA2079EAC3002911BC /* README.txt */; };
@@ -323,7 +324,6 @@
 		237567662068E140006AED6F /* BusinessSubmissionMessageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237567652068E140006AED6F /* BusinessSubmissionMessageVM.swift */; };
 		237567682068E949006AED6F /* BusinessSubmissionMessageVW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237567672068E949006AED6F /* BusinessSubmissionMessageVW.swift */; };
 		2375676A2068E958006AED6F /* BusinessSubmissionMessageVW.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237567692068E958006AED6F /* BusinessSubmissionMessageVW.xib */; };
-		2375676C2068F3EB006AED6F /* BusinessSubmissionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2375676B2068F3EB006AED6F /* BusinessSubmissionDetailsVC.swift */; };
 		237805DA200F739700C1429D /* HomeAddCoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237805D9200F739700C1429D /* HomeAddCoinVC.swift */; };
 		237805DD200F73BB00C1429D /* HomeAddCoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237805DB200F73BB00C1429D /* HomeAddCoinCell.swift */; };
 		237805DE200F73BB00C1429D /* HomeAddCoinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237805DC200F73BB00C1429D /* HomeAddCoinCell.xib */; };
@@ -679,6 +679,7 @@
 		2332D4F8200DA290009B4D5E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2332D502200DA328009B4D5E /* PTNPurse_Brigding_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTNPurse_Brigding_Header.h; sourceTree = "<group>"; };
 		2332D514200DAA22009B4D5E /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		2333491620C0D43300014D26 /* BusinessSubmissionDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessSubmissionDetailsVC.swift; sourceTree = "<group>"; };
 		2333DBD32079EAC3002911BC /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		2333DBD42079EAC3002911BC /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		2333DBD52079EAC3002911BC /* WBHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBHttpRequest.h; sourceTree = "<group>"; };
@@ -822,7 +823,6 @@
 		237567652068E140006AED6F /* BusinessSubmissionMessageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSubmissionMessageVM.swift; sourceTree = "<group>"; };
 		237567672068E949006AED6F /* BusinessSubmissionMessageVW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSubmissionMessageVW.swift; sourceTree = "<group>"; };
 		237567692068E958006AED6F /* BusinessSubmissionMessageVW.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessSubmissionMessageVW.xib; sourceTree = "<group>"; };
-		2375676B2068F3EB006AED6F /* BusinessSubmissionDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessSubmissionDetailsVC.swift; sourceTree = "<group>"; };
 		237805D9200F739700C1429D /* HomeAddCoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddCoinVC.swift; sourceTree = "<group>"; };
 		237805DB200F73BB00C1429D /* HomeAddCoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddCoinCell.swift; sourceTree = "<group>"; };
 		237805DC200F73BB00C1429D /* HomeAddCoinCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeAddCoinCell.xib; sourceTree = "<group>"; };
@@ -1330,7 +1330,7 @@
 			children = (
 				232C54022063B5460005F64C /* BusinessSubmissionVC.swift */,
 				2375675E2068DE97006AED6F /* BusinessSubmissionMessageVC.swift */,
-				2375676B2068F3EB006AED6F /* BusinessSubmissionDetailsVC.swift */,
+				2333491620C0D43300014D26 /* BusinessSubmissionDetailsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3475,6 +3475,7 @@
 				232F3D3320A919BD0002C3C6 /* BusinessReleaseMethodCell.swift in Sources */,
 				236B624C20A420240025DCA1 /* HomeTransferDetailsCell.swift in Sources */,
 				2333DC10207A2139002911BC /* BusinessInviteFriendsVC.swift in Sources */,
+				2333491720C0D43300014D26 /* BusinessSubmissionDetailsVC.swift in Sources */,
 				23298B712088420B00702DD8 /* CQMarqueeView.m in Sources */,
 				233201B1202AFEDD001815DE /* MJRefreshAutoNormalFooter.m in Sources */,
 				232C542C20AA8852002C8780 /* MineMiningVw.swift in Sources */,
@@ -3613,7 +3614,6 @@
 				233176E82021A36C0006E0E9 /* SettingPaypsdVC.swift in Sources */,
 				2332D4BD200DA1BC009B4D5E /* LayoutConstraintItem.swift in Sources */,
 				232AFAC0205B66D600B768A6 /* QFTimePickerView.m in Sources */,
-				2375676C2068F3EB006AED6F /* BusinessSubmissionDetailsVC.swift in Sources */,
 				2332D515200DAA22009B4D5E /* HomeController.swift in Sources */,
 				23674A852020202400B4B96E /* FriendsViewController.swift in Sources */,
 				236246622023000800C9ABDE /* HomeTransferMaxModel.swift in Sources */,

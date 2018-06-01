@@ -79,9 +79,10 @@ class HomeBackupDetailsVC: MainViewController,HomeBackupDetailsViewDelegate {
                     SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "person_Import_finish"))
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: R_NotificationHomeReload), object: nil)
       
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                         self.navigationController?.popToRootViewController(animated: true)
                     })
+//                    self.getUserInfoByToken()
                 } else {
                     SVProgressHUD.showInfo(withStatus: result?.message)
                 }
