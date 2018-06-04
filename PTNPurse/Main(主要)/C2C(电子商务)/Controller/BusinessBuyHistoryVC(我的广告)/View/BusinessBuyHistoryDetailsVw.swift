@@ -51,7 +51,7 @@ class BusinessBuyHistoryDetailsVw: UIView {
             dataLab.text = data
             
             let entrustMinPrice = model?.entrustMinPrice == nil ? 0 : model?.entrustMinPrice
-            limitLab.text = Tools.getWalletPrice(amount: (entrustMinPrice?.stringValue)!) + LanguageHelper.getString(key: "homePage_Numbers")
+            limitLab.text = Tools.getWalletAmount(amount: (entrustMinPrice?.stringValue)!) + LanguageHelper.getString(key: "homePage_Numbers")
             
             let receivablesType = model?.receivablesType == nil ? 0 : model?.receivablesType
             receivablesTypeLab.text = Tools.getPaymentDetailsMethod((receivablesType?.stringValue)!)
@@ -63,12 +63,15 @@ class BusinessBuyHistoryDetailsVw: UIView {
             stateLab.text = Tools.getMineAdvertisingMethod((state?.stringValue)!)
             
             let entrustMaxPrice = model?.entrustMaxPrice == nil ? 0 : model?.entrustMaxPrice
-            entrustMaxPriceLab.text = Tools.getWalletPrice(amount: (entrustMaxPrice?.stringValue)!) + LanguageHelper.getString(key: "homePage_Numbers")
+            entrustMaxPriceLab.text = Tools.getWalletAmount(amount: (entrustMaxPrice?.stringValue)!) + LanguageHelper.getString(key: "homePage_Numbers")
             
             let unitPrice = Tools.setNSDecimalNumber((model?.entrustPrice)!)
             let quantity = Tools.setNSDecimalNumber((model?.entrustNum)!)
             let sum = (unitPrice as NSString).doubleValue * (quantity as NSString).doubleValue
-            sumLab.text = Tools.getConversionPrice(amount: String(format: "%.4f", sum), count: 2) + "CNY"
+            let de = NSDecimalNumber.init(value: sum)
+            let strDe = (de.stringValue)
+            let priceDe = Tools.getWalletPrice(amount: strDe)
+            sumLab.text = priceDe + "CNY"
             
             let dealNum = model?.dealNum == nil ? 0 : model?.dealNum
             transactionFinishLab.text = (dealNum?.stringValue)! + LanguageHelper.getString(key: "homePage_Numbers")

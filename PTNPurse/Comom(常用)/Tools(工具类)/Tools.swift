@@ -596,7 +596,7 @@ class Tools: NSObject {
     class func getWalletAmount(amount:String)->String{
         let strArray = amount.components(separatedBy: ".")
         if strArray.count == 1 {
-            return strArray.first!
+            return strArray.first! + ".00"
         }else{
             let price = strArray.first
             let point = strArray.last
@@ -618,8 +618,13 @@ class Tools: NSObject {
             let price = strArray.first
             let point = strArray.last
             var newPoint = point
-            if 7 < (point?.count)! {
-                let index = point?.index((point?.startIndex)!, offsetBy: 8)
+            if newPoint?.count != 0 {
+                if newPoint?.count == 1 {
+                    newPoint = newPoint! + "0"
+                }
+            }
+            if 1 < (point?.count)! {
+                let index = point?.index((point?.startIndex)!, offsetBy: 2)
                 newPoint = (point?.substring(to: index!))!
             }
             let amount = price! + "." + newPoint!
