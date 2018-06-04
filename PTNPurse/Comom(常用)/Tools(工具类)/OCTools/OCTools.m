@@ -452,4 +452,77 @@
     }
     return s;
 }
+
++(NSString *) toExponent:(double)d rms:(NSInteger)n
+{
+    if(n==0)
+    {
+        return nil;
+    }
+    //科学计算法 一般写法4.232E这种样式 这里的n代表所有数字的个数 所以这里n++
+    n++;
+    //判断小数的位数是否超过设定的n的值 如果超过了保留n位有效数字 如果不超过则保留默认小数位数
+    //先将double转换成字符串
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSString *dbStr = [formatter stringFromNumber:[NSDecimalNumber numberWithDouble:d]];
+    NSInteger length = dbStr.length;
+    if ([dbStr containsString:@"."]) {
+        length = dbStr.length - 1;
+    }
+    if (length < n) {
+        n = length;
+    }
+    
+    CFLocaleRef currentLocale = CFLocaleCopyCurrent();
+    CFNumberFormatterRef customCurrencyFormatter = CFNumberFormatterCreate
+    (NULL, currentLocale, kCFNumberFormatterCurrencyStyle);
+    NSString *s_n = @"#";
+    if(n > 1)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            NSString *temp = s_n;
+            if(j == 0)
+            {
+                s_n = [temp stringByAppendingString:@"."];
+            }
+            else
+            {
+                s_n = [temp stringByAppendingString:@"0"];
+            }
+            
+        }
+        
+    }
+    CFNumberFormatterSetFormat(customCurrencyFormatter, (CFStringRef)s_n);
+    
+    double i=1;
+    int exponent = 0;
+    while (1) {
+        i = i*10;
+        if(d < i)
+        {
+            break;
+        }
+        exponent++;
+    }
+    double n1 = d * 10 / i;
+    
+    CFNumberRef number1 = CFNumberCreate(NULL, kCFNumberDoubleType, &n1);
+    CFStringRef string1 = CFNumberFormatterCreateStringWithNumber
+    (NULL, customCurrencyFormatter, number1);
+    NSLog(@"%@", (__bridge NSString *)string1);
+    
+    NSString * result = [NSString stringWithFormat:@"%@e%d",(__bridge NSString *)string1,exponent];
+    
+    CFRelease(currentLocale);
+    CFRelease(customCurrencyFormatter);
+    CFRelease(number1);
+    CFRelease(string1);
+    
+    return result;
+    
+}
+
 @end
