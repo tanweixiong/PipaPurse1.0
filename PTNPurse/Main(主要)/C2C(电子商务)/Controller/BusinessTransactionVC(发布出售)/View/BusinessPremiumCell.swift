@@ -53,6 +53,12 @@ class BusinessPremiumCell: UITableViewCell {
         }else{
              premiumTipsLab.text = "Premium ticp for example, if the current price is \(currencyPricesStr) and the premium rate is 10%, then the price is \(transactionUnitPriceStr)"
         }
+        
+        let differences = self.getPremiumSlider(slider: 0)
+        let transactionUnitPriceStrs = Tools.getConversionPrice(amount: "\(differences)")
+        if premiumSliderBlock != nil {
+            premiumSliderBlock!(transactionUnitPriceStrs)
+        }
     }
     
     lazy var sliderView: PTNSlider = {
@@ -84,6 +90,24 @@ class BusinessPremiumCell: UITableViewCell {
         if premiumSliderBlock != nil {
            premiumSliderBlock!(transactionUnitPriceStr)
         }
+    }
+    
+    func getPremiumSlider(slider:Int)->Double{
+        let progressInt = slider
+        var currentProgress:Int = 0
+        if progressInt > 100 {
+            let positive = progressInt - 100
+            currentProgress = positive
+            currentProgress =  currentProgress == 100 ? 99 : currentProgress
+            percentLab.text = "\(currentProgress)"
+        }else{
+            currentProgress =  (100 - progressInt) * -1
+            currentProgress =  currentProgress == -100 ? -99 : currentProgress
+            percentLab.text = "\(currentProgress)"
+        }
+        let transactionUnitPrice = currencyPrices.doubleValue * Double(currentProgress) / 100
+        let difference = currencyPrices.doubleValue + transactionUnitPrice
+        return difference
     }
     
 }

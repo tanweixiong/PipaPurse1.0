@@ -142,21 +142,24 @@ class BusinessaDvertisementCell: UITableViewCell {
             }
         }
         setStartLayout()
-        //发起纠纷
-        if style == .detriment && status == 4{
-            statusVw.addSubview(initiateDisputeBtn)
-            initiateDisputeBtn.frame = CGRect(x: 23, y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
-             initiateDisputeBtn.isHidden = false
-        }else{
-             initiateDisputeBtn.isHidden = true
-        }
         
-        if style == .sell && status == 4{
-            statusVw.addSubview(initiateDisputeBtn)
-            initiateDisputeBtn.frame = CGRect(x: 23, y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
-            initiateDisputeBtn.isHidden = false
-        }else{
-            initiateDisputeBtn.isHidden = true
+         //发布购买发起纠纷
+        if style == .sell {
+            if style == .sell && status == 4{
+                statusVw.addSubview(initiateDisputeBtn)
+                initiateDisputeBtn.frame = CGRect(x: 23, y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
+                initiateDisputeBtn.isHidden = false
+            }else{
+                initiateDisputeBtn.isHidden = true
+            }
+        }else if style == .detriment{
+            if style == .detriment && status == 4{
+                statusVw.addSubview(initiateDisputeBtn)
+                initiateDisputeBtn.frame = CGRect(x: 23, y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
+                initiateDisputeBtn.isHidden = false
+            }else{
+                initiateDisputeBtn.isHidden = true
+            }
         }
     }
     
