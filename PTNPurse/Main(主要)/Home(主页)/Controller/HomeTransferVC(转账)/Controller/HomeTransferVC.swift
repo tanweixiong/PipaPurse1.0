@@ -12,7 +12,7 @@ import ObjectMapper
 import AVFoundation
 import YYText
 
-class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,InputPaymentPasswordDelegate,LBXScanViewControllerDelegate {
+class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,PaymentPasswordDelegate,LBXScanViewControllerDelegate {
     fileprivate lazy var viewModel : BaseViewModel = BaseViewModel()
     fileprivate lazy var coinDetailsVM : HomeListDetsilsVM = HomeListDetsilsVM()
     var details =  HomeWalletsModel()!
@@ -111,15 +111,11 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
         if Tools.noPaymentPasswordIsSetToExecute() == false{return}
         if checkEnter(){
             let fee = sliderValueLab.text!
-            
-            let input = InputPaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+            let collectNum = collectNumTextField.text!
+            let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
             input?.delegate = self
-            input?.setPaymentPasswordAlertPriceTitle(LanguageHelper.getString(key: "homePage_Number"))
-            input?.setPaymentPasswordAlertPrice(collectNumTextField.text!)
-            input?.setPaymentPasswordAlertHandicapCostTitle(LanguageHelper.getString(key: "homePage_Miner_Fee"))
-            input?.setPaymentPasswordAlertHandicapCost(Tools.getConversionPrice(amount: fee, count: 2))
-            input?.paymentPasswordAlertVw.titleLabel.text = LanguageHelper.getString(key: "homePage_Prompt_Enter_PayPassword")
-            input?.paymentPasswordAlertVw.forgetPwdBtn.setTitle(LanguageHelper.getString(key: "forget_password") + "?", for: .normal)
+            input?.isMiners = true
+            input?.setUpFeesMinersFeesPoundage(fee, tradeNumber: collectNum)
             input?.show()
         }
     }
@@ -249,7 +245,7 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
         }
     }
     
-    func inputPaymentPasswordChangeForgetPassword() {
+    func PaymentPasswordChangeForgetPassword() {
         let forgetvc = ModifyTradePwdViewController()
         forgetvc.type = ModifyPwdType.tradepwd
         forgetvc.status = .modify

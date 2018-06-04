@@ -164,13 +164,8 @@ extension BusinessaDvertisementVC {
                 self.remindSms(orderNo: model.orderNo!)
                return
             }
-            let input = InputPaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
+            let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
             input?.delegate = self
-            input?.setPaymentPasswordAlertPriceTitle("")
-            input?.setPaymentPasswordAlertHandicapCostTitle("")
-            input?.setPaymentPasswordAlertPrice("")
-            input?.setPaymentPasswordAlertHandicapCost("")
-            input?.paymentPasswordAlertVw.height = 190
             input?.show()
         }
     }
@@ -352,6 +347,17 @@ extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if style == .buyStyle {
+            let model = viewModel.processingModel[indexPath.row]
+            if model.state != nil && model.state == 1 {
+                return 300
+            }
+        }else if style == .sellStyle {
+            let model = viewModel.finishModel[indexPath.row]
+            if model.state != nil && model.state == 1 {
+                return 300
+            }
+        }
         return 338
     }
     
@@ -384,7 +390,7 @@ extension BusinessaDvertisementVC:UITableViewDataSource,UITableViewDelegate {
     }
 }
 
-extension BusinessaDvertisementVC: InputPaymentPasswordDelegate{
+extension BusinessaDvertisementVC:PaymentPasswordDelegate{
     func inputPaymentPassword(_ pwd: String!) -> String! {
         self.tradePassword = pwd
         let model = getModel(index: self.indexRow)

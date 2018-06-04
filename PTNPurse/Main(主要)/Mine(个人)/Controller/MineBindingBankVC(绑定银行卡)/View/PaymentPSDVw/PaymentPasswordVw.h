@@ -16,6 +16,7 @@
 @end
 @interface PaymentPasswordVw : UIView
 @property (nonatomic,assign)BOOL isNormal;
+@property (nonatomic,assign)BOOL isMiners;
 @property (nonatomic,strong)PaymentAlertVw *paymentPasswordAlertVw;
 @property (nonatomic, weak) id<PaymentPasswordDelegate> delegate;
 - (void)show;

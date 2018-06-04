@@ -253,7 +253,12 @@ extension BusinessTransactionVC {
         let parameters = ["coinNo":coinNo,"tradeNumber":transactionsNum]
         mineVM.loadSuccessfullyReturnedData(requestType: .get, URLString: ZYConstAPI.kAPIGetSpotEntrustPoundage, parameters: parameters, showIndicator: false) { (json) in
             let coinCore = (self.mineVM.homeConvertFreeModel.coinCore)!
-            let poundage = "≈" + Tools.setNSDecimalNumber(self.mineVM.homeConvertFreeModel.poundage!) + coinCore
+            var poundage = String()
+            if self.style == .buyStyle {
+                poundage = "≈" + "0" + coinCore
+            }else{
+                poundage = "≈" + Tools.setNSDecimalNumber(self.mineVM.homeConvertFreeModel.poundage!) + coinCore
+            }
             let tradeNumber =  Tools.setNSDecimalNumber(self.mineVM.homeConvertFreeModel.tradeNumber!) + coinCore
             let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
             input?.delegate = self

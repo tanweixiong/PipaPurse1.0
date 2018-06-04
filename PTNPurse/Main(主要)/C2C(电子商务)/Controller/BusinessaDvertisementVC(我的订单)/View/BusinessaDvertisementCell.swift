@@ -109,6 +109,10 @@ class BusinessaDvertisementCell: UITableViewCell {
                 remindBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xFE7644), for: .normal)
                 cancelOrderBtn.isHidden = true
             //已完成
+            }else if status == 1{
+                remindBtn.isHidden = true
+                contactBtn.isHidden = true
+                cancelOrderBtn.isHidden = true
             }
             
             if status == 2 ||  status == 5 ||  status == 6 ||  status == 7 || status == 8{

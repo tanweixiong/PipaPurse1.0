@@ -102,8 +102,8 @@ class HomeTransferRemarksCell: UITableViewCell,YYTextViewDelegate {
         //截取200个字
         let textContent = textView.text
         let textNum = textContent?.count
-        if textNum! > 30 {
-            let index = textContent?.index((textContent?.startIndex)!, offsetBy: 30)
+        if textNum! > 20 {
+            let index = textContent?.index((textContent?.startIndex)!, offsetBy: 20)
             let str = textContent?.substring(to: index!)
             textView.text = str
         }

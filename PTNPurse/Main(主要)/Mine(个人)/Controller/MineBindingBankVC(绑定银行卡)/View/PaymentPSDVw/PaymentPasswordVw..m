@@ -336,6 +336,14 @@ static CGFloat const kDotWith_height = 10;
     _paymentPasswordAlertVw.poundageLab.text = poundage;
     _paymentPasswordAlertVw.tradeNumberLab.text = tradeNumber;
     _paymentPasswordAlertVw.titleTopY.constant = 5;
+    if (self.isMiners) {
+        NSString *str = [[NSUserDefaults standardUserDefaults]objectForKey:@"UserLanguage"];
+        if ([str isEqualToString:@"zh-Hans"]) {
+            _paymentPasswordAlertVw.poundageTitleLab.text = @"矿工费";
+        }else{
+            _paymentPasswordAlertVw.poundageTitleLab.text = @"fees";
+        }
+    }
 }
 
 - (void)layoutSubviews
