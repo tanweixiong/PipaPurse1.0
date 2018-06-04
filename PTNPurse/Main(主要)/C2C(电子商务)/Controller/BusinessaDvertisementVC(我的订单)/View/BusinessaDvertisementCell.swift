@@ -141,7 +141,6 @@ class BusinessaDvertisementCell: UITableViewCell {
                 cancelOrderBtn.isHidden = true
             }
         }
-
         setStartLayout()
         //发起纠纷
         if style == .detriment && status == 4{

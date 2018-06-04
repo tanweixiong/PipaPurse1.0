@@ -80,10 +80,10 @@
                                         <rect key="frame" x="0.0" y="60.5" width="290" height="257"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单编号：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nnk-Kn-WUq">
-                                                <rect key="frame" x="10" y="10" width="80" height="20"/>
+                                                <rect key="frame" x="10" y="10" width="90" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="8Tz-EI-U8T"/>
-                                                    <constraint firstAttribute="width" constant="80" id="GfI-qh-UBk"/>
+                                                    <constraint firstAttribute="width" constant="90" id="GfI-qh-UBk"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.32941176470588235" green="0.35686274509803922" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
@@ -130,7 +130,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdV-1j-7w3">
-                                                <rect key="frame" x="95" y="10" width="180" height="20"/>
+                                                <rect key="frame" x="105" y="10" width="170" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="k9e-1c-UWJ"/>
                                                 </constraints>
