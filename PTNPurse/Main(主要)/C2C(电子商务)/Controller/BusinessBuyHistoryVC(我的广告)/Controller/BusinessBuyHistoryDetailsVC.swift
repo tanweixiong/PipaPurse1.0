@@ -70,6 +70,10 @@ extension BusinessBuyHistoryDetailsVC {
             if self.detailsViewModel.liberateModel.username != nil {
                 self.detailsView.model = self.detailsViewModel.liberateModel
                 self.remarkView.remarkTV.text = self.detailsViewModel.liberateModel.remark
+                //表示已经下架
+                if self.detailsViewModel.liberateModel.state == 2 {
+                    self.dropBtn.isHidden = true
+                }
             }
         })
     }

@@ -94,9 +94,12 @@ class BusinessModel: Mappable {
         
         dealNum        <- map["dealNum"]
         poundageCore        <- map["poundageCore"]
+        
+        state        <- map["state"]
 
     }
 }
+
 
 class BusinessEntrustModel: Mappable {
     var language: String?

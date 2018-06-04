@@ -147,6 +147,7 @@ class BusinessaDvertisementCell: UITableViewCell {
         if style == .detriment && status == 4{
             statusVw.addSubview(initiateDisputeBtn)
             initiateDisputeBtn.frame = CGRect(x: 23, y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
+             initiateDisputeBtn.isHidden = false
         }else{
              initiateDisputeBtn.isHidden = true
         }
