@@ -271,9 +271,10 @@ extension BusinessWantBuyVC {
                 return
             }
               let price = self.businessWantBuyData.entrustPrice
-              let cny = (price?.floatValue)! * Float(num)!
-              let ce =  floor(Double(cny) * 10000) / 10000
-              businessConvertView.disPriceTF.text = Tools.getConversionPrice(amount: "\(ce)", count: 2)
+              let cny = (price?.doubleValue)! * Double(num)!
+              let str = NSDecimalNumber.init(value: cny)
+              let new = (str.stringValue)
+              businessConvertView.disPriceTF.text = Tools.getConversionPrice(amount: new, count: 2)
         }else{
             let cny = businessConvertView.disPriceTF.text!
             if cny == "" || textField.text! == ""
