@@ -15,7 +15,7 @@ class BusinessTransactionDeView: UIView {
     @IBOutlet weak var dataLab: UILabel!
     @IBOutlet weak var remarkLab: UILabel!{
         didSet{
-            remarkLab.font = UIFont.systemFont(ofSize: 14)
+            remarkLab.font = UIFont.systemFont(ofSize: 12)
             remarkLab.textColor = UIColor.R_UIColorFromRGB(color: 0x4D4F51)
         }
     }

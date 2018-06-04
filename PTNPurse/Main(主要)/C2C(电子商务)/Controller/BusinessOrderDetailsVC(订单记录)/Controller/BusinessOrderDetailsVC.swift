@@ -198,6 +198,7 @@ extension BusinessOrderDetailsVC {
             self.remindSellerIndex = index
             SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "C2C_transaction_Confirm_payment_successful"))
             self.addNotification()
+            self.getData()
         }
     }
     
@@ -220,6 +221,7 @@ extension BusinessOrderDetailsVC {
             self.listCell.remindBtn.isEnabled = false
             SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "C2C_transaction_Confirm_payments_successful"))
             self.addNotification()
+            self.getData()
         }
     }
     
@@ -241,6 +243,7 @@ extension BusinessOrderDetailsVC {
         baseViewModel.loadSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPICancelDealDetail, parameters: parameters, showIndicator: false) { (json) in
             SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "C2C_transaction_Cancel_order_successfully"))
             self.addNotification()
+            self.getData()
         }
     }
     

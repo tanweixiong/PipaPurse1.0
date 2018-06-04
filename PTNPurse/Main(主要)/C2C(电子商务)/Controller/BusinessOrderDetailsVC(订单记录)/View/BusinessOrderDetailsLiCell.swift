@@ -61,6 +61,12 @@ class BusinessOrderDetailsLiCell: UITableViewCell {
                 contactBtn.isHidden = true
                 cancelOrderBtn.isHidden = true
             }
+            
+            if status == 2 ||  status == 5 ||  status == 6 ||  status == 7 || status == 8{
+                remindBtn.isHidden = true
+                contactBtn.isHidden = false
+                cancelOrderBtn.isHidden = true
+            }
             //卖方
         }else if style == 1{
             if status == 3 {
@@ -73,6 +79,12 @@ class BusinessOrderDetailsLiCell: UITableViewCell {
             }else if status == 1{
                 remindBtn.isHidden = true
                 contactBtn.isHidden = true
+                cancelOrderBtn.isHidden = true
+            }
+            
+            if status == 2 ||  status == 5 ||  status == 6 ||  status == 7 || status == 8{
+                remindBtn.isHidden = true
+                contactBtn.isHidden = false
                 cancelOrderBtn.isHidden = true
             }
         }
@@ -162,8 +174,8 @@ class BusinessOrderDetailsLiCell: UITableViewCell {
     lazy var initiateDisputeBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle(LanguageHelper.getString(key: "C2C_transaction_initiate_Dispute"), for: .normal)
-        btn.setTitleColor(R_UIThemeColor, for: .normal)
-        btn.layer.borderColor = R_UIThemeColor.cgColor
+        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xFF7052), for: .normal)
+        btn.layer.borderColor = UIColor.R_UIColorFromRGB(color: 0xCFD3D5).cgColor
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         btn.layer.cornerRadius = 5
         btn.layer.masksToBounds = true

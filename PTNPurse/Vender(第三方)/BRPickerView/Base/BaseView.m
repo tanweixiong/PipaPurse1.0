@@ -11,7 +11,7 @@
 
 @implementation BaseView
 
-#define ThemeColor RGB_HEX(0x173B9D, 1.0)
+#define ThemeColor RGB_HEX(0x009BFD, 1.0)
 
 - (void)initUI {
     self.frame = SCREEN_BOUNDS;
