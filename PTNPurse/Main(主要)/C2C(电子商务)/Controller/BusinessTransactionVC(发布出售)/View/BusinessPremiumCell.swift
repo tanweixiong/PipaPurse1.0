@@ -54,10 +54,18 @@ class BusinessPremiumCell: UITableViewCell {
              premiumTipsLab.text = "Premium ticp for example, if the current price is \(currencyPricesStr) and the premium rate is 10%, then the price is \(transactionUnitPriceStr)"
         }
         
-        let differences = self.getPremiumSlider(slider: 0)
-        let transactionUnitPriceStrs = Tools.getConversionPrice(amount: "\(differences)")
-        if premiumSliderBlock != nil {
-            premiumSliderBlock!(transactionUnitPriceStrs)
+        if self.currencyPrices != 0 {
+            self.sliderView.value = 101
+            let differences = self.getPremiumSlider(slider: 101)
+            if premiumSliderBlock != nil {
+                premiumSliderBlock!(Tools.getWalletPrice(amount: Tools.setNSDecimalNumber(self.currencyPrices)))
+            }
+        }else{
+            self.sliderView.value = 101
+            self.percentLab.text = "-"
+            if premiumSliderBlock != nil {
+                premiumSliderBlock!("0")
+            }
         }
     }
     
