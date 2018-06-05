@@ -65,10 +65,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIh-py-Vaj">
-                    <rect key="frame" x="305" y="32" width="55" height="22"/>
+                    <rect key="frame" x="280" y="23" width="80" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="22" id="cVW-P6-HfX"/>
-                        <constraint firstAttribute="width" constant="55" id="sIG-Mr-jzK"/>
+                        <constraint firstAttribute="height" constant="40" id="cVW-P6-HfX"/>
+                        <constraint firstAttribute="width" constant="80" id="sIG-Mr-jzK"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="提交">

@@ -12,6 +12,8 @@ import ObjectMapper
 
 class MineBindingPhoneVC: MainViewController {
     fileprivate lazy var VM : BaseViewModel = BaseViewModel()
+    fileprivate var isGetCode:Bool = true
+    public var rightAutorBtn = AutorizeButton()
     @IBOutlet weak var naviVw: CreatTopView!
     @IBOutlet weak var phoneVw: UIView!
     @IBOutlet weak var phoneTF: UITextField!{
@@ -29,7 +31,7 @@ class MineBindingPhoneVC: MainViewController {
             verificationTF.delegate = self
         }
     }
-    public var rightAutorBtn = AutorizeButton()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,27 +107,33 @@ extension MineBindingPhoneVC {
     }
     
     @objc func codeBtnTouched(btn:AutorizeButton) {
-        if !Tools.validateMobile(mobile: self.phoneTF.text!) {
-            SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "net_rightphone"))
-            return
-        }
-        let params = [ "username" : self.phoneTF.text!, "type" : "4"]
-        ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIGetAuthorCode, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
-            let result = Mapper<NodataResponse>().map(JSONObject: jsonObjc)
-            if let code = result?.code {
-                if code == 200 {
-                    SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_requestsuccess"))
-                    btn.isCounting = true
-                } else {
-                    SVProgressHUD.showError(withStatus: result?.message)
-                }
-            } else {
-                SVProgressHUD.dismiss()
+        if isGetCode {
+            isGetCode = false
+            if !Tools.validateMobile(mobile: self.phoneTF.text!) {
+                SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "net_rightphone"))
+                return
             }
-        }) { (error) in
-            SVProgressHUD.showError(withStatus: LanguageHelper.getString(key: "net_networkerror"))
+            let params = [ "username" : self.phoneTF.text!, "type" : "4"]
+            ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIGetAuthorCode, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
+                self.isGetCode = true
+                let result = Mapper<NodataResponse>().map(JSONObject: jsonObjc)
+                if let code = result?.code {
+                    if code == 200 {
+                        SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_requestsuccess"))
+                        btn.isCounting = true
+                    } else {
+                        SVProgressHUD.showError(withStatus: result?.message)
+                    }
+                } else {
+                    SVProgressHUD.dismiss()
+                }
+            }) { (error) in
+                SVProgressHUD.showError(withStatus: LanguageHelper.getString(key: "net_networkerror"))
+            }
         }
     }
+    
+    
     
     @objc func textFieldTextDidChangeOneCI(noti:NSNotification){
          setTextfieldStyle()
@@ -177,5 +185,11 @@ extension MineBindingPhoneVC : PaymentPasswordDelegate {
         forgetvc.status = .modify
         forgetvc.isNeedNavi = false
         self.navigationController?.pushViewController(forgetvc, animated: true)
+    }
+}
+
+extension AutorizeButton {
+    func setupUI(){
+        
     }
 }
