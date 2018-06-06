@@ -245,9 +245,14 @@ extension BusinessaDvertisementVC {
     
     //发起纠纷
     @objc func initiateDisputeOnClick(_ sender:UIButton){
-        let mode = viewModel.processingModel[sender.tag]
+        var model = BusinessaDvertisementModel()
+        if style == .buyStyle {
+             model = viewModel.processingModel[sender.tag]
+        }else if style == .sellStyle {
+             model = viewModel.finishModel[sender.tag]
+        }
         let businessSubmissionVC = BusinessSubmissionVC()
-        businessSubmissionVC.orderNo = mode.orderNo!
+        businessSubmissionVC.orderNo = (model?.orderNo!)!
         self.navigationController?.pushViewController(businessSubmissionVC, animated: true)
     }
     
