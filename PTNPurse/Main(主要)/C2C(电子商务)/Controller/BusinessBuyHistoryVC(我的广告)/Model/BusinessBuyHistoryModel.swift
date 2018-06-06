@@ -75,6 +75,7 @@ class BusinessBuyFinishModel: Mappable {
 class BusinessBuyFinishDataModel: Mappable {
     var orderId: NSNumber?
     var phone :NSNumber?
+    var tradePrice:NSNumber?
     
     required init?(map: Map) {
         
@@ -87,6 +88,7 @@ class BusinessBuyFinishDataModel: Mappable {
     func mapping(map: Map) {
         orderId        <- map["orderId"]
         phone        <- map["phone"]
+        tradePrice        <- map["tradePrice"]
     }
 }
 

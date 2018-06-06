@@ -172,6 +172,8 @@ extension BusinessWantBuyVC {
                 finishVC.phoneNum = self.businessWantBuyData.name!
                 finishVC.orderNo = (responseData?.orderId?.stringValue)!
                 finishVC.style = .buyFinishStyle
+                finishVC.liberateStyle = self.style
+                finishVC.tradePrice = responseData?.tradePrice == nil ? 0 : (responseData?.tradePrice)!
                 self.navigationController?.pushViewController(finishVC, animated: true)
             })
         }
@@ -330,7 +332,7 @@ extension BusinessWantBuyVC {
     
     //查看订单详情
     func getDetailsData(){
-        let parameters = ["id":self.entrustNo,"language":Tools.getLocalLanguage()]
+        let parameters = ["id":self.entrustNo,"language":Tools.getLocalLanguage(),"token":(UserDefaults.standard.getUserInfo().token)!]
         detailsViewModel.loadLiberateSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetSpotEntrustById, parameters: parameters, showIndicator: false, finishedCallback: {
             if self.detailsViewModel.liberateModel.username != nil {
                 self.businessView.model = self.detailsViewModel.liberateModel

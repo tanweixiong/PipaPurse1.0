@@ -533,6 +533,10 @@
 "C2C_mine_My_advertisement_Unit_No_Data" = "Transaction price cannot be 0";
 "C2C_mine_My_advertisement_Unit_No_Datas" = "Transaction price cannot be 0";
 
+"C2C_mine_My_advertisement_Buy_Finish" = "Buy Finish";
+"C2C_mine_My_advertisement_Sell_Finish" = "Sell Finish";
+"C2C_mine_My_The_transaction_price_is" = " price is";
+
 "C2C_mine_My_advertisement_Quantity" = "Quantity";
 "C2C_mine_My_advertisement_Status" = "Status";
 "C2C_mine_My_advertisement_Num" = "Num";

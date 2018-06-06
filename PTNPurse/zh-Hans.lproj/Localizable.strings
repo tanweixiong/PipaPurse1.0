@@ -558,6 +558,10 @@
 "C2C_mine_My_advertisement_Unit_No_Data" = "交易单价不能为0";
 "C2C_mine_My_advertisement_Unit_No_Datas" = "交易不能为0";
 
+"C2C_mine_My_advertisement_Buy_Finish" = "你已购买成功";
+"C2C_mine_My_advertisement_Sell_Finish" = "你已出售成功";
+"C2C_mine_My_The_transaction_price_is" = ",交易价格为";
+
 "C2C_mine_My_advertisement_Quantity" = "交易数量";
 "C2C_mine_My_advertisement_Status" = "交易状态";
 "C2C_mine_My_advertisement_Num" = "个";

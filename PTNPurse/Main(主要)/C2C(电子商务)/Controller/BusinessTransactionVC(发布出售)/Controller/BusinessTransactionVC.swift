@@ -49,6 +49,7 @@ class BusinessTransactionVC: MainViewController {
     fileprivate var transactionsNumTF = UITextField()
     fileprivate var transactionsPriceTF = UITextField()
     fileprivate var transactionsMinTF = UITextField()
+    fileprivate var transactionsMinPriceTF = UITextField()
     fileprivate var percentLab = UILabel()
     fileprivate var methodType = String()
     fileprivate var remarkTV = YYTextView()
@@ -112,6 +113,8 @@ class BusinessTransactionVC: MainViewController {
              return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemePostPurchaseLimit)
         } else if textField == self.transactionsMinTF{
              return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemePostPurchaseLimit)
+        } else if textField == self.transactionsMinPriceTF{
+            return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: 2)
         }
         return true
     }
@@ -185,6 +188,12 @@ extension BusinessTransactionVC {
         let coinNo = (self.chooseCoin?.id?.stringValue)!
         let remarks = (remarksCell.textView?.text)!
         let md5Psd = tradePassword.md5()
+        
+        let minPrices = transactionsMinPriceTF.text!
+        let percent =  self.percentLab.text!
+        let percentNum = Double(percent)! / 100
+        let percentStr = "\(percentNum)"
+        
         var parameters = [
             "token":token
             ,"language":Tools.getLocalLanguage()
@@ -193,10 +202,12 @@ extension BusinessTransactionVC {
             ,"tradePrice":transactionsPrice
             ,"tradeNum":transactionsNum
             ,"receivablesType":methodType
-            ,"minPrice":transactionsMin
+            ,"minTradeNum":transactionsMin
             ,"tradePassword":md5Psd
             ,"remark":remarks
             ,"bankcardId":"0"
+            ,"minPrice":minPrices
+            ,"premium":percentStr
         ]
         
         //如果是银行卡则需要多传
@@ -209,10 +220,12 @@ extension BusinessTransactionVC {
                 ,"tradePrice":transactionsPrice
                 ,"tradeNum":transactionsNum
                 ,"receivablesType":methodType
-                ,"minPrice":transactionsMin
+                ,"minTradeNum":transactionsMin
                 ,"tradePassword":md5Psd
                 ,"remark":remarks
                 ,"bankcardId":self.bankCardId
+                ,"minPrice":minPrices
+                ,"premium":percentStr
             ]
         }
     
@@ -410,6 +423,7 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
                         self.transactionsPriceTF = cell.textfield
                         self.transactionsPriceTF.text = marketPriceString
                         cell.textfield.textColor = UIColor.R_UIColorFromRGB(color: 0xFF7052)
+                        cell.textfield.isEnabled = false
                     }else if indexPath.row == 3 {
                         cell.textfield.keyboardType = .decimalPad
                         cell.textfield.delegate = self
@@ -418,10 +432,10 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
                         self.transactionsMinTF = cell.textfield
                     }else if indexPath.row == 4 {
                         cell.unitLab.text = "CNY"
-                        cell.textfield.isEnabled = false
                         let tradeMinPrice = self.chooseCoin?.tradeMinPrice == nil ? 0 : (self.chooseCoin?.tradeMinPrice)!
                         cell.textfield.text = Tools.setNSDecimalNumber(tradeMinPrice)
                         cell.textfield.textColor = R_UIThemeColor
+                        self.transactionsMinPriceTF = cell.textfield
                     }
                     return cell
                 }

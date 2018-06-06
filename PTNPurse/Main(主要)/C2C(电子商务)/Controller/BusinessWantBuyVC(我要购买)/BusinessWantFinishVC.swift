@@ -19,6 +19,7 @@ class BusinessWantFinishVC: MainViewController {
     var phoneNum = String()
     var orderNo = String()
     var coinName = String()
+    var tradePrice = NSNumber()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +46,24 @@ extension BusinessWantFinishVC {
         setNormalNaviBar(title: LanguageHelper.getString(key: "C2C_home_finish_Published_successfully"))
         view.addSubview(finishView)
         let liberateTitle = liberateStyle == .buyStyle ? LanguageHelper.getString(key: "C2C_mine_My_advertisement_Buy") : LanguageHelper.getString(key: "C2C_mine_My_advertisement_Sell")
-        
         let text = LanguageHelper.getString(key: "C2C_transaction_finish_liberate")
         let currency = LanguageHelper.getString(key: "C2C_transaction_finish_liberate_currency")
         let newText = text + liberateTitle + currency + coinName
         finishView.finishTitleLab.text = style == .buyFinishStyle ? "\(liberateTitle)" + LanguageHelper.getString(key: "C2C_home_finish_Order_submitted_Waiting_for_buyer_to_pay") : newText
+        
+        if style == .buyFinishStyle {
+            if liberateStyle == .buyStyle {
+                finishView.finishTitleLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Buy_Finish") + LanguageHelper.getString(key: "C2C_mine_My_The_transaction_price_is") + (tradePrice.stringValue)
+                if tradePrice == 0 {
+                    finishView.finishTitleLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Buy_Finish")
+                }
+            }else if liberateStyle == .sellStyle{
+                finishView.finishTitleLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Sell_Finish") + LanguageHelper.getString(key: "C2C_mine_My_The_transaction_price_is")  + (tradePrice.stringValue)
+                if tradePrice == 0 {
+                    finishView.finishTitleLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Sell_Finish")
+                }
+            }
+        }
     }
     
     @objc func contactOnClick(){
