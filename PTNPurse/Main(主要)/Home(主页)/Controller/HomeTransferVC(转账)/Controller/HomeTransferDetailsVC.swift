@@ -81,19 +81,19 @@ class HomeTransferDetailsVC: MainViewController,UITableViewDataSource,UITableVie
         let parameters = ["tradeNo":tradeNo,"token":token!]
         viewModel.loadDetailsSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetTradeInfoByNo, parameters: parameters, showIndicator: false) {
             let model = self.viewModel.model
-            let orderNo = model.orderNo
+            let orderNo = model.orderNo == nil ? "" : (model.orderNo)!
             let trans = LanguageHelper.getString(key: "homePage_Details_Transfer")
             let tradeNum = "-" + Tools.setNSDecimalNumber(model.tradeNum == nil ? 0 : (model.tradeNum)!) + " " + LanguageHelper.getString(key: "homePage_Numbers")
-            let inAddress = model.inAddress
-            let data = model.date!
+            let inAddress = model.inAddress == nil ? "" : (model.inAddress)!
+            let data = model.date == nil ? "" : (model.date)!
             let ratioCore = model.ratioCore == nil ? "" : (model.ratioCore)!
             let ratios = model.ratio == nil ? 0 : (model.ratio)!
             let ratio = Tools.setNSDecimalNumber(ratios) + ratioCore
-            let remark = model.remark
+            let remark = model.remark == nil ? "" : (model.remark)!
             if remark == "" {
-                self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio])
+                self.headingContentArray.addObjects(from: [orderNo,trans,tradeNum,inAddress,data,ratio])
             }else{
-                self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio,remark!])
+                self.headingContentArray.addObjects(from: [orderNo,trans,tradeNum,inAddress,data,ratio,remark])
             }
             self.tableView.reloadData()
         }
@@ -132,18 +132,18 @@ class HomeTransferDetailsVC: MainViewController,UITableViewDataSource,UITableVie
         viewModel.loadDetailsSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetTradeInfoByNo, parameters: parameters, showIndicator: false) {
             //            ["交易号","转账地址","交易数量","交易类型","交易时间","手续费"]
             let model = self.viewModel.model
-            let orderNo = model.orderNo
+            let orderNo = model.orderNo == nil ? "" : (model.orderNo)!
             let trans = LanguageHelper.getString(key: "homePage_Details_Receive")
             let tradeNum = "+" + (model.tradeNum?.stringValue)!
-//            let tradeNum = "+" + (model.tradeNum?.stringValue)! + " " + LanguageHelper.getString(key: "homePage_Numbers")
+
             let inAddress = model.outAddress
-            let data = model.date!
+            let data = model.date == nil ? "" : (model.date)!
             let ratio =  String(format: "%.2f", (model.ratio?.doubleValue)!)
-            let remark = model.remark
+            let remark = model.remark == nil ? "" : (model.remark)!
             if remark == "" {
-                self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio])
+                self.headingContentArray.addObjects(from: [orderNo,trans,tradeNum,inAddress!,data,ratio])
             }else{
-                self.headingContentArray.addObjects(from: [orderNo!,trans,tradeNum,inAddress!,data,ratio,remark!])
+                self.headingContentArray.addObjects(from: [orderNo,trans,tradeNum,inAddress!,data,ratio,remark])
             }
             self.tableView.reloadData()
         }

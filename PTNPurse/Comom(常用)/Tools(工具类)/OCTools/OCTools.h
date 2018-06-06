@@ -30,4 +30,5 @@
 +(NSString *)traversingString:(NSString *)string;
 //科学计数法保留4位
 +(NSString *) toExponent:(double)d rms:(NSInteger)n;
++(BOOL)validateNumber:(NSString*)number;
 @end
