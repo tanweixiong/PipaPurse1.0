@@ -435,6 +435,7 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
                         let tradeMinPrice = self.chooseCoin?.tradeMinPrice == nil ? 0 : (self.chooseCoin?.tradeMinPrice)!
                         cell.textfield.text = Tools.setNSDecimalNumber(tradeMinPrice)
                         cell.textfield.textColor = R_UIThemeColor
+                        cell.textfield.keyboardType = .decimalPad
                         self.transactionsMinPriceTF = cell.textfield
                     }
                     return cell
