@@ -191,9 +191,14 @@ extension BusinessTransactionVC {
         
         let minPrices = transactionsMinPriceTF.text!
         let percent =  self.percentLab.text!
-        let percentNum = Double(percent)! / 100
-        let percentStr = "\(percentNum)"
         
+        var percentStr = String()
+        if percent.contains("--"){
+            percentStr = "0"
+        }else{
+            let percentNum = Double(percent)! / 100
+            percentStr = "\(percentNum)"
+        }
         var parameters = [
             "token":token
             ,"language":Tools.getLocalLanguage()
@@ -423,7 +428,6 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
                         self.transactionsPriceTF = cell.textfield
                         self.transactionsPriceTF.text = marketPriceString
                         cell.textfield.textColor = UIColor.R_UIColorFromRGB(color: 0xFF7052)
-                        cell.textfield.isEnabled = false
                     }else if indexPath.row == 3 {
                         cell.textfield.keyboardType = .decimalPad
                         cell.textfield.delegate = self

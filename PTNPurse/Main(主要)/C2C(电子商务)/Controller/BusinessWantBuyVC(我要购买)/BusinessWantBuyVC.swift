@@ -137,13 +137,16 @@ extension BusinessWantBuyVC {
         let md5Psd = tradePassword.md5()
         let remark = businessTransactionDeView.remarkLab.text!
         let language = Tools.getLocalLanguage()
+        let tradePrices = OCTools.encrypt(businessConvertView.disPriceTF.text!)
         var parameters = ["token":token
             ,"entrustNo":entrustNo
             ,"tradeNum":tradeNum
             ,"tradePassword":md5Psd
             ,"remark":remark
             ,"language":language
-            ,"bankId":"0"] as [String : Any]
+            ,"bankId":"0"
+            ,"tradePrice":tradePrices
+            ] as [String : Any]
         
         //如果是银行卡则需要多传
         if receivablesType == "1" {
@@ -154,6 +157,7 @@ extension BusinessWantBuyVC {
                 ,"remark":remark
                 ,"language":language
                 ,"bankId":self.bankCardId
+                ,"tradePrice":tradePrices
                 ] as [String : Any]
         }
     
@@ -173,7 +177,6 @@ extension BusinessWantBuyVC {
                 finishVC.orderNo = (responseData?.orderId?.stringValue)!
                 finishVC.style = .buyFinishStyle
                 finishVC.liberateStyle = self.style
-                finishVC.tradePrice = responseData?.tradePrice == nil ? 0 : (responseData?.tradePrice)!
                 self.navigationController?.pushViewController(finishVC, animated: true)
             })
         }

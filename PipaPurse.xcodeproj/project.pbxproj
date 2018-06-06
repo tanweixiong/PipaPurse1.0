@@ -215,6 +215,7 @@
 		2334D0AC202C373F00DF2F43 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2334D0AB202C373F00DF2F43 /* Images.xcassets */; };
 		23378A1520BE465200CECE28 /* MineBindingPhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23378A1320BE465200CECE28 /* MineBindingPhoneVC.swift */; };
 		23378A1620BE465200CECE28 /* MineBindingPhoneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23378A1420BE465200CECE28 /* MineBindingPhoneVC.xib */; };
+		233F2A9D20C7D130007D2E4C /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 233F2A9C20C7D130007D2E4C /* GTMBase64.m */; };
 		2349D4CD2091EB1700C51562 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2349D4CC2091EB1700C51562 /* ShareSDK.framework */; };
 		23519EE720579C9B00AA9A9C /* HomeDetsilsAssetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23519EE620579C9B00AA9A9C /* HomeDetsilsAssetsView.swift */; };
 		23519EE920579CAF00AA9A9C /* HomeDetsilsAssetsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23519EE820579CAF00AA9A9C /* HomeDetsilsAssetsView.xib */; };
@@ -714,6 +715,9 @@
 		2334D0AB202C373F00DF2F43 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		23378A1320BE465200CECE28 /* MineBindingPhoneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineBindingPhoneVC.swift; sourceTree = "<group>"; };
 		23378A1420BE465200CECE28 /* MineBindingPhoneVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineBindingPhoneVC.xib; sourceTree = "<group>"; };
+		233F2A9A20C7D12F007D2E4C /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		233F2A9B20C7D130007D2E4C /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		233F2A9C20C7D130007D2E4C /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		2349D4CC2091EB1700C51562 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		23519EE620579C9B00AA9A9C /* HomeDetsilsAssetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetsilsAssetsView.swift; sourceTree = "<group>"; };
 		23519EE820579CAF00AA9A9C /* HomeDetsilsAssetsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeDetsilsAssetsView.xib; sourceTree = "<group>"; };
@@ -2478,6 +2482,9 @@
 			children = (
 				23A537DB205F520D00EDB714 /* OCTools.h */,
 				23A537DC205F520D00EDB714 /* OCTools.m */,
+				233F2A9A20C7D12F007D2E4C /* GTMDefines.h */,
+				233F2A9B20C7D130007D2E4C /* GTMBase64.h */,
+				233F2A9C20C7D130007D2E4C /* GTMBase64.m */,
 			);
 			path = OCTools;
 			sourceTree = "<group>";
@@ -3398,6 +3405,7 @@
 				23A53806205F520E00EDB714 /* RegularDefinition.swift in Sources */,
 				23674ADC2020205400B4B96E /* AutorizeButton.swift in Sources */,
 				23298B702088420B00702DD8 /* UIView+frameAdjust.m in Sources */,
+				233F2A9D20C7D130007D2E4C /* GTMBase64.m in Sources */,
 				232C60F720AAE75700525BCC /* PaymentPasswordVw..m in Sources */,
 				23A538F1205F537400EDB714 /* BusinessOrderDetailsLiCell.swift in Sources */,
 				23674A942020202400B4B96E /* AboutUsViewController.swift in Sources */,

@@ -19,7 +19,6 @@ class BusinessWantFinishVC: MainViewController {
     var phoneNum = String()
     var orderNo = String()
     var coinName = String()
-    var tradePrice = NSNumber()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,15 +52,9 @@ extension BusinessWantFinishVC {
         
         if style == .buyFinishStyle {
             if liberateStyle == .buyStyle {
-                finishView.finishTitleLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Buy_Finish") + LanguageHelper.getString(key: "C2C_mine_My_The_transaction_price_is") + (tradePrice.stringValue)
-                if tradePrice == 0 {
-                    finishView.finishTitleLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Buy_Finish")
-                }
+                  finishView.finishTitleLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Buy_Finish")
             }else if liberateStyle == .sellStyle{
-                finishView.finishTitleLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Sell_Finish") + LanguageHelper.getString(key: "C2C_mine_My_The_transaction_price_is")  + (tradePrice.stringValue)
-                if tradePrice == 0 {
-                    finishView.finishTitleLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Sell_Finish")
-                }
+                  finishView.finishTitleLab.text = LanguageHelper.getString(key: "C2C_mine_My_advertisement_Sell_Finish")
             }
         }
     }

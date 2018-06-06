@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <CommonCrypto/CommonCrypto.h>
+#import "GTMBase64.h"
 
 @interface OCTools : NSObject
 +(BOOL)existenceDecimal:(NSString *)text Range:(NSRange)range replacementString:(NSString *)string;
@@ -31,4 +33,5 @@
 //科学计数法保留4位
 +(NSString *) toExponent:(double)d rms:(NSInteger)n;
 +(BOOL)validateNumber:(NSString*)number;
++(NSString*)encrypt:(NSString*)plainText;
 @end
