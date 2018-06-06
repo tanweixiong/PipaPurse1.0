@@ -12,7 +12,7 @@ struct ZYConstAPI {
 
 //    static let kAPIH5BaseURL: String = "http://api.ptn.one:8080"
 //    static let kAPIBaseURL: String = "http://api.ptn.one:8080/"  //正式服务
-    static let kAPIBaseURL: String = "http://192.168.20.24:8080/"  //正聪服务
+    static let kAPIBaseURL: String = "http://192.168.20.3:8080/"  //正聪服务
 //    static let kAPIBaseURL: String = "http://47.92.165.25:8080/"  //测试服务
 
     
