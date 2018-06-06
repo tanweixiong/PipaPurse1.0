@@ -137,7 +137,7 @@ extension BusinessWantBuyVC {
         let md5Psd = tradePassword.md5()
         let remark = businessTransactionDeView.remarkLab.text!
         let language = Tools.getLocalLanguage()
-        let tradePrices = OCTools.encrypt(businessConvertView.disPriceTF.text!)
+        let tradePrices = (OCTools.encrypt(businessConvertView.disPriceTF.text!))!
         var parameters = ["token":token
             ,"entrustNo":entrustNo
             ,"tradeNum":tradeNum
