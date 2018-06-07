@@ -20,14 +20,13 @@ class BusinessBuyHistoryModel: Mappable {
     var dealNum:NSNumber? //交易总数量
     var entrustPrice:NSNumber? //交易价格
     var matchNum:NSNumber?
-    
     var date:String?
     var state:NSNumber?
-    
     var id:NSNumber?
-    
     var receivablesType:NSNumber?
-
+    var marketPrice:NSNumber?
+    
+    var premium:NSNumber?
     
     required init?(map: Map) {
         
@@ -52,6 +51,9 @@ class BusinessBuyHistoryModel: Mappable {
         entrustNo        <- map["entrustNo"]
         id        <- map["id"]
         receivablesType        <- map["receivablesType"]
+        marketPrice        <- map["marketPrice"]
+        
+        premium        <- map["premium"]
    
     }
 }

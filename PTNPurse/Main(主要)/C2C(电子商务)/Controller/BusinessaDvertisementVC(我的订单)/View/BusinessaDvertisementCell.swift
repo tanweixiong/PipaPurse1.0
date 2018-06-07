@@ -152,10 +152,27 @@ class BusinessaDvertisementCell: UITableViewCell {
             }else{
                 initiateDisputeBtn.isHidden = true
             }
+            
+            if style == .sell && status == 6 {
+                statusVw.addSubview(initiateDisputeBtn)
+                initiateDisputeBtn.frame = CGRect(x: SCREEN_WIDTH - 10 - 95 - 10 , y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
+                initiateDisputeBtn.isHidden = false
+            }else{
+                initiateDisputeBtn.isHidden = true
+            }
+            
         }else if style == .detriment{
             if style == .detriment && status == 4{
                 statusVw.addSubview(initiateDisputeBtn)
                 initiateDisputeBtn.frame = CGRect(x: 23, y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
+                initiateDisputeBtn.isHidden = false
+            }else{
+                initiateDisputeBtn.isHidden = true
+            }
+            
+            if style == .sell && status == 6 {
+                statusVw.addSubview(initiateDisputeBtn)
+                initiateDisputeBtn.frame = CGRect(x: SCREEN_WIDTH - 10 - 95 - 10 , y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
                 initiateDisputeBtn.isHidden = false
             }else{
                 initiateDisputeBtn.isHidden = true

@@ -99,11 +99,28 @@ class BusinessOrderDetailsLiCell: UITableViewCell {
             }else{
                 initiateDisputeBtn.isHidden = true
             }
+            
+            if style == 0 && status == 6{
+                backgroundVw.addSubview(initiateDisputeBtn)
+                initiateDisputeBtn.frame = CGRect(x: SCREEN_WIDTH - 10 - 95 - 10, y: 15, width: 95, height: 30)
+                initiateDisputeBtn.isHidden = false
+            }else{
+                initiateDisputeBtn.isHidden = true
+            }
+            
         }else if style == 1 {
             //发布出售发起纠纷
             if style == 1 && status == 4{
                 backgroundVw.addSubview(initiateDisputeBtn)
                 initiateDisputeBtn.frame = CGRect(x: 23, y: 15, width: 95, height: 30)
+                initiateDisputeBtn.isHidden = false
+            }else{
+                initiateDisputeBtn.isHidden = true
+            }
+            
+            if style == 0 && status == 6{
+                backgroundVw.addSubview(initiateDisputeBtn)
+                initiateDisputeBtn.frame = CGRect(x: SCREEN_WIDTH - 10 - 95 - 10, y: 15, width: 95, height: 30)
                 initiateDisputeBtn.isHidden = false
             }else{
                 initiateDisputeBtn.isHidden = true
