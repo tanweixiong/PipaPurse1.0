@@ -102,7 +102,7 @@ class BusinessOrderDetailsLiCell: UITableViewCell {
             
             if style == 0 && status == 6{
                 backgroundVw.addSubview(initiateDisputeBtn)
-                initiateDisputeBtn.frame = CGRect(x: SCREEN_WIDTH - 10 - 95 - 10, y: 15, width: 95, height: 30)
+                initiateDisputeBtn.frame = CGRect(x:SCREEN_WIDTH - 10 * 5 - 95 * 2 , y: 15, width: 95, height: 30)
                 initiateDisputeBtn.isHidden = false
             }else{
                 initiateDisputeBtn.isHidden = true
@@ -118,9 +118,9 @@ class BusinessOrderDetailsLiCell: UITableViewCell {
                 initiateDisputeBtn.isHidden = true
             }
             
-            if style == 0 && status == 6{
+            if style == 1 && status == 6{
                 backgroundVw.addSubview(initiateDisputeBtn)
-                initiateDisputeBtn.frame = CGRect(x: SCREEN_WIDTH - 10 - 95 - 10, y: 15, width: 95, height: 30)
+                initiateDisputeBtn.frame = CGRect(x: SCREEN_WIDTH - 10 * 5 - 95 * 2 , y: 15, width: 95, height: 30)
                 initiateDisputeBtn.isHidden = false
             }else{
                 initiateDisputeBtn.isHidden = true
