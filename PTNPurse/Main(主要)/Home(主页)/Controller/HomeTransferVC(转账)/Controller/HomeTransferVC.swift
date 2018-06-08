@@ -110,8 +110,9 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
     @objc func transferOnClick(){
         if Tools.noPaymentPasswordIsSetToExecute() == false{return}
         if checkEnter(){
-            let fee = sliderValueLab.text!
-            let collectNum = collectNumTextField.text!
+            let coinName = details.coinName == nil ? "" : (details.coinName)!
+            let fee = sliderValueLab.text! + coinName
+            let collectNum = collectNumTextField.text!  + coinName
             let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
             input?.delegate = self
             input?.isMiners = true

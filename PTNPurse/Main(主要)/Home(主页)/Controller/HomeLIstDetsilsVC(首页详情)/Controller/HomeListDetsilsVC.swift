@@ -71,7 +71,6 @@ class HomeListDetsilsVC: MainViewController,UIWebViewDelegate {
         view.transferBtn.tag = 2
         view.transferBtn.addTarget(self, action: #selector(selectDetailsOnClick(_:)), for: .touchUpInside)
         view.backGroundVw.backgroundColor = UIColor.clear
-//        view.centerDisY.constant = 5
         return view
     }()
     
@@ -218,7 +217,6 @@ extension HomeListDetsilsVC {
         self.listViewModel.model.removeAll()
         self.dataArray.removeAllObjects()
     }
-    
 }
 
 extension HomeListDetsilsVC:UITableViewDelegate,UITableViewDataSource{
