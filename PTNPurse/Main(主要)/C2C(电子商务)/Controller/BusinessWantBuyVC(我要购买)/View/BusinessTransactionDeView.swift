@@ -34,9 +34,8 @@ class BusinessTransactionDeView: UIView {
     
     var model = BusinessModel(){
         didSet{
-            let price = model?.entrustPrice == nil ? 0 : model?.entrustPrice
-            let newPrice = Tools.setPriceNumber(price: price!)
-            entrustPriceLab.text = Tools.getWalletAmount(amount: newPrice) + " CNY"
+            let price = model?.entrustPrice == nil ? 0 : (model?.entrustPrice)!
+            entrustPriceLab.text = Tools.setNSDecimalNumber(price) + " CNY"
             
             let entrustMaxPrice = model?.entrustMaxPrice == nil ? 0 : model?.entrustMaxPrice
             let entrustMinPrice = model?.entrustMinPrice == nil ? 0 : model?.entrustMinPrice

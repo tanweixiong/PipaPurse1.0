@@ -34,6 +34,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var register_y: NSLayoutConstraint!
     fileprivate var rigisterInformationStr = ""
     fileprivate var isRegister = true
+    fileprivate var isGetCode:Bool = true
+    
     var type =  RegisterViewControllerType.register
     var status = RegisterViewControllerStatus.normal
     
@@ -102,35 +104,38 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - NetWork Method
     func getAuthorizeCode(btn:AutorizeButton) {
-        
-        let phone = nameTextView.textField.text!
-        //1:用户注册,2:用户忘记密码,3:用户修改交易密码,4:用户忘记交易密码
-        var params = [ "username" : phone, "type" : "1"]
-        if type == .register {
-            //判断邮箱注册还是手机号码
-            params = [ "username" : phone, "type" : "1"]
-        } else if type == .forgetpwd {
-            params = [ "username" : phone, "type" : "2"]
-        } else if type == .setPaymentPsd {
-            params = [ "username" : phone, "type" : "3"]
-        }
-        
-        ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIGetAuthorCode, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
-            let result = Mapper<NodataResponse>().map(JSONObject: jsonObjc)
-            if let code = result?.code {
-                if code == 200 {
-                    SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_requestsuccess"))
-                    btn.isCounting = true
-                } else {
-                    SVProgressHUD.showError(withStatus: result?.message)
-                }
-            } else {
-                SVProgressHUD.dismiss()
+        if isGetCode {
+            isGetCode = false
+            let phone = nameTextView.textField.text!
+            //1:用户注册,2:用户忘记密码,3:用户修改交易密码,4:用户忘记交易密码
+            var params = [ "username" : phone, "type" : "1"]
+            if type == .register {
+                //判断邮箱注册还是手机号码
+                params = [ "username" : phone, "type" : "1"]
+            } else if type == .forgetpwd {
+                params = [ "username" : phone, "type" : "2"]
+            } else if type == .setPaymentPsd {
+                params = [ "username" : phone, "type" : "3"]
             }
-        }) { (error) in
-            SVProgressHUD.showError(withStatus: LanguageHelper.getString(key: "net_networkerror"))
+            
+            ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIGetAuthorCode, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
+                let result = Mapper<NodataResponse>().map(JSONObject: jsonObjc)
+                if let code = result?.code {
+                    if code == 200 {
+                        SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_requestsuccess"))
+                        btn.isCounting = true
+                        self.isGetCode = true
+                    } else {
+                        SVProgressHUD.showError(withStatus: result?.message)
+                    }
+                } else {
+                    SVProgressHUD.dismiss()
+                }
+            }) { (error) in
+                SVProgressHUD.showError(withStatus: LanguageHelper.getString(key: "net_networkerror"))
+                self.isGetCode = true
+            }
         }
-        
     }
     
     func register(name: String, pwd: String, code: String, url: String) {

@@ -115,12 +115,12 @@ extension MineBindingPhoneVC {
             }
             let params = [ "username" : self.phoneTF.text!, "type" : "4"]
             ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIGetAuthorCode, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
-                self.isGetCode = true
                 let result = Mapper<NodataResponse>().map(JSONObject: jsonObjc)
                 if let code = result?.code {
                     if code == 200 {
                         SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_requestsuccess"))
                         btn.isCounting = true
+                        self.isGetCode = true
                     } else {
                         SVProgressHUD.showError(withStatus: result?.message)
                     }
@@ -129,6 +129,7 @@ extension MineBindingPhoneVC {
                 }
             }) { (error) in
                 SVProgressHUD.showError(withStatus: LanguageHelper.getString(key: "net_networkerror"))
+                self.isGetCode = true
             }
         }
     }

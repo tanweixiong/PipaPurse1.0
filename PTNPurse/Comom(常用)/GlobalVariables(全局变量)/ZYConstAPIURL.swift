@@ -15,7 +15,6 @@ struct ZYConstAPI {
 //    static let kAPIBaseURL: String = "http://192.168.20.3:8080/"  //正聪服务
     static let kAPIBaseURL: String = "http://47.92.165.25:8080/"  //测试服务
 
-    
     static let kAPIQuotesDetailsH5BaseURL: String = "http://47.92.165.25:7876/assets/appline/kline.html?coinNo="
     
     static let kAPILogin = kAPIBaseURL + "login.do" //登录接口

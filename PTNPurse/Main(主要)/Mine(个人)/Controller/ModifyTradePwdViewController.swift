@@ -22,6 +22,7 @@ class ModifyTradePwdViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var codeTextView: LoginTextFieldView!
     @IBOutlet weak var pwdTextView: LoginTextFieldView!
     @IBOutlet weak var commitBtn: UIButton!
+    fileprivate var isGetCode:Bool = true
     var isNeedNavi = true
     
     var type: ModifyPwdType? = .tradepwd
@@ -87,23 +88,28 @@ class ModifyTradePwdViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - NetWork Method
     func getAuthorizeCode(sender: AutorizeButton) {
-        let phone = UserDefaults.standard.getUserInfo().username as! String
-        //1:用户注册,2:用户忘记密码,3:用户修改交易密码,4:用户忘记交易密码
-        let params = [ "username" : phone, "type" : "3"]
-        ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIGetAuthorCode, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
-            let result = Mapper<NodataResponse>().map(JSONObject: jsonObjc)
-            if let code = result?.code {
-                if code == 200 {
-                    SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_requestsuccess"))
-                    sender.isCounting = true
+        if isGetCode {
+            isGetCode = false
+            let phone = UserDefaults.standard.getUserInfo().username as! String
+            //1:用户注册,2:用户忘记密码,3:用户修改交易密码,4:用户忘记交易密码
+            let params = [ "username" : phone, "type" : "3"]
+            ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIGetAuthorCode, language: true, parameters: params, showIndicator: true, success: { (jsonObjc) in
+                let result = Mapper<NodataResponse>().map(JSONObject: jsonObjc)
+                if let code = result?.code {
+                    if code == 200 {
+                        SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_requestsuccess"))
+                        sender.isCounting = true
+                        self.isGetCode = true
+                    } else {
+                        SVProgressHUD.showError(withStatus: result?.message)
+                    }
                 } else {
-                    SVProgressHUD.showError(withStatus: result?.message)
+                    SVProgressHUD.dismiss()
                 }
-            } else {
-                SVProgressHUD.dismiss()
+            }) { (error) in
+                SVProgressHUD.showError(withStatus: LanguageHelper.getString(key: "net_networkerror"))
+                self.isGetCode = true
             }
-        }) { (error) in
-            SVProgressHUD.showError(withStatus: LanguageHelper.getString(key: "net_networkerror"))
         }
         
     }

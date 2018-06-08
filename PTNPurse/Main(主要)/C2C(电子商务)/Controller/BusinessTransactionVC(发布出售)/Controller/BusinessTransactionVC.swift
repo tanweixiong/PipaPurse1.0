@@ -50,12 +50,13 @@ class BusinessTransactionVC: MainViewController {
     fileprivate var transactionsPriceTF = UITextField()
     fileprivate var transactionsMinTF = UITextField()
     fileprivate var transactionsMinPriceTF = UITextField()
-    fileprivate var percentLab = UILabel()
+    fileprivate var percentTF = UITextField()
     fileprivate var methodType = String()
     fileprivate var remarkTV = YYTextView()
     fileprivate var remarksCell = HomeTransferRemarksCell()
     fileprivate var selectFirstIndex = IndexPath()
     fileprivate var selectSecondIndex = IndexPath()
+    fileprivate var selectPositiveBtn = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +108,7 @@ class BusinessTransactionVC: MainViewController {
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == self.transactionsPriceTF {
            //如果继续输入则溢价为空
-           self.percentLab.text = "--"
+           self.percentTF.text = "--"
            return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemePostPurchasePriceLimit)
         } else if  textField == self.transactionsNumTF {
              return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemePostPurchaseLimit)
@@ -190,15 +191,16 @@ extension BusinessTransactionVC {
         let md5Psd = tradePassword.md5()
         
         let minPrices = transactionsMinPriceTF.text!
-        let percent =  self.percentLab.text!
+        let percent =  self.percentTF.text!
         
         var percentStr = String()
-        if percent.contains("--"){
-            percentStr = "0"
+        let percentNum = Double(percent)! / 100
+        if selectPositiveBtn.titleLabel?.text == "-" {
+            percentStr = "\(percentNum * -1)"
         }else{
-            let percentNum = Double(percent)! / 100
             percentStr = "\(percentNum)"
         }
+        
         var parameters = [
             "token":token
             ,"language":Tools.getLocalLanguage()
@@ -404,7 +406,9 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
                         self.transactionsPriceTF.text = Tools.getConversionPrice(amount: value, count: 2)
                         self.marketPriceString = self.transactionsPriceTF.text!
                     }
-                    self.percentLab = cell.percentLab
+                    cell.percentTF.keyboardType = .numberPad
+                    self.percentTF = cell.percentTF
+                    self.selectPositiveBtn = cell.selectPositiveBtn
                     cell.setupUI(currencyPrices:marketPrice)
                     return cell
                 }else{

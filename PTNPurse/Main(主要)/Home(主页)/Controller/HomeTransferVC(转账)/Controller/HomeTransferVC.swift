@@ -111,7 +111,8 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
         if Tools.noPaymentPasswordIsSetToExecute() == false{return}
         if checkEnter(){
             let coinName = details.coinName == nil ? "" : (details.coinName)!
-            let fee = sliderValueLab.text! + coinName
+            let feeName = details.coinType == 40 ? "ETH" : coinName
+            let fee = sliderValueLab.text! + feeName
             let collectNum = collectNumTextField.text!  + coinName
             let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
             input?.delegate = self
@@ -147,9 +148,10 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
             ,"dealPwd":dealPwdMD5
             ,"remark":remark
         ]
-        
+        SVProgressHUD.show(withStatus: LanguageHelper.getString(key: "please_wait"))
         ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIAddTradeInfo, language: false, parameters: parameters as? [String : Any], showIndicator: false, success: { (json) in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+                SVProgressHUD.dismiss()
                 let responseData = Mapper<HomeTransferFinishModel>().map(JSONObject: json)
                 if responseData?.code == 200 {
                     SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "homePage_Details_Transfer_Finish"))
