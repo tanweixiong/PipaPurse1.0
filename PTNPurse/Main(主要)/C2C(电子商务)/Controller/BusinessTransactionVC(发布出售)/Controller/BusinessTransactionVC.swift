@@ -273,11 +273,12 @@ extension BusinessTransactionVC {
             let coinCore = (self.mineVM.homeConvertFreeModel.coinCore)!
             var poundage = String()
             if self.style == .buyStyle {
-                poundage = "≈" + "0" + coinCore
+                poundage = "≈" + "0"
             }else{
-                poundage = "≈" + Tools.setNSDecimalNumber(self.mineVM.homeConvertFreeModel.poundage!) + coinCore
+                poundage = "≈" + Tools.setNSDecimalNumber(self.mineVM.homeConvertFreeModel.poundage!)  + " " + coinCore
             }
-            let tradeNumber =  Tools.setNSDecimalNumber(self.mineVM.homeConvertFreeModel.tradeNumber!) + coinCore
+            let tradeNumber =  Tools.setNSDecimalNumber(self.mineVM.homeConvertFreeModel.tradeNumber!) + " " +  self.coinNameTF.text!
+            
             let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT),isNormal:true)
             input?.delegate = self
             input?.setUpFeesMinersFeesPoundage(poundage, tradeNumber: tradeNumber)
