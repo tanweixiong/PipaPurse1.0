@@ -60,7 +60,7 @@ class BusinessaDvertisementCell: UITableViewCell {
             
             transactionCoinPriceLab.text = Tools.setNSDecimalNumber((model?.dealNum)!) + " 个"
             
-            transactionDataLab.text = model?.dateFormatDate
+            transactionDataLab.text = model?.date == nil ? "" : model?.date
             
             transactionSumLab.text = Tools.setNSDecimalNumber((model?.sumPrice)!) + " CNY"
             
@@ -102,11 +102,11 @@ class BusinessaDvertisementCell: UITableViewCell {
             //等待买方确认
             if status == 3 {
                 remindBtn.setTitle(LanguageHelper.getString(key: "C2C_transaction_Confirm_payment"), for: .normal)
-                remindBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xFE7644), for: .normal)
+                remindBtn.setTitleColor(R_UIThemeColor, for: .normal)
             //等待卖方确认
             }else if status == 4 {
                 remindBtn.setTitle(LanguageHelper.getString(key: "C2C_transaction_Remind_pay"), for: .normal)
-                remindBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xFE7644), for: .normal)
+                remindBtn.setTitleColor(R_UIThemeColor, for: .normal)
                 cancelOrderBtn.isHidden = true
             //已完成
             }else if status == 1{
@@ -127,7 +127,7 @@ class BusinessaDvertisementCell: UITableViewCell {
                 remindBtn.isHidden = true
             } else if status == 4 {
                 remindBtn.setTitle(LanguageHelper.getString(key: "C2C_transaction_Confirm_payments"), for: .normal)
-                remindBtn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xFE7644), for: .normal)
+                remindBtn.setTitleColor(R_UIThemeColor, for: .normal)
                 cancelOrderBtn.isHidden = true
             }else if status == 1{
                 remindBtn.isHidden = true
@@ -145,32 +145,24 @@ class BusinessaDvertisementCell: UITableViewCell {
         
          //发布购买发起纠纷
         if style == .sell {
-            if style == .sell && status == 4{
+            if  status == 4{
                 statusVw.addSubview(initiateDisputeBtn)
                 initiateDisputeBtn.frame = CGRect(x: 23, y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
                 initiateDisputeBtn.isHidden = false
-            }else{
-                initiateDisputeBtn.isHidden = true
-            }
-            
-            if style == .sell && status == 6 {
+            }else if status == 6{
                 statusVw.addSubview(initiateDisputeBtn)
                 initiateDisputeBtn.frame = CGRect(x: SCREEN_WIDTH - 10 * 5 - 95 * 2  , y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
                 initiateDisputeBtn.isHidden = false
             }else{
-                initiateDisputeBtn.isHidden = true
+                 initiateDisputeBtn.isHidden = true
             }
             
         }else if style == .detriment{
-            if style == .detriment && status == 4{
+            if status == 4{
                 statusVw.addSubview(initiateDisputeBtn)
                 initiateDisputeBtn.frame = CGRect(x: 23, y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
                 initiateDisputeBtn.isHidden = false
-            }else{
-                initiateDisputeBtn.isHidden = true
-            }
-            
-            if style == .detriment && status == 6 {
+            }else if status == 6 {
                 statusVw.addSubview(initiateDisputeBtn)
                 initiateDisputeBtn.frame = CGRect(x: SCREEN_WIDTH - 10 * 5 - 95 * 2 , y: orderPaymentLab.frame.maxY + 10, width: 95, height: 30)
                 initiateDisputeBtn.isHidden = false
@@ -258,7 +250,7 @@ class BusinessaDvertisementCell: UITableViewCell {
     lazy var initiateDisputeBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle(LanguageHelper.getString(key: "C2C_transaction_initiate_Dispute"), for: .normal)
-        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xFF7052), for: .normal)
+        btn.setTitleColor(UIColor.R_UIColorFromRGB(color: 0xCFD3D5), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         btn.layer.cornerRadius = 5
         btn.layer.masksToBounds = true

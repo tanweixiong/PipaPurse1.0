@@ -29,6 +29,8 @@ class BusinessaDvertisementModel: Mappable {
     var sellUserPhoto:String?//购买二维码
     var buyUserPhoto:String?//出售二维码
     
+    var date:String?//时间
+    
     required init?(map: Map) {
         
     }
@@ -56,5 +58,6 @@ class BusinessaDvertisementModel: Mappable {
         buyAccountUrl        <- map["buyAccountUrl"]
         sellUserPhoto        <- map["sellUserPhoto"]
         buyUserPhoto        <- map["buyUserPhoto"]
+        date        <- map["date"]
     }
 }

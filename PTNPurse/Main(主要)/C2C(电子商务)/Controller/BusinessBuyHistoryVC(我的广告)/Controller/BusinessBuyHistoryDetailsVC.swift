@@ -65,7 +65,7 @@ extension BusinessBuyHistoryDetailsVC {
     
     //查看订单详情
     func getDetailsData(){
-        let parameters = ["id":self.entrustNo]
+        let parameters = ["id":self.entrustNo,"token": (UserDefaults.standard.getUserInfo().token)!]
         detailsViewModel.loadLiberateSuccessfullyReturnedData(requestType: .post, URLString: ZYConstAPI.kAPIGetSpotEntrustById, parameters: parameters, showIndicator: false, finishedCallback: {
             if self.detailsViewModel.liberateModel.username != nil {
                 self.detailsView.model = self.detailsViewModel.liberateModel

@@ -2467,8 +2467,8 @@
 		23A537D8205F520D00EDB714 /* Tools(工具类) */ = {
 			isa = PBXGroup;
 			children = (
-				23A537D9205F520D00EDB714 /* LanguageHelper.swift */,
 				23A537DA205F520D00EDB714 /* OCTools */,
+				23A537D9205F520D00EDB714 /* LanguageHelper.swift */,
 				23A537DD205F520D00EDB714 /* Calculate.swift */,
 				23A537DE205F520D00EDB714 /* ZYNetWorkTool.swift */,
 				23A537DF205F520D00EDB714 /* Tools.swift */,

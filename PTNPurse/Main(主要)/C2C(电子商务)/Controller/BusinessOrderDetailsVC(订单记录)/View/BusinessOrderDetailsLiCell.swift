@@ -92,33 +92,24 @@ class BusinessOrderDetailsLiCell: UITableViewCell {
         
         if style == 0 {
             //发布购买发起纠纷
-            if style == 0 && status == 4{
+            if status == 4{
                 backgroundVw.addSubview(initiateDisputeBtn)
                 initiateDisputeBtn.frame = CGRect(x: 23, y: 15, width: 95, height: 30)
                 initiateDisputeBtn.isHidden = false
-            }else{
-                initiateDisputeBtn.isHidden = true
-            }
-            
-            if style == 0 && status == 6{
+            }else if status == 6{
                 backgroundVw.addSubview(initiateDisputeBtn)
                 initiateDisputeBtn.frame = CGRect(x:SCREEN_WIDTH - 10 * 5 - 95 * 2 , y: 15, width: 95, height: 30)
                 initiateDisputeBtn.isHidden = false
             }else{
                 initiateDisputeBtn.isHidden = true
             }
-            
         }else if style == 1 {
             //发布出售发起纠纷
-            if style == 1 && status == 4{
+            if  status == 4{
                 backgroundVw.addSubview(initiateDisputeBtn)
                 initiateDisputeBtn.frame = CGRect(x: 23, y: 15, width: 95, height: 30)
                 initiateDisputeBtn.isHidden = false
-            }else{
-                initiateDisputeBtn.isHidden = true
-            }
-            
-            if style == 1 && status == 6{
+            }else if status == 6 {
                 backgroundVw.addSubview(initiateDisputeBtn)
                 initiateDisputeBtn.frame = CGRect(x: SCREEN_WIDTH - 10 * 5 - 95 * 2 , y: 15, width: 95, height: 30)
                 initiateDisputeBtn.isHidden = false
