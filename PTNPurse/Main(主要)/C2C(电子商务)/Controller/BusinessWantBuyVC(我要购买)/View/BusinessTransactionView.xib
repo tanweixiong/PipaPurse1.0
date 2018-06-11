@@ -23,7 +23,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQk-OS-zSB">
                             <rect key="frame" x="15" y="19" width="345" height="164.5"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Qu-Dz-fTg">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mine_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="8Qu-Dz-fTg">
                                     <rect key="frame" x="145" y="10" width="55" height="55"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="55" id="2Vq-sL-DQI"/>
@@ -133,4 +133,7 @@
             <point key="canvasLocation" x="24.5" y="52"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_mine_avatar" width="80" height="80"/>
+    </resources>
 </document>

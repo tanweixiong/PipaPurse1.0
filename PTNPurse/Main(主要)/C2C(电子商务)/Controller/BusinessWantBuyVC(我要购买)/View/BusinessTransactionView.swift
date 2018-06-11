@@ -19,7 +19,7 @@ class BusinessTransactionView: UIView {
     var model = BusinessModel(){
         didSet{
            let avatar = model?.photo == nil ? "" : model?.photo
-           avatarImageView.sd_setImage(with:NSURL(string: avatar!)! as URL, placeholderImage: UIImage.init(named: "ic_defaultPicture"))
+           avatarImageView.sd_setImage(with:NSURL(string: avatar!)! as URL, placeholderImage: UIImage.init(named: "ic_mine_avatar"))
             
             let price = model?.newPrice == nil ? 0 : model?.newPrice
             let newPrice = Tools.setNSDecimalNumber(price!)
