@@ -235,34 +235,36 @@ extension BusinessWantBuyVC {
                     return
                 }
                 
+                
+//                if self.receivablesType == "2" {
+//                    let alipayUrl = UserDefaults.standard.getUserInfo().apayUrl
+//                    if self.style == .buyStyle &&  alipayUrl == "" {
+//                        let mineSetAccountVC = MineSetAccountVC()
+//                        mineSetAccountVC.style = .alipayStyle
+//                        mineSetAccountVC.type = 0
+//                        mineSetAccountVC.peymentStyle = .requiredCode
+//                        self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
+//                        return
+//                    }
+//                }
+            
                 //设置支付宝
                 if self.paymentMethod == "" &&  self.receivablesType == "2"{
-                    
-                    let alipayUrl = UserDefaults.standard.getUserInfo().apayUrl
-                    if self.style == .buyStyle &&  alipayUrl == "" {
-                        let mineSetAccountVC = MineSetAccountVC()
-                        mineSetAccountVC.style = .alipayStyle
-                        mineSetAccountVC.type = 0
-                        mineSetAccountVC.peymentStyle = .requiredCode
-                        self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
-                        return
-                    }
-                    
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .alipayStyle
                     mineSetAccountVC.type = 0
-                    if self.style == .buyStyle {
-                        mineSetAccountVC.peymentStyle = .requiredCode
-                    }else if self.style == .sellStyle{
-                        mineSetAccountVC.peymentStyle = .optionalCode
-                    }
+                    mineSetAccountVC.peymentStyle = .requiredCode
+//                    if self.style == .buyStyle {
+//                        mineSetAccountVC.peymentStyle = .requiredCode
+//                    }else if self.style == .sellStyle{
+//                        mineSetAccountVC.peymentStyle = .optionalCode
+//                    }
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }
                 
-                //设置微信
-                if self.paymentMethod == "" &&  self.receivablesType == "3" {
-                    
+        
+                if self.receivablesType == "3"{
                     let weChatUrl = UserDefaults.standard.getUserInfo().weChatUrl
                     if self.style == .buyStyle &&  weChatUrl == "" {
                         let mineSetAccountVC = MineSetAccountVC()
@@ -272,7 +274,10 @@ extension BusinessWantBuyVC {
                         self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                         return
                     }
-
+                }
+                
+                //设置微信
+                if self.paymentMethod == "" &&  self.receivablesType == "3" {
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .weChatStyle
                     mineSetAccountVC.type = 1

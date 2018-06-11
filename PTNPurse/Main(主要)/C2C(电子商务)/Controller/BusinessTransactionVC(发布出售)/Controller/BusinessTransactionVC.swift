@@ -506,47 +506,35 @@ extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
                 account = method
                 //前往设置支付宝
                 alipayStr = (UserDefaults.standard.getUserInfo().apay)!
-                
-                let alipayUrl = UserDefaults.standard.getUserInfo().apayUrl
-                
-                if self.style == .sellStyle &&  alipayUrl == "" {
-                    let mineSetAccountVC = MineSetAccountVC()
-                    mineSetAccountVC.style = .alipayStyle
-                    mineSetAccountVC.type = 0
-                    mineSetAccountVC.peymentStyle = .requiredCode
-                    self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
-                    return
-                }
-                
                 if alipayStr == "" {
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .alipayStyle
                     mineSetAccountVC.type = 0
                     //发布购买选择填写
-                    if style == .buyStyle {
-                        mineSetAccountVC.peymentStyle = .optionalCode
-                    }else if style == .sellStyle {
-                        mineSetAccountVC.peymentStyle = .requiredCode
-                    }
-                    self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
-                    return
-                }
-                
-            }else if method.contains(LanguageHelper.getString(key: "C2C_payment_WeChat")){
-                account = method
-                //前往设置微信
-                weChatStr = (UserDefaults.standard.getUserInfo().weChat)!
-                
-                let weChatUrl = UserDefaults.standard.getUserInfo().weChatUrl
-                if self.style == .sellStyle &&  weChatUrl == "" {
-                    let mineSetAccountVC = MineSetAccountVC()
-                    mineSetAccountVC.style = .weChatStyle
-                    mineSetAccountVC.type = 1
+//                    if style == .buyStyle {
+//                        mineSetAccountVC.peymentStyle = .optionalCode
+//                    }else if style == .sellStyle {
+//                        mineSetAccountVC.peymentStyle = .requiredCode
+//                    }
                     mineSetAccountVC.peymentStyle = .requiredCode
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }
                 
+//                let alipayUrl = UserDefaults.standard.getUserInfo().apayUrl
+//                if self.style == .sellStyle &&  alipayUrl == "" {
+//                    let mineSetAccountVC = MineSetAccountVC()
+//                    mineSetAccountVC.style = .alipayStyle
+//                    mineSetAccountVC.type = 0
+//                    mineSetAccountVC.peymentStyle = .requiredCode
+//                    self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
+//                    return
+//                }
+                
+            }else if method.contains(LanguageHelper.getString(key: "C2C_payment_WeChat")){
+                account = method
+                //前往设置微信
+                weChatStr = (UserDefaults.standard.getUserInfo().weChat)!
                 if weChatStr == "" {
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .weChatStyle
@@ -560,7 +548,18 @@ extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }
+                
+                let weChatUrl = UserDefaults.standard.getUserInfo().weChatUrl
+                if self.style == .sellStyle &&  weChatUrl == "" {
+                    let mineSetAccountVC = MineSetAccountVC()
+                    mineSetAccountVC.style = .weChatStyle
+                    mineSetAccountVC.type = 1
+                    mineSetAccountVC.peymentStyle = .requiredCode
+                    self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
+                    return
+                }
             }
+
             self.methodTF.text = account
             self.methodType = Tools.getPaymentMethod(method)
         }
