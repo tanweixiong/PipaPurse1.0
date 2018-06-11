@@ -266,7 +266,7 @@ extension BusinessWantBuyVC {
         
                 if self.receivablesType == "3"{
                     let weChatUrl = UserDefaults.standard.getUserInfo().weChatUrl
-                    if self.style == .buyStyle &&  weChatUrl == "" {
+                    if self.style == .sellStyle &&  weChatUrl == "" {
                         let mineSetAccountVC = MineSetAccountVC()
                         mineSetAccountVC.style = .weChatStyle
                         mineSetAccountVC.type = 1
@@ -282,9 +282,9 @@ extension BusinessWantBuyVC {
                     mineSetAccountVC.style = .weChatStyle
                     mineSetAccountVC.type = 1
                     if self.style == .buyStyle {
-                        mineSetAccountVC.peymentStyle = .requiredCode
-                    }else if self.style == .sellStyle{
                         mineSetAccountVC.peymentStyle = .optionalCode
+                    }else if self.style == .sellStyle{
+                        mineSetAccountVC.peymentStyle = .requiredCode
                     }
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return

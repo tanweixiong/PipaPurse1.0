@@ -510,12 +510,6 @@ extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .alipayStyle
                     mineSetAccountVC.type = 0
-                    //发布购买选择填写
-//                    if style == .buyStyle {
-//                        mineSetAccountVC.peymentStyle = .optionalCode
-//                    }else if style == .sellStyle {
-//                        mineSetAccountVC.peymentStyle = .requiredCode
-//                    }
                     mineSetAccountVC.peymentStyle = .requiredCode
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return

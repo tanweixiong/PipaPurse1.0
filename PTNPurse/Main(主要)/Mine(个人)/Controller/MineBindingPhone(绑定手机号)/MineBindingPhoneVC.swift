@@ -109,6 +109,7 @@ extension MineBindingPhoneVC {
     @objc func codeBtnTouched(btn:AutorizeButton) {
         if isGetCode {
             isGetCode = false
+            rightAutorBtn.isEnabled = false
             if !Tools.validateMobile(mobile: self.phoneTF.text!) {
                 SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "net_rightphone"))
                 return
@@ -121,6 +122,7 @@ extension MineBindingPhoneVC {
                         SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "net_requestsuccess"))
                         btn.isCounting = true
                         self.isGetCode = true
+                        self.rightAutorBtn.isEnabled = true
                     } else {
                         SVProgressHUD.showError(withStatus: result?.message)
                     }
