@@ -193,8 +193,14 @@
                                                 <color key="textColor" red="0.50980392159999999" green="0.54117647059999996" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIz-6a-pS1">
+                                                <rect key="frame" x="212" y="191" width="43" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.50980392159999999" green="0.54117647059999996" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdD-D4-2gZ">
-                                                <rect key="frame" x="260" y="191.5" width="15" height="17"/>
+                                                <rect key="frame" x="260" y="191" width="15" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="GGN-JR-But"/>
                                                     <constraint firstAttribute="width" constant="15" id="jjO-go-tSg"/>
@@ -204,12 +210,6 @@
                                                     <color key="titleColor" red="0.50980392159999999" green="0.54117647059999996" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIz-6a-pS1">
-                                                <rect key="frame" x="212" y="192" width="43" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" red="0.50980392159999999" green="0.54117647059999996" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRE-up-Oaf">
                                                 <rect key="frame" x="192" y="185" width="83" height="30"/>
                                             </button>
@@ -312,6 +312,7 @@
                 <outlet property="orderTypeTLab" destination="CLm-z3-Qir" id="fwI-c5-Ffv"/>
                 <outlet property="orderUnitLab" destination="O6e-FY-eNy" id="vNe-cA-Trq"/>
                 <outlet property="paymentCodeBtn" destination="jRE-up-Oaf" id="be2-DV-gvw"/>
+                <outlet property="payment_X" destination="7Gp-cU-BSe" id="g42-ft-T77"/>
                 <outlet property="photoImageVw" destination="6Qd-ac-2HQ" id="B2B-du-XCE"/>
                 <outlet property="stateLab" destination="tEg-La-q9K" id="SOc-sK-BWz"/>
                 <outlet property="statusVw" destination="3BP-AS-cDF" id="ui3-oy-hcC"/>
@@ -324,7 +325,7 @@
                 <outlet property="transactionTypeLab" destination="rXo-9r-gs4" id="GjJ-fO-bMw"/>
                 <outlet property="usernameLab" destination="FA6-mS-p8H" id="KJg-mN-mhI"/>
             </connections>
-            <point key="canvasLocation" x="104" y="-38"/>
+            <point key="canvasLocation" x="-113" y="-32"/>
         </tableViewCell>
     </objects>
     <resources>

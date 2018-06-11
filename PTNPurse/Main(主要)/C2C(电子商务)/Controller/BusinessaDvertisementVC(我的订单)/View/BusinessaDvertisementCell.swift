@@ -40,6 +40,9 @@ class BusinessaDvertisementCell: UITableViewCell {
     @IBOutlet weak var backgroundVw: UIView!
     @IBOutlet weak var codeImageVw: UIButton!
     @IBOutlet weak var statusVw: UIView!
+    
+    
+    @IBOutlet weak var payment_X: NSLayoutConstraint!
     var model = BusinessaDvertisementModel(){
         didSet{
             let photo = model?.photo == nil ? "" :  model?.photo
@@ -81,6 +84,18 @@ class BusinessaDvertisementCell: UITableViewCell {
                 }else if model?.receivablesType == 3{
                     codeImageVw.setImage(UIImage.init(named: "ic_WechatCode"), for: .normal)
                 }
+            }
+            
+            //买方
+            if style == .detriment {
+                paymentCodeBtn.isHidden = true
+                codeImageVw.isHidden = true
+                payment_X.constant = -15
+            //卖方
+            }else if style == .sell{
+                paymentCodeBtn.isHidden = false
+                codeImageVw.isHidden = false
+                payment_X.constant = 5
             }
    
             //进行中需要

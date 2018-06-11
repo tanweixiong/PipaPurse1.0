@@ -13,6 +13,8 @@ class MineSetAccountVw: UIView {
     @IBOutlet weak var paymentMethodTF: UITextField!
     @IBOutlet weak var uploadBtn: UIButton!
     @IBOutlet weak var codeImageVw: UIImageView!
+    @IBOutlet weak var codeVw: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         uploadBtn.setTitle(LanguageHelper.getString(key: "C2C_Upload_Upload_Payment_QR_Code"), for: .normal)

@@ -240,6 +240,11 @@ extension BusinessWantBuyVC {
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .alipayStyle
                     mineSetAccountVC.type = 0
+                    if self.style == .buyStyle {
+                        mineSetAccountVC.peymentStyle = .requiredCode
+                    }else if self.style == .sellStyle{
+                        mineSetAccountVC.peymentStyle = .optionalCode
+                    }
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }
@@ -249,6 +254,11 @@ extension BusinessWantBuyVC {
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .weChatStyle
                     mineSetAccountVC.type = 1
+                    if self.style == .buyStyle {
+                        mineSetAccountVC.peymentStyle = .requiredCode
+                    }else if self.style == .sellStyle{
+                        mineSetAccountVC.peymentStyle = .optionalCode
+                    }
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }

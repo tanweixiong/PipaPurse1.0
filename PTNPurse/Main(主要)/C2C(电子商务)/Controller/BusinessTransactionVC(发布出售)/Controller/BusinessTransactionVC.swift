@@ -510,6 +510,12 @@ extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .alipayStyle
                     mineSetAccountVC.type = 0
+                    //发布购买选择填写
+                    if style == .buyStyle {
+                        mineSetAccountVC.peymentStyle = .optionalCode
+                    }else if style == .sellStyle {
+                        mineSetAccountVC.peymentStyle = .requiredCode
+                    }
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }
@@ -522,6 +528,12 @@ extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .weChatStyle
                     mineSetAccountVC.type = 1
+                    //发布购买选择填写
+                    if style == .buyStyle {
+                        mineSetAccountVC.peymentStyle = .optionalCode
+                    }else if style == .sellStyle {
+                        mineSetAccountVC.peymentStyle = .requiredCode
+                    }
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }

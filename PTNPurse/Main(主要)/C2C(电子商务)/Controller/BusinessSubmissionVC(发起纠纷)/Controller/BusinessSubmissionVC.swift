@@ -100,6 +100,7 @@ extension BusinessSubmissionVC {
     
    @objc func submitPost() {
       if isSubmit {
+         submitBtn.isEnabled = false
          isSubmit = false
         if imageArray.count == 0 {
             SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "C2C_Please_upload_pictures"))
@@ -112,10 +113,11 @@ extension BusinessSubmissionVC {
         let language = Tools.getLocalLanguage()
         let parameters = ["orderNo":orderNo,"token":token,"remark":remark,"type":type,"language":language]
         ZYNetWorkTool.uploadMuchPictures(url: ZYConstAPI.kAPISpotDisputeSubmission, parameter: parameters, imageArray: self.imageArray, imageKey: "photo", success: { (json) in
-            self.isSubmit = true
             SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "C2C_publish_dispute_prompt_Uploaded_successfully"))
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: R_NotificationC2COrderReload), object: nil)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                self.isSubmit = true
+                self.submitBtn.isEnabled = true
                 self.navigationController?.popViewController(animated: true)
             })
         }) { (error) in

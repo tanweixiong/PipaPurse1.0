@@ -35,6 +35,10 @@ class BusinessBuyHistoryCell: UITableViewCell {
     
     @IBOutlet weak var quotePriceLab: UILabel!
     @IBOutlet weak var quotePriceTitleLab: UILabel!
+    
+    @IBOutlet weak var paymentCodeBtn: UIButton!
+    @IBOutlet weak var codeImageVw: UIButton!
+    @IBOutlet weak var payment_X: NSLayoutConstraint!
     var model = BusinessBuyHistoryModel(){
         didSet{
             stateLabel.text = Tools.getMineAdvertisingMethod((model?.state?.stringValue)!)
@@ -73,9 +77,18 @@ class BusinessBuyHistoryCell: UITableViewCell {
             if style == .buyStyle {
                 stateLabel.text = LanguageHelper.getString(key: "C2C_mine_advertisement_finish")
                 stateLabel.backgroundColor = UIColor.R_UIColorFromRGB(color: 0x00D85A)
+                
+                paymentCodeBtn.isHidden = true
+                codeImageVw.isHidden = true
+                payment_X.constant = -15
+                
             }else if style == .sellStyle{
                 stateLabel.text = LanguageHelper.getString(key: "C2C_mine_advertisement_processing")
                 stateLabel.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xFF7052)
+                
+                paymentCodeBtn.isHidden = false
+                codeImageVw.isHidden = false
+                payment_X.constant = 5
             }
          
             stateTitleLab.text = LanguageHelper.getString(key: "C2C_publish_details_order_Status") + "："

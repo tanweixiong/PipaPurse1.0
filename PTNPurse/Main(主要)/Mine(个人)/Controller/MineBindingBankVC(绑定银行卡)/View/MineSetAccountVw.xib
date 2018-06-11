@@ -154,6 +154,7 @@
             </constraints>
             <connections>
                 <outlet property="codeImageVw" destination="JKA-f8-YQn" id="xFl-Xo-0Ml"/>
+                <outlet property="codeVw" destination="ciA-Mg-YJU" id="HGX-27-Zch"/>
                 <outlet property="paymentMethodTF" destination="Ype-OI-AkA" id="BBq-gr-4Z8"/>
                 <outlet property="titleLab" destination="0hF-H0-3vB" id="Cho-5f-dzJ"/>
                 <outlet property="uploadBtn" destination="vMj-bT-5PA" id="tGs-dR-m6g"/>

@@ -103,7 +103,6 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
     }
     
     @objc func textFieldTextDidChangeOneCI(noti:NSNotification){
-        determineBtn.isSelected = self.checkInpunt()
         setDetermineStyle()
     }
     
@@ -111,7 +110,7 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
         if Tools.noPaymentPasswordIsSetToExecute() == false{return}
         if checkEnter(){
             let coinName = details.coinName == nil ? "" : (details.coinName)!
-            let feeName = details.coinType == 40 ? "ETH" : coinName
+            let feeName = details.type == 40 ? "ETH" : coinName
             let fee = sliderValueLab.text! + feeName
             let collectNum = collectNumTextField.text!  + coinName
             let input = PaymentPasswordVw(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
@@ -202,6 +201,7 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
             if (((dict["message"] as AnyObject).isEqual(NSNull.init())) == false){
                 yytextfield.text = dict.object(forKey: "message") as! String
             }
+            setDetermineStyle()
         }else{
             SVProgressHUD.showInfo(withStatus: LanguageHelper.getString(key: "homePage_Prompt_Scan_Error"))
         }
@@ -239,16 +239,18 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
     }
     
     func setDetermineStyle(){
-        if determineBtn.isSelected {
+        if checkInpunt() {
             determineBtn.backgroundColor = R_UIThemeColor
             determineBtn.isUserInteractionEnabled = true
+             determineBtn.isSelected = true
         }else{
             determineBtn.backgroundColor = UIColor.R_UIColorFromRGB(color: 0xCAE9FD)
             determineBtn.isUserInteractionEnabled = false
+            determineBtn.isSelected = false
         }
     }
     
-    func PaymentPasswordChangeForgetPassword() {
+    private func PaymentPasswordChangeForgetPassword(){
         let forgetvc = ModifyTradePwdViewController()
         forgetvc.type = ModifyPwdType.tradepwd
         forgetvc.status = .modify
@@ -400,6 +402,7 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
     }
     
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+         setDetermineStyle()
         if textField == collectNumTextField {
             return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemeTransferLimit)
         }

@@ -15,6 +15,12 @@ enum MineSetAccountStyle{
     case weChatStyle
 }
 
+enum MineSetAccountPaymentStyle{
+    case requiredCode //必须填写
+    case optionalCode //选择填写
+    case hideCodeStyle //隐藏code
+}
+
 class MineSetAccountVC: MainViewController {
     fileprivate lazy var viewModel : BaseViewModel = BaseViewModel()
     fileprivate lazy var codeImage = UIImage()
@@ -22,6 +28,7 @@ class MineSetAccountVC: MainViewController {
     fileprivate lazy var urlString = ""
     var type = 0
     var style = MineSetAccountStyle.alipayStyle
+    var peymentStyle = MineSetAccountPaymentStyle.requiredCode
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -76,6 +83,18 @@ extension MineSetAccountVC {
         view.addSubview(mineSetAccountVw)
         view.addSubview(submitBtn)
         mineSetAccountVw.paymentMethodTF.keyboardType = .asciiCapable
+        
+        if peymentStyle == .hideCodeStyle {
+            mineSetAccountVw.codeVw.isHidden = true
+        }
+        
+        if peymentStyle == .requiredCode {
+            print("1")
+        }else if peymentStyle == .optionalCode {
+            print("2")
+        }else if peymentStyle == .hideCodeStyle  {
+            print("3")
+        }
     }
     
     @objc func onClick(_ sender:UIButton){
@@ -243,8 +262,11 @@ extension MineSetAccountVC {
         if account.count == 0  {
             return false
         }
-        if isUpload == false {
-            return false
+        
+        if peymentStyle == .requiredCode {
+            if isUpload == false {
+                return false
+            }
         }
         return true
     }
