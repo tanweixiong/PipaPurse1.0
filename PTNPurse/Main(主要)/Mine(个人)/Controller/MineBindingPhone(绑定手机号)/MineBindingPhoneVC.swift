@@ -123,6 +123,10 @@ extension MineBindingPhoneVC {
                         btn.isCounting = true
                         self.isGetCode = true
                         self.rightAutorBtn.isEnabled = true
+                        
+                        let userInfo = UserDefaults.standard.getUserInfo()
+                        userInfo.phone = self.phoneTF.text!
+                        UserDefaults.standard.saveCustomObject(object: userInfo, key: R_UserInfo)
                     } else {
                         SVProgressHUD.showError(withStatus: result?.message)
                     }
