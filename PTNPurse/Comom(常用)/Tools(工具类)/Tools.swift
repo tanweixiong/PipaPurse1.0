@@ -837,6 +837,22 @@ class Tools: NSObject {
         return text.boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: height), options: .usesLineFragmentOrigin, attributes: [.font: UIFont.systemFont(ofSize: fontSize)], context: nil).size.width
     }
     
+    //校验字符
+   class func checkWhetherItIsAnAmountString(text:String)->Bool{
+       if (text.contains("..")){
+            return false
+        }
+    
+       if text.count != 0 {
+        let onceText = text.subString(start: 0, length: 1)
+        if onceText.contains(".") {
+            return false
+        }
+      }
+  
+        return true
+    }
+    
 }
 
 

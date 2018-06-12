@@ -34,4 +34,5 @@
 +(NSString *) toExponent:(double)d rms:(NSInteger)n;
 +(BOOL)validateNumber:(NSString*)number;
 +(NSString*)encrypt:(NSString*)plainText;
++ (BOOL)isRightInPutOfString:(NSString *) string withInputString:(NSString *) inputString range:(NSRange) range num:(NSInteger)num;
 @end

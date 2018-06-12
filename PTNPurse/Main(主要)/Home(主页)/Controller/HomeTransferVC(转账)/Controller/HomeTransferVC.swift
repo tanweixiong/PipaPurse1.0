@@ -404,7 +404,10 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
          setDetermineStyle()
         if textField == collectNumTextField {
-            return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemeTransferLimit)
+            if range.location == 0 && string == "."{
+                return false
+            }
+            return OCTools.isRight(inPutOf: textField.text, withInputString: string, range: range, num: R_UIThemeTransferLimit)
         }
         return true
     }

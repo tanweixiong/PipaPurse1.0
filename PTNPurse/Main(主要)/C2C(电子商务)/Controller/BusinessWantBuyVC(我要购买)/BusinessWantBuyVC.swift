@@ -103,9 +103,15 @@ class BusinessWantBuyVC: MainViewController {
     
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.tag == 2 {
-           return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: retentionNumber)
+            if range.location == 0 && string == "."{
+                return false
+            }
+            return OCTools.isRight(inPutOf: textField.text, withInputString: string, range: range, num: retentionNumber)
         }else if textField.tag == 1 {
-           return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: retentionCny)
+            if range.location == 0 && string == "."{
+                return false
+            }
+            return OCTools.isRight(inPutOf: textField.text, withInputString: string, range: range, num: retentionCny)
         }
         return true
     }
@@ -253,12 +259,7 @@ extension BusinessWantBuyVC {
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .alipayStyle
                     mineSetAccountVC.type = 0
-                    mineSetAccountVC.peymentStyle = .requiredCode
-//                    if self.style == .buyStyle {
-//                        mineSetAccountVC.peymentStyle = .requiredCode
-//                    }else if self.style == .sellStyle{
-//                        mineSetAccountVC.peymentStyle = .optionalCode
-//                    }
+                    mineSetAccountVC.peymentStyle = .optionalCode
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }

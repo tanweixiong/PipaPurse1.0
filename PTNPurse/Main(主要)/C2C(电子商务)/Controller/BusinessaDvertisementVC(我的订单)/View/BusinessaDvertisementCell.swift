@@ -87,12 +87,12 @@ class BusinessaDvertisementCell: UITableViewCell {
             }
             
             //买方
-            if style == .detriment {
+            if style == .sell {
                 paymentCodeBtn.isHidden = true
                 codeImageVw.isHidden = true
                 payment_X.constant = -15
             //卖方
-            }else if style == .sell{
+            }else if style == .detriment{
                 paymentCodeBtn.isHidden = false
                 codeImageVw.isHidden = false
                 payment_X.constant = 5

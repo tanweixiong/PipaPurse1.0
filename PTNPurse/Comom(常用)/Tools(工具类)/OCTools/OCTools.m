@@ -670,5 +670,42 @@
     return result;
 }
 
++ (BOOL)isRightInPutOfString:(NSString *) string withInputString:(NSString *) inputString range:(NSRange) range num:(NSInteger)num{
+    //判断只输出数字和.号
+//    NSString *passWordRegex = @"[0-9\\.]";
+//    NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passWordRegex];
+//    if (![passWordPredicate evaluateWithObject:inputString]) {
+//        return NO;
+//    }
+    
+    //逻辑处理
+    if ([string containsString:@"."]) {
+        if ([inputString isEqualToString:@"."]) {
+            return NO;
+        }
+        NSRange subRange = [string rangeOfString:@"."];
+        if (range.location - subRange.location > num) {
+            return NO;
+        }
+    }
+    
+    NSMutableString * futureString = [NSMutableString stringWithString:string];
+    [futureString  insertString:inputString atIndex:range.location];
+    NSInteger flag=0;
+    const NSInteger limited = num;//小数点后需要限制的个数
+    for (int i = futureString.length-1; i>=0; i--) {
+        
+        if ([futureString characterAtIndex:i] == '.') {
+            if (flag > limited) {
+                return NO;
+            }
+            break;
+        }
+        flag++;
+    }
+    
+    return YES;
+}
+
 
 @end

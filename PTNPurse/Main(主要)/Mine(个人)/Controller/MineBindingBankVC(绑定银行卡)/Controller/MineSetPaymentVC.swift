@@ -68,7 +68,7 @@ extension MineSetPaymentVC:UITableViewDataSource,UITableViewDelegate{
              let mineSetAccountVC = MineSetAccountVC()
              mineSetAccountVC.style = .alipayStyle
              mineSetAccountVC.type = 0
-             mineSetAccountVC.peymentStyle = .requiredCode
+             mineSetAccountVC.peymentStyle = .optionalCode
              self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
         case 1:
             let mineSetAccountVC = MineSetAccountVC()

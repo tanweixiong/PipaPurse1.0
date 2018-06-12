@@ -109,13 +109,25 @@ class BusinessTransactionVC: MainViewController {
         if textField == self.transactionsPriceTF {
            //如果继续输入则溢价为空
            self.percentTF.text = "--"
-           return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemePostPurchasePriceLimit)
+            if range.location == 0 && string == "."{
+                return false
+            }
+            return OCTools.isRight(inPutOf: textField.text, withInputString: string, range: range, num: R_UIThemePostPurchasePriceLimit)
         } else if  textField == self.transactionsNumTF {
-             return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemePostPurchaseLimit)
+            if range.location == 0 && string == "."{
+                return false
+            }
+            return OCTools.isRight(inPutOf: textField.text, withInputString: string, range: range, num: 2)
         } else if textField == self.transactionsMinTF{
-             return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: R_UIThemePostPurchaseLimit)
+            if range.location == 0 && string == "."{
+                return false
+            }
+            return OCTools.isRight(inPutOf: textField.text, withInputString: string, range: range, num: R_UIThemePostPurchaseLimit)
         } else if textField == self.transactionsMinPriceTF{
-            return OCTools.existenceDecimal(textField.text, range: range, replacementString: string, num: 2)
+            if range.location == 0 && string == "."{
+                return false
+            }
+            return OCTools.isRight(inPutOf: textField.text, withInputString: string, range: range, num: 2)
         }
         return true
     }
@@ -445,6 +457,7 @@ extension BusinessTransactionVC: UITableViewDataSource,UITableViewDelegate {
                         cell.textfield.text = Tools.setNSDecimalNumber(tradeMinPrice)
                         cell.textfield.textColor = R_UIThemeColor
                         cell.textfield.keyboardType = .decimalPad
+                        cell.textfield.delegate = self
                         self.transactionsMinPriceTF = cell.textfield
                     }
                     return cell
@@ -510,21 +523,10 @@ extension BusinessTransactionVC:IntegralApplicationStatusDelegate{
                     let mineSetAccountVC = MineSetAccountVC()
                     mineSetAccountVC.style = .alipayStyle
                     mineSetAccountVC.type = 0
-                    mineSetAccountVC.peymentStyle = .requiredCode
+                    mineSetAccountVC.peymentStyle = .optionalCode
                     self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
                     return
                 }
-                
-//                let alipayUrl = UserDefaults.standard.getUserInfo().apayUrl
-//                if self.style == .sellStyle &&  alipayUrl == "" {
-//                    let mineSetAccountVC = MineSetAccountVC()
-//                    mineSetAccountVC.style = .alipayStyle
-//                    mineSetAccountVC.type = 0
-//                    mineSetAccountVC.peymentStyle = .requiredCode
-//                    self.navigationController?.pushViewController(mineSetAccountVC, animated: true)
-//                    return
-//                }
-                
             }else if method.contains(LanguageHelper.getString(key: "C2C_payment_WeChat")){
                 account = method
                 //前往设置微信

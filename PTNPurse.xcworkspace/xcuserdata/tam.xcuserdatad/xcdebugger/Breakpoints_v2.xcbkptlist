@@ -57,54 +57,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PTNPurse/Main(&#x4e3b;&#x8981;)/C2C(&#x7535;&#x5b50;&#x5546;&#x52a1;)/Controller/BusinessOrderDetailsVC(&#x8ba2;&#x5355;&#x8bb0;&#x5f55;)/Controller/BusinessOrderDetailsVC.swift"
-            timestampString = "550121418.714565"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "getData()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PipaPurse.BusinessOrderDetailsVC.getData() -&gt; ()"
-                  moduleName = "PipaPurse"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tam/Desktop/PipaPursePurse1.0/PTNPurse/Main(%E4%B8%BB%E8%A6%81)/C2C(%E7%94%B5%E5%AD%90%E5%95%86%E5%8A%A1)/Controller/BusinessOrderDetailsVC(%E8%AE%A2%E5%8D%95%E8%AE%B0%E5%BD%95)/Controller/BusinessOrderDetailsVC.swift"
-                  timestampString = "550401273.337562"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "660">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in PipaPurse.BusinessOrderDetailsVC.getData() -&gt; ()"
-                  moduleName = "PipaPurse"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tam/Desktop/PipaPursePurse1.0/PTNPurse/Main(%E4%B8%BB%E8%A6%81)/C2C(%E7%94%B5%E5%AD%90%E5%95%86%E5%8A%A1)/Controller/BusinessOrderDetailsVC(%E8%AE%A2%E5%8D%95%E8%AE%B0%E5%BD%95)/Controller/BusinessOrderDetailsVC.swift"
-                  timestampString = "550401273.339762"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "PTNPurse/Main(&#x4e3b;&#x8981;)/C2C(&#x7535;&#x5b50;&#x5546;&#x52a1;)/Controller/BusinessWantBuyVC(&#x6211;&#x8981;&#x8d2d;&#x4e70;)/BusinessWantFinishVC.swift"
             timestampString = "550121434.9462481"
             startingColumnNumber = "9223372036854775807"
