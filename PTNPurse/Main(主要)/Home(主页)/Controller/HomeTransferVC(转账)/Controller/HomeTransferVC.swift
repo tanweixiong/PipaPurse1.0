@@ -150,7 +150,6 @@ class HomeTransferVC: MainViewController,UITableViewDelegate,UITableViewDataSour
         SVProgressHUD.show(withStatus: LanguageHelper.getString(key: "please_wait"))
         ZYNetWorkTool.requestData(.post, URLString: ZYConstAPI.kAPIAddTradeInfo, language: false, parameters: parameters as? [String : Any], showIndicator: false, success: { (json) in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
-                SVProgressHUD.dismiss()
                 let responseData = Mapper<HomeTransferFinishModel>().map(JSONObject: json)
                 if responseData?.code == 200 {
                     SVProgressHUD.showSuccess(withStatus: LanguageHelper.getString(key: "homePage_Details_Transfer_Finish"))

@@ -38,6 +38,7 @@ class HomeAddCoinListModel: Mappable {
     var moneyRate:String?
     var unbalance:String?
     var userId:String?
+    var tradeState:NSNumber?
 
     func mapping(map: Map) {
         type     <- map["type"]
@@ -52,6 +53,7 @@ class HomeAddCoinListModel: Mappable {
         moneyRate    <- map["moneyRate"]
         unbalance    <- map["unbalance"]
         userId    <- map["userId"]
+        tradeState    <- map["tradeState"]
     }
 
     required init?(map: Map) {
